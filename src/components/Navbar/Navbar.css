@@ -1,0 +1,68 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  background: #ffffff;
+}
+
+.logo {
+  width: 160px;
+  height: 40px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #0367A5;
+  transition: color 0.3s;
+  font-size: 18px;
+  position: relative; /* Necessário para o efeito de linha */
+  padding-bottom: 5px; /* Espaço entre o texto e a linha */
+}
+
+/* Criando a linha abaixo do link */
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #35A150; /* Cor da linha */
+  transition: width 0.3s ease-in-out;
+}
+
+/* Expande a linha ao passar o mouse */
+.nav-links li a:hover::after {
+  width: 80%;
+}
+
+.nav-links li a:hover {
+  color: #14184b;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.login, .register {
+  width: 110px;
+  height: 44px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #0367A5;
+  border: none;
+  color: #ffffff;
+}

@@ -1,0 +1,77 @@
+/* Footer */
+.footer {
+  background-color: #0367A5;
+  color: white;
+  padding: 40px 0;
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Cada seção do footer */
+.footer-section {
+  flex: 1;
+  /* min-width: 200px;
+  margin: 10px; */
+}
+
+.footer-section h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.footer-section p {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #ffffff;
+}
+
+/* Estilos da Logo */
+.footer-logo {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+/* Links */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 8px 0;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #ffffff;
+}
+
+/* Informações de Contato */
+.footer-section p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* Ícones das Redes Sociais */
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1);
+}
+

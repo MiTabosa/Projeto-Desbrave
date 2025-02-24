@@ -70,38 +70,6 @@ docker-compose up --build
 3. 🎓 **Cursos**: Acesso a cursos gratuitos com vídeos, textos e quizzes.
 4. 📊 **Dashboard do Usuário**: Área personalizada com progresso, conquistas e atualizações.
 
-## 🤝 Como Contribuir
-
-1. **Faça um fork do repositório.**
-
-2. **Crie uma nova branch para sua funcionalidade:**
-
-```bash
-git checkout -b minha-feature
-```
-
-3. **Faça suas alterações e commit:**
-
-```bash
-git add .
-git commit -m "Adicionei uma nova funcionalidade"
-```
-
-4. **Envie para o repositório remoto:**
-
-```bash
-git push origin minha-feature
-```
-
-5. **Abra um Pull Request:**
-
-- Acesse o repositório no GitHub.
-- Vá até a aba **Pull Requests**.
-- Clique em **Nova solicitação de pull**.
-- Escolha a branch `minha-feature` como origem e `main` como destino.
-- Revise as alterações e adicione uma descrição clara do que foi feito.
-- Clique em **Criar Pull Request**.
-
 ---
 
 ✨ **Junte-se a nós no Desbrave e ajude a transformar a conexão dos jovens de Recife com a cultura e educação digital!** 🌟

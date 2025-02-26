@@ -1,8 +1,37 @@
-#map {
-    width: 100%;
-    height: 400px;
-    margin-top: 30px;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.map-section {
+  background-color: rgba(217, 141, 48, 0.2); /* Cor #D98D30 com 20% de opacidade */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0;
   
-  /* Estilos adicionais para o mapa, se necessário */   
-    
+}
+
+.map-text h2 {
+  font-size: 32px;
+  color: #004aad;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.map-text p {
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 32px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map-container {
+  height: 500px;
+  width: 90%;
+  border-radius: 10px;
+}

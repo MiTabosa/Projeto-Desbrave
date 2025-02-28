@@ -8,28 +8,32 @@ const CardsSection = () => {
       description: "Participe de discussões e compartilhe conhecimento.",
       image: "src/assets/foruns.png",
       borderColor: "#2ECC71", // Verde
-      buttonText: "Acessar Fórum"
+      buttonText: "Acessar Fórum",
+      navigateTo: "/forum"
     },
     {
       title: "Cursos Online",
       description: "Aprenda no seu ritmo com cursos variados.",
       image: "src/assets/cursos.png",
       buttonText: "Ver Cursos",
-      borderColor: "#3498DB" // Azul
+      borderColor: "#3498DB", // Azul
+      navigateTo: "/cursos"
     },
     {
       title: "Desafios Gamificados",
       description: "Explore Recife e ganhe recompensas.",
       image: "src/assets/desafios.png",
       buttonText: "Começar Desafio",
-      borderColor: "#F1C40F" // Amarelo
+      borderColor: "#F1C40F", // Amarelo
+      navigateTo: "/desafios"
     },
     {
       title: "Mapa Interativo",
       description: "Descubra Recife através do mapa interativo.",
       image: "src/assets/mapa.png",
        buttonText: "Explorar Mapa",
-      borderColor: "#FF5733" // Laranja
+      borderColor: "#FF5733", // Laranja
+      navigateTo: "/mapa"
     }
   ];
 
@@ -46,6 +50,7 @@ const CardsSection = () => {
             image={card.image}
             borderColor={card.borderColor}
             buttonText={card.buttonText}
+            navigateTo={card.navigateTo}
           />
         ))}
       </div>

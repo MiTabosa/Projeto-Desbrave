@@ -1,11 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --cor-primaria: #0367A5;
+  --cor-secundaria: #35A150;
+  --titulos: #0367A5;
+  --paragraph-color: #000000;
+  --background-color: #ffffff;
+  --fonte: 'Poppins', sans-serif;
+  --fonte-HeroSection: 94px;
+  --fonte-titulos: 32px;
+  --fonte-parafraph: 18px;
+  --border-radius: 10px;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  body {
-    background-color: #f9f9f9;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--fonte);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--paragraph-color);
+  line-height: 1.6;
+}
+
+/*Estilização global para títulos */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--titulos);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: var(--fonte-HeroSection);
+}
+
+h2 {
+  font-size: var(--fonte-titulos);
+}
+
+h3 {
+  font-size: calc(var(--fonte-titulos) - 4px);
+}
+
+/*Estilização global para parágrafos */
+p {
+  color: var(--paragraph-color);
+  font-size: var(--fonte-parafraph);
+  margin-bottom: 1rem;
+}
+
+/*Estilo global para links */
+a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--cor-secundaria);
+  text-decoration: underline;
+}
+
+button:hover {
+  background-color: var(--cor-secundaria);
+}
+
+
+
+

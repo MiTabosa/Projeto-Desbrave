@@ -1,18 +1,32 @@
-/* Footer */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --cor-primaria: #D98D30;
+  --cor-secundaria: #ffeff7;
+  --texto-principal: #333;
+  --fonte: 'Poppins', sans-serif;
+  --fonte-titulo-principal: 94px;
+  --fonte-grande: 48px;
+  --fonte-media: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .footer {
   background-color: #0367A5;
   color: white;
-  padding: 40px 0;
-  font-family: "Arial", sans-serif;
+  padding: 40px 40px;
+  font-family: var(--fonte);
   display: flex;
   justify-content: space-between;
 }
 
-/* Cada seção do footer */
+
 .footer-section {
   flex: 1;
-  /* min-width: 200px;
-  margin: 10px; */
 }
 
 .footer-section h3 {
@@ -27,13 +41,6 @@
   color: #ffffff;
 }
 
-/* Estilos da Logo */
-.footer-logo {
-  width: 150px;
-  margin-bottom: 10px;
-}
-
-/* Links */
 .footer-section ul {
   list-style: none;
   padding: 0;
@@ -53,13 +60,11 @@
   color: #ffffff;
 }
 
-/* Informações de Contato */
 .footer-section p {
   font-size: 14px;
   margin: 5px 0;
 }
 
-/* Ícones das Redes Sociais */
 .social-icons {
   display: flex;
   gap: 10px;

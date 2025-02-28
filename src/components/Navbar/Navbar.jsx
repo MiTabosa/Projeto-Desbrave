@@ -1,19 +1,24 @@
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
+import Button from "../Button/Button";
+import logo from "../../assets/logo.png";
 
 const Navbar = () => {
+  const navigate = useNavigate(); // Hook para navegação
+
   return (
     <nav className="navbar">
-      <img className="logo" src="./src/assets/logo.png" alt="Logo"/>
+      <img className="logo" src={logo} alt="Logo" />
       <ul className="nav-links">
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Destaque</a></li>
-        <li><a href="#">Contato</a></li>
-        <li><a href="#">Mapa</a></li>
+        <li><a href="#" onClick={() => navigate("/")}>Início</a></li>
+        <li><a href="#" onClick={() => navigate("/sobre")}>Sobre</a></li>
+        <li><a href="#" onClick={() => navigate("/destaque")}>Destaque</a></li>
+        <li><a href="#" onClick={() => navigate("/contato")}>Contato</a></li>
+        <li><a href="#" onClick={() => navigate("/mapa")}>Mapa</a></li>
       </ul>
       <div className="buttons">
-        <button className="login">Login</button>
-        <button className="register">Cadastre-se</button>
+        <Button text="Login" color="#0367A5" onClick={() => navigate("/login")} />
+        <Button text="Cadastre-se" color="#0367A5" onClick={() => navigate("/cadastro")} />
       </div>
     </nav>
   );

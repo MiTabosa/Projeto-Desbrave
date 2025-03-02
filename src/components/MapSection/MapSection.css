@@ -1,10 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 .map-section {
-  background-color: rgba(217, 141, 48, 0.2); /* Cor #D98D30 com 20% de opacidade */
+  background: linear-gradient(to bottom, #ffffff, rgb(110, 186, 234, 0.2) );
   text-align: center;
   display: flex;
   flex-direction: column;

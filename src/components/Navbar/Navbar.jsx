@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 import logo from "../../assets/logo.png";
 
 const Navbar = () => {
-  const navigate = useNavigate(); // Hook para navegação
+  const navigate = useNavigate(); 
 
   return (
     <nav className="navbar">

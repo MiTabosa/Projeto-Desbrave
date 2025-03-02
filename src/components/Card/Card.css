@@ -1,0 +1,44 @@
+.card {
+    border: 3px solid var(--color, #ddd);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card h4 {
+    color: var(--color, #333); /* Cor herdada */
+  }
+  
+  .card button {
+    background-color: var(--color, #007bff);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background 0.3s;
+  }
+  
+  .card button:hover {
+    background-color: var(--color-hover, #0056b3);
+  }
+  
+  /* Definição de cores via variáveis */
+ */
+
+  .card-containerDescubra img {
+    width: 80%;  /* Ajuste conforme necessário */
+    max-width: 200px; /* Define um tamanho máximo */
+    height: auto; /* Mantém a proporção */
+    display: block; /* Garante que respeite margens */
+    margin: 0 auto; /* Centraliza a imagem */
+  }
+
+  .card-icon {
+    font-size: 120px; /* Ajuste o tamanho conforme necessário */
+    display: block;
+    margin: 10px auto;
+  }
+  

@@ -24,11 +24,10 @@
   color: #0367A5;
   transition: color 0.3s;
   font-size: 18px;
-  position: relative; /* Necessário para o efeito de linha */
-  padding-bottom: 5px; /* Espaço entre o texto e a linha */
+  position: relative; 
+  padding-bottom: 5px;
 }
 
-/* Criando a linha abaixo do link */
 .nav-links li a::after {
   content: "";
   position: absolute;
@@ -36,11 +35,10 @@
   bottom: 0;
   width: 0%;
   height: 2px;
-  background-color: #35A150; /* Cor da linha */
+  background-color: #35A150; 
   transition: width 0.3s ease-in-out;
 }
 
-/* Expande a linha ao passar o mouse */
 .nav-links li a:hover::after {
   width: 80%;
 }

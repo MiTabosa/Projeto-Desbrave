@@ -1,22 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-:root {
-  --cor-primaria: #D98D30;
-  --cor-secundaria: #ffeff7;
-  --texto-principal: #333;
-  --fonte: 'Poppins', sans-serif;
-  --fonte-titulo-principal: 94px;
-  --fonte-grande: 48px;
-  --fonte-media: 20px;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 .hero {
-  background: linear-gradient(to bottom, #6ebaea, #ffffff);
+  background: linear-gradient(to bottom, rgb(110, 186, 234), #ffffff);
   display: flex;
   align-items: center;
   font-family: var(--fonte);

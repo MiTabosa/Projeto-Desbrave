@@ -18,21 +18,19 @@
 .footer {
   background-color: #0367A5;
   color: white;
-  padding: 40px 40px;
   font-family: var(--fonte);
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  padding-left: 32px;
+  gap: 100px;
 }
 
-
-.footer-section {
-  flex: 1;
-}
 
 .footer-section h3 {
   font-size: 20px;
   margin-bottom: 15px;
   color: #ffffff;
+  gap: 30px;
 }
 
 .footer-section p {
@@ -78,5 +76,11 @@
 
 .social-icons a:hover img {
   transform: scale(1.1);
+}
+
+.footer-container1{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 

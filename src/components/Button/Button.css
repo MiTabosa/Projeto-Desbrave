@@ -1,4 +1,3 @@
-/* Estilos Gerais do Botão */
 .btn {
     padding: 12px 20px;
     border: none;
@@ -6,19 +5,17 @@
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    background-color: inherit; /* A cor será passada via props */
+    background-color: inherit; 
     color: white;
   }
   
-  /* Efeito hover do botão */
   .btn:hover {
     opacity: 0.8;
-    transform: scale(1.05); /* Leve efeito de zoom */
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1); /* Sombras no botão */
+    transform: scale(1.05);
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1); 
   }
   
-  /* Botão customizado */
   .custom-button {
-    background-color: inherit; /* Permite que a cor de fundo seja herdada pelo componente */
+    background-color: inherit; 
   }
   

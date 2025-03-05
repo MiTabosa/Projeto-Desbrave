@@ -6,9 +6,9 @@ Bem-vindo ao repositório oficial da plataforma **Desbrave**! 🚀
 
 O **Desbrave** é uma plataforma digital interativa que combina:
 
-- 🎓 **Cursos gratuitos** focados em cultura local, cidadania digital e tecnologia.
+- 🎓 **Cursos** focados em cultura, cidadania digital e tecnologia.
 - 💬 **Fóruns de discussão** para jovens compartilharem ideias e aprenderem uns com os outros.
-- 📱 **Sistema de QR Code**: Escaneie QR Codes espalhados pelos pontos turísticos de Recife para acumular pontos.
+- 📱 **Sistema de QR Code**: Escaneie QR Codes espalhados pelos pontos turísticos de Recife para acumular pontos, e troque por descontos incriveis.
 - 🌐 **Acessível e Amigável**: Plataforma otimizada para dispositivos móveis, com uma interface intuitiva e fácil de usar.
 
 ## 🌍 Impacto Social

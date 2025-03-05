@@ -58,7 +58,7 @@ const Home = () => {
             extraClass="card-laranja"
             borderColor="#D98D30"
             buttonText="Começar"
-            link="/desafios"
+            link="/paginaInicial"
             icon={IoRocketOutline}
             layout="layout1"
           />

@@ -1,0 +1,50 @@
+.pontos-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 5rem 1rem;
+    }
+    
+    .pontos-text { 
+        flex: 1;
+        flex-direction: column;
+        text-align: left; 
+        padding: 0 40px;
+        max-width: 70%;
+    }
+    
+    .pontos-image {
+        width: 300px; 
+        height: auto;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    
+    #reader {
+        border: 2px solid #007bff; /* Azul */
+        border-radius: 10px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #reader__scan_region img {
+        display: none !important;
+    }
+    
+    
+    #reader_dashboard button {
+        background-color: #28a745 !important;
+        color: white !important;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        margin: 5px 0;
+    }
+    
+    
+    

@@ -23,13 +23,12 @@
 body {
   background-color: var(--background-color);
   color: var(--paragraph-color);
-  line-height: 1.6;
 }
 
 /*Estilização global para títulos */
 h1, h2, h3, h4, h5, h6 {
   color: var(--titulos);
-  font-weight: 700;
+  font-weight: bold;
 }
 
 h1 {
@@ -46,26 +45,20 @@ h3 {
 
 /*Estilização global para parágrafos */
 p {
-  color: var(--paragraph-color);
-  font-size: var(--fonte-parafraph);
-  margin-bottom: 1rem;
+  color: var(--paragraph-color)
 }
 
 /*Estilo global para links */
 a {
-  color: var(--cor-primaria);
+  color: var(--background-color); /*Cor Branca para as fontes*/
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: var(--cor-secundaria);
   text-decoration: underline;
 }
 
-button:hover {
-  background-color: var(--cor-secundaria);
-}
 
 
 

@@ -1,44 +1,39 @@
 .card {
-    border: 3px solid var(--color, #ddd);
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
-  }
+  display: grid;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
   
-  .card h4 {
-    color: var(--color, #333); /* Cor herdada */
-  }
-  
-  .card button {
-    background-color: var(--color, #007bff);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
-    transition: background 0.3s;
-  }
-  
-  .card button:hover {
-    background-color: var(--color-hover, #0056b3);
-  }
-  
-  /* Definição de cores via variáveis */
- */
-
   .card-containerDescubra img {
-    width: 80%;  /* Ajuste conforme necessário */
-    max-width: 200px; /* Define um tamanho máximo */
-    height: auto; /* Mantém a proporção */
-    display: block; /* Garante que respeite margens */
-    margin: 0 auto; /* Centraliza a imagem */
+    width: 80%; 
+    max-width: 200px; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
   }
 
   .card-icon {
-    font-size: 120px; /* Ajuste o tamanho conforme necessário */
+    font-size: 120px; 
     display: block;
     margin: 10px auto;
   }
+
+  .card.layout1 {
+    grid-template-rows: auto 1fr auto auto; /* Título → Imagem → Descrição → Botão */
+  }
+  
+  
+  .card.layout2 {
+    grid-template-rows: auto auto 1fr auto; /* Imagem → Título → Descrição → Botão */
+  }
+
+  .card.layout2 p {
+    font-size: 14px;
+    line-height: 1.6; 
+  }
+
+  
   

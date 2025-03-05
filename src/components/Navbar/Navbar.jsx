@@ -17,8 +17,8 @@ const Navbar = () => {
         <li><a href="#" onClick={() => navigate("/mapa")}>Mapa</a></li>
       </ul>
       <div className="buttons">
-        <Button text="Login" color="#0367A5" onClick={() => navigate("/login")} />
-        <Button text="Cadastre-se" color="#0367A5" onClick={() => navigate("/cadastro")} />
+        <Button text="Login" color="#0367A5" size="small" onClick={() => navigate("/login")} />
+        <Button text="Cadastre-se" color="#0367A5"  size="small" onClick={() => navigate("/cadastro")} />
       </div>
     </nav>
   );

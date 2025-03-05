@@ -10,24 +10,9 @@
   
 }
 
-.map-text h2 {
-  font-size: 32px;
-  color: #004aad;
-  margin-bottom: 16px;
-  font-weight: bold;
-}
-
-.map-text p {
-  font-size: 18px;
-  color: #000000;
-  margin-bottom: 32px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .map-container {
   height: 500px;
   width: 90%;
   border-radius: 10px;
+  margin: 0 42px;
 }

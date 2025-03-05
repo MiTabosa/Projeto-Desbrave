@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./Card.css"; // Importando os estilos
+import "./Card.css"; 
+import Button from "../Button/Button"; 
 
-const Card = ({ title, description, image, extraClass, buttonText, link, icon: Icon, borderColor }) => {
+const Card = ({ title, description, image, extraClass, buttonText, link, icon: Icon, borderColor, layout }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -10,22 +11,26 @@ const Card = ({ title, description, image, extraClass, buttonText, link, icon: I
   };
 
   return (
-    <div className={`card ${extraClass}`} style={{ border: `3px solid ${borderColor}` }}>
-      {/* Renderiza a imagem, se existir */}
-      {image && <img src={image} alt={title} />}
-      
-      {/* Renderiza o ícone, se existir, com a cor passada por props */}
-      {Icon && <Icon className="card-icon" style={{ color: borderColor }} />} 
+    <div className={`card ${extraClass} ${layout}`} style={{ border: `3px solid ${borderColor}` }}>
+      {layout === "layout1" && (
+        <>
+          <h3 style={{ color: borderColor }}>{title}</h3>
+          {image && <img src={image} alt={title} />}
+          {Icon && <Icon className="card-icon" style={{ color: borderColor }} />} 
+          <p>{description}</p>
+          <Button text={buttonText} color={borderColor} size="full" onClick={handleNavigate} />
+        </>
+      )}
 
-      <div className="card-content">
-        {/* Título com a mesma cor da borda */}
-        <h4 style={{ color: borderColor }}>{title}</h4>
-        <p>{description}</p>
-        {/* Botão com a mesma cor da borda */}
-        <button style={{ backgroundColor: borderColor, color: "#fff" }} onClick={handleNavigate}>
-          {buttonText}
-        </button>
-      </div>
+      {layout === "layout2" && (
+        <>
+          {image && <img src={image} alt={title} />}
+          {Icon && <Icon className="card-icon" style={{ color: borderColor }} />}
+          <h3 style={{ color: borderColor }}>{title}</h3> 
+          <p>{description}</p>
+          <Button text={buttonText} color={borderColor} size="full" onClick={handleNavigate} />
+        </>
+      )}
     </div>
   );
 };

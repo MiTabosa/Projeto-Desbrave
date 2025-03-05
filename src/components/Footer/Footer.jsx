@@ -1,5 +1,7 @@
 import "./Footer.css";
-import { FaTiktok } from "react-icons/fa";
+import { FaTiktok, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
 
 const Footer = () => {
   return (
@@ -8,34 +10,43 @@ const Footer = () => {
         {/* Coluna 1 - Logo e Descrição */}
         <div className="footer-section"> 
           <h3>Desbrave</h3>
-          <p>Desbrave é uma plataforma educacional que visa promover<br/> o conhecimento e a cultura, oferecendo cursos, desafios e <br/> espaços de interação sobre diversas temáticas de Recife.</p>
+          <p>Desbrave é uma plataforma que visa promover<br/> o conhecimento e a cultura, oferecendo cursos, desafios e <br/> espaços de interação sobre diversas temáticas de Recife.</p>
         </div>
 
         {/* Coluna 2 - Contato */}
         <div className="footer-section">
           <h3>Contato</h3>
-          <p>Email: contato@desbrave.com</p>
-          <a href="#"><FaTiktok /></a>
-          <a href="#"><img src="/instagram.svg" alt="Instagram" /></a>
-          <a href="#"><img src="/twitter.svg" alt="Twitter" /></a>
+          <p>Email: DesbraveRecife@gmail.com</p>
+          <div className="social-icons">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <FaInstagram />
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+              <FaTiktok />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+              <FaXTwitter />
+            </a>
+          </div>
+          <p>© 2025 Desbrave. Todos os direitos reservados.</p>
         </div>
-        <div>
-        <p>© 2025 Desbrave. Todos os direitos reservados.</p>
-        </div>
-
       </div>
 
       <div className="footer-container2">
         {/* Coluna 3 - Links Rápidos */}
         <div className="footer-section">
-            <h3>Links Rápidos</h3>
+            <h3>Explorar</h3>
             <ul>
-              <li><a href="#">Início</a></li>
               <li><a href="#">Cursos</a></li>
+              <li><a href="#">Fóruns</a></li>
               <li><a href="#">Mapa Interativo</a></li>
-              <li><a href="#">Fórum</a></li>
+              <li><a href="#">Desafios</a></li>
             </ul>
           </div>
+      </div>
+
+      <div className="vetor-verde">
+        <img src="./src/assets/trecoVerde.png" a />
       </div>
     </footer>
   );

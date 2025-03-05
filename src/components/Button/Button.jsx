@@ -1,13 +1,14 @@
 import React from "react";
 import "./Button.css";
 
-const Button = ({ text, color, onClick }) => {
+const Button = ({ text, color, onClick, size, icon: Icon }) => {
   return (
     <button 
-      className="btn custom-button" 
+      className={`btn ${size}`} 
       style={{ backgroundColor: color }} 
       onClick={onClick}
     >
+      {Icon && <Icon className="btn-icon" />}
       {text}
     </button>
   );

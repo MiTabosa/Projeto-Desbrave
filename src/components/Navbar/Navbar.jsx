@@ -4,6 +4,8 @@ import "./Navbar.css";
 import Button from "../Button/Button";
 import logo from "../../assets/logo.png";
 import avatar from "../../assets/avatar.png"; // Imagem padrão
+import Login from "../Login/Login"
+import Cadastro from "../Cadastro/Cadastro"
 
 const Navbar = ({ isLogged, setIsLogged }) => {
   const navigate = useNavigate();

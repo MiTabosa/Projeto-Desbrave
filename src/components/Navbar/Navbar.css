@@ -53,3 +53,46 @@
   gap: 30px;
 }
 
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: transform 0.3s;
+}
+
+.profile-pic:hover {
+  transform: scale(1.1);
+}
+
+.popup {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: #0367A5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.popup button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

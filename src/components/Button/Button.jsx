@@ -11,6 +11,7 @@ const Button = ({ text, color, onClick, size, icon: Icon }) => {
       {Icon && <Icon className="btn-icon" />}
       {text}
     </button>
+
   );
 };
 

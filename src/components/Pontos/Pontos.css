@@ -19,32 +19,51 @@
         bottom: 0;
         right: 0;
     }
-    
-    #reader {
-        border: 2px solid #007bff; /* Azul */
-        border-radius: 10px;
-        padding: 15px;
-        background-color: #f8f9fa;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+
+    .scanner-button{
+        border-radius: 6px;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        font-size: 14px;
+        background-color: #0367A5;
     }
+
+    .scanner-button:hover {
+        transform: scale(1.10);
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+
+      .stop-button, .start-button {
+        border-radius: 6px;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        font-size: 14px;
+        background-color: #0367A5;
+      }
+
+      .stop-button,.start-button:hover {
+        transform: scale(1.10);
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+      }
     
     #reader__scan_region img {
-        display: none !important;
+        display: none ;
     }
     
-    
-    #reader_dashboard button {
-        background-color: #28a745 !important;
-        color: white !important;
-        padding: 10px 15px;
-        border-radius: 5px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-        margin: 5px 0;
+    #reader__dashboard_section_swaplink {
+        color: black;
+        font-size: 12px;
     }
+
+    #reader {
+        border: 1px solid transparent !important;  /* força um estilo a ter prioridade máxima */
+    }
+
+
     
+
     
     

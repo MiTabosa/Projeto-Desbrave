@@ -1,18 +1,36 @@
-
 .map-section {
-  background: linear-gradient(to bottom, #ffffff, rgb(110, 186, 234, 0.2) );
+  background: linear-gradient(to bottom, #ffffff, rgba(110, 186, 234, 0.2));
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 32px 0;
-  
 }
 
 .map-container {
   height: 500px;
-  width: 90%;
+  width: 94%;
   border-radius: 10px;
   margin: 0 42px;
+}
+
+.map-simples .map-container {
+  height: 400px; /* Mapa menor na Home */
+}
+
+.map-detalhado .map-container {
+  height: 600px; /* Mapa maior na página de detalhes */
+
+}
+
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup img {
+  border-radius: 10px;
+  margin-top: 10px;
 }

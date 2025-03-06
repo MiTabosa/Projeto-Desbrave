@@ -58,7 +58,7 @@ const Home = () => {
             extraClass="card-laranja"
             borderColor="#D98D30"
             buttonText="Começar"
-            link="/desafios"
+            link="/paginaInicial"
             icon={IoRocketOutline}
             layout="layout1"
           />
@@ -81,7 +81,7 @@ const Home = () => {
           <p>Navegue pelos pontos turísticos, eventos culturais e desafios <br/>gamificados que tornam Recife único.</p>
           <Button text="Explorar" color="#0367A5" size="medium" onClick={() => navigate("/mapa")} icon={ VscCompass } />
         </div>
-        <MapSection />
+        <MapSection tipo="map-simples"/>
       </section>
 
       <section className="lugares-imperdiveis">

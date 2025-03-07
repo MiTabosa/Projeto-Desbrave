@@ -6,17 +6,17 @@
 
   }
 
-h2 {
+.Títulos {
     margin-left: 42px;
     margin-top: 30px;
 }
 
-h4 {
+.Subtítulos {
     margin-left: 42px;
     margin-top: 10px;
 }
 
-p {
+.textos {
     margin-left: 42px;
     margin-top: 10px;
 }

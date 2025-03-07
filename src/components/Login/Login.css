@@ -1,0 +1,203 @@
+/* Estilização geral */
+.loginContainer {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+  }
+  
+  .loginEsquerda {
+    width: 50%;
+    height: 100%;
+    background: url('C:\Users\Start\Desktop\Desbrave-Frontend\src\assets\foto- login.png') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    filter: brightness(75%);
+  }
+  
+  .loginEsquerda h1 {
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight:bold;
+    margin-bottom: 500px;
+    color: #ffffff;
+  }
+  
+  .loginEsquerda p {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  .criarConta {
+    background-color: #808080;  
+    color: #ffffff;            
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;    
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    transition: 0.3s;
+    bottom: 30px;
+  }
+  
+  .criarConta:hover {
+    align-items: center;
+    justify-content: center;
+    background-color: #555555;  
+    transform: scale(1.10);
+    box-shadow: 2px 4px 6px #555555(0, 0, 0, 0.2);
+  }
+
+  .loginDireita {
+    width: 50%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    box-shadow: 0px 4px 10px #0000001a;
+  }
+  
+  .loginTitle {
+    font-size: 3rem;
+    color: #1a5fdb;
+    margin-bottom: 0.8px;
+  }
+  
+  .loginSubtitle {
+    font-size: 1rem;
+    color: #0c0c0c;
+    margin-bottom: 100px;
+  }
+  
+  .loginForm {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .inputGroup {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  
+  .inputGroup input {
+    width: 100%;
+    padding: 12px 40px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+  }
+  
+  .inputIcon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1a5fdb;
+  }
+  
+  .Senha {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #999;
+  }
+  
+  .EsqueciSenha {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #0c0c0c;
+    text-decoration: none;
+  }
+  
+  .EsqueciSenha:hover {
+    text-decoration: underline;
+  }
+  
+  .loginButon {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #1a5fdb;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .loginButon:hover {
+    transform: scale(1.1);
+    background-color: #1449a5;
+  }
+  
+  .connecText {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 0.9rem;
+    color: #0c0c0c;
+  }
+  
+
+  .socialIcons {
+    display: flex;
+    gap: 30px;
+    margin-top: 10px;
+  }
+  
+  .socialIcons svg {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .FacebookIcon {
+    color: #1877f2;
+  }
+  
+  .InstagramIcon {
+    color: #c32aa3;
+  }
+  
+  .GoogleIcon {
+    color: #db4437;
+  }
+  
+  .socialIcons svg:hover {
+    transform: scale(1.1);
+  }
+  @media (max-width: 768px) {
+    .loginContainer {
+      flex-direction: column;
+    }
+    .loginEsquerda {
+      display: none;
+    }
+    .loginDireita {
+      width: 100%;
+    }
+  }
+  

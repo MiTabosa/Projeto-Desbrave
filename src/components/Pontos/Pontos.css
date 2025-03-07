@@ -1,121 +1,132 @@
 .pontos-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 5rem 1rem;
+}
+
+.pontos-text {
+  flex: 1;
+  flex-direction: column;
+  text-align: left;
+  padding: 0 40px;
+  max-width: 70%;
+}
+
+.button-init {
+    margin-top: 20px;
+}
+
+.pontos-image {
+  width: 300px;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.scanner-button {
+  border-radius: 6px;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #0367a5;
+}
+
+.scanner-button:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.stop-button,
+.start-button {
+  border-radius: 6px;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #0367a5;
+}
+
+.stop-button,
+.start-button:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#reader__scan_region img {
+  display: none;
+}
+
+#reader__dashboard_section_swaplink {
+  color: black;
+  font-size: 12px;
+}
+
+#reader {
+  border: 1px solid transparent !important; /* força um estilo a ter prioridade máxima */
+}
+
+/* valido */
+
+.vector-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.initial-vector h2 {
+  color: #52bf04;
+  font-size: 40px;
+  box-shadow: 10px;
+}
+
+.initial-vector p {
+  font-size: 20px;
+  margin-right: 380px;
+}
+
+.vector-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1rem;
+}
+
+.vector-img {
+  width: 100px;
+  height: 100px;
+  display: flex;
+}
+
+.button-container {
+  display: flex;
+  gap: 40px;
+  margin-top: 50px;
+  margin-right: 450px;
+}
+
+.button-container-erro {
     display: flex;
-    justify-content: space-between;
-    padding: 5rem 1rem;
-    }
-    
-    .pontos-text { 
-        flex: 1;
-        flex-direction: column;
-        text-align: left; 
-        padding: 0 40px;
-        max-width: 70%;
-    }
-    
-    .pontos-image {
-        width: 300px; 
-        height: auto;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-    }
+    gap: 40px;
+    margin-top: 50px;
+    margin-right: 140px;
+}
 
-    .scanner-button{
-        border-radius: 6px;
-        color: white;
-        border: none;
-        padding: 8px 16px;
-        font-size: 14px;
-        background-color: #0367A5;
-    }
+.initial-erro h2 {
+  color: #d93728;
+  font-size: 40px;
+  box-shadow: 10px;
+}
 
-    .scanner-button:hover {
-        transform: scale(1.10);
-        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
-      }
-
-
-      .stop-button, .start-button {
-        border-radius: 6px;
-        color: white;
-        border: none;
-        padding: 8px 16px;
-        font-size: 14px;
-        background-color: #0367A5;
-      }
-
-      .stop-button,.start-button:hover {
-        transform: scale(1.10);
-        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
-      }
-    
-    #reader__scan_region img {
-        display: none ;
-    }
-    
-    #reader__dashboard_section_swaplink {
-        color: black;
-        font-size: 12px;
-    }
-
-    #reader {
-        border: 1px solid transparent !important;  /* força um estilo a ter prioridade máxima */
-    }
-
-    /* valido */
-
-    .vector-section  {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    } 
-
-    .title-container {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }   
-
-    .initial-vector h2 {
-        color: #52BF04;
-        font-size: 40px;
-        box-shadow: 10px;
-    } 
-   .initial-vector p {
-    font-size: 20px;
-    padding-right: 160px;    
-   }
-
-   .vector-img {
-    width: 50px;
-    height: auto;
-   }
-
-
-    .vector-section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 5rem 1rem;
-    }
-
-    .vector-img {
-        width: 100px;
-        height: 100px;
-        display: flex;
-    }
-
-    .button-container {
-        display: flex;
-        gap: 40px;    
-        margin-top: 50px;
-        padding-right: 200px;
-    }
-
-  
-
-    
-
-    
-    
+.initial-erro p {
+  font-size: 20px;
+  padding-right: 230px;
+}

@@ -19,12 +19,14 @@ function PaginaInicial() {
             em cursos de nossas empresas parceiras. Uma jornada interativa pela
             história e cultura da cidade.
           </p>
+          <div className="button-init">
           <Button
             text="Ler QR Code"
             color="#0367A5"
             size="small"
             onClick={() => navigate("/scanner")}
           />
+          </div>
           <img
             className="pontos-image"
             src={elementDesign}

@@ -1,3 +1,4 @@
+import "./Pontos.css";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect, useRef, useState } from "react";
 import ScannerComponent from "./ScannerComponent";
@@ -10,11 +11,14 @@ function Scanner() {
   const navigate = useNavigate();
 
   const [scanResult, setScanResult] = useState(null);
+  const [scannerReady, setScannerReady] = useState(false);
   const scannerRef = useRef(null);
   const hasInitialized = useRef(false);
   const readerId = "reader";
 
   useEffect(() => {
+  
+
     if (hasInitialized.current || scanResult) return;
     hasInitialized.current = true;
 
@@ -36,6 +40,7 @@ function Scanner() {
         (result) => {
           console.log("codigo escaneado:", result);
           setScanResult(result);
+          setScannerReady(false);
           if (scannerRef.current) {
             scannerRef.current.clear();
             scannerRef.current = null;
@@ -43,9 +48,16 @@ function Scanner() {
         },
         (error) => {
           console.warn("ERRO AO ESCANEAR:", error);
+
+          if(scannerReady) {
+            console.log("qr code invalido detectado")
+            navigate("/InvalidScanner");
+          }
         }
       );
     }, 500);
+
+   
 
     return () => {
       if (scannerRef.current) {
@@ -60,11 +72,8 @@ function Scanner() {
     };
   }, [scanResult]);
 
-  const restartScanner = () => {
-    setScanResult(null);
-    hasInitialized.current = false;
-  };
-
+ 
+ 
   return (
     <div>
       <ScannerComponent />
@@ -75,12 +84,10 @@ function Scanner() {
               <img  className="vector-img" src={vector} alt="imagem de vetor do elemento"/>
               <h2>QR CODE ESCANEADO COM SUCESSO!</h2>
               </div>
-            <p> {" "} Você ganhou +50 pontos!<a href={scanResult}>{scanResult}</a>{" "}</p>
+            <p> {" "} Você ganhou +50 pontos!<a href={scanResult}></a>{" "}</p>
               </div>
             <div className="button-container">
-              <Button text="Ver detalhes do Local" color="#0367A5"  size="small"  onClick={() => navigate("/home")}
-              />
-              <Button  text="Continuar Explorando" color="#0367A5"  size="small"  onClick={() => navigate("/scanner")} />
+              <Button  text="Continuar Explorando" color="#0367A5"  size="small"  onClick={() => navigate("/Mapa")} />
             </div>
             <img className="pontos-image" src={elementDesign} alt="imagem de elemento"
             />
@@ -93,3 +100,4 @@ function Scanner() {
 }
 
 export default Scanner;
+

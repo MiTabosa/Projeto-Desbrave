@@ -5,18 +5,24 @@ import Home from './pages/Home';
 import PaginaInicial from "./components/Pontos/PaginaInicial";
 import Scanner from "./components/Pontos/Scanner";
 import Mapa from './pages/Mapa/Mapa';
+import Login from "./components/Login/Login";
+import Cadastro from "./components/Cadastro/Cadastro"
+import Diretrizes from "./components/Diretrizes/Diretrizes";
 
 function App() {
   const [isLogged, setIsLogged] = useState(!!localStorage.getItem("user"));
 
   return (
     <Router>
-      <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/paginaInicial" element={<PaginaInicial />} />
         <Route path="/mapa" element={<Mapa />} />
         <Route path="/scanner" element={<Scanner />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/diretrizes" element={<Diretrizes />} />
+        
       </Routes>
     </Router>
   );

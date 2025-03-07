@@ -111,7 +111,7 @@
     width: 40%;
     align-items: center;
     justify-content: center;
-    background: url('C:/Users/Start/Desktop/Desbrave-Frontend/src/assets/img-cadastro.png') no-repeat center center;
+    background: url('../../assets/img-cadastro.png') no-repeat center center;
     background-size: cover;
     color: white;
     text-align: center;

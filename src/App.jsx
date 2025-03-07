@@ -8,6 +8,7 @@ import Sucesso from "./components/Pontos/sucesso"
 import Mapa from './pages/Mapa/Mapa';
 import Login from "./components/Login/Login";
 import Cadastro from "./components/Cadastro/Cadastro"
+import Diretrizes from "./components/Diretrizes/Diretrizes";
 
 
 function App() {
@@ -23,7 +24,12 @@ function App() {
         <Route path="/sucesso" element={<Sucesso />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
+<<<<<<< HEAD
       
+=======
+        <Route path="/diretrizes" element={<Diretrizes />} />
+        
+>>>>>>> d02864f689571282045f55174384b3a0e8a1617f
       </Routes>
     </Router>
   );

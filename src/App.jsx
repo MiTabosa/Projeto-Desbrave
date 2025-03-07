@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import PaginaInicial from "./components/Pontos/PaginaInicial";
 import Scanner from "./components/Pontos/Scanner" 
 import Sucesso from "./components/Pontos/sucesso"
-import Scanner from "./components/Pontos/Scanner";
 import Mapa from './pages/Mapa/Mapa';
 import Login from "./components/Login/Login";
 import Cadastro from "./components/Cadastro/Cadastro"

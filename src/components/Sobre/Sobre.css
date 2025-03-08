@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.text-titulo {
+    font-size: 55px;
+    margin-top: 80px;
+    margin-left: 45px;
+}
+
+.text-subtitulo {
+    font-size: 35px;
+    margin-left: 45px;
+    line-height: 6px;
+}
+
+.text {
+    margin-left: 45px;
+    margin-top: 50px;
+}
+
+.text-m {
+    color: #D98D30;
+}
+
+.text-vlr {
+    color: #35A150;
+}
+
+.cards-container {
+    display: flex;
+    gap: 30px;
+    margin-left: 45px;
+    max-width: 1100px;
+    margin-bottom: 80px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+
+}
+
+.card-m button, .card-v button, .card-vlr button {
+    margin-top: 30px; 
+
+
+}
+
+.card-m {
+    border: 2px solid #D98D30; 
+    border-radius: 10px;
+    
+
+}
+
+.card-v {
+    border: 2px solid #0367A5;
+    border-radius: 10px;
+
+}
+
+.card-vlr {
+    border: 2px solid #35A150;
+    border-radius: 10px;
+
+}
+
+.card-m, .card-v, .card-vlr {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-between; 
+    text-align: center;
+    padding: 30px;
+    width: 300px;
+    min-height: 300px;
+    position: relative;
+
+}
+
+.card-m p, .card-v p, .card-vlr p {
+    font-size: 12px; 
+    line-height: 1.5; 
+    text-align: center;
+    padding: 10px; 
+    color: white;
+    margin-top: 20px;
+}
+
+.card-m p {
+    background-color: #D98D30;
+    border-radius: 10px; 
+}
+
+.card-v p {
+    background-color: #0367A5;
+    border-radius: 10px; 
+}
+
+.card-vlr p {
+    background-color: #35A150;
+    border-radius: 10px; 
+}
+
+.botao-missao {
+    color: #D98D30;
+
+}
+
+.botao-visao {
+    color: #0367A5;
+    
+}
+
+.botao-valores {
+    color: #35A150;
+}
+
+.botao-fechar {
+    position: absolute;
+    top: 145px;  
+    right: 32px; 
+    background: none; 
+    border: none; 
+    font-size: 20px; 
+    font-weight: bold;
+    cursor: pointer; 
+}

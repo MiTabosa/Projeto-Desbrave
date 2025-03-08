@@ -1,5 +1,4 @@
 import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import Barra from "../../components/BarraPesquisa/barra";;
 import ForumCard from "../../components/Forum/ForumCard";
 import './Foruns.css'
@@ -27,7 +26,6 @@ function Foruns(){
                     <ForumCard/>
                 </div>
             </section>
-            <Footer/>
         </div>
     );
     

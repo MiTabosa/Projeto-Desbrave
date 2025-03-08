@@ -78,7 +78,11 @@ const Home = () => {
       <section className="explore">
         <div className="map-text">
           <h2>Explore Recife</h2>
-          <p>Navegue pelos pontos turísticos, eventos culturais e desafios <br/>gamificados que tornam Recife único.</p>
+          <p>
+            Navegue pelos pontos turísticos que tornam Recife único.
+            Ao visitar, encontre QR Codes espalhados pela cidade, <br/> 
+            escaneie e acumule pontos para trocar por prêmios na plataforma!
+          </p>
           <Button text="Explorar" color="#0367A5" size="medium" onClick={() => navigate("/mapa")} icon={ VscCompass } />
         </div>
         <MapSection tipo="map-simples"/>

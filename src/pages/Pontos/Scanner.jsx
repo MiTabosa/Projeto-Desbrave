@@ -3,7 +3,7 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect, useRef, useState } from "react";
 import ScannerComponent from "./ScannerComponent";
 import { useNavigate } from "react-router-dom";
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
 import vector from "../../assets/Vector.png";
 import elementDesign from "../../assets/element-design.png";
 
@@ -11,7 +11,6 @@ function Scanner() {
   const navigate = useNavigate();
 
   const [scanResult, setScanResult] = useState(null);
-  const [scannerReady, setScannerReady] = useState(false);
   const scannerRef = useRef(null);
   const hasInitialized = useRef(false);
   const readerId = "reader";
@@ -40,23 +39,17 @@ function Scanner() {
         (result) => {
           console.log("codigo escaneado:", result);
           setScanResult(result);
-          setScannerReady(false);
           if (scannerRef.current) {
             scannerRef.current.clear();
             scannerRef.current = null;
           }
-        },
-        (error) => {
-          console.warn("ERRO AO ESCANEAR:", error);
-
-          if(scannerReady) {
-            console.log("qr code invalido detectado")
-            navigate("/InvalidScanner");
+          (error) => {
+            console.warn("ERRO AO ESCANEAR:", error);
+              navigate("/InvalidScanner");
           }
-        }
+        },
       );
     }, 500);
-
    
 
     return () => {
@@ -100,4 +93,3 @@ function Scanner() {
 }
 
 export default Scanner;
-

@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import "./Pontos.css";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import elementDesign from "../../assets/element-design.png";
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
+
 
 function PaginaInicial() {
   const navigate = useNavigate();

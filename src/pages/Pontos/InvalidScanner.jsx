@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import elementDesign from "../../assets/element-design.png";
 import "./Pontos.css";
 import vector from "../../assets/VectorError.png";
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
 
 
 function InvalidScanner() {

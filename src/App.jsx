@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import PaginaInicial from "./components/Pontos/PaginaInicial";
-import Scanner from "./components/Pontos/Scanner" 
+import PaginaInicial from "./pages/Pontos/PaginaInicial";
+import Scanner from "./pages/Pontos/Scanner" 
 import Mapa from './pages/Mapa/Mapa';
 import Login from "./components/Login/Login";
 import Cadastro from "./components/Cadastro/Cadastro"
 import Diretrizes from "./components/Diretrizes/Diretrizes";
-import InvalidScanner from "./components/Pontos/InvalidScanner";
+import InvalidScanner from "./pages/Pontos/InvalidScanner";
 
 
 

@@ -1,0 +1,17 @@
+:root{
+    --cor-principal: #0367A5;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.hero-forum{
+    display: flex;
+    align-items: center;
+    margin: auto 2.528rem;
+}
+.titulo{
+  width: 100%;
+}
+

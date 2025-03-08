@@ -1,0 +1,33 @@
+:root{
+    --cor-principal: #0367A5;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.card-forum{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 3px solid var(--cor-principal);
+    border-radius: 4.48rem;
+    margin: 10px auto;
+
+}
+.card-forum p{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.card-right{
+    border: 3px solid var(--cor-principal) ;
+    border-radius: 2rem;
+    padding: 1.25rem;
+    margin: 0.75rem 1rem;
+}
+.card-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

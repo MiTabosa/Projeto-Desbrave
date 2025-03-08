@@ -44,3 +44,37 @@
   text-align: center;
   display: flex;
 }
+
+/* Estilos responsivos para dispositivos móveis */
+@media (max-width: 768px) {
+  .btn {
+    padding: 0.5rem 1rem; 
+    font-size: 0.875rem; 
+  }
+
+  .btn.small {
+    padding: 0.375rem 0.75rem; 
+    font-size: 0.75rem; 
+  }
+
+  .btn.medium {
+    width: 50%; 
+    padding: 0.5rem 1rem; 
+    font-size: 0.875rem; 
+  }
+
+  .btn.large {
+    padding: 0.75rem 1.5rem; 
+    font-size: 1rem; 
+  }
+
+  .btn.full {
+    width: 100%; 
+    padding: 0.75rem 1rem; 
+    font-size: 0.875rem; 
+  }
+
+  .btn-icon {
+    font-size: 1rem;
+  }
+}

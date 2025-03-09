@@ -1,10 +1,12 @@
 .card {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 15px;
   padding: 15px;
   border-radius: 10px;
   text-align: center;
   transition: transform 0.3s ease-in-out;
+  width: 100%; /* Garante que o card ocupe toda a largura do slide */
 }
   
   .card-containerDescubra img {
@@ -28,11 +30,30 @@
   
   .card.layout2 {
     grid-template-rows: auto auto 1fr auto; /* Imagem → Título → Descrição → Botão */
+    
   }
 
   .card.layout2 p {
     font-size: 14px;
     line-height: 1.6; 
+  }
+
+  @media (max-width: 768px) {
+
+    .card.layout1 p {
+      display:none;
+    }
+
+    .card-icon {
+      margin-bottom: 40px;
+    }
+
+    .card.layout2 img {
+      width: 100%; /* Ocupa toda a largura do card */
+      height: 150px; /* Altura fixa para todas as imagens */
+      object-fit: cover; /* Mantém a proporção e cobre o espaço */
+      border-radius: 10px; /* Adiciona borda arredondada */
+    }
   }
 
   

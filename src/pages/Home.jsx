@@ -74,12 +74,22 @@ const Home = () => {
     },
     {
       title: "Paço do Frevo",
-      description: "Entre no ritmo! Um espaço interativo para sentir a energia do frevo e conhecer mais sobre esse patrimônio cultural.",
+      description: "Entre no ritmo! Um espaço interativo para sentir a energia do frevo e conhecer sobre esse patrimônio cultural.",
       image: "./src/assets/pontosTuristicos/pacoDoFrevo.png",
       extraClass: "card-azul",
       borderColor: "#0367A6",
       buttonText: "Saiba Mais",
       link: "/paco-do-frevo",
+      layout: "layout2",
+    },
+    {
+      title: "Rua do Bom Jesus",
+      description: "Uma das ruas mais bonitas do mundo! Arquitetura colonial, cultura e muita história esperam por você.",
+      image: "./src/assets/pontosTuristicos/RuaDoBomJesus.png",
+      extraClass: "card-azul",
+      borderColor: "#0367A6",
+      buttonText: "Saiba Mais",
+      link: "/rua-do-bom-jesus",
       layout: "layout2",
     },
     {

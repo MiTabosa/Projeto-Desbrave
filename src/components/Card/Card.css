@@ -1,60 +1,79 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  align-items: center;
   padding: 15px;
   border-radius: 10px;
   text-align: center;
   transition: transform 0.3s ease-in-out;
-  width: 100%; /* Garante que o card ocupe toda a largura do slide */
+  justify-content: space-between;
+  border: 3px solid transparent;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
 }
-  
-  .card-containerDescubra img {
-    width: 80%; 
-    max-width: 200px; 
-    height: auto; 
-    display: block; 
-    margin: 0 auto; 
-  }
 
-  .card-icon {
-    font-size: 120px; 
-    display: block;
-    margin: 10px auto;
+.card.layout1 {
+  width: 300px;
+  height: 400px;
+}
+
+.card.layout2 {
+  width: 400px;
+  height: 450px;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card.layout1 .card-icon {
+  font-size: 120px;
+  color: inherit;
+  margin: 10px 0;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  color: #0367A5;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.card .button {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    height: auto;
   }
 
   .card.layout1 {
-    grid-template-rows: auto 1fr auto auto; /* Título → Imagem → Descrição → Botão */
-  }
-  
-  
-  .card.layout2 {
-    grid-template-rows: auto auto 1fr auto; /* Imagem → Título → Descrição → Botão */
-    
+    width: 250px;
+    height: 350px;
   }
 
-  .card.layout2 p {
-    font-size: 14px;
-    line-height: 1.6; 
+  .card.layout1 p {
+    display: none;
   }
 
-  @media (max-width: 768px) {
-
-    .card.layout1 p {
-      display:none;
-    }
-
-    .card-icon {
-      margin-bottom: 40px;
-    }
-
-    .card.layout2 img {
-      width: 100%; /* Ocupa toda a largura do card */
-      height: 150px; /* Altura fixa para todas as imagens */
-      object-fit: cover; /* Mantém a proporção e cobre o espaço */
-      border-radius: 10px; /* Adiciona borda arredondada */
-    }
+  .card.layout2 img {
+    height: 150px;
   }
 
-  
-  
+  .card .button {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

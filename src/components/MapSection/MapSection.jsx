@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -12,7 +13,23 @@ const blueIcon = new L.Icon({
   shadowSize: [41, 41],
 });
 
+const greenIcon = new L.Icon({
+  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
+  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/images/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
+
 const MapSection = ({ tipo }) => {
+  const [pontosLidos, setPontosLidos] = useState([]);
+
+  useEffect(() => {
+    const lidos = JSON.parse(localStorage.getItem("pontosLidos")) || [];
+    setPontosLidos(lidos);
+  }, []);
+
   const pontos = [
     { nome: "Marco Zero", coords: [-8.063122, -34.871083], imagem: "./src/assets/PontosTuristicos/marcoZero.png", descricao: "Centro cultural do Recife" },
     { nome: "Instituto Ricardo Brennand", coords: [-8.055584, -34.949685], imagem: "url-da-imagem", descricao: "Centro cultural do Recife"},
@@ -38,13 +55,16 @@ const MapSection = ({ tipo }) => {
           attribution='&copy; OpenStreetMap contributors'
         />
         {pontos.map((ponto, index) => (
-          <Marker key={index} position={ponto.coords} icon={blueIcon}>
+          <Marker key={index} position={ponto.coords} icon={pontosLidos.includes(ponto.id) ? greenIcon : blueIcon}>
             {tipo === "map-detalhado" ? (
               <Popup>
-                <div>
-                  <b>{ponto.nome}</b>
-                  {ponto.imagem && <img src={ponto.imagem} alt={ponto.nome} width="150px" />}
-                  {ponto.descricao && <p>{ponto.descricao}</p>}
+                <div className="popup-content">
+                  <b className="popup-title">{ponto.nome}</b>
+                  {ponto.imagem && <img className="popup-img" src={ponto.imagem} alt={ponto.nome} width="150px" />}
+                  {ponto.descricao && <p className="popup-desc" >{ponto.descricao}</p>}
+                  {/* <p className={foiEscaneado ? "escaneado" : "nao-escaneado"}>
+                    {foiEscaneado ? "✅ QR Code escaneado" : "❌ QR Code não escaneado"}
+                  </p> */}
                 </div>
               </Popup>
             ) : (

@@ -13,7 +13,7 @@ function Foruns(){
         <div className="forum">
             <Navbar/>
             <section className="hero-forum">
-                <div className="text-hero">
+                <div className="titulo-hero">
             
                     <h2 className="titulo">Fóruns da Comunidade</h2>
                     <p>Um espaço para trocar ideias sobre cidadania digital, cultura de Recife e tecnologia. <br/> Entre na conversa, faça perguntas e compartilhe seus insights com outros aprendizes.</p>

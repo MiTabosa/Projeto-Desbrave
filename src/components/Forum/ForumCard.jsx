@@ -1,5 +1,8 @@
 import React from "react";
 import "./ForumCard.css"
+import { FaUsers } from "react-icons/fa6";
+
+
 
 const data = [
     {title:"SEGURANÇA DIGITAL", messages: 1000, activeUsers:15},
@@ -9,18 +12,19 @@ const data = [
 const ForumCard = ({title, messages, activeUsers}) => {
     return (
         <div className="card-forum">
+          
             <div className="card-left"> 
-            <span className="card-icon"></span>
+            <span className="fcard-icon"><FaUsers/></span>
             <h2 className="card-title">{title}</h2>
         </div>
         <div className="card-right">
         <div className="card-box">
-          <p>Mensagens</p>
-          <p className="bold">{messages}</p>
+          <p><strong>Mensagens</strong></p>
+          <p className="valor">{messages}</p>
         </div>
         <div className="card-box">
-          <p>Usuários Ativos</p>
-          <p className="bold">{activeUsers} Usuários</p>
+          <p><strong>Usuários Ativos</strong></p>
+          <p className="valor"> {activeUsers} Usuários</p>
         </div>
       </div>
     </div>

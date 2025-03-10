@@ -1,13 +1,14 @@
 .bar-pesquisa{
     display: flex;
     align-items: center;
-    border: 1px solid#ccc;;
+    border: 1px solid#000000;;
     background-color: #00000006;
     padding: 5px 10px;
-    width: 400px;
-    border-radius: 20px;
+    max-width: 1120px;
+    width: 90%;
+    border-radius: 1rem;
     color: #b4b4b4;
-    margin: 5rem auto;
+    margin: 3rem auto;
 
 }
 .bar-pesquisa input{
@@ -17,3 +18,10 @@
     width: 100%;
     outline: none;
 }   
+@media (max-width: 768px) {
+    .bar-pesquisa{
+    max-width: 95%;
+    padding: 8px;
+    }
+    
+}

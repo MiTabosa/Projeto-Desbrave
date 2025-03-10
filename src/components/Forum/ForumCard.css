@@ -9,25 +9,61 @@
 .card-forum{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     border: 3px solid var(--cor-principal);
-    border-radius: 4.48rem;
-    margin: 10px auto;
-
-}
-.card-forum p{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    border-radius: 1rem;
+    max-width: 1120px;;
+    height: 70px;
+    margin: 1rem 3rem;
 }
 .card-right{
-    border: 3px solid var(--cor-principal) ;
-    border-radius: 2rem;
-    padding: 1.25rem;
-    margin: 0.75rem 1rem;
+    display: flex;
 }
-.card-box{
+.fcard-icon{
+    color: white;
+    background-color: var(--cor-principal);
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    width: 4rem;
+    height: 4.4rem;
+    border-radius: 1rem;
 }
+.card-left{
+   display: flex;
+   align-items:center ;
+   justify-content: start;
+   gap: 1rem;
+ 
+}
+.card-box{
+    border: 2px solid var(--cor-principal);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    width: 10rem;
+    min-height: 3rem;
+}
+@media (max-width: 768px){
+    .card-forum{
+        flex-direction: column;
+        height: auto;
+        gap: 1rem;
+    }
+    .card-right, .card-left{
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+    .fcard-icon{
+        width: 3rem;
+        height: 3.5rem;
+    }
+    .card-box{
+        width: 8rem;
+    }
+}
+
+

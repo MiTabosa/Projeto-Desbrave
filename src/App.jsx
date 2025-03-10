@@ -7,14 +7,11 @@ import Mapa from './pages/Mapa/Mapa';
 import Login from "./components/Login/Login";
 import Cadastro from "./components/Cadastro/Cadastro"
 import Diretrizes from "./components/Diretrizes/Diretrizes";
-import InvalidScanner from "./pages/Pontos/InvalidScanner";
-<<<<<<< HEAD
 import Forum from "./pages/Forum/Foruns"
-
-=======
-import Forum from "./pages/Forum/Foruns";
+import InvalidScanner from "./pages/Pontos/InvalidScanner";
 import Sobre from "./pages/Sobre/Sobre"
->>>>>>> 441d18eaa3f9caf55c7fb2fc2b42e911bebf0ba6
+
+
 
 
 function App() {

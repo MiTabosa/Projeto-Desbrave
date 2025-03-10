@@ -8,8 +8,13 @@ import Login from "./components/Login/Login";
 import Cadastro from "./components/Cadastro/Cadastro"
 import Diretrizes from "./components/Diretrizes/Diretrizes";
 import InvalidScanner from "./pages/Pontos/InvalidScanner";
+<<<<<<< HEAD
 import Forum from "./pages/Forum/Foruns"
 
+=======
+import Forum from "./pages/Forum/Foruns";
+import Sobre from "./pages/Sobre/Sobre"
+>>>>>>> 441d18eaa3f9caf55c7fb2fc2b42e911bebf0ba6
 
 
 function App() {
@@ -27,7 +32,7 @@ function App() {
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/diretrizes" element={<Diretrizes />} />
         <Route path="/forum" element={<Forum />} />
-        
+        <Route path="/sobre" element={<Sobre />} />
       </Routes>
     </Router>
   );

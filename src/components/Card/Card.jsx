@@ -24,7 +24,7 @@ const Card = ({ title, description, image, extraClass, buttonText, link, icon: I
 
       {layout === "layout2" && (
         <>
-          {image && <img src={image} alt={title} />}
+          {image && <img src={image} alt={title} className="layout2-image" />}
           {Icon && <Icon className="card-icon" style={{ color: borderColor }} />}
           <h3 style={{ color: borderColor }}>{title}</h3> 
           <p>{description}</p>

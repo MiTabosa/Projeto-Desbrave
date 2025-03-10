@@ -27,6 +27,7 @@
   color: #ffffff;
 }
 
+
 .footer-section ul {
   list-style: none;
   padding: 0;
@@ -54,7 +55,8 @@
 
 .vetor-verde {
   display: flex;
-float: left;
+  float: left;
+  display: block;
 }
 
 .social-icons{
@@ -90,4 +92,25 @@ float: left;
 
 .social-icons a:hover svg {
   color: #0367A5;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding-left: 20px;
+    gap: 20px;
+  }
+
+  .footer-container1 {
+    display: none; 
+  }
+
+  .footer-container2 {
+    flex-direction: column; 
+    gap: 20px;
+  }
+
+  .vetor-verde {
+    display: none; 
+  }
+
 }

@@ -1,8 +1,8 @@
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import missao from "../../assets/missao.png";
 import Button from "../../components/Button/Button";
 import { useState } from "react";
-import Footer from "../Footer/Footer"
+import Footer from "../../components/Footer/Footer"
 import visao from "../../assets/visao.png";
 import valores from "../../assets/valores.png";
 import "./Sobre.css";

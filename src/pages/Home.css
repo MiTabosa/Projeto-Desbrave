@@ -18,14 +18,12 @@ html, body {
   overflow-x: hidden;
 }
 
-/* HeroSection estilização */
-
 .hero {
   background: linear-gradient(to bottom, rgb(110, 186, 234), #ffffff);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  padding:20px 0;
+  padding: 20px 0;
 }
 
 .hero-text {
@@ -33,16 +31,14 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: left; 
+  text-align: left;
   padding: 0 3.125rem;
   gap: 0;
 }
 
 .hero-image {
-  /* width: 40.625rem; */
   max-width: 100%;
   height: auto;
-  margin-bottom: -1.25rem;
 }
 
 .hero h1 {
@@ -63,7 +59,9 @@ html, body {
   margin-bottom: 1.875rem;
 }
 
-/* Seção Descubra Suas Possibilidades */
+.heroButton {
+  display: block;
+}
 
 .possibilidades {
   padding: 3.75rem 1.25rem;
@@ -78,20 +76,6 @@ html, body {
   margin-bottom: 3.125rem;
   font-size: 1.125rem;
 }
-
-.possibilidades .card-containerDescubra {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
-  gap: 0.313rem;
-  justify-items: center;
-}
-
-.card-containerDescubra .card {
-  width: 18.75rem;
-  height: 26.25rem;
-}
-
-/* Seção mapa */
 
 .explore {
   display: flex;
@@ -114,9 +98,8 @@ html, body {
 .map-text p {
   margin-bottom: 2rem;
   font-size: 1.125rem;
+  display: block;
 }
-
-/* Seção Lugares Imperdíveis */
 
 .lugares-imperdiveis {
   padding: 3.75rem 1.25rem;
@@ -135,24 +118,30 @@ html, body {
   margin-bottom: 3.125rem;
 }
 
-.card-containerLocais .card {
-  width: 23.125rem;
-  height: 28.125rem;
+.swiper-container {
+  width: 100%;
+  padding: 20px 0;
 }
 
-.lugares-imperdiveis .card-containerLocais {
+.carrossel-container {
+  width: 100%;
+  padding: 0 42px;
+  margin: 0 auto;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .layout2-container {
   display: flex;
   justify-content: space-between;
-  margin: 2.625rem;
-}
-
-.card img {
-  width: 100%;
-  height: 12.5rem;
-  object-fit: cover;
-  border-radius: 0.625rem;
-}
-
+  flex-wrap: wrap;
+  margin: 0 42px;
+  gap: 20px;
+} */
 
 @media (max-width: 1200px) {
   .hero h1 {
@@ -191,6 +180,7 @@ html, body {
   .hero p {
     font-size: 1rem;
     text-align: center;
+    display: block;
   }
 
   .hero-image {
@@ -198,18 +188,43 @@ html, body {
     height: auto;
     margin-top: 20px;
   }
+
+  .layout2-container {
+    margin: 0 20px;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .hero h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .hero p {
-    font-size: 0.875rem;
+    display: none;
+  }
+
+  .hero Button {
+    display: none !important;
+  }
+
+  .possibilidades p {
+    font-size: 1rem;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .map-text p {
+    display: none;
+  }
+
+  .lugares-imperdiveis p {
+    font-size: 1rem;
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }

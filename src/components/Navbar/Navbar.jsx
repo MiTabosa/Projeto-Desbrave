@@ -19,7 +19,7 @@ const Navbar = () => {
     <>
       {menuAberto && <div className="overlay" onClick={alternarMenu}></div>}    
       <nav className="navbar">
-        <a href="/home"><img className="logo" src={logo} alt="Logo" /></a>
+        <a href="/"><img className="logo" src={logo} alt="Logo" /></a>
         <div className="menu-icon" onClick={alternarMenu}>
           <GiHamburgerMenu />
         </div>

@@ -9,6 +9,7 @@ import Cadastro from "./components/Cadastro/Cadastro"
 import Diretrizes from "./components/Diretrizes/Diretrizes";
 import InvalidScanner from "./pages/Pontos/InvalidScanner";
 import Forum from "./pages/Forum/Foruns";
+import Sobre from "./pages/Sobre/Sobre"
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/diretrizes" element={<Diretrizes />} />
         <Route path="/forum" element={<Forum />} />
-        
+        <Route path="/sobre" element={<Sobre />} />
       </Routes>
     </Router>
   );

@@ -24,7 +24,7 @@ const Home = () => {
       extraClass: "card-verde",
       borderColor: "#35A150",
       buttonText: "Descubra agora",
-      link: "/foruns",
+      link: "/forum",
       icon: MdOutlineForum,
       layout: "layout1",
     },

@@ -13,7 +13,7 @@ const RedefinirSenha = () => {
       alert("As senhas não coincidem. Tente novamente.");
     } else {
     
-      navigate("/recuperar-senha"); 
+      navigate("/recuperarSenha"); 
     }
   };
 

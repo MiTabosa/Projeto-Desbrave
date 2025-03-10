@@ -6,9 +6,13 @@ import Scanner from "./pages/Pontos/Scanner"
 import Mapa from './pages/Mapa/Mapa';
 import Login from "./components/Login/Login";
 import Cadastro from "./components/Cadastro/Cadastro"
+import EsqueceuSenha from "./components/RecuperaçaoSenha/EsqueceuSenha"
+import RecuperarSenha from "./components/RecuperaçaoSenha/RecuperarSenha"
+import RedefinirSenha from "./components/RecuperaçaoSenha/RedefinirSenha"
 import Diretrizes from "./components/Diretrizes/Diretrizes";
-import InvalidScanner from "./components/Pontos/InvalidScanner";
-import Foruns from "./pages/Forum/Foruns";
+import InvalidScanner from "./pages/Pontos/InvalidScanner";
+import Forum from "./pages/Forum/Foruns";
+import Sobre from "./pages/Sobre/Sobre"
 
 
 function App() {
@@ -17,15 +21,19 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/Foruns" element={<Foruns/>}></Route>
+        <Route path="/Forum" element={<Forum/>}></Route>
         <Route path="/" element={<Home />} />
         <Route path="/paginaInicial" element={<PaginaInicial />} />
         <Route path="/mapa" element={<Mapa />} />
         <Route path="/scanner" element={<Scanner />} />
         <Route path="/invalidScanner" element={<InvalidScanner/>} />
         <Route path="/login" element={<Login />} />
+        <Route path="/esqueceuSenha" element={<EsqueceuSenha />} />
+        <Route path="/recuperarSenha" element={<RecuperarSenha />} />
+        <Route path="/redefinirSenha" element={<RedefinirSenha />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/diretrizes" element={<Diretrizes />} />
+        <Route path="/sobre" element={<Sobre />} />
       </Routes>
     </Router>
   );

@@ -5,7 +5,7 @@
   
   .imagemEsquerda {
     flex: 1;
-    background: url("C:\Users\Start\Desktop\Desbrave-Frontend\src\assets\img-recupSenha.png") no-repeat center center;
+    background: url('../../assets/img-recupSenha.png') no-repeat center center;
     background-size: cover;
   }
   

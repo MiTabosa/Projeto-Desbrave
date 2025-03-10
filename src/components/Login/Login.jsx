@@ -43,7 +43,7 @@ export default function Login() {
               {showPassword ? <IoEyeOff /> : <IoEye />}
             </span>
           </div>
-          <Link to="/esqueceu-Senha" className="EsqueciSenha">Esqueceu sua senha?</Link>
+          <Link to="/esqueceuSenha" className="EsqueciSenha">Esqueceu sua senha?</Link>
           <button className="loginButon">Entrar</button>
         </div>
 

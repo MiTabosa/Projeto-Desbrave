@@ -4,19 +4,19 @@
     box-sizing: border-box;
 }
 
-.text-titulo {
+.text-titulo-sobre {
     font-size: 55px;
     margin-top: 80px;
     margin-left: 45px;
 }
 
-.text-subtitulo {
+.text-subtitulo-sobre {
     font-size: 35px;
     margin-left: 45px;
     line-height: 6px;
 }
 
-.text {
+.text-sobre {
     margin-left: 45px;
     margin-top: 50px;
 }
@@ -29,7 +29,7 @@
     color: #35A150;
 }
 
-.cards-container {
+.cards-container-sobre {
     display: flex;
     gap: 30px;
     margin-left: 45px;

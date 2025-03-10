@@ -1,3 +1,7 @@
+* {
+  outline: 1px solid red;
+}
+
 .pontos-section {
   display: flex;
   justify-content: space-between;
@@ -12,8 +16,12 @@
   max-width: 70%;
 }
 
+.paragrafo-mobile {
+  display: none;
+}
+
 .button-init {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .pontos-image {
@@ -79,18 +87,24 @@
 .title-container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .initial-vector h2 {
   color: #52bf04;
   font-size: 40px;
-  box-shadow: 10px;
+  margin: 0;
 }
 
 .initial-vector p {
   font-size: 20px;
-  margin-right: 380px;
+  margin-top: 5px;
 }
 
 .vector-section {
@@ -101,23 +115,23 @@
 }
 
 .vector-img {
-  width: 100px;
-  height: 100px;
-  display: flex;
+  width: 80px;
+  height: 80px;
 }
 
 .button-container {
   display: flex;
-  gap: 40px;
-  margin-top: 50px;
-  margin-right: 450px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto; 
 }
 
 .button-container-erro {
-    display: flex;
-    gap: 40px;
-    margin-top: 50px;
-    margin-right: 140px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 20px auto;
+  margin-top: 60px;
 }
 
 .initial-erro h2 {
@@ -128,5 +142,97 @@
 
 .initial-erro p {
   font-size: 20px;
-  padding-right: 230px;
+  margin-top: 5px;
 }
+
+@media only screen and (min-width: 300px) and (max-width: 767px) {
+  /* scanner */
+
+
+  
+  
+
+
+
+  /* pagina inicial */
+  .paragrafo-desktop {
+    display: none;
+  }
+
+  .paragrafo-mobile {
+    display: block;
+    font-size: 15px;
+    margin-top: 15px;
+  }
+
+  .pontos-text h2 {
+    font-size: 25px;
+  }
+
+  .pontos-text {
+    max-width: 100%;
+  }
+
+
+  .pontos-image {
+    width: 220px;
+  }
+
+  .button-init {
+    z-index: 10;
+    position: relative;
+  }
+
+
+  /* validar  */
+
+  .vector-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .title-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vector-img {
+    width: 110px;
+    height: auto;
+  }
+
+  .button-container {
+    margin-top: 40px;
+  }
+
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .text-container h2 {
+    font-size: 25px;
+    max-width: 70%;
+  }
+
+  .text-container p {
+    font-size: 15px;
+    margin-top: 40px;
+  } 
+
+  /* unvalido */
+
+  .button-container-erro {
+    flex-direction: column;
+    margin-top: 25px;
+    gap: 30px;
+  }
+
+  
+
+} 

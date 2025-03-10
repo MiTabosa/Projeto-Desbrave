@@ -7,7 +7,8 @@ import Mapa from './pages/Mapa/Mapa';
 import Login from "./components/Login/Login";
 import Cadastro from "./components/Cadastro/Cadastro"
 import Diretrizes from "./components/Diretrizes/Diretrizes";
-import InvalidScanner from "./components/Pontos/InvalidScanner";
+import InvalidScanner from "./pages/Pontos/InvalidScanner";
+import Forum from "./pages/Forum/Foruns"
 
 
 

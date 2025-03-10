@@ -72,18 +72,19 @@ function Scanner() {
       <ScannerComponent />
       {scanResult ? (
         <section className="vector-section">
-          <div className="initial-vector">
-            <div className="title-container">
-              <img  className="vector-img" src={vector} alt="imagem de vetor do elemento"/>
-              <h2>QR CODE ESCANEADO COM SUCESSO!</h2>
-              </div>
-            <p> {" "} Você ganhou +50 pontos!<a href={scanResult}></a>{" "}</p>
-              </div>
-            <div className="button-container">
-              <Button  text="Continuar Explorando" color="#0367A5"  size="small"  onClick={() => navigate("/Mapa")} />
-            </div>
-            <img className="pontos-image" src={elementDesign} alt="imagem de elemento"
-            />
+      <div className="initial-vector">
+  <div className="title-container">
+    <img className="vector-img" src={vector} alt="imagem de vetor do elemento" />
+    <div className="text-container"> 
+      <h2>QR CODE ESCANEADO COM SUCESSO!</h2>
+      <p>Você ganhou +50 pontos! <a href={scanResult}></a></p>
+    </div>
+  </div>
+</div>
+<div className="button-container">
+  <Button text="Continuar Explorando" color="#0367A5" size="small" onClick={() => navigate("/Mapa")} />
+</div>
+<img className="pontos-image" src={elementDesign} alt="imagem de elemento" />
         </section>
       ) : (
         <div id={readerId}></div>

@@ -12,11 +12,13 @@ function InvalidScanner() {
     <div>
     <section className="vector-section">
         <div className="initial-erro">
-            <div className="title-container">
+        <div className="title-container">
                 <img className="vector-img" src={vector} alt="img de erro vetor" />
+            <div className="text-container">
                 <h2 >QR Code inválido ou Expirado</h2>
-            </div>
             <p>Quer tentar novamente?</p>
+            </div>
+            </div>
         </div>
         <div className="button-container-erro">
         <Button text="Tentar novamente" color="#0367A5"  size="small"  onClick={() => navigate("/PaginaInicial")}/>

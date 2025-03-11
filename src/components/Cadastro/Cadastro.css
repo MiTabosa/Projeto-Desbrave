@@ -16,19 +16,21 @@
   
   .cadastroTitle {
     font-size: 60px;
-    color: #1a5fdb;
+    color: #0367A5;
     font-weight: bold;
     margin-bottom: 50px;
   }
   
   .input-field {
+    position: relative;
+    margin-bottom: 15px;
     width: 100%;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border: none;
-    background: #c0bebe;
-    border-radius: 8px;
+    padding: 12px 40px;
     font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
     
   }
   
@@ -45,17 +47,17 @@
   }
   
   .link-termos {
-    color: #1a5fdb; 
+    color: #0367A5; 
     text-decoration: underline; 
     font-weight: bold; 
   }
   
   .link-termos:hover {
-    color: #1558b0; 
+    color: #0367A5; 
   }
   
   .submit-button {
-    background: #1a5fdb;
+    background: #0367A5;
     color: #fff;
     border: none;
     padding: 0.75rem;
@@ -69,7 +71,7 @@
   
   .submit-button:hover {
     transform: scale(1.10);
-    box-shadow: 2px 4px 6px #1558b0(0, 0, 0, 0.2);
+    box-shadow: 2px 4px 6px #0367A5(0, 0, 0, 0.2);
   }
   
   .connecText {
@@ -92,7 +94,7 @@
   }
   
   .FacebookIcon {
-    color: #1877f2;
+    color: #0367A5;
   }
   
   .InstagramIcon {

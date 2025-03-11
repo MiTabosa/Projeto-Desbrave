@@ -75,7 +75,7 @@
   
   .loginTitle {
     font-size: 3rem;
-    color: #1a5fdb;
+    color: #0367A5;
     margin-bottom: 0.8px;
   }
   
@@ -110,7 +110,7 @@
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: #1a5fdb;
+    color: #0367A5;
   }
   
   .Senha {
@@ -140,7 +140,7 @@
     padding: 12px;
     font-size: 1rem;
     color: #ffffff;
-    background-color: #1a5fdb;
+    background-color: #0367A5;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -151,7 +151,7 @@
   
   .loginButon:hover {
     transform: scale(1.1);
-    background-color: #1449a5;
+    background-color: #0367A5;
   }
   
   .connecText {
@@ -175,7 +175,7 @@
   }
   
   .FacebookIcon {
-    color: #1877f2;
+    color: #0367A5;
   }
   
   .InstagramIcon {

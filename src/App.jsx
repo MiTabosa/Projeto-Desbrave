@@ -14,6 +14,8 @@ import InvalidScanner from "./pages/Pontos/InvalidScanner";
 import Forum from "./pages/Forum/Foruns";
 import Curso from "./pages/Curso/Curso"
 import Sobre from "./pages/Sobre/Sobre"
+import Parceiros from "./pages/Parceiros/Parceiros"
+
 
 
 function App() {
@@ -36,6 +38,7 @@ function App() {
         <Route path="/diretrizes" element={<Diretrizes />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/curso" element={<Curso />} />
+        <Route path="/parceiros" element={<Parceiros />} />
       </Routes>
     </Router>
   );

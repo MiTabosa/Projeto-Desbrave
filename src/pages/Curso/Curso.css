@@ -1,0 +1,20 @@
+.cursos-container {
+    padding: 20px;
+    max-width: 2220px;
+
+}
+
+.cursos-list {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 40px; 
+    justify-content: flex-start; 
+}
+
+.curso-card {
+    flex: 1 1 calc(33.333% - 40px);
+    box-sizing: border-box; 
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    padding: 16px; 
+}

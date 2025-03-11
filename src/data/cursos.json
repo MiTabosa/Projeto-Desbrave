@@ -1,0 +1,76 @@
+{
+    "cursos": [
+      {
+        "id": 1,
+        "nome": "Curso de JavaScript",
+        "descricao": "Aprenda JavaScript do zero.",
+        "categoria": "Front-end",
+        "cargaHoraria": "20 horas",
+        "urlExterna": "https://plataforma-externa.com/curso-javascript"
+      },
+      {
+        "id": 2,
+        "nome": "Curso de React",
+        "descricao": "Domine React em 30 dias.",
+        "categoria": "Front-end",
+        "cargaHoraria": "30 horas",
+        "urlExterna": "https://plataforma-externa.com/curso-react"
+      },
+      {
+        "id": 3,
+        "nome": "Curso de Node.js",
+        "descricao": "Aprenda a construir APIs com Node.js.",
+        "categoria": "Back-end",
+        "cargaHoraria": "25 horas",
+        "urlExterna": "https://plataforma-externa.com/curso-nodejs"
+      },
+      {
+        "id": 1,
+        "nome": "Curso de JavaScript",
+        "descricao": "Aprenda JavaScript do zero.",
+        "categoria": "Front-end",
+        "cargaHoraria": "20 horas",
+        "urlExterna": "https://plataforma-externa.com/curso-javascript"
+      },
+      {
+        "id": 2,
+        "nome": "Curso de React",
+        "descricao": "Domine React em 30 dias.",
+        "categoria": "Front-end",
+        "cargaHoraria": "30 horas",
+        "urlExterna": "https://plataforma-externa.com/curso-react"
+      },
+      {
+        "id": 3,
+        "nome": "Curso de Node.js",
+        "descricao": "Aprenda a construir APIs com Node.js.",
+        "categoria": "Back-end",
+        "cargaHoraria": "25 horas",
+        "urlExterna": "https://plataforma-externa.com/curso-nodejs"
+      },
+      {
+        "id": 1,
+        "nome": "Curso de JavaScript",
+        "descricao": "Aprenda JavaScript do zero.",
+        "categoria": "Front-end",
+        "cargaHoraria": "20 horas",
+        "urlExterna": "https://plataforma-externa.com/curso-javascript"
+      },
+      {
+        "id": 2,
+        "nome": "Curso de React",
+        "descricao": "Domine React em 30 dias.",
+        "categoria": "Front-end",
+        "cargaHoraria": "30 horas",
+        "urlExterna": "https://plataforma-externa.com/curso-react"
+      },
+      {
+        "id": 3,
+        "nome": "Curso de Node.js",
+        "descricao": "Aprenda a construir APIs com Node.js.",
+        "categoria": "Back-end",
+        "cargaHoraria": "25 horas",
+        "urlExterna": "https://plataforma-externa.com/curso-nodejs"
+      }
+    ]
+  }

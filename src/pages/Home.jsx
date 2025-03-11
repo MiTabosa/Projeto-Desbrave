@@ -34,7 +34,7 @@ const Home = () => {
       extraClass: "card-azul",
       borderColor: "#0367A6",
       buttonText: "Saiba Mais",
-      link: "/cursos",
+      link: "/curso",
       icon: IoBookOutline,
       layout: "layout1",
     },

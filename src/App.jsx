@@ -12,6 +12,7 @@ import RedefinirSenha from "./components/RecuperaçaoSenha/RedefinirSenha"
 import Diretrizes from "./components/Diretrizes/Diretrizes";
 import InvalidScanner from "./pages/Pontos/InvalidScanner";
 import Forum from "./pages/Forum/Foruns";
+import Curso from "./pages/Curso/Curso"
 import Sobre from "./pages/Sobre/Sobre"
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/diretrizes" element={<Diretrizes />} />
         <Route path="/sobre" element={<Sobre />} />
+        <Route path="/curso" element={<Curso />} />
       </Routes>
     </Router>
   );

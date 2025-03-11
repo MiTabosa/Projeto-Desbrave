@@ -1,16 +1,31 @@
 import React from 'react';
 import './CardCurso.css';
+import '../Button/Button'
+import Button from '../Button/Button';
 
 function CardCurso({ curso }) {
-    return (
-        <div className='cardCurso'>
-            <p>{curso.categoria}</p>
-            <h2>{curso.nome}</h2>
-            <p>{curso.descricao}</p>
-            <p><strong>Carga Horária:</strong> {curso.cargaHoraria}</p>
-            <a href={curso.urlExterna} target="_blank" rel="noopener noreferrer">Acessar Curso</a>
-        </div>
-    );
+    const handleButtonClick = () => {
+        window.open(curso.urlExterna, '_blank');
+    };
+
+        return (
+            <div className='cardCurso'>
+                <p className='cursoCategoria'>{curso.categoria}</p>
+                <h2>{curso.nome}</h2>
+                <p>{curso.descricao}</p>
+                <p className="cargaHoraria"><strong>Carga Horária:</strong> {curso.cargaHoraria}</p>
+                <div className='buttonContainer'>
+                    <Button
+                    className="cursoButton"
+                    text="Vamos Desbravar"
+                    color="#0367A5"
+                    size="full"
+                    onClick={handleButtonClick} 
+                    />
+                </div>
+            </div>
+        );
+
 }
 
 export default CardCurso;

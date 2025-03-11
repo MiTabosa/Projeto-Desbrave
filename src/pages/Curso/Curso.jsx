@@ -10,9 +10,9 @@ function Curso() {
     return (
         <>
             <NavBar />
-            <div className="cursos-container"> {/* Alterado para "cursos-container" */}
+            <div className="cursos-container"> 
                 <BarraPesquisa />
-                <div className="cursos-list"> {/* Alterado para "cursos-list" */}
+                <div className="cursos-list"> 
                     {cursos.cursos.map(curso => (
                         <CardCurso key={curso.id} curso={curso} />
                     ))}

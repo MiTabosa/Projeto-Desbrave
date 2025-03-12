@@ -1,0 +1,47 @@
+.descricao-curso-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.descricao-curso-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.descricao-curso-container p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.external-link-button {
+    background-color: #0367A5;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+.external-link-button:hover {
+    background-color: #024b7a;
+}
+
+.back-button {
+    background-color: #ccc;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.back-button:hover {
+    background-color: #999;
+}

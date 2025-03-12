@@ -16,11 +16,12 @@
     text-align: center;
     padding: 50px;
     margin-bottom: 50px;
-    background-color: #ffffff;
+    background-color: #ffffff
+    ;
 }
 
 .formDireita h1 {
-    color: #0056A1;
+    color: #0367A5;
     font-size: 60px;
     font-weight: bold;
 }
@@ -32,14 +33,13 @@
 }
 
 .senhaInput {
+    position: relative;
+    margin-bottom: 15px;
     width: 80%;
-    max-width: 400px;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #c9c9c9;
-    margin-top: 25px;
+    padding: 12px 40px;
     font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     outline: none;
 }
 
@@ -47,7 +47,7 @@
     width: 100%;
     max-width: 200px;
     padding: 12px;
-    background-color: #0056A1;
+    background-color: #0367A5;
     color: white;
     font-size: 1rem;
     font-weight: bold;
@@ -60,7 +60,7 @@
 
 .continuar:hover {
     transform: scale(1.10);
-    box-shadow: 2px 4px 6px #1558b0(0, 0, 0, 0.2);
+    box-shadow: 2px 4px 6px #0367A5(0, 0, 0, 0.2);
 }
 
 .voltarLogin {

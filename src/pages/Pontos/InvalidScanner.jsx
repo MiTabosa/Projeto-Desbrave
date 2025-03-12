@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import elementDesign from "../../assets/element-design.png";
 import "./Pontos.css";
-import vector from "../../assets/VectorError.png";
 import Button from "../../components/Button/Button";
+import { MdErrorOutline } from "react-icons/md";
 
 
 function InvalidScanner() {
@@ -13,7 +13,7 @@ function InvalidScanner() {
     <section className="vector-section">
         <div className="initial-erro">
         <div className="title-container">
-                <img className="vector-img" src={vector} alt="img de erro vetor" />
+                <MdErrorOutline className="vector-img-error" />
             <div className="text-container">
                 <h2 >QR Code inválido ou Expirado</h2>
             <p>Quer tentar novamente?</p>

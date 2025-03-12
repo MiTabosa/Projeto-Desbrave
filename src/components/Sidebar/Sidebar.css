@@ -1,0 +1,62 @@
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background: #ffffff;
+  }
+
+  .dashboard-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  
+  .sidebar {
+    width: 250px;
+    background: #0367A6;
+    color: #ffffff;
+    padding: 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 5px;
+    margin: 5px;
+  }
+  
+  .sidebar li {
+    padding: 15px;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  
+  .sidebar-item .icon{
+    width: 30px;
+    height: 30px;
+    justify-items:center;
+    align-items: center;
+    margin-right: 5px;
+  }
+
+  .sidebar-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .sidebar-item-active{
+    display: flex;
+    align-items: center; 
+    background-color: #35A150;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+  } 
+  .sidebar-item-active .iconTickt{
+    width: 24px; 
+    height: 24px;
+    margin-right: 8px; 
+  }

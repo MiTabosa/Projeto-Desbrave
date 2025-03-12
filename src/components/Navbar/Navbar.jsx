@@ -27,7 +27,7 @@ const Navbar = () => {
           <li><a href="#" onClick={() => navigate("/")}>Início</a></li>
           <li><a href="#" onClick={() => navigate("/sobre")}>Sobre</a></li>
           <li><a href="#" onClick={() => navigate("/destaque")}>Destaque</a></li>
-          <li><a href="#" onClick={() => navigate("/contato")}>Contato</a></li>
+          <li><a href="#" onClick={() => navigate("/parceiros")}>Parceiros</a></li>
           <li><a href="#" onClick={() => navigate("/mapa")}>Mapa</a></li>
           <div className={`buttons ${menuAberto ? "active" : ""}`}>
             <Button text="Login" color="#0367A5" size="small" onClick={() => navigate("/login")} />

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-<<<<<<< HEAD
 import PaginaInicial from "./pages/Pontos/PaginaInicial";
 import Scanner from "./pages/Pontos/Scanner" 
 import Mapa from './pages/Mapa/Mapa';
@@ -16,19 +15,17 @@ import Forum from "./pages/Forum/Foruns";
 import Curso from "./pages/Curso/Curso"
 import Sobre from "./pages/Sobre/Sobre"
 
-=======
-import Login from "./components/Login/Login";
-import Cadastro from "./components/Cadastro/Cadastro";
-import EsqueceuSenha from "./components/RecuperaçaoSenha/EsqueceuSenha";
-import RecuperarSenha from './components/RecuperaçaoSenha/RecuperarSenha';
-import RedefinirSenha from './components/RecuperaçaoSenha/RedefinirSenha';
+// import Login from "./components/Login/Login";
+// import Cadastro from "./components/Cadastro/Cadastro";
+// import EsqueceuSenha from "./components/RecuperaçaoSenha/EsqueceuSenha";
+// import RecuperarSenha from './components/RecuperaçaoSenha/RecuperarSenha';
+// import RedefinirSenha from './components/RecuperaçaoSenha/RedefinirSenha';
 
 
-import PaginaInicial from "./components/Pontos/PaginaInicial";
-import Scanner from "./components/Pontos/Scanner" 
-import Mapa from './pages/Mapa/Mapa'
+// import PaginaInicial from "./components/Pontos/PaginaInicial";
+// import Scanner from "./components/Pontos/Scanner" 
+// import Mapa from './pages/Mapa/Mapa'
 import CuponsDashboard from './pages/Cupons/CuponsDashboard';
->>>>>>> 7a92405 (pages/Cupons/CuponsDashboard.jsx/CuponsDashboard.css)
 
 function App() {
   const [isLogged, setIsLogged] = useState(!!localStorage.getItem("user"));
@@ -38,7 +35,6 @@ function App() {
       <Routes>
         <Route path="/Forum" element={<Forum/>}></Route>
         <Route path="/" element={<Home />} />
-<<<<<<< HEAD
         <Route path="/paginaInicial" element={<PaginaInicial />} />
         <Route path="/mapa" element={<Mapa />} />
         <Route path="/scanner" element={<Scanner />} />
@@ -51,7 +47,6 @@ function App() {
         <Route path="/diretrizes" element={<Diretrizes />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/curso" element={<Curso />} />
-=======
         <Route path="/foruns" element={<div>Fóruns Page</div>} />
         <Route path="/cursos" element={<div>Cursos Page</div>} />
         <Route path="/desafios" element={<div>Desafios Page</div>} />
@@ -65,7 +60,6 @@ function App() {
         <Route path="/mapa" element={<Mapa />} />
         <Route path="/scanner" element={<Scanner />} />
         <Route path="/cupons" element={<CuponsDashboard />} />
->>>>>>> 7a92405 (pages/Cupons/CuponsDashboard.jsx/CuponsDashboard.css)
       </Routes>
     </Router>
   );

@@ -5,7 +5,7 @@ import { FaAward } from "react-icons/fa";
 import { GrTicket } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 
-export default function Sidebar() {
+export default function Sidebar({children}) {
     const navigate = useNavigate();
   
     return (
@@ -26,6 +26,11 @@ export default function Sidebar() {
             </li>
           </ul>
         </aside>
+        <div className="dashboard-content">
+          {children}
+
+        </div>
       </div>
     );
   }
+

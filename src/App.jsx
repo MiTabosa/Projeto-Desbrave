@@ -15,10 +15,9 @@ import Forum from "./pages/Forum/Foruns";
 import Curso from "./pages/Curso/Curso"
 import Sobre from "./pages/Sobre/Sobre"
 import Parceiros from "./pages/Parceiros/Parceiros"
-import Dashboard from "./pages/Cupons/CuponsDashboard"
+import Dashboard from "./pages/Dashboard/Dashboard"
 import DescricaoCurso from './pages/Curso/DescricaoCurso';
-import NavbarDashboard from './components/NavbarDashboard/NavbarDashboard';
-import Sidebar from './components/Sidebar/Sidebar'
+
 
 
 
@@ -70,8 +69,7 @@ function App() {
         <Route path="/descricaoCurso/:id" element={<DescricaoCurso />} />
         <Route path="/parceiros" element={<Parceiros />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/NavbarDashboard" element={<NavbarDashboard />} />
-        <Route path="/Sidebar" element={<Sidebar />} />
+
       </Routes>
     </Router>
   );

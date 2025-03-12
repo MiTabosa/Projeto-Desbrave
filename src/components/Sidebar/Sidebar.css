@@ -1,8 +1,18 @@
+
 .dashboard-container {
     display: flex;
     height: 100vh;
+    width: 100vw;
     background: #ffffff;
   }
+
+  .dashboard-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+
   
   .sidebar {
     width: 250px;

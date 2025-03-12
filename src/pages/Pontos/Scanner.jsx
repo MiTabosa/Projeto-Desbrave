@@ -1,10 +1,10 @@
 import "./Pontos.css";
-import { Html5QrcodeScanner } from "html5-qrcode";
+import { Html5QrcodeScanner, Html5QrcodeScanType } from "html5-qrcode";
 import { useEffect, useRef, useState } from "react";
 import ScannerComponent from "./ScannerComponent";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
-import vector from "../../assets/Vector.png";
+import { BsCheck2Circle } from "react-icons/bs";
 import elementDesign from "../../assets/element-design.png";
 
 function Scanner() {
@@ -16,50 +16,58 @@ function Scanner() {
   const readerId = "reader";
 
   useEffect(() => {
-  
-
     if (hasInitialized.current || scanResult) return;
     hasInitialized.current = true;
-
-    console.log("inicializando..");
-
+  
+    console.log("Inicializando scanner...");
+  
     setTimeout(() => {
-      //  reader já existe antes de tentar iniciar o scanner?
       const readerElement = document.getElementById(readerId);
       if (!readerElement) {
         console.error("Elemento #reader não encontrado!");
         return;
       }
+  
       scannerRef.current = new Html5QrcodeScanner(readerId, {
         qrbox: { width: 250, height: 250 },
         fps: 5,
+        disableFlip: true,
+        supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
       });
-
+  
       scannerRef.current.render(
         (result) => {
-          console.log("codigo escaneado:", result);
-          setScanResult(result);
+          console.log("Código escaneado:", result);
+  
+          const valoresValidos = ["Marco Zero", "Paço do frevo", "Rua bom Jesus!!"]; // Lista de códigos aceitos
+  
+          if (valoresValidos.includes(result)) {
+            setScanResult(result);
+            console.log("Código válido! Redirecionando...");
+          } else {
+            console.warn("Código inválido! Redirecionando...");
+            navigate("/InvalidScanner");
+          }
+  
           if (scannerRef.current) {
             scannerRef.current.clear();
             scannerRef.current = null;
           }
-          (error) => {
-            console.warn("ERRO AO ESCANEAR:", error);
-              navigate("/InvalidScanner");
-          }
         },
+        (error) => {
+          console.warn("ERRO AO ESCANEAR:", error);
+        }
       );
     }, 500);
-   
-
+  
     return () => {
       if (scannerRef.current) {
-        console.log("limpando scanner...");
+        console.log("Limpando scanner...");
         try {
           scannerRef.current.clear();
           scannerRef.current = null;
         } catch (err) {
-          console.warn("erro ao limpar scanner:", err);
+          console.warn("Erro ao limpar scanner:", err);
         }
       }
     };
@@ -73,8 +81,8 @@ function Scanner() {
       {scanResult ? (
         <section className="vector-section">
       <div className="initial-vector">
-  <div className="title-container">
-    <img className="vector-img" src={vector} alt="imagem de vetor do elemento" />
+     <div className="title-container">
+    < BsCheck2Circle className="vector-img"/>
     <div className="text-container"> 
       <h2>QR CODE ESCANEADO COM SUCESSO!</h2>
       <p>Você ganhou +50 pontos! <a href={scanResult}></a></p>

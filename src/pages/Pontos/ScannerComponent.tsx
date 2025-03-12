@@ -8,7 +8,7 @@ function ScannerComponent() {
                 button.innerText = "Permitir Acesso à Câmera";
                 button.classList.add("scanner-button")
             }
-            const scanLink = document.getElementById("reader__dashboard_section_swaplink");
+            const scanLink = document.getElementById("html5-qrcode-anchor-scan-type-change");
             if(scanLink) {
                 if (scanLink.innerText.trim() === "Scan an Image File") {
                     scanLink.innerText = "Digitalizar um arquivo de imagem";
@@ -38,7 +38,17 @@ function ScannerComponent() {
                 startScanningButton.textContent = "Começar a escanear";
                 startScanningButton.classList.add("start-button");
             }
+
+            const fileSection = document.getElementById("html5-qrcode-button-file-selection");
+            if (fileSection && fileSection.innerText.trim() === "Choose Image - No image choosen") {
+                fileSection.innerText = "Escolha a imagem - Nenhuma imagem escolhida";
+                fileSection.classList.add("file-section")
+            }
+
+        
         };
+
+
 
         updateTexts(); // Executa a função ao montar o componente
 

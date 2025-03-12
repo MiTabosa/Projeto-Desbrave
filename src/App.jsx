@@ -7,8 +7,9 @@ import Mapa from './pages/Mapa/Mapa';
 import Login from "./components/Login/Login";
 import Cadastro from "./components/Cadastro/Cadastro"
 import Diretrizes from "./components/Diretrizes/Diretrizes";
-import InvalidScanner from "./components/Pontos/InvalidScanner";
+import InvalidScanner from "./pages/Pontos/InvalidScanner";
 import Foruns from "./pages/Forum/Foruns";
+
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/diretrizes" element={<Diretrizes />} />
+  
       </Routes>
     </Router>
   );

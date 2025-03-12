@@ -64,7 +64,7 @@
   display: none;
 }
 
-#reader__dashboard_section_swaplink {
+#html5-qrcode-anchor-scan-type-change {
   color: black;
   font-size: 12px;
 }
@@ -94,6 +94,7 @@
   align-items: flex-start;
 }
 
+
 .initial-vector h2 {
   color: #52bf04;
   font-size: 40px;
@@ -113,20 +114,27 @@
 }
 
 .vector-img {
-  width: 80px;
-  height: 80px;
+  color: #52bf04;
+  width: 100px;
+  height: 100px;
+}
+
+.vector-img-error {
+  color: #d93728;
+  width: 100px;
+  height: 100px;
 }
 
 .button-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin: 20px auto; 
+  margin-top: 30px;
 }
 
 .button-container-erro {
   display: flex;
-  gap: 20px;
+  gap: 50px;
   align-items: center;
   margin: 20px auto;
   margin-top: 60px;

@@ -11,15 +11,11 @@ import RecuperarSenha from "./components/RecuperaçaoSenha/RecuperarSenha"
 import RedefinirSenha from "./components/RecuperaçaoSenha/RedefinirSenha"
 import Diretrizes from "./components/Diretrizes/Diretrizes";
 import InvalidScanner from "./pages/Pontos/InvalidScanner";
-<<<<<<< HEAD
-import Foruns from "./pages/Forum/Foruns";
-=======
 import Forum from "./pages/Forum/Foruns";
 import Curso from "./pages/Curso/Curso"
 import Sobre from "./pages/Sobre/Sobre"
 import Parceiros from "./pages/Parceiros/Parceiros"
 
->>>>>>> 00fe7c41793bac6c389f676b9969318be1ad4750
 
 
 
@@ -41,13 +37,9 @@ function App() {
         <Route path="/redefinirSenha" element={<RedefinirSenha />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/diretrizes" element={<Diretrizes />} />
-<<<<<<< HEAD
-  
-=======
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/curso" element={<Curso />} />
         <Route path="/parceiros" element={<Parceiros />} />
->>>>>>> 00fe7c41793bac6c389f676b9969318be1ad4750
       </Routes>
     </Router>
   );

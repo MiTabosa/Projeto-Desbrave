@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./Card.css"; 
-import Button from "../Button/Button"; 
+import "./Card.css";
+import Button from "../Button/Button";
 
 const Card = ({ title, description, image, extraClass, buttonText, link, icon: Icon, borderColor, layout }) => {
   const navigate = useNavigate();
@@ -16,9 +16,11 @@ const Card = ({ title, description, image, extraClass, buttonText, link, icon: I
         <>
           <h3 style={{ color: borderColor }}>{title}</h3>
           {image && <img src={image} alt={title} />}
-          {Icon && <Icon className="card-icon" style={{ color: borderColor }} />} 
+          {Icon && <Icon className="card-icon" style={{ color: borderColor }} />}
           <p>{description}</p>
-          <Button text={buttonText} color={borderColor} size="full" onClick={handleNavigate} />
+          <div style={{ marginTop: "auto", width: "100%" }}>
+            <Button text={buttonText} color={borderColor} size="full" onClick={handleNavigate} />
+          </div>
         </>
       )}
 
@@ -26,9 +28,11 @@ const Card = ({ title, description, image, extraClass, buttonText, link, icon: I
         <>
           {image && <img src={image} alt={title} className="layout2-image" />}
           {Icon && <Icon className="card-icon" style={{ color: borderColor }} />}
-          <h3 style={{ color: borderColor }}>{title}</h3> 
+          <h3 style={{ color: borderColor }}>{title}</h3>
           <p>{description}</p>
-          <Button text={buttonText} color={borderColor} size="full" onClick={handleNavigate} />
+          <div style={{ marginTop: "auto", width: "100%" }}> 
+            <Button text={buttonText} color={borderColor} size="full" onClick={handleNavigate} />
+          </div>
         </>
       )}
     </div>

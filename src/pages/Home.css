@@ -68,6 +68,13 @@ html, body {
   text-align: center;
 }
 
+.text-possibilidades {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: none; /*Linha para definir o tamanho da caixa do texto*/
+}
+
 .possibilidades h2 {
   margin-bottom: 0.625rem;
 }
@@ -75,6 +82,7 @@ html, body {
 .possibilidades p {
   margin-bottom: 3.125rem;
   font-size: 1.125rem;
+  max-width: none;
 }
 
 .explore {
@@ -85,9 +93,9 @@ html, body {
 .map-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
+  
 }
 
 .map-text h2 {
@@ -99,6 +107,7 @@ html, body {
   margin-bottom: 2rem;
   font-size: 1.125rem;
   display: block;
+  max-width: none; /*Linha para definir o tamanho da caixa do texto*/
 }
 
 .lugares-imperdiveis {
@@ -112,10 +121,15 @@ html, body {
 
 .lugares-imperdiveis p {
   font-size: 1.125rem;
+  max-width: none;
 }
 
 .lugaresImperdiveis-text {
   margin-bottom: 3.125rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .swiper-container {

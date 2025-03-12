@@ -17,7 +17,7 @@
   .title {
     font-size: 24px;
     font-weight: bold;
-    color: #0056a8;
+    color: #0367A5;
   }
   
   .subtitle {
@@ -58,7 +58,7 @@
   
   .confirm-button:hover {
     transform: scale(1.10);
-    background-color: #003f7f;
+    background-color: #0367A5;
   }
   
   .resend {

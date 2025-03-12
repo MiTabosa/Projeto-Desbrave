@@ -1,0 +1,40 @@
+.cardCurso {
+  border: 3px solid #0367A5;
+  border-radius: 10px;
+  padding: 16px;
+  width: 350px;
+  height: 450px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribui o espaço entre os elementos */
+}
+
+.cardCurso h2 {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  padding-bottom: 15px; 
+  border-bottom: 2px solid #0367A5; 
+}
+
+.cardCurso p {
+  margin: 5px 0;
+}
+
+.cursoCategoria{
+  font-size: 1rem;
+  color: #0367A5;
+  font-weight: bold;
+}
+
+.cardCurso .cargaHoraria {
+  margin-top: 10px;
+  padding-bottom: 15px; 
+  border-bottom: 2px solid #0367A5; 
+}
+
+.cardCurso .buttonContainer {
+  margin-top: auto; 
+  padding-top: 10px; 
+}

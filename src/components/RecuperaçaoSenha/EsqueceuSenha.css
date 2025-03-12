@@ -5,7 +5,7 @@
   
   .imagemEsquerda {
     flex: 1;
-    background: url("C:\Users\Start\Desktop\Desbrave-Frontend\src\assets\img-recupSenha.png") no-repeat center center;
+    background: url('../../assets/img-recupSenha.png') no-repeat center center;
     background-size: cover;
   }
   
@@ -22,7 +22,7 @@
   }
   
   h2 {
-    color: #0056A1;
+    color: #0367A5;
     font-size: 2rem;
     font-weight: bold;
   }
@@ -34,14 +34,13 @@
   }
   
   .emailInput {
-    width: 80%;
-    max-width: 400px;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #c9c9c9;
-    margin-top: 100px;
+    position: relative;
+    margin-bottom: 15px;
+    width: 90%;
+    padding: 12px 40px;
     font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     outline: none;
   }
   
@@ -49,7 +48,7 @@
     width: 100%;
     max-width: 200px;
     padding: 12px;
-    background-color: #0056A1;
+    background-color: #0367A5;
     color: white;
     font-size: 1rem;
     font-weight: bold;
@@ -62,7 +61,7 @@
   
   .enviarCodigo:hover {
     transform: scale(1.10);
-    box-shadow: 2px 4px 6px #1558b0(0, 0, 0, 0.2);
+    box-shadow: 2px 4px 6px #0367A5(0, 0, 0, 0.2);
   }
   
 

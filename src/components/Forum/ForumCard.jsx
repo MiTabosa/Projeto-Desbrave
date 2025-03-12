@@ -34,7 +34,7 @@ const ForumCard = ({title, messages, activeUsers}) => {
 };
 const App = () => {
     return (
-      <div className="container">
+      <div className="container-forum">
         {data.map((item, index) => (
           <ForumCard
             key={index}

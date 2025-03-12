@@ -16,7 +16,7 @@ const RecuperarSenha = () => {
 
   const handleSubmit = () => {
     
-    navigate("/redefinir-senha"); 
+    navigate("/redefinirSenha"); 
   };
 
   return (

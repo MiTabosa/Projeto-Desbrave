@@ -1,0 +1,76 @@
+.container-dashboard {
+ background-color: #0367A5;
+}
+
+.Title-dashboard, .paragraf-dashboard{
+    color: white;
+}
+
+
+.header-dashboard {
+    position: relative;
+    width: 628px;
+    height: 165px;
+    border-radius: 6px;
+    background-color: #0367A5;
+    overflow: hidden;
+}
+
+.header-dashboard img {
+    position: absolute;
+    width: 165px;
+    height: 165px;
+    top: 0;
+    right: 0;
+}
+
+.forum-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #35A150;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 160px;
+    height: 40px;
+}
+
+.info-general {
+    display: flex;
+    gap: 50px;
+}
+
+.info-card-courses {
+    display: flex;
+    margin-top: 10px;
+    width: 290px;
+    height: 60px;
+    border-radius: 6px;
+    background-color: #D9B505;
+    color: #ffff;
+}
+
+.info-card-star {
+    display: flex;
+    margin-top: 10px;
+    width: 290px;
+    height: 60px;
+    border-radius: 6px;
+    background-color: #0367A5;
+    color: #ffff;
+}
+
+.init-Courses {
+    width: 630px;
+    height: 320px;
+    background-color: #ffff;
+    margin-top: 10px;
+    border-radius: 6px;
+    display: flex;
+}
+
+/* filtro */

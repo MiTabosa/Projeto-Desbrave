@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+}
+
+.content {
+    width: 80%;
+    height: 600px;
+    background-color: #E9E8E8;
+    border-radius: 6px;
+    padding: 20px;
+    margin-left: 220px;
+    margin-top: 16px;
+}

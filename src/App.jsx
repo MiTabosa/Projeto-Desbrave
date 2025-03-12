@@ -15,6 +15,8 @@ import Forum from "./pages/Forum/Foruns";
 import Curso from "./pages/Curso/Curso"
 import Sobre from "./pages/Sobre/Sobre"
 import Parceiros from "./pages/Parceiros/Parceiros"
+import Dashboard from "./components/Dashboard/Dashboard";
+
 
 
 
@@ -40,6 +42,7 @@ function App() {
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/curso" element={<Curso />} />
         <Route path="/parceiros" element={<Parceiros />} />
+        <Route path="/dashboard" element={<Dashboard/>} />
       </Routes>
     </Router>
   );

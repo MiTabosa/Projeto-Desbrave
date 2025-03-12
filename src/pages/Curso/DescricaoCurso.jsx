@@ -1,38 +1,35 @@
-import { useNavigate } from "react-router-dom";
-import "./DescricaoCurso.css";
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import cursos from '../../data/cursos.json';
-import Navbar from "../../components/Navbar/Navbar";
-import elementDesign from "../../assets/element-design.png";
-import Button from "../../components/Button/Button";
-
+import './DescricaoCurso.css';
 
 function DescricaoCurso() {
-  const navigate = useNavigate();
+    const { id } = useParams(); 
+    const navigate = useNavigate();
 
-  return (
-    <>
-      <Navbar />
-      <section className="cursoSection">
-        <div className="textdesc">
-          <h2>EXPLORE RECIFE E GANHE PONTOS!</h2>
-          <p className="descCurso"></p>
-          <div className="button-init">
-          <Button
-            text="Ler QR Code"
-            color="#0367A5"
-            size="small"
-            onClick={() => navigate("/")}
-          />
-          </div>
-          <img
-            className="pontos-image"
-            src={elementDesign}
-            alt="imagem de elemento"
-          />
+    const curso = cursos.cursos.find(curso => curso.id === parseInt(id));
+
+    if (!curso) {
+        return <div>Curso não encontrado!</div>;
+    }
+
+    const handleExternalLinkClick = () => {
+        window.open(curso.urlExterna, '_blank'); 
+    };
+
+    return (
+        <div className="descricao-curso-container">
+            <h1>{curso.nome}</h1>
+            <p><strong>Descrição:</strong> {curso.descricao}</p>
+            <p>{curso.empresa}</p>
+            <button onClick={handleExternalLinkClick} className="external-link-button">
+                Acessar Curso
+            </button>
+            <button onClick={() => navigate('/')} className="back-button">
+                Voltar para a lista de cursos
+            </button>
         </div>
-      </section>
-    </>
-  );
+    );
 }
 
 export default DescricaoCurso;

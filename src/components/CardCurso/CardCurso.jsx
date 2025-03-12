@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 
 function CardCurso({ curso }) {
     const handleButtonClick = () => {
-        window.open(curso.urlExterna, '_blank');
+        window.location.href = `/descricaoCurso/${curso.id}`;ja
     };
 
         return (
@@ -20,7 +20,7 @@ function CardCurso({ curso }) {
                     text="Saiba Mais"
                     color="#0367A5"
                     size="full"
-                    onClick={handleButtonClick} 
+                    onClick={handleButtonClick}
                     />
                 </div>
             </div>

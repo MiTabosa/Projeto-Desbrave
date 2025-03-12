@@ -17,20 +17,6 @@ import Sobre from "./pages/Sobre/Sobre"
 import Parceiros from "./pages/Parceiros/Parceiros"
 import Dashboard from "./pages/Dashboard/Dashboard"
 import DescricaoCurso from './pages/Curso/DescricaoCurso';
-
-
-
-
-// import Login from "./components/Login/Login";
-// import Cadastro from "./components/Cadastro/Cadastro";
-// import EsqueceuSenha from "./components/RecuperaçaoSenha/EsqueceuSenha";
-// import RecuperarSenha from './components/RecuperaçaoSenha/RecuperarSenha';
-// import RedefinirSenha from './components/RecuperaçaoSenha/RedefinirSenha';
-
-
-// import PaginaInicial from "./components/Pontos/PaginaInicial";
-// import Scanner from "./components/Pontos/Scanner" 
-// import Mapa from './pages/Mapa/Mapa'
 import CuponsDashboard from './pages/Cupons/CuponsDashboard';
 
 function App() {

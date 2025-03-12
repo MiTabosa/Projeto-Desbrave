@@ -14,6 +14,11 @@ import InvalidScanner from "./pages/Pontos/InvalidScanner";
 import Forum from "./pages/Forum/Foruns";
 import Curso from "./pages/Curso/Curso"
 import Sobre from "./pages/Sobre/Sobre"
+import Parceiros from "./pages/Parceiros/Parceiros"
+import Dashboard from "./pages/Cupons/CuponsDashboard"
+import DescricaoCurso from './pages/Curso/DescricaoCurso';
+
+
 
 // import Login from "./components/Login/Login";
 // import Cadastro from "./components/Cadastro/Cadastro";
@@ -60,6 +65,9 @@ function App() {
         <Route path="/mapa" element={<Mapa />} />
         <Route path="/scanner" element={<Scanner />} />
         <Route path="/cupons" element={<CuponsDashboard />} />
+        <Route path="/descricaoCurso/:id" element={<DescricaoCurso />} />
+        <Route path="/parceiros" element={<Parceiros />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );

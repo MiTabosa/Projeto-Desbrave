@@ -6,7 +6,8 @@
       "descricao": "Aprenda JavaScript do zero, desde os conceitos básicos até tópicos avançados como manipulação do DOM, eventos, e programação assíncrona. Ideal para quem deseja se tornar um desenvolvedor Front-end ou Full-stack.",
       "categoria": "Front-end",
       "cargaHoraria": "20 horas",
-      "urlExterna": "https://plataforma-externa.com/curso-javascript"
+      "urlExterna": "https://plataforma-externa.com/curso-javascript",
+      "empresa": "Empresa C"
     },
     {
       "id": 2,
@@ -14,7 +15,8 @@
       "descricao": "Domine React em 30 dias, aprendendo a criar interfaces de usuário dinâmicas e reativas. O curso aborda desde os fundamentos do React até conceitos avançados como Hooks, Context API e integração com APIs externas.",
       "categoria": "Front-end",
       "cargaHoraria": "30 horas",
-      "urlExterna": "https://plataforma-externa.com/curso-react"
+      "urlExterna": "https://plataforma-externa.com/curso-react",
+      "empresa": "Empresa C"
     },
     {
       "id": 3,
@@ -22,7 +24,8 @@
       "descricao": "Aprenda a construir APIs robustas e escaláveis com Node.js. O curso cobre desde os conceitos básicos de JavaScript no servidor até tópicos avançados como autenticação, banco de dados, e deploy de aplicações.",
       "categoria": "Back-end",
       "cargaHoraria": "25 horas",
-      "urlExterna": "https://plataforma-externa.com/curso-nodejs"
+      "urlExterna": "https://plataforma-externa.com/curso-nodejs",
+      "empresa": "Empresa C"
     },
     {
       "id": 4,
@@ -30,7 +33,8 @@
       "descricao": "Descubra o poder do Python, uma das linguagens mais versáteis e populares do mundo. Este curso cobre desde os fundamentos da linguagem até aplicações em ciência de dados, automação, e desenvolvimento web.",
       "categoria": "Back-end",
       "cargaHoraria": "35 horas",
-      "urlExterna": "https://plataforma-externa.com/curso-python"
+      "urlExterna": "https://plataforma-externa.com/curso-python",
+      "empresa": "Empresa C"
     },
     {
       "id": 5,
@@ -38,7 +42,8 @@
       "descricao": "Aprenda Vue.js, um framework progressivo para construção de interfaces de usuário. O curso aborda desde os conceitos básicos até a criação de Single Page Applications (SPAs) e integração com APIs.",
       "categoria": "Front-end",
       "cargaHoraria": "25 horas",
-      "urlExterna": "https://plataforma-externa.com/curso-vuejs"
+      "urlExterna": "https://plataforma-externa.com/curso-vuejs",
+      "empresa": "Empresa C"
     },
     {
       "id": 6,
@@ -46,7 +51,8 @@
       "descricao": "Aprofunde seus conhecimentos em JavaScript com TypeScript, adicionando tipagem estática ao seu código. O curso cobre desde os conceitos básicos até a integração com frameworks populares como React e Node.js.",
       "categoria": "Front-end",
       "cargaHoraria": "15 horas",
-      "urlExterna": "https://plataforma-externa.com/curso-typescript"
+      "urlExterna": "https://plataforma-externa.com/curso-typescript",
+      "empresa": "Empresa C"
     }
   ]
 }

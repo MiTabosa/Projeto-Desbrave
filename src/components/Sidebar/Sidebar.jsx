@@ -1,31 +1,31 @@
-import dashboardIcon from "../../assets/Dashboard-assets/dashboard-icon.png";
-import bookIcon from "../../assets/Dashboard-assets/book-icon.png";
-import awardIcon from "../../assets/Dashboard-assets/award-icon.png";
-import ticketIcon from "../../assets/Dashboard-assets/ticket-icon.png";
+import "./Sidebar.css";
+import { MdOutlineDashboard } from "react-icons/md";
+import { PiBookOpenTextThin } from "react-icons/pi";
+import { FaAward } from "react-icons/fa";
+import { GrTicket } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 
-const Sidebar = () => {
-  return (
-    <nav>
-      <ul>
-        <li>
-          <img src={dashboardIcon} alt="Dashboard" />
-          <a href="#">Dashboard</a>
-        </li>
-        <li>
-          <img src={bookIcon} alt="Cursos" />
-          <a href="#">Meus Cursos</a>
-        </li>
-        <li>
-          <img src={awardIcon} alt="Certificações" />
-          <a href="#">Certificados</a>
-        </li>
-        <li>
-          <img src={ticketIcon} alt="Cupons" />
-          <a href="#">Meus cupons</a>
-        </li>
-      </ul>
-    </nav>
-  );
-};
-
-export default Sidebar;
+export default function Sidebar() {
+    const navigate = useNavigate();
+  
+    return (
+      <div className="dashboard-container">
+        <aside className="sidebar">
+          <ul>
+          <li className="sidebar-item" onClick={() => navigate("/")}>
+              <MdOutlineDashboard className="icon" /> <span>Dashboard</span>
+            </li>
+            <li className="sidebar-item" onClick={() => navigate("/cursos")}>
+            <PiBookOpenTextThin className="icon" /> <span>Meus cursos</span>
+            </li>
+            <li className="sidebar-item" onClick={() => navigate("/certificados")}>
+            <FaAward className="icon" /> <span>Certificados</span>
+            </li>
+            <li className="sidebar-item-active" onClick={() => navigate("/cupons")}>
+            <GrTicket className="iconTickt"/> <span>Meus Cupons</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    );
+  }

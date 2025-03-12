@@ -1,17 +1,17 @@
-import navegarIcon from "../../assets/Dashboard-assets/square-icon.png";
-import usuarioIcon from "../../assets/Dashboard-assets/usuario-icon.png";
+import "./NavbarDashboard.css";
+import { IoPersonCircle } from "react-icons/io5";
+import { TbSquareRoundedArrowDownFilled } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 
-
-const NavbarDashboard = () => {
-return (
-    <header>
-        <h5>Nome do Usuário</h5>
-        <div>
-        <img src={navegarIcon} alt="Item de navegação usuario" />
-        <img src={usuarioIcon} alt="Foto usuario" />
-        </div>
-    </header>
-)
-}
-
-export default NavbarDashboard
+export default function NavbarDashboard() {
+    const navigate = useNavigate();
+  
+    return (
+        <main className="usuario">
+          <header className="header">
+            <span className="user"><TbSquareRoundedArrowDownFilled className="setaBaixo"/> Nome do Usuário <IoPersonCircle className="iconperson"/></span>
+          </header>
+        </main>
+    );
+  }
+  

@@ -8,7 +8,7 @@
   margin: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distribui o espaço entre os elementos */
+  justify-content: space-between; 
 }
 
 .cardCurso h2 {

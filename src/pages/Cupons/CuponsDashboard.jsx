@@ -6,12 +6,10 @@ export default function CuponsDashboard() {
   return (
     <Sidebar>
       <div className="cupons-container">
-        {/* Navbar dentro da área de cupons */}
         <NavbarDashboard />
 
         <h2 className="cupons-title">Meus Cupons</h2>
 
-        {/* Seção das estrelas e botões */}
         <div className="estrela-container">
           <div className="estrela-box">
             <span>⭐</span>
@@ -38,7 +36,7 @@ export default function CuponsDashboard() {
               <button className="btn-info">Saiba Mais</button>
             </div>
 
-            
+
             <div className="cupom valido">
               <h3 className="cupom-titulo">20% OFF</h3>
               <p className="cupom-descricao">COM APENAS 20 ESTRELAS</p>
@@ -50,7 +48,7 @@ export default function CuponsDashboard() {
               <h3 className="cupom-titulo">50% OFF</h3>
               <p className="cupom-descricao">COM APENAS 50 ESTRELAS</p>
               <input type="text" readOnly />
-              <button className="btn-info">Saiba Mais</button>
+              <button className="info">Saiba Mais</button>
             </div>
           </div>
         </div>

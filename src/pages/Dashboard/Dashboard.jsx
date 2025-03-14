@@ -50,7 +50,7 @@ const Dashboard = () => {
 
   return (
     <div className="container-dashboard">
-      {/* <Sidebar> */}
+      <Sidebar>
       <BottomDashboard>
      {/* <NavbarDashboard/> */}
         <div className="header-dashboard">
@@ -129,7 +129,7 @@ const Dashboard = () => {
             </div>
         </div>
       </BottomDashboard>
-      {/* </Sidebar> */}
+      </Sidebar>
     </div>
   );
 };

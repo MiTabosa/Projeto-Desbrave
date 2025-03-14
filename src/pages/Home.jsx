@@ -122,7 +122,6 @@ const Home = () => {
           <h2>Descubra Suas Possibilidades</h2>
           <p>Embarque em uma jornada educacional única, mergulhando na história, cultura e inovação de Recife.</p>
         </div>
-        {/* Substitua o card-containerDescubra pelo Carrossel */}
         <Carrossel cards={cardsDescubra} />
       </section>
 

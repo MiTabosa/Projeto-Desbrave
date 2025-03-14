@@ -12,7 +12,7 @@ import RedefinirSenha from "./components/RecuperaçaoSenha/RedefinirSenha"
 import Diretrizes from "./components/Diretrizes/Diretrizes";
 import InvalidScanner from "./pages/Pontos/InvalidScanner";
 import Forum from "./pages/Forum/Foruns";
-import ChatForum from "./pages/ChatForum/Chatforum"
+import ForumChat from "./pages/ChatForum/Chatforum"
 import Curso from "./pages/Curso/Curso"
 import Sobre from "./pages/Sobre/Sobre"
 import Parceiros from "./pages/Parceiros/Parceiros"
@@ -45,6 +45,7 @@ function App() {
         <Route path="/parceiros" element={<Parceiros />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/Forum" element={<Forum/>}></Route>
+        <Route path="/forumChat" element={<ForumChat />} />
         <Route path="/cuponsDashboard" element={<CuponsDashboard/>}></Route>
 
       </Routes>

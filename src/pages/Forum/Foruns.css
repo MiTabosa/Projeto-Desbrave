@@ -11,7 +11,14 @@
     align-items: center;
     margin: auto 2.528rem;
 }
+
+.text-forum{
+    max-width: none;
+}
+
 .titulo-forum{
   width: 100%;
 }
+
+
 

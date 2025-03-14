@@ -1,121 +1,143 @@
-.dashboard-container {
-    display: flex;
-    height: 100vh;
-    background: #ffffff;
-  }
+/* Container principal */
+.cupons-container {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  width: calc(100% - 10px);
+  height: calc(100vh - 10px);
+  margin: 5px;
+  box-shadow: 0 4px 20px #0000001a;
+  display: flex;
+  flex-direction: column;
+  align-items: rigth;
   
-  .sidebar {
-    width: 250px;
-    background: #0367A6;
-    color: #ffffff;
-    padding: 20px;
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 5px;
-    margin: 5px;
-  }
-  
-  .sidebar li {
-    padding: 15px;
-    cursor: pointer;
-    margin-left: 5px;
-  }
-  
-  .sidebar-item .icon{
-    width: 30px;
-    height: 30px;
-    justify-items:center;
-    align-items: center;
-    margin-right: 5px;
-  }
+}
 
-  .sidebar-item {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .sidebar-item-active{
-    display: flex;
-    align-items: center; 
-    background-color: #35A150;
-    color: white;
-    border-radius: 5px;
-    padding: 10px;
-  } 
-  .sidebar-item-active .iconTickt{
-    width: 24px; 
-    height: 24px;
-    margin-right: 8px; 
-  }
+/* Navbar dentro da seção */
+.navBar {
+  width: 100%;
+  margin-bottom: 15px;
+}
 
-  .iconperson{
-    width: 70px;
-    height: 70px;
-    color: #808080;
-  }
+/* Título */
+.cupons-title {
+  display: flex;
+  justify-content: flex-start; /* Alinha os elementos no topo */
+  align-items: flex-start; /* Garante que fiquem no topo */
+  gap: 20px; /* Espaço entre os elementos */
+  padding: 20px; /* Espaçamento opcional */
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000;
+  text-align: left;
+  margin-bottom: 30px;
+}
 
-  .setaBaixo{
-    color: #808080;
-  }
-  .usuario {
-    flex: 1;
-    padding: 20px;
-  }
-  .user {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: end;
-    }
+/* Seção das estrelas e botões */
+.estrela-container {
+  display: flex;
+  justify-content: flex-start; /* Alinha os elementos no topo */
+  align-items: flex-start; /* Garante que fiquem no topo */
+  gap: 20px; /* Espaço entre os elementos */
+  padding: 20px; /* Espaçamento opcional */
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.estrela-box {
+  display: flex;
+  background: #0367A6;
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Botões */
+.botao-resgate, .botao-usados {
+  background: #0367A6;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  width: 150px;
+  text-align: center;
+}
+
+.botao-usados {
+  background: #D98D30;
+}
+
+/* Container dos cupons */
+.cupons-wrapper {
+  position: absolute;
+  margin-top: 150px;
+  background: #C4C4C4;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px #0000001a;
+  display: flex;
+  justify-content: flex-end; 
+  align-self: flex-end; 
   
-  .header {
-    text-align: right;
-    font-weight: bold;
-    font-size: 24px;
-  }
-  
-  .cuponsSeçao {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  .estrelaContainer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .estrelaBox {
-    background: #0367A6;
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .resgate {
-    background: #0367A6;
-    color: #ffffff;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .cuponsUsados {
-    background: #D98D30;
-    color: #ffffff;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .meusCupons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  
- 
+}
+
+/* Grid dos cupons */
+.cupons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+/* Cartões de cupom */
+.cupom {
+  background: #E0E0E0;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.cupom:hover {
+  transform: scale(1.02);
+}
+
+.cupom.valido {
+  background: #D98D30;
+  color: white;
+}
+
+.cupom.desabilitado {
+  background: #D9D9D9;
+  color: white;
+}
+
+/* Texto do cupom */
+.cupom-titulo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.cupom-descricao {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

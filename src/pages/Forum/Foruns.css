@@ -8,10 +8,19 @@
 }
 .hero-forum{
     display: flex;
-    align-items: center;
-    margin: auto 2.528rem;
+    flex-direction: column;
 }
-.titulo-forum{
-  width: 100%;
+
+.text-forum p{
+    max-width: none;
+    margin-top: 10px;
 }
+
+.text-forum{
+    margin-left: 52px;
+    margin-top: 30px;
+}
+
+
+
 

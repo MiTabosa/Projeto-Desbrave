@@ -1,20 +1,17 @@
 import { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import './Chatforum.css'
+import elementDesign from "../../assets/element-design.png";
 import { FaUserAlt } from "react-icons/fa";
 import { IoReturnUpBackOutline } from "react-icons/io5";
 
-
 const Chatforum = () => {
-    const [comments, setComments] = useState([ 
-
+    const [comments, setComments] = useState([
         { user: "Livia Ferreira", date: "2 de janeiro de 2025", comment: "Olá! Não entendo muito de tecnologia, mas uso meu computador/tablet para estudar. Como posso protegê-lo contra ataques online e garantir que meus dados estejam seguros enquanto aprendo?" },
-
         { user: "Luiz Paulo", date: "12 de janeiro de 2025", comment: "Olá, Lívia! Mantenha o sistema operacional e os aplicativos sempre atualizados para corrigir falhas de segurança. Utilize um antivírus confiável e evite baixar arquivos de fontes desconhecidas. Ative senhas fortes e, se possível, a autenticação de dois fatores (2FA) para proteger acessos. Evite conectar-se a redes Wi-Fi públicas sem VPN, pois elas podem expor seus dados."}
     ]);
-    const [newComment, setNewComment] = useState (""); 
-    
-    
+    const [newComment, setNewComment] = useState("");
+
     const addComment = () => {
         if (newComment.trim() === "") return;
         const newPost = {
@@ -22,55 +19,53 @@ const Chatforum = () => {
             date: new Date().toLocaleDateString("pt-BR"),
             comment: newComment
         }
-        
-        setComments([...comments,newPost]);
+        setComments([...comments, newPost]);
         setNewComment("");
-    
     }
-    return(
 
+    return (
         <section className="chat-f">
-            <Navbar/>
+            <Navbar />
 
             <span className="backpage">
-                <IoReturnUpBackOutline />
+                <IoReturnUpBackOutline size={24} />
                 <p>Voltar para seção anterior</p>
             </span>
-        <h3 className="titulo-chat">Segurança Digital</h3>
+            <h3 className="titulo-chat">Segurança Digital</h3>
 
-               
-        {comments.map((item, index) => (
-            <div key={index} className="box-chat">
-                <span className="cf-icon">
-                    <FaUserAlt />
-                </span>
-                <div className="info-card">
-                    <h4>{item.user}</h4>
-                    <p>{item.date}</p>
-                    <p>{item.comment}</p>
+            {comments.map((item, index) => (
+                <div key={index} className="box-chat">
+                    <span className="cf-icon">
+                        <FaUserAlt />
+                    </span>
+                    <div className="info-card">
+                        <div className="user-date">
+                            <h4>{item.user}</h4>
+                            <p>{item.date}</p>
+                        </div>
+                        <p>{item.comment}</p>
+                    </div>
                 </div>
-            </div>
-            
-        ))}
-        
-        <div className="comentar">
-            <div className="textbar">
-            
-            </div>
-        
+            ))}
 
+            <div className="comentar">
                 <span className="bar-icon">
                     <FaUserAlt />
                 </span>
-                
                 <input
                     type="text"
                     placeholder="Responder"
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}
                 />
-                <button onClick={addComment}>Enviar</button>
+                <button className="button-enviar" onClick={addComment}>Enviar</button>
             </div>
+            {/* <img
+                className="pontos-image"
+                src={elementDesign}
+                alt="imagem de elemento"
+                
+            /> */}
         </section>
     );
 };

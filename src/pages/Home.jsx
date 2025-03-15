@@ -93,15 +93,15 @@ const Home = () => {
       layout: "layout2",
     },
     {
-      title: "Rua do Bom Jesus",
-      description: "Uma das ruas mais bonitas do mundo! Arquitetura colonial, cultura e muita história esperam por você.",
-      image: "./src/assets/pontosTuristicos/RuaDoBomJesus.png",
+      title: "Caixa Cultural Recife",
+      description: "Um espaço dedicado à cultura e às artes, com exposições, teatro, música, cinema e muito mais.",
+      image: "./src/assets/pontosTuristicos/caixaCultural.png", 
       extraClass: "card-azul",
       borderColor: "#0367A6",
       buttonText: "Saiba Mais",
-      link: "/rua-do-bom-jesus",
+      link: "/caixa-cultural-recife", 
       layout: "layout2",
-    },
+    }
   ];
 
   return (
@@ -122,7 +122,6 @@ const Home = () => {
           <h2>Descubra Suas Possibilidades</h2>
           <p>Embarque em uma jornada educacional única, mergulhando na história, cultura e inovação de Recife.</p>
         </div>
-        {/* Substitua o card-containerDescubra pelo Carrossel */}
         <Carrossel cards={cardsDescubra} />
       </section>
 

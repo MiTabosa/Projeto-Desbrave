@@ -1,0 +1,14 @@
+:root{
+    --cor-principal:#0367A5;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.formulario{
+    background-color: rgb(201, 199, 199);
+    border: 1rem solid black
+    ;
+    border-radius: 2rem;
+}

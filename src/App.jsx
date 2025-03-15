@@ -17,6 +17,7 @@ import Sobre from "./pages/Sobre/Sobre"
 import Parceiros from "./pages/Parceiros/Parceiros"
 import Dashboard from "./pages/Dashboard/Dashboard"
 import DescricaoCurso from './pages/Curso/DescricaoCurso';
+import GestForm from "./pages/GestCurso/Gestcurso";
 
 
 
@@ -69,6 +70,7 @@ function App() {
         <Route path="/descricaoCurso/:id" element={<DescricaoCurso />} />
         <Route path="/parceiros" element={<Parceiros />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/gestao" element={<GestForm />} />
 
       </Routes>
     </Router>

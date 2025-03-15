@@ -1,0 +1,70 @@
+.conteiner-parceiros {
+
+    margin-bottom: 50px;
+    margin-top: 40px;
+    margin-left: 48px;
+}
+
+.list-parceiros {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.list-parceiros img {
+    width: 60px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.list-parceiros p {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.seja-parceiro {
+    width: 320px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 4px 10px #484d50;
+    border-radius: 6px;
+    text-align: center;
+    border: 2px solid #0367A5;
+}
+
+.seja-nosso-parceiro {
+    font-size: 16px;
+    color: #0367A5;
+    margin-bottom: 10px;
+}
+
+.seja-parceiro img {
+    width: 100px;
+    margin: 10px 0;
+    margin-top: -10px;
+}
+
+.text-parceiros {
+    font-size: 13px;
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+
+.saiba-mais-btn {
+    background: #0367A5;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+

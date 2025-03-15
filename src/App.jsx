@@ -60,6 +60,7 @@ function App() {
         <Route path="/parceiros" element={<Parceiros />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/gestao" element={<GestForm />} />
+        
 
       </Routes>
     </Router>

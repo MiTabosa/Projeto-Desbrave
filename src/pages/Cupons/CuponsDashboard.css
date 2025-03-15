@@ -1,6 +1,6 @@
-/* Container principal */
+
 .cupons-container {
-  background: #ffffff;
+  background: #E9E8E8;
   padding: 20px;
   border-radius: 10px;
   width: calc(100% - 10px);
@@ -13,40 +13,34 @@
   
 }
 
-/* Navbar dentro da seção */
-.navBar {
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-/* Título */
-.cupons-title {
-  display: flex;
-  justify-content: flex-start; /* Alinha os elementos no topo */
-  align-items: flex-start; /* Garante que fiquem no topo */
-  gap: 20px; /* Espaço entre os elementos */
-  padding: 20px; /* Espaçamento opcional */
-  font-size: 24px;
+.titulo {
+  gap: 20px; 
+  padding: 50px; 
+  margin-top: 50px;
+  font-size: 32px;
   font-weight: bold;
   color: #000000;
   text-align: left;
-  margin-bottom: 30px;
+  position: absolute;
+
 }
 
-/* Seção das estrelas e botões */
-.estrela-container {
-  display: flex;
-  justify-content: flex-start; /* Alinha os elementos no topo */
-  align-items: flex-start; /* Garante que fiquem no topo */
-  gap: 20px; /* Espaço entre os elementos */
-  padding: 20px; /* Espaçamento opcional */
+.estrela {
+  gap: 20px; 
+  padding: 50px; 
   display: flex;
   flex-direction: column;
   align-items: left;
-  gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 300px;
 }
-
+.estrelaIcon{
+  background-color: #ffffff;
+  color: #D98D30;
+  width: 90px;
+  height: 70px;
+  border-radius: 5px;
+  
+}
 .estrela-box {
   display: flex;
   background: #0367A6;
@@ -55,89 +49,176 @@
   border-radius: 5px;
   font-size: 1.2em;
   font-weight: bold;
-  width: 80px;
-  height: 80px;
+  width: 200px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-/* Botões */
-.botao-resgate, .botao-usados {
+.estrelaH1{
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.botaoResgate{
   background: #0367A6;
   color: white;
-  padding: 10px 15px;
+  padding: 8px;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
-  font-size: 14px;
+  border-radius: 8px;
+  font-size: 18px;
   font-weight: bold;
-  width: 150px;
+  width: 200px;
   text-align: center;
+  transition: transform 0.2s ease-in-out;
+} 
+.botaoResgate:hover{
+  transform: scale(1.02);
 }
-
-.botao-usados {
+.botaoUsados {
   background: #D98D30;
+  color: white;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+.botaoUsados:hover{
+  transform: scale(1.02);
 }
 
-/* Container dos cupons */
-.cupons-wrapper {
+.cuponsGrade {
   position: absolute;
   margin-top: 150px;
-  background: #C4C4C4;
-  padding: 20px;
+  margin-right: 100px;
+  width: 45vw;
+  height: 500px;
+  background: #E0E0E0;
+  padding: 30px;
   border-radius: 10px;
-  width: 100%;
-  max-width: 600px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px #0000001a;
+  max-width: 900px;
   display: flex;
-  justify-content: flex-end; 
+  justify-content:center; 
   align-self: flex-end; 
-  
 }
 
-/* Grid dos cupons */
 .cupons-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  gap: 60px;
 }
 
-/* Cartões de cupom */
 .cupom {
   background: #E0E0E0;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-}
-
-.cupom:hover {
-  transform: scale(1.02);
+  
 }
 
 .cupom.valido {
   background: #D98D30;
   color: white;
+  border-bottom-style: inherit;
 }
 
 .cupom.desabilitado {
-  background: #D9D9D9;
-  color: white;
+  background: #C4C4C4;
+  color: #ffffff;
 }
 
-/* Texto do cupom */
+.cupom-titulo{
+  color: #ffffff;
+}
+
+.cupom-descricao{
+  color: #ffffff;
+}
+
+.input .text{
+  background-color: #ffffff;
+  padding: 30px;
+}
+
 .cupom-titulo {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
+.des10{
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 8px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+
+.desVazio{
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px;
+  width: 200px;
+  height: 35px;
+}
+
+
+.desCultura {
+  background-color: #ffffff;
+  color: #000; 
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 5px;
+  margin-top: 2px;
+  width: 200px;
+  height: 35px;
+}
+
 .cupom-descricao {
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 10px;
+}
+
+.copy {
+  color: #D98D30;
+  position: absolute;
+  justify-content: flex-end;
+  align-items: rigth;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.botaoSaiba{
+  display: block;
+  width: 100%;
+  height: 30px;
+  margin-top: 15px;
+  padding: 4px;
+  background: transparent;
+  border: 1px dashed #ffffff;
+  border-radius: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+  cursor: pointer;
+  
+}
+
+.botaoSaiba:hover{
+  transform: scale(1.02);
 }

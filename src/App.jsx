@@ -18,6 +18,7 @@ import Parceiros from "./pages/Parceiros/Parceiros"
 import Dashboard from "./pages/Dashboard/Dashboard"
 import DescricaoCurso from './pages/Curso/DescricaoCurso';
 import CuponsDashboard from './pages/Cupons/CuponsDashboard';
+import CuponsUsados from "./pages/Cupons/CuponsUsados";
 
 function App() {
   const [isLogged, setIsLogged] = useState(!!localStorage.getItem("user"));
@@ -55,6 +56,7 @@ function App() {
         <Route path="/descricaoCurso/:id" element={<DescricaoCurso />} />
         <Route path="/parceiros" element={<Parceiros />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/CuponsUsados" element={<CuponsUsados />} />
 
       </Routes>
     </Router>

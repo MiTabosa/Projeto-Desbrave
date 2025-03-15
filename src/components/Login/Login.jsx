@@ -53,6 +53,9 @@ export default function Login() {
           <FaInstagram className="InstagramIcon"/>
           <FaGooglePlus className="GoogleIcon"/>
         </div>
+        <div>
+        <a href="/" className="voltarinicio">↩ Voltar para o inicio</a>
+        </div>
       </div>
     </div>
   );

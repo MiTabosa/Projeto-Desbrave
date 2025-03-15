@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import BottomDashboard from "../../components/bottomDashboard/BottomDashboard";
+import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
 import "./Dashboard.css";
 import elementoVerde from "../../assets/elemento-verde.png";
 import { BsArrow90DegRight } from "react-icons/bs";
@@ -13,6 +13,7 @@ import imageCultural from "../../assets/imagem-cultural.png";
 import { IoPersonCircle } from "react-icons/io5";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import NavbarDashboard from  "../../components/NavbarDashboard/NavbarDashboard";
+import ElementoCursos from "../../assets/elemento-cursos.png";
 
 
 const Dashboard = () => {
@@ -50,34 +51,35 @@ const Dashboard = () => {
 
   return (
     <div className="container-dashboard">
-      {/* <Sidebar> */}
+      <Sidebar>
       <BottomDashboard>
-     {/* <NavbarDashboard/> */}
+     <NavbarDashboard/>
         <div className="header-dashboard">
           <h2 className="Title-dashboard">Olá, Milena!</h2>
           <p className="paragraf-dashboard">Bem-vinda de volta! 😃</p>
           <img src={elementoVerde} alt="elemento verde" />
-          <button className="forum-button">
+          <button className="forum-button" onClick={() => navigate("/forum")}>
             Ir para fórum
             <BsArrow90DegRight />
-          </button>{" "}
-          {/* fazer navegação pro forum */}
+          </button>
         </div>
         <div className="info-general">
           <div className="info-card-courses">
-            <RiGraduationCapLine />
+            <RiGraduationCapLine  className="icon-curse"/>
             <p>{infoGeral.cursos} Cursos</p>
           </div>
           <div className="info-card-star">
-            <CiStar />
+            <CiStar className="icon-star"/>
             <p>{infoGeral.estrelas} Estrelas</p>
           </div>
         </div>
 
         {/* cursos */}
         <div className="init-Courses">
+          <div className="header-courses">
           <IoBookOutline />
           <p>Meus cursos</p>
+          </div>
           <div className="filtro-container">
             <label htmlFor="filtro">Cursos Iniciados</label>
             <select 
@@ -99,9 +101,10 @@ const Dashboard = () => {
                     <p>{curso.titulo}</p>
                 </div>
              ))}
+            </div> 
             </div>
 
-            <div className="container-profile">
+       <div className="container-profile">
           <div className="perfil-banner">
          <IoPersonCircle/>
           </div>
@@ -124,12 +127,13 @@ const Dashboard = () => {
              <div className="perfil-termos">
               <a href="#">Termos de uso e segurança</a>
              </div>
-             </div>
+             </div> 
 
             </div>
-        </div>
+   
       </BottomDashboard>
-      {/* </Sidebar> */}
+        </Sidebar>
+
     </div>
   );
 };

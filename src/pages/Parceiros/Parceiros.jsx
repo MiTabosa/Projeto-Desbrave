@@ -7,6 +7,7 @@ import prefeitura from "../../assets/prefeitura.png";
 import redecidada from "../../assets/redecidada.png";
 import parceiro from "../../assets/parceiro.png";
 import formasparceiro from "../../assets/formasparceiro.png";
+import "./Parceiros.css";
 
 
 function Parceiros () {
@@ -14,9 +15,11 @@ function Parceiros () {
     return (
         <div>
             <Navbar />
-            <div className="list-parceiros">
+            <div className="conteiner-parceiros">
 
             <h2 className="text-nossos-parceiros">NOSSOS PARCEIROS</h2>
+            
+            <div className="list-parceiros">
             <img src={accenture} alt="ACCENTURE" />
             <p className="text-accenture">Accenture</p>
 
@@ -29,6 +32,7 @@ function Parceiros () {
             <img src={prefeitura} alt="PREFEITURA" />
             <p className="text-prefeitura">Prefeitura Recife</p>
 
+            </div>
             </div>
 
             <div className="seja-parceiro">

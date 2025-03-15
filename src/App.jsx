@@ -12,6 +12,7 @@ import RedefinirSenha from "./components/RecuperaçaoSenha/RedefinirSenha"
 import Diretrizes from "./components/Diretrizes/Diretrizes";
 import InvalidScanner from "./pages/Pontos/InvalidScanner";
 import Forum from "./pages/Forum/Foruns";
+import ForumChat from "./pages/ChatForum/Chatforum"
 import Curso from "./pages/Curso/Curso"
 import Sobre from "./pages/Sobre/Sobre"
 import Parceiros from "./pages/Parceiros/Parceiros"
@@ -26,13 +27,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/Forum" element={<Forum/>}></Route>
         <Route path="/" element={<Home />} />
         <Route path="/paginaInicial" element={<PaginaInicial />} />
-        <Route path="/mapa" element={<Mapa />} />
-        <Route path="/scanner" element={<Scanner />} />
         <Route path="/invalidScanner" element={<InvalidScanner/>} />
-        <Route path="/login" element={<Login />} />
         <Route path="/esqueceuSenha" element={<EsqueceuSenha />} />
         <Route path="/recuperarSenha" element={<RecuperarSenha />} />
         <Route path="/redefinirSenha" element={<RedefinirSenha />} />
@@ -40,16 +37,8 @@ function App() {
         <Route path="/diretrizes" element={<Diretrizes />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/curso" element={<Curso />} />
-        <Route path="/foruns" element={<div>Fóruns Page</div>} />
-        <Route path="/cursos" element={<div>Cursos Page</div>} />
-        <Route path="/desafios" element={<div>Desafios Page</div>} />
-        <Route path="/mapa" element={<div>Mapa Page</div>} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/esqueceu-senha" element={<EsqueceuSenha />} />
-        <Route path="/recuperar-senha" element={<RecuperarSenha />} />
-        <Route path="/redefinir-senha" element={<RedefinirSenha />} />
-        <Route path="/paginaInicial" element={<PaginaInicial />} />
         <Route path="/mapa" element={<Mapa />} />
         <Route path="/scanner" element={<Scanner />} />
         <Route path="/cupons" element={<CuponsDashboard />} />
@@ -57,6 +46,9 @@ function App() {
         <Route path="/parceiros" element={<Parceiros />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/CuponsUsados" element={<CuponsUsados />} />
+        <Route path="/Forum" element={<Forum/>}></Route>
+        <Route path="/forumChat" element={<ForumChat />} />
+        <Route path="/cuponsDashboard" element={<CuponsDashboard/>}></Route>
 
       </Routes>
     </Router>

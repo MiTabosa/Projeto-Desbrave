@@ -1,0 +1,55 @@
+{
+    "forumData": [
+      {
+        "title": "SEGURANÇA DIGITAL",
+        "messages": 1000,
+        "activeUsers": 15,
+        "comments": [
+          {
+            "user": "Livia Ferreira",
+            "date": "2 de janeiro de 2025",
+            "comment": "Olá! Não entendo muito de tecnologia, mas uso meu computador/tablet para estudar. Como posso protegê-lo contra ataques online e garantir que meus dados estejam seguros enquanto aprendo?"
+          },
+          {
+            "user": "Luiz Paulo",
+            "date": "12 de janeiro de 2025",
+            "comment": "Olá, Lívia! Mantenha o sistema operacional e os aplicativos sempre atualizados para corrigir falhas de segurança. Utilize um antivírus confiável e evite baixar arquivos de fontes desconhecidas."
+          }
+        ]
+      },
+      {
+        "title": "DESENVOLVIMENTO WEB",
+        "messages": 500,
+        "activeUsers": 10,
+        "comments": [
+          {
+            "user": "Carlos Silva",
+            "date": "5 de fevereiro de 2025",
+            "comment": "Alguém pode me recomendar um bom curso de React?"
+          },
+          {
+            "user": "Ana Souza",
+            "date": "6 de fevereiro de 2025",
+            "comment": "Eu recomendo o curso da Rocketseat! É muito completo."
+          }
+        ]
+      },
+      {
+        "title": "INTELIGÊNCIA ARTIFICIAL",
+        "messages": 300,
+        "activeUsers": 8,
+        "comments": [
+          {
+            "user": "João Pedro",
+            "date": "10 de março de 2025",
+            "comment": "Qual é a melhor linguagem para começar em IA?"
+          },
+          {
+            "user": "Maria Lima",
+            "date": "11 de março de 2025",
+            "comment": "Python é a mais recomendada para iniciantes em IA."
+          }
+        ]
+      }
+    ]
+  }

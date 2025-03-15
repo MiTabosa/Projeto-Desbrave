@@ -14,14 +14,10 @@ function Foruns(){
             <Navbar/>
             <section className="hero-forum">
                 <div className="text-forum">
-            
                     <h2 className="titulo-forum">Fóruns da Comunidade</h2>
                     <p>Um espaço para trocar ideias sobre cidadania digital, cultura de Recife e tecnologia. <br/> Entre na conversa, faça perguntas e compartilhe seus insights com outros aprendizes.</p>
                     <Barra onSearch={handleSearch} />
-            
                 </div>
-            </section>
-            <section>
                 <div className="cotainer-forum">
                     <ForumCard/>
                 </div>

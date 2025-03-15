@@ -1,68 +1,89 @@
-:root{
+:root {
     --cor-principal: #0367A5;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
-.titulo-chat{
+
+.titulo-chat {
     margin: 2rem 3rem;
 }
-.box-chat{
- display: flex;
-   padding: 1rem ;
-    margin: 3rem 3rem;
-    border: 2px solid var(--cor-principal);
+
+.box-chat {
+    display: flex;
+    padding: 1rem;
+    margin: 2rem 3rem;
+    border: 3px solid var(--cor-principal);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
     gap: 1rem;
 }
-.info-card{
+
+.info-card {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
-      
 }
-.cf-icon{
+
+.info-card p {
+    max-width: none;
+}
+
+.cf-icon {
     background-color: var(--cor-principal);
-   color: white;
-   height: 5rem;
-   width: 5rem;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border-radius: 0.75rem;
-   font-size: 50px;
-}
-.comentar{
+    color: white;
+    height: 4rem;
+    width: 4rem;
     display: flex;
     align-items: center;
-    border: 2px solid var(--cor-principal); 
-    background-color: #ffffff; 
-    padding: 8px 16px;
-    max-width: 1120px;
-    width: 90%;
-    border-radius: 1rem; 
-    margin: 3rem auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    transition: all 0.3s ease; 
+    justify-content: center;
+    border-radius: 0.75rem;
+    font-size: 50px;
+    padding: 10px;
 }
-.comentar input{
+
+.button-enviar {
+    background-color: transparent;
+    margin-right: 20px;
+    font-size: 15px;
+}
+
+.comentar {
+    display: flex;
+    align-items: center;
+    border: 3px solid var(--cor-principal);
+    background-color: #ffffff;
+    padding: 8px 16px;
+    width: calc(100% - 104px); 
+    margin: 3rem 52px; 
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.comentar input {
     border: none;
     background-color: transparent;
     padding: 8px;
     width: 100%;
     outline: none;
     font-size: 1rem;
-    color:var(--cor-principal); 
+    color: var(--cor-principal);
 }
-button{
+
+button {
     border: none;
 }
-button:hover{
+
+button:hover {
     cursor: pointer;
 }
-.bar-icon{
+
+.bar-icon {
     background-color: gray;
     color: white;
     height: 3rem;
@@ -72,15 +93,20 @@ button:hover{
     justify-content: center;
     border-radius: 1rem;
 }
-.backpage{
+
+.backpage {
     display: flex;
     align-items: center;
     width: 20rem;
     font-size: 50px;
-    margin: 1rem 3rem;
+    margin: 1rem 3rem 1rem;
+    gap: 10px;
 }
-.backpage :hover{
+
+.backpage :hover {
     cursor: pointer;
 }
-
-
+/* 
+.pontos-image {
+    z-index: 0; 
+} */

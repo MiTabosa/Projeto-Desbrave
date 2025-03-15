@@ -12,9 +12,12 @@
     justify-content: space-between;
     border: 3px solid var(--cor-principal);
     border-radius: 1rem;
-    max-width: 1120px;;
-    height: 70px;
-    margin: 1rem 3rem;
+    /* max-width: 1220px;; */
+    max-width: none;
+    height: 90px;
+    margin: 0 52px 30px 52px ;
+    /* margin-bottom: 30px;
+    margin-left: 42px; */
 }
 .card-right{
     display: flex;
@@ -25,10 +28,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 4rem;
-    height: 4.4rem;
-    border-radius: 1rem;
-    font-size: 50px;
+    width: 5.8rem;
+    height: 5.4rem;
+    border-radius: 10px;
+    font-size: 70px;
 }
 .card-left{
    display: flex;
@@ -38,8 +41,8 @@
  
 }
 .card-box{
-    border: 2px solid var(--cor-principal);
-    border-radius: 1rem;
+    border: 3px solid var(--cor-principal);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -21,7 +21,7 @@ const RecuperarSenha = () => {
 
   return (
     <div className="container">
-      <div className="form-container">
+      <div className="form-container-senha">
         <h2 className="title">Recupere sua senha</h2>
         <p className="subtitle">
           Insira abaixo o código que foi enviado por e-mail

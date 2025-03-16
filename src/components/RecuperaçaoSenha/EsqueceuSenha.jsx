@@ -1,20 +1,22 @@
-
 import React, { useState } from "react";
 import "./EsqueceuSenha.css";
 import { useNavigate } from "react-router-dom";
+import imgRecupSenha from "../../assets/img-senha.png"; 
 
 const EsqueceuSenha = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    
-    navigate("/recuperarSenha"); 
+    navigate("/recuperarSenha");
   };
 
   return (
     <div className="esqueceuSenhaContainer">
-      <div className="imagemEsquerda"></div>
+      <div
+        className="imagemEsquerda"
+        style={{ backgroundImage: `url(${imgRecupSenha})` }} 
+      ></div>
 
       <div className="formDireita">
         <h2>Esqueceu sua senha?</h2>
@@ -32,7 +34,9 @@ const EsqueceuSenha = () => {
           Enviar código
         </button>
 
-        <a href="/login" className="voltarLogin">↩ Voltar para página de Login</a>
+        <a href="/login" className="voltarLogin">
+          ↩ Voltar para página de Login
+        </a>
       </div>
     </div>
   );

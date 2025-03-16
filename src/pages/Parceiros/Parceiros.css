@@ -1,37 +1,49 @@
-.conteiner-parceiros {
 
-    margin-bottom: 50px;
-    margin-top: 40px;
-    margin-left: 48px;
+.conteiner-parceiros {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;
+    padding: 40px;
+    
 }
 
-.list-parceiros {
+
+.text-nossos-parceiros {
+    margin-bottom: 30px;
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+.lista-parceiros {
     display: flex;
     flex-direction: column;
+    gap: 40px;
+}
+
+.parceiros-logo {
+    display: flex;
+    align-items: center;
     gap: 20px;
+
 }
 
-.list-parceiros img {
-    width: 60px;
+.lista-parceiros img {
+    width: 50px;
     height: auto;
-    vertical-align: middle;
-    margin-right: 10px;
-}
-
-.list-parceiros p {
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 500;
+    margin: 0;
 }
 
 .seja-parceiro {
-    width: 320px;
+    width: 250px;
     padding: 20px;
     background: white;
     box-shadow: 0px 4px 10px #484d50;
     border-radius: 6px;
     text-align: center;
     border: 2px solid #0367A5;
+    margin-top: 120px;
+    margin-right: 300px;
+
 }
 
 .seja-nosso-parceiro {
@@ -61,6 +73,30 @@
     font-size: 12px;
     cursor: pointer;
 }
+
+.saiba-mais-btn:hover {
+    background: #0367A5;
+}
+
+.info-parceiro {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.saiba-mais-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0367A5;
+    margin-bottom: 8px;
+}
+
+.info-saiba-mais {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+
 
 
 

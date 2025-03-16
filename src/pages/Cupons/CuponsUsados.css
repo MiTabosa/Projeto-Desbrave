@@ -1,0 +1,169 @@
+.containerCupons {
+    background: #E9E8E8;
+    padding: 20px;
+    border-radius: 10px;
+    width: calc(100% - 10px);
+    height: calc(100vh - 10px);
+    margin: 5px;
+    box-shadow: 0 4px 20px #0000001a;
+    display: flex;
+    flex-direction: column;
+    align-items: rigth;
+    
+  }
+  
+  .tituloPagina{
+    gap: 20px; 
+    padding: 50px; 
+    margin-top: 50px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #000000;
+    text-align: left;
+    position: absolute;
+  
+  }
+  
+  .boxEstrela {
+    gap: 20px; 
+    padding: 50px; 
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-bottom: 300px;
+  }
+  .iconeEstrela{
+    background-color: #ffffff;
+    color: #D98D30;
+    width: 90px;
+    height: 70px;
+    border-radius: 5px;
+    
+  }
+  .boxEstrelaInterno {
+    display: flex;
+    background: #0367A6;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 200px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .tituloEstrela{
+    font-size: 20px;
+    color: #ffffff;
+  }
+  
+  .botaoResgatarMais{
+    background: #0367A6;
+    color: white;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+  } 
+  .botaoResgatarMais:hover{
+    transform: scale(1.02);
+  }
+  .botaoCuponsUsados{
+    background: #D98D30;
+    color: white;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+  }
+  .botaoCuponsUsados:hover{
+    transform: scale(1.02);
+  }
+  
+  .gradeCuponsUsados {
+    background: #E0E0E0;
+    padding: 60px;
+    border-radius: 10px;
+    max-width: 900px;
+    display:flexbox;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200px;
+    margin-right: 150px;
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+.h1{
+    color: #000;
+    align-items: left;
+    justify-content: left;
+    position: left;
+    margin-bottom: 30px;
+}
+
+.gridCupons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    width: 90%;
+    max-width: 600px;
+}
+
+.cupomDesabilitado {
+    background: #28a745;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    position: relative;
+}
+
+
+.tituloCupom {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.descricaoCupom {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.botaoCupomExpirado {
+    background: #ffffff;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.avisoUso {
+    background: #ffffff;
+    color: #000;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 11px;
+    position: absolute;
+    bottom: -20px;
+    right: 10px;
+}

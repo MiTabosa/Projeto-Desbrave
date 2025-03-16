@@ -5,7 +5,7 @@
   
   .imagemEsquerda {
     flex: 1;
-    background: url('../../assets/img-recupSenha.png') no-repeat center center;
+    background: url('/src/assets/img-recupSenha.png') no-repeat center center;
     background-size: cover;
   }
   

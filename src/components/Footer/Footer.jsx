@@ -10,7 +10,7 @@ const Footer = () => {
         {/* Coluna 1 - Logo e Descrição */}
         <div className="footer-section"> 
           <h3>Desbrave</h3>
-          <p>Desbrave é uma plataforma que visa promover<br/> o conhecimento e a cultura, oferecendo cursos, desafios e <br/> espaços de interação sobre diversas temáticas de Recife.</p>
+          <p className="resumoD">Desbrave é uma plataforma que visa promover<br/> o conhecimento e a cultura, oferecendo cursos, desafios e <br/> espaços de interação sobre diversas temáticas de Recife.</p>
         </div>
 
         {/* Coluna 2 - Contato */}
@@ -46,7 +46,7 @@ const Footer = () => {
       </div>
 
       <div className="vetor-verde">
-        <img src="./src/assets/trecoVerde.png" a />
+        <img src="./src/assets/VetorVerde.png" a />
       </div>
     </footer>
   );

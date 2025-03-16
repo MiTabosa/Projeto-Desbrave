@@ -1,7 +1,6 @@
 import React from 'react';
-import Navbar from '../components/Navbar/Navbar';
-// import Card from "../components/Card/Card";
-import Carrossel from '../components/Carrossel/Carrossel'; // Importe o Carrossel
+import Navbar from '../components/Navbar/NavbarLogado';
+import Carrossel from '../components/Carrossel/Carrossel';
 import MapSection from '../components/MapSection/MapSection';
 import Footer from '../components/Footer/Footer';
 import './Home.css';
@@ -16,7 +15,6 @@ import Button from '../components/Button/Button';
 const Home = () => {
   const navigate = useNavigate();
 
-  // Dados para os cards da seção "Descubra Suas Possibilidades"
   const cardsDescubra = [
     {
       title: "Fóruns Interativos",
@@ -60,7 +58,6 @@ const Home = () => {
     },
   ];
 
-  // Dados para os cards da seção "Lugares Imperdíveis"
   const cardsLugares = [
     {
       title: "Marco Zero",

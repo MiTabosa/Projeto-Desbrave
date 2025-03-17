@@ -109,7 +109,7 @@ const Home = () => {
           <h1>EXPLORE</h1>
           <h2>SUA HISTÓRIA</h2>
           <p>Aprenda, compartilhe e conecte-se com pessoas<br />que buscam expandir seus horizontes.</p>
-          <Button className="heroButton" text="Vamos Desbravar" color="#0367A5" size="medium" onClick={() => navigate("/login")} />
+          <Button className="heroButtonHome" text="Vamos Desbravar" color="#0367A5" size="medium" onClick={() => navigate("/login")} />
         </div>
         <img className="hero-image" src="./src/assets/imgPrincipal.png" alt="Imagem Principal" />
       </section>

@@ -19,6 +19,7 @@ html, body {
 }
 
 .hero {
+  position: relative;
   background: linear-gradient(to bottom, rgb(110, 186, 234), #ffffff);
   display: flex;
   align-items: center;
@@ -59,8 +60,14 @@ html, body {
   margin-bottom: 1.875rem;
 }
 
-.heroButton {
+.heroButtonHome {
   display: block;
+  position: absolute; /* Posicionamento absoluto */
+  bottom: 52px; /* Distância do fundo */
+  right: 52px; /* Distância da direita */
+  margin: 0; /* Garantir que não haja margens extras */
+  z-index: 10; /* Garantir que o botão fique acima de outros elementos */
+
 }
 
 .possibilidades {

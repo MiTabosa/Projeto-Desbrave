@@ -1,5 +1,4 @@
 .esqueceuSenhaContainer {
-<<<<<<< HEAD
   display: flex;
   height: 100vh;
 }
@@ -10,6 +9,7 @@
   background-position: center 30%; /* Ajusta o foco para 30% do topo */
   background-repeat: no-repeat;
 }
+
 
 .formDireita {
   flex: 1;
@@ -23,29 +23,6 @@
   background-color: #ffffff;
 }
 
-=======
-    display: flex;
-    height: 100vh;
-  }
-  
-  .imagemEsquerda {
-    flex: 1;
-    background: url('/src/assets/img-recupSenha.png') no-repeat center center;
-    background-size: cover;
-  }
-  
-  .formDireita {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 50px;
-    margin-bottom: 50px;
-    background-color: #ffffff;
-  }
->>>>>>> af3a7b578ef63876ad1ad72c82072552c0612756
   
   h2 {
     color: #0367A5;

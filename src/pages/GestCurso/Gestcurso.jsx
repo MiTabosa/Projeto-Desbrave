@@ -2,6 +2,7 @@ import { useState } from 'react';
 import data from '../../data/cursos.json';
 import Navbar from '../../components/Navbar/Navbar'
 import './GestCurso.css';
+import Button from '../../components/Button/Button';
 
 const GestCurso = () => {
     const [cursos, setCursos] = useState(data.cursos); 
@@ -123,7 +124,7 @@ const GestCurso = () => {
                         />
                     </div>
 
-                    <button type='submit'>Cadastrar Curso</button>
+                    <Button className="buttonGestão" text="Vamos Desbravar" color="#0367A5" size="medium" onClick={() => navigate("/login")} />
                 </form>
             </div>
 

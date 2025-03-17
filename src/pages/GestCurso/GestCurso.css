@@ -28,22 +28,6 @@
         width: 100%
         
     }
-    button{
-        background-color: var(--cor-principal);
-        border: none;
-        border-radius: 1rem;
-        color: white;
-        width: 150px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 1rem auto;
-        font-weight: 18px;
-    }
-    button:hover {
-        background-color: #0056b3;
-    }
   .lista-cursos {
     max-width: 1200px;
     margin: auto;

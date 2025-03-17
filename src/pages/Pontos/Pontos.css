@@ -12,6 +12,13 @@
   text-align: left;
   padding: 0 40px;
   max-width: 70%;
+  margin-top: 40px;
+}
+
+.pontos-text p{
+  max-width: none;
+  margin-top: 15px;
+  margin-bottom: 50px;
 }
 
 .paragrafo-mobile {

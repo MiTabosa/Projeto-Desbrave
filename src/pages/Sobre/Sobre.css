@@ -19,6 +19,7 @@
 .text-sobre {
     margin-left: 45px;
     margin-top: 50px;
+    max-width: none;
 }
 
 .text-m {

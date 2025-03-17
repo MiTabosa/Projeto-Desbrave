@@ -9,7 +9,7 @@ const EsqueceuSenha = () => {
 
   const handleSubmit = () => {
     
-    navigate("/recuperar-senha"); 
+    navigate("/recuperarSenha"); 
   };
 
   return (

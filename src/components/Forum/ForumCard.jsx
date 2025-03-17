@@ -11,7 +11,7 @@ const data = [
 
 const ForumCard = ({ id, title, messages, activeUsers }) => {
   return (
-    <Link to={`/forumChat`} className="card-link"> {/* Use o Link para navegar */}
+    <Link to={`/forumChat`} className="card-link">
       <div className="card-forum">
         <div className="card-left">
           <span className="fcard-icon">

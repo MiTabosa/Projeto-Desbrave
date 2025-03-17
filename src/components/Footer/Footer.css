@@ -9,7 +9,7 @@
   font-family: var(--fonte);
   display: flex;
   justify-content: space-between;
-  padding-left: 42px;
+  padding-left: 52px ;
   gap: 100px;
 }
 
@@ -25,7 +25,9 @@
   font-size: 14px;
   margin: 5px 0;
   color: #ffffff;
+  max-width: none;
 }
+
 
 
 .footer-section ul {
@@ -57,6 +59,8 @@
   display: flex;
   float: left;
   display: block;
+  margin: 0;
+  padding: 0;
 }
 
 .social-icons{

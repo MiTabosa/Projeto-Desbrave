@@ -1,46 +1,45 @@
+import React from "react";
 import "./CuponsUsados.css";
 import { MdStarOutline } from "react-icons/md";
-import { FaCopy } from "react-icons/fa6";
-import { PiGreaterThanThin } from "react-icons/pi";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import NavbarDashboard from "../../components/NavbarDashboard/NavbarDashboard";
 
 export default function CuponsUsados() {
   return (
     <Sidebar>
-      <div className="cupons-container">
+      <div className="containerCupons">
         <NavbarDashboard />
 
-        <h2 className="titulo">Meus Cupons</h2>
+        <h2 className="tituloPagina">Meus Cupons</h2>
 
-        <div className="estrela">
-          <div className="estrela-box">
-            <span><MdStarOutline  className="estrelaIcon"/></span>
-            <h1 className="estrelaH1">Estrelas</h1>
+        <div className="boxEstrela">
+          <div className="boxEstrelaInterno">
+            <span><MdStarOutline className="iconeEstrela" /></span>
+            <h1 className="tituloEstrela">Estrelas</h1>
             <span>20</span>
           </div>
-          <button className="botaoResgate">Resgatar Mais</button>
-          <button className="botaoUsados">Cupons Usados</button>
-          <div className="cuponsGrade">
-        <h2 className="titulo">Cupons Usados</h2>
-        <div className="cupons-grid">
-          <div className="cupom desabilitado">
-            <h3 className="cupom-titulo">5% OFF</h3>
-            <p className="cupom-descricao">COM APENAS 01 ESTRELAS</p>
-            <button className="botaoSaiba">⏩ EXPIRADO</button>
-            <div className="desVazio"></div>
-          </div>
-          <div className="cupom desabilitado">
-            <h3 className="cupom-titulo">10% OFF</h3>
-            <p className="cupom-descricao">COM APENAS 5 ESTRELAS</p>
-            <button className="botaoSaiba">⏩ EXPIRADO</button>
-            <div className="des10">Você já utilizou esse cupom.</div>
-            <div className="desVazio"></div>
-          </div>
-          </div>
+          <a href="/Scanner"><button className="botaoResgatarMais">Resgatar Mais</button></a>
+          <button className="botaoCuponsUsados">Cupons Usados</button>
+          <a href="/cupons" className="voltarLogin">↩ Voltar para meus cupons</a>
+        </div>
+        <div className="gradeCuponsUsados">
+          <h2 className="h1">Cupons Usados</h2>
+          <div className="gridCupons">
+            <div className="cupomDesabilitado">
+              <h3 className="tituloCupom">5% OFF</h3>
+              <p className="descricaoCupom">COM APENAS 01 ESTRELA</p>
+              <button className="botaoCupomExpirado">&gt;&gt; EXPIRADO</button>
+            </div>
+            <div className="cupomDesabilitado">
+              <h3 className="tituloCupom">10% OFF</h3>
+              <p className="descricaoCupom">COM APENAS 5 ESTRELAS</p>
+              <button className="botaoCupomExpirado">&gt;&gt; EXPIRADO</button>
+              <div className="avisoUso">Você já utilizou esse cupom.</div>
+            </div>
           </div>
         </div>
-        </div>
+      </div>
     </Sidebar>
-    )
-    }
+  );
+}
+

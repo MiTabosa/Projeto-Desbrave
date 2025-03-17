@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import data from './data/cursos.json';
+// import data from './data/cursos.json';
 import './GestCurso.css';
 
 const GestForm = () => {

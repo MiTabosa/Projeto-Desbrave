@@ -12,10 +12,10 @@ export default function Sidebar({children}) {
       <div className="dashboard-container">
         <aside className="sidebar">
           <ul>
-          <li className="sidebar-item" onClick={() => navigate("/")}>
+          <li className="sidebar-item" onClick={() => navigate("/dashboard")}>
               <MdOutlineDashboard className="icon" /> <span>Dashboard</span>
             </li>
-            <li className="sidebar-item" onClick={() => navigate("/cursos")}>
+            <li className="sidebar-item" onClick={() => navigate("/MeusCursos")}>
             <PiBookOpenTextThin className="icon" /> <span>Meus cursos</span>
             </li>
             <li className="sidebar-item" onClick={() => navigate("/certificados")}>

@@ -24,7 +24,7 @@ const NavbarLogado = () => {
   };
 
   const handlePerfil = () => {
-    navigate("/perfil");
+    navigate("/dashboard");
   };
 
   return (

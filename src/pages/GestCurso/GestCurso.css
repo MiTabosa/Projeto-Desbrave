@@ -1,14 +1,76 @@
 :root{
     --cor-principal:#0367A5;
+    --fundo-claro:#f9f9f9;
 }
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.formulario{
-    background-color: rgb(201, 199, 199);
-    border: 1rem solid black
-    ;
-    border-radius: 2rem;
+.formulario {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border: 1px solid gray;
+        border-radius: 2rem;
+        background-color:var(--fundo-claro);
+        width: 90%;
+        margin: auto;
+    }
+    .form-1 input, .form-1 select, .form-1 textarea {
+        display: flex;
+        font-size: 1rem;
+        border: 1px solid gray;
+        border-radius: 0.25rem;
+        height: 2rem;
+        padding-left:0.25rem ;
+        width: 100%
+        
+    }
+    button{
+        background-color: var(--cor-principal);
+        border: none;
+        border-radius: 1rem;
+        color: white;
+        width: 150px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem auto;
+        font-weight: 18px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+  .lista-cursos {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.lista-cursos h2 {
+   margin: 2rem ;
+    font-size: 2rem;
+}
+
+.lista-cursos ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    list-style: none;
+    gap: 1rem;
+    margin-top: 4.5rem;
+    text-align: left;
+}
+
+.lista-cursos li {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+.lista-cursos a{
+    color: var(--cor-principal);
 }

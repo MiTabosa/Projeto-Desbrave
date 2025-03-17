@@ -40,7 +40,7 @@ const RecuperarSenha = () => {
         <button className="confirm-button" onClick={handleSubmit}>
           Confirmar
         </button>
-        <a href="/esqueceu-senha"><p className="resend">Reenviar código</p></a>
+        <a href="/esqueceuSenha"><p className="resend">Reenviar código</p></a>
       </div>
       <div className="image-container">
         <div className="imagemEsquerda"></div>

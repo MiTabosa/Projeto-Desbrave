@@ -64,10 +64,11 @@ html, body {
 .heroButtonHome {
   display: block;
   position: absolute;
-  bottom: 52px; /* Distância do fundo */
-  right: 52px; /* Distância da direita */
+  bottom: 52px; 
+  right: 52px; 
   margin: 0;
-  z-index: 10; /* Garantir que o botão fique acima de outros elementos */
+  z-index: 10; 
+
 }
 
 .possibilidades {
@@ -79,7 +80,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: none; /*Linha para definir o tamanho da caixa do texto*/
+  max-width: none; 
 }
 
 .possibilidades h2 {
@@ -156,13 +157,23 @@ html, body {
   align-items: center;
 }
 
-/* .layout2-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 0 42px;
-  gap: 20px;
-} */
+.swiper-pagination {
+  position: relative;
+  margin-top: 20px;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  opacity: 1;
+  margin: 0 8px;
+  transition: background-color 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #0367A6; 
+}
 
 @media (max-width: 1200px) {
   .hero h1 {

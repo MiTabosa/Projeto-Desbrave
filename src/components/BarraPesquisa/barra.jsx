@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import "./barra.css";
 
-function Barra({ onSearch }) {
+function BarraPesquisa({ onSearch }) {
     const [query, setQuery] = useState("");
 
     const handleInputChange = (event) => {
@@ -10,12 +10,12 @@ function Barra({ onSearch }) {
     };
 
     const handleSearch = () => {
-        onSearch(query); 
+        onSearch(query); // Chama a função de pesquisa passando o termo
     };
 
     const handleKeyPress = (event) => {
         if (event.key === "Enter") {
-            handleSearch(); 
+            handleSearch(); // Pesquisa ao pressionar Enter
         }
     };
 
@@ -26,13 +26,13 @@ function Barra({ onSearch }) {
                 placeholder="Pesquisar..."
                 value={query}
                 onChange={handleInputChange}
-                onKeyPress={handleKeyPress} 
+                onKeyPress={handleKeyPress}
             />
             <button onClick={handleSearch} className="search-button">
-                <FaSearch className="search-icon" /> 
+                <FaSearch className="search-icon" />
             </button>
         </div>
     );
 }
 
-export default Barra;
+export default BarraPesquisa;

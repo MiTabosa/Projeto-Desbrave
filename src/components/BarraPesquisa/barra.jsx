@@ -10,12 +10,12 @@ function BarraPesquisa({ onSearch }) {
     };
 
     const handleSearch = () => {
-        onSearch(query); // Chama a função de pesquisa passando o termo
+        onSearch(query); 
     };
 
     const handleKeyPress = (event) => {
         if (event.key === "Enter") {
-            handleSearch(); // Pesquisa ao pressionar Enter
+            handleSearch(); 
         }
     };
 
@@ -28,8 +28,8 @@ function BarraPesquisa({ onSearch }) {
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
             />
-            <button onClick={handleSearch} className="search-button">
-                <FaSearch className="search-icon" />
+            <button onClick={handleSearch} className="search-buttonPesquisa">
+                <FaSearch className="search-iconPesquisa" />
             </button>
         </div>
     );

@@ -32,14 +32,14 @@ function DescricaoCurso() {
             <p><strong>Empresa:</strong> {curso.empresa}</p>
             <div className="button-container">
             <Button
-                className="heroButton"
+                className="heroButtonCursos"
                 text="Acessar Curso"
                 color="#0367A5"
                 size="medium"
                 onClick={handleExternalLinkClick} 
             />
             <Button
-                className="heroButton"
+                className="heroButtonCursos"
                 text="Voltar"
                 color="#52bf04" 
                 size="medium"

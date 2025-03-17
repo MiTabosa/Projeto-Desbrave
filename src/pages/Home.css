@@ -28,6 +28,7 @@ html, body {
 }
 
 .hero-text {
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -62,12 +63,11 @@ html, body {
 
 .heroButtonHome {
   display: block;
-  position: absolute; /* Posicionamento absoluto */
+  position: absolute;
   bottom: 52px; /* Distância do fundo */
   right: 52px; /* Distância da direita */
-  margin: 0; /* Garantir que não haja margens extras */
+  margin: 0;
   z-index: 10; /* Garantir que o botão fique acima de outros elementos */
-
 }
 
 .possibilidades {

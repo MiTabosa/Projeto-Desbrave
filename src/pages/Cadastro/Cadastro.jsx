@@ -1,6 +1,6 @@
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa6";
 import { FaGooglePlus } from "react-icons/fa";
+import img_conecta_recife from "../../assets/img_conecta_recife.png";
+import gov_br from "../../assets/gov_br.png";
 import "./Cadastro.css";
 import { Link } from "react-router-dom"; 
 
@@ -22,8 +22,8 @@ export default function Cadastro() {
         <button className="submit-button">Criar conta</button>
         <p className="connecText">Ou cadastre-se com:</p>
         <div className="socialIcons">
-          <FaFacebook className="FacebookIcon"/>
-          <FaInstagram className="InstagramIcon"/>
+          <img src= {img_conecta_recife} alt="Conecta Recife" className="socialImg"/>
+          <img src= {gov_br} alt="GOVBr" className="socialImg2"/>
           <FaGooglePlus className="GoogleIcon"/>
         </div>
       </div>

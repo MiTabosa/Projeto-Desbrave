@@ -93,14 +93,32 @@
     transition: 0.3s;
   }
   
-  .FacebookIcon {
-    color: #0367A5;
+  .socialImg {
+    display: block;
+    width: 35px; 
+    height: 35px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
   }
   
-  .InstagramIcon {
-    color: #c32aa3;
+  .socialImg:hover {
+    transform: scale(1.2);
+  }
+
+  .socialImg2 {
+    display: block;
+    width: 55px;
+    height: 35px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
   }
   
+  .socialImg2:hover {
+    transform: scale(1.2);
+  }
+  .GoogleIcon {
+    color: #db4437;
+  }
   .GoogleIcon {
     color: #db4437;
   }

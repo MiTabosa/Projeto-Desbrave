@@ -193,25 +193,27 @@ html, body {
   .hero {
     flex-direction: column;
     text-align: center;
-    padding: 10px;
+    padding: 0;
   }
 
   .hero-text {
     padding: 0 1.25rem;
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
   }
 
   .hero h1 {
+    margin-top: 10px;
     font-size: 3rem;
+    text-align: left;
   }
 
   .hero h2 {
     font-size: 4rem;
+    text-align: center;
   }
 
   .hero p {
-    font-size: 1rem;
-    text-align: center;
     display: block;
   }
 

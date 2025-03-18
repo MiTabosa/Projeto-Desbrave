@@ -46,6 +46,7 @@ const GestCurso = () => {
 
         console.log('Curso cadastrado:', novoCurso);
     };
+    // const exclude = ()
 
     return (
         <div className='gestao-cursos'>
@@ -140,6 +141,8 @@ const GestCurso = () => {
                             <p><strong>Carga Horária:</strong> {curso.cargaHoraria}</p>
                             <p><strong>URL Externa:</strong> <a href={curso.urlExterna} target='_blank' rel='noopener noreferrer'>{curso.urlExterna}</a></p>
                             <p><strong>Empresa:</strong> {curso.empresa}</p>
+                            {/* <button onClick={}>Alterar</button>
+                            <button onClick={exclude}>Excluir</button> */}
                         </li>
                     ))}
                 </ul>

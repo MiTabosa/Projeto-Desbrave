@@ -11,6 +11,7 @@ const data = [
 
 const ForumCard = ({ id, title, messages, activeUsers }) => {
   return (
+
     <Link to={`/forumChat`} className="card-link">
       <div className="card-forum">
         <div className="card-left">
@@ -26,7 +27,7 @@ const ForumCard = ({ id, title, messages, activeUsers }) => {
             </p>
             <p className="valor">{messages}</p>
           </div>
-          <div className="card-box">
+          <div className="card-box-1">
             <p>
               <strong>Usuários Ativos</strong>
             </p>

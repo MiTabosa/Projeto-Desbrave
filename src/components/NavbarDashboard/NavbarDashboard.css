@@ -1,20 +1,51 @@
+.iconperson {
+  width: 70px;
+  height: 70px;
+  color: #808080;
+}
 
-  .iconperson{
-    width: 70px;
-    height: 70px;
-    color: #808080;
-  }
+.setaBaixo {
+  color: #808080;
+  width: 25px;
+  height: 25px;
 
-  .setaBaixo{
-    color: #808080;
-  }
-  .usuario {
-    flex: 1;
-    padding: 20px;
-  }
-  .user {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: end;
-    }
+}
+.usuario {
+  flex: 1;
+  padding: 20px;
+}
+.user {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: end;
+}
+
+.menu-drop {
+  width: 200px;
+  height: 130px;
+  position: absolute;
+  top: 120px;
+  right: 110px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.menu-drop button {
+  background: none;
+  border: none;
+  padding: 2px 16px;
+  font-size: 14px;
+  color: #0367A5;
+  cursor: pointer;
+  text-align: left;
+}
+
+.menu-drop button:hover {
+  background: #f0f0f0;
+}

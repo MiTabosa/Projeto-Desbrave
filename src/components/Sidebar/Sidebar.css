@@ -38,16 +38,18 @@
   display: inline-flex;
   align-items: center;
   padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-.sidebar-item-active {
+ .sidebar-item-active {
   display: flex;
   align-items: center; 
   background-color: #35A150;
   color: white;
   border-radius: 5px;
   padding: 10px;
-}
+} 
 
 .sidebar-item-active .iconTickt {
   width: 24px; 

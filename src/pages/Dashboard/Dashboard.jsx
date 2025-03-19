@@ -107,7 +107,7 @@ const Dashboard = () => {
                 </button>
               </div>
               <div className="info-general">
-                <div className="info-card info-card-courses">
+                <div className="info-card-dashboard info-card-courses">
                   <div className="icon-number">
                     <div className="icon-container">
                       <RiGraduationCapLine className="icon-general" />
@@ -119,7 +119,7 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div className="info-card info-card-star">
+                <div className="info-card-dashboard info-card-star">
                   <div className="icon-number">
                     <div className="icon-container">
                       <CiStar className="icon-general" />

@@ -20,7 +20,7 @@ const RecuperarSenha = () => {
   };
 
   return (
-    <div className="container">
+    <div className="containerSenha">
       <div className="form-container-senha">
         <h2 className="title">Recupere sua senha</h2>
         <p className="subtitle">

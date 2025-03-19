@@ -3,22 +3,39 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .footer {
-  background-color: #0367A5;
+  background-color: #0367a5;
   color: white;
   font-family: var(--fonte);
   display: flex;
-  justify-content: space-between;
-  padding-left: 52px ;
-  gap: 100px;
+  flex-direction: column; 
+  padding-left: 52px;
+  gap: 30px;
 }
 
+.resumoD {
+  max-width: 1200px;
+}
+
+.footer-logo-section {
+  margin-top: 30px;
+}
+
+.footer-content {
+  display: flex;
+  gap: 100px; 
+}
+
+.footer-contact-section,
+.footer-explore-section {
+  flex: 1; 
+}
 
 .footer-section h3 {
   font-size: 20px;
   margin-bottom: 15px;
   color: #ffffff;
-  gap: 30px;
 }
 
 .footer-section p {
@@ -27,8 +44,6 @@
   color: #ffffff;
   max-width: none;
 }
-
-
 
 .footer-section ul {
   list-style: none;
@@ -39,63 +54,46 @@
   margin: 8px 0;
 }
 
-
-.footer-container1{
-  display: flex;
-  flex-direction: column;
-  margin-top: 30px;
-  gap: 30px;
-}
-
-.footer-container2{
-  margin-top: 30px;
-}
-
-.redes-sociais a{
-  background-color: #ffffff;
-}
-
 .vetor-verde {
   display: flex;
   float: left;
-  display: block;
   margin: 0;
   padding: 0;
 }
 
-.social-icons{
+.social-icons {
   margin-top: 20px;
   margin-bottom: 30px;
   display: flex;
-  gap:10px;
+  gap: 10px;
 }
 
 .social-icons a {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px; 
+  width: 40px;
   height: 40px;
-  background-color: #ffffff; 
-  border-radius: 50%; 
+  background-color: #ffffff;
+  border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
   text-decoration: none;
 }
 
 .social-icons a:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .social-icons a svg {
-  font-size: 24px; 
+  font-size: 24px;
   color: #000000;
   transition: color 0.3s ease;
 }
 
 .social-icons a:hover svg {
-  color: #0367A5;
+  color: #0367a5;
 }
 
 @media (max-width: 768px) {
@@ -104,17 +102,24 @@
     gap: 20px;
   }
 
-  .footer-container1 {
+  .footer-logo-section {
     display: none; 
   }
 
-  .footer-container2 {
+  .footer-content {
     flex-direction: column; 
     gap: 20px;
+  }
+
+  .footer-explore-section {
+    order: 1; 
+  }
+
+  .footer-contact-section {
+    order: 2; 
   }
 
   .vetor-verde {
     display: none; 
   }
-
 }

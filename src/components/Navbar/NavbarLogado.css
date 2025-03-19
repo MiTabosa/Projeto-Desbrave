@@ -98,13 +98,15 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  padding: 10px;
   z-index: 1000;
 }
 
 .dropdown-menu button {
   background: none;
   border: none;
-  padding: 2px 16px;
+  padding: 8px 16px;
   font-size: 14px;
   color: #0367A5;
   cursor: pointer;

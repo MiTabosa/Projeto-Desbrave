@@ -38,3 +38,25 @@
   margin-top: auto; 
   padding-top: 10px; 
 }
+
+@media (max-width: 480px) {
+  .cardCurso {
+    padding: 12px; 
+  }
+
+  .cardCurso h2 {
+    font-size: 1.2rem; 
+  }
+
+  .cardCurso p {
+    font-size: 0.85rem; 
+  }
+
+  .cursoCategoria {
+    font-size: 0.85rem; 
+  }
+
+  .cardCurso .cargaHoraria {
+    font-size: 0.85rem; 
+  }
+}

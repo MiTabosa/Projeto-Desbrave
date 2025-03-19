@@ -1,4 +1,4 @@
-.container {
+.containerSenha{
     display: flex;
     height: 100vh;
   }
@@ -80,7 +80,7 @@
   .imagemEsquerda{
     width: 100%;
     height: 100%;
-    background: url('/src/assets/img-recupSenha.png') no-repeat center center;
+    background: url('/src/assets/img-senha.png') no-repeat center center;
     background-size: cover;
     display: flex;
     flex-direction: column;

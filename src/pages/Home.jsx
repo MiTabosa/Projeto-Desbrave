@@ -119,7 +119,7 @@ const Home = () => {
           <h2>Descubra Suas Possibilidades</h2>
           <p>Embarque em uma jornada educacional única, mergulhando na história, cultura e inovação de Recife.</p>
         </div>
-        <Carrossel cards={cardsDescubra} />
+        <Carrossel cards={cardsDescubra} cardtipo="CardCurso"/>
       </section>
 
       <section className="explore">
@@ -140,8 +140,7 @@ const Home = () => {
           <h2>Lugares Imperdíveis</h2>
           <p>Esses lugares têm muito para contar... toque e descubra!</p>
         </div>
-        {/* Substitua o card-containerLocais pelo Carrossel */}
-        <Carrossel cards={cardsLugares} />
+        <Carrossel cards={cardsLugares} cardT="CipoardCurso" />
       </section>
       <Footer />
     </div>

@@ -37,14 +37,14 @@
     color: #0367A5;
   }
 
-  .empresa{
+  .empresaCurso{
     display: flex;
     margin-top: 70px;
     padding: 0 40px;
     gap: 300px;
   }
 
-  .empresa p{
+  .empresaCurso p{
     margin-top: 50px;
   }
   
@@ -55,21 +55,55 @@
    
     
   }
-  
-  
-  /* Estilos para dispositivos móveis */
-  @media only screen and (max-width: 767px) {
-    .descricao-curso-container {
-      max-width: 100%;
-      padding: 2rem 1rem;
-    }
-  
-    .descricao-curso-container h1 {
-      font-size: 2rem;
-    }
-  
-    .descricao-curso-container p {
-      font-size: 1rem;
-    }
-  
+
+  .pontos-image {
+    width: 300px;
+    height: auto;
+    bottom: 0;
+    right: 0;
   }
+  
+    @media only screen and (max-width: 767px) {
+      .descricao-curso-container {
+        max-width: 100%;
+        padding: 2rem 1rem;
+        overflow: hidden;
+      }
+    
+      .descricao-curso-container h1 {
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+      }
+    
+      .descricao-curso-container p {
+        font-size: 0.8rem;
+      }
+    
+      .pontos-image {
+        width: 220px;
+      }
+    
+      .empresaCurso {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+        padding: 0 ;
+      }
+
+      .empresaCurso p{
+        margin-top: 10px;
+       padding: 0 2.5rem;
+      }
+    
+      .button-container {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+      }
+    
+      .button-container button {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.9rem;
+      }
+    }

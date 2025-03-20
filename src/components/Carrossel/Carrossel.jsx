@@ -4,8 +4,9 @@ import { Pagination } from 'swiper/modules';
 import 'swiper/swiper-bundle.css'; 
 import 'swiper/css/pagination';
 import Card from '../Card/Card'; 
+import CardCurso from '../CardCurso/CardCurso';
 
-const Carrossel = ({ cards }) => {
+const Carrossel = ({ cards, cardTipo }) => {
   return (
     <div className="carrossel-container">
       <Swiper
@@ -33,7 +34,11 @@ const Carrossel = ({ cards }) => {
       >
         {cards.map((card, index) => (
           <SwiperSlide key={index}>
-            <Card {...card} />
+           {cardTipo === 'CardCurso' ? (
+              <CardCurso curso={card} /> 
+            ) : (
+              <Card {...card} /> 
+            )}
           </SwiperSlide>
         ))}
       </Swiper>

@@ -28,7 +28,7 @@ function DescricaoCurso() {
             <h1>{curso.nome}</h1>
             <p><strong>Descrição:</strong> {curso.descricao}</p>
         </div>
-        <div className='empresa'>
+        <div className='empresaCurso'>
             <p><strong>Empresa:</strong> {curso.empresa}</p>
             <div className="button-container">
             <Button

@@ -20,6 +20,20 @@ function Scanner() {
     hasInitialized.current = true;
   
     console.log("Inicializando scanner...");
+
+    function ajustarReader() {
+      const readerElement = document.getElementById(readerId);
+      if (readerElement) {
+        readerElement.style.width = window.innerWidth + "px";
+        readerElement.style.height = window.innerHeight + "px";
+      }
+    }
+
+    ajustarReader(); // garante reader já fique no tamanho certo assim que a página carrega
+
+    window.addEventListener("resize", ajustarReader);
+
+
   
     setTimeout(() => {
       const readerElement = document.getElementById(readerId);
@@ -70,6 +84,7 @@ function Scanner() {
           console.warn("Erro ao limpar scanner:", err);
         }
       }
+      window.removeEventListener("resize", ajustarReader);
     };
   }, [scanResult]);
 

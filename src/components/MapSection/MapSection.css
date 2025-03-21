@@ -54,6 +54,24 @@
   margin: 0;
 }
 
+.map-simples .popup-content {
+  width: auto;
+  height: auto;
+  padding: 5px;
+}
+
+.map-simples .popup-title {
+  font-size: 12px;
+}
+
+.map-simples .popup-img {
+  display: none; 
+}
+
+.map-simples .popup-desc {
+  display: none; 
+}
+
 
 @media only screen and (max-width: 767px) {
   .map-section {

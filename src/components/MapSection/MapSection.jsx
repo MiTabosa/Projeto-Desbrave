@@ -24,13 +24,10 @@ const greenIcon = new L.Icon({
 });
 
 const MapSection = ({ tipo }) => {
-  const [pontosLidos, setPontosLidos] = useState([]);
   const navigate = useNavigate(); 
 
-  useEffect(() => {
-    const lidos = JSON.parse(localStorage.getItem("pontosLidos")) || [];
-    setPontosLidos(lidos);
-  }, []);
+  // Apenas carrega os pontos lidos se for o mapa detalhado
+  const [pontosLidos, setPontosLidos] = useState(tipo === "map-detalhado" ? JSON.parse(localStorage.getItem("pontosLidos")) || [] : []);
 
   const handleQRCodeScan = (pontoId) => {
     navigate("/paginaInicial"); 
@@ -61,23 +58,26 @@ const MapSection = ({ tipo }) => {
           attribution='&copy; OpenStreetMap contributors'
         />
         {pontos.map((ponto) => {
-          const foiEscaneado = pontosLidos.includes(ponto.id);
+          // No mapa simples, todos os ícones são azuis
+          const foiEscaneado = tipo === "map-detalhado" && pontosLidos.includes(ponto.id);
+          const icone = tipo === "map-detalhado" ? (foiEscaneado ? greenIcon : blueIcon) : blueIcon;
+
           return (
-            <Marker
-              key={ponto.id}
-              position={ponto.coords}
-              icon={foiEscaneado ? greenIcon : blueIcon}
-            >
+            <Marker key={ponto.id} position={ponto.coords} icon={icone}>
               <Popup>
                 <div className="popup-content">
                   <b className="popup-title">{ponto.nome}</b>
-                  {ponto.imagem && <img className="popup-img" src={ponto.imagem} alt={ponto.nome} width="150px" />}
-                  {ponto.descricao && <p className="popup-desc">{ponto.descricao}</p>}
-                  <p className={foiEscaneado ? "escaneado" : "nao-escaneado"}>
-                    {foiEscaneado ? "✅ QR Code escaneado" : "❌ QR Code não escaneado"}
-                  </p>
-                  {!foiEscaneado && (
-                    <button onClick={() => handleQRCodeScan(ponto.id)}>Escanear QR Code</button>
+                  {tipo === "map-detalhado" && (
+                    <>
+                      {ponto.imagem && <img className="popup-img" src={ponto.imagem} alt={ponto.nome} width="150px" />}
+                      {ponto.descricao && <p className="popup-desc">{ponto.descricao}</p>}
+                      <p className={foiEscaneado ? "escaneado" : "nao-escaneado"}>
+                        {foiEscaneado ? "✅ QR Code escaneado" : "❌ QR Code não escaneado"}
+                      </p>
+                      {!foiEscaneado && (
+                        <button onClick={() => handleQRCodeScan(ponto.id)}>Escanear QR Code</button>
+                      )}
+                    </>
                   )}
                 </div>
               </Popup>

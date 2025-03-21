@@ -20,3 +20,19 @@
     margin-left: 42px;
     margin-top: 10px;
 }
+
+/* Responsivo */
+
+@media (max-width: 768px) {
+    .Títulos {
+        font-size: 20px;
+    }
+
+    .Subtítulos {
+        font-size: 15px;
+    }
+
+    .textos {
+        font-size: 12px;
+    }
+}

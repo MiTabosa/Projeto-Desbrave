@@ -57,7 +57,7 @@
 
 @media only screen and (max-width: 767px) {
   .map-section {
-    padding: 16px 0; /* Reduz o padding para mobile */
+    padding: 16px 0; 
   }
 
   .map-container {

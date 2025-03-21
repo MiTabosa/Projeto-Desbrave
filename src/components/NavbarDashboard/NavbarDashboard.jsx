@@ -16,8 +16,8 @@ export default function NavbarDashboard() {
               <div className="menu-drop">
                 <button onClick={() => navigate("/#")}>Início</button>
                 <button onClick={() => navigate("/mapa")}>Mapa</button>
-                <button onClick={() => navigate("/sobre")}>Parceiros</button>
-                <button onClick={() => navigate("/parceiros")}>Sobre</button>
+                <button onClick={() => navigate("/parceiros")}>Parceiros</button>
+                <button onClick={() => navigate("/sobre")}>Sobre</button>
 
 
 

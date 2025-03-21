@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
@@ -26,6 +26,15 @@ const Dashboard = () => {
   const [name, setName] = useState("Milena");
   const [subName, setSubName] = useState("Tabosa");
   const [subtitle, setSubtitle] = useState("Professora de História");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // troca de nomes, sobrenome e descrição
   const nameRef = useRef(null);
@@ -54,7 +63,7 @@ const Dashboard = () => {
     estrelas: 1,
   });
 
-  // filtros de cursos iniciados 
+  // filtros de cursos iniciados
   const [filtro, setFiltro] = useState("todos");
 
   const cursos = [
@@ -77,8 +86,6 @@ const Dashboard = () => {
       progresso: 100,
     },
   ];
-
-
 
   const cursosFiltrados = cursos.filter(
     (curso) => filtro === "todos" || curso.status === filtro
@@ -106,36 +113,37 @@ const Dashboard = () => {
                   Ir para fórum <BsArrow90DegRight />
                 </button>
               </div>
-              <div className="info-general">
-                <div className="info-card-dashboard info-card-courses">
-                  <div className="icon-number">
-                    <div className="icon-container">
-                      <RiGraduationCapLine className="icon-general" />
-                    </div>
-                    <div className="number-text">
-                      <p className="number-general">{infoGeral.cursos}</p>
-                      <p className="label-general">Cursos</p>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="info-card-dashboard info-card-star">
-                  <div className="icon-number">
-                    <div className="icon-container">
-                      <CiStar className="icon-general" />
+              {/* Exibir os cartões apenas no desktop */}
+              {!isMobile && (
+                <div className="info-general">
+                  <div className="info-card-dashboard info-card-courses">
+                    <div className="icon-number">
+                      <div className="icon-container">
+                        <RiGraduationCapLine className="icon-general" />
+                      </div>
+                      <div className="number-text">
+                        <p className="number-general">{infoGeral.cursos}</p>
+                        <p className="label-general">Cursos</p>
+                      </div>
                     </div>
-                    <div className="number-text">
-                      <p className="number-general">
-                        {/*adicionar um 0 nos numeros */}
-                           {infoGeral.estrelas < 10  
-                          ? `0${infoGeral.estrelas}`
-                          : infoGeral.estrelas}
-                      </p>
-                      <p className="label-general">Estrelas</p>
+                  </div>
+
+                  <div className="info-card-dashboard info-card-star">
+                    <div className="icon-number">
+                      <div className="icon-container">
+                        <CiStar className="icon-general" />
+                      </div>
+                      <div className="number-text">
+                        <p className="number-general">
+                          {infoGeral.estrelas < 10 ? `0${infoGeral.estrelas}` : infoGeral.estrelas}
+                        </p>
+                        <p className="label-general">Estrelas</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Área de Informações do Usuário */}
@@ -147,58 +155,47 @@ const Dashboard = () => {
               <div className="title-profile">
                 {editing ? (
                   <div>
-                    <input
-                      ref={nameRef}
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      onBlur={handleEnter}
-                      className="input-profile"
-                      autoFocus
-                    />
-                    <input
-                      ref={SubNameRef}
-                      type="text"
-                      value={subName}
-                      onChange={(e) => setSubName(e.target.value)}
-                      onBlur={handleEnter}
-                      className="input-profile"
-                    />
-                    <input
-                      ref={SubRef}
-                      type="text"
-                      value={subtitle}
-                      onChange={(e) => setSubtitle(e.target.value)}
-                      onBlur={handleEnter}
-                      className="input-profile"
-                    />
+                    <input ref={nameRef} type="text" value={name} onChange={(e) => setName(e.target.value)} onBlur={handleEnter} className="input-profile" autoFocus />
+                    <input ref={SubNameRef} type="text" value={subName} onChange={(e) => setSubName(e.target.value)} onBlur={handleEnter} className="input-profile" />
+                    <input ref={SubRef} type="text" value={subtitle} onChange={(e) => setSubtitle(e.target.value)} onBlur={handleEnter} className="input-profile" />
                   </div>
                 ) : (
                   <>
-                    <>
-                      <h2>
-                        <span className="name-dashboard">{name}</span>
-                        <span className="subname-dashboard"> {subName}</span>
-                      </h2>
-                      <p className="subtitle-dashboard">{subtitle}</p>
-                    </>
-                    <FaPencil
-                      onClick={editClick}
-                      style={{ cursor: "pointer" }}
-                    />
+                    <h2>
+                      <span className="name-dashboard">{name}</span>
+                      <span className="subname-dashboard"> {subName}</span>
+                    </h2>
+                    <p className="subtitle-dashboard">{subtitle}</p>
+                    <FaPencil onClick={editClick} style={{ cursor: "pointer" }} />
                   </>
                 )}
               </div>
 
+              {/* Renderiza os cartões apenas no mobile */}
+              {isMobile && (
+                <div className="info-general">
+                  <div className="info-card-dashboard info-card-courses">
+                    <RiGraduationCapLine className="icon-general" />
+                    <p className="number-general">{infoGeral.cursos}</p>
+                    <p className="label-general">Cursos</p>
+                  </div>
+
+                  <div className="info-card-dashboard info-card-star">
+                    <CiStar className="icon-general" />
+                    <p className="number-general">
+                      {infoGeral.estrelas < 10 ? `0${infoGeral.estrelas}` : infoGeral.estrelas}
+                    </p>
+                    <p className="label-general">Estrelas</p>
+                  </div>
+                </div>
+              )}
+
               <div className="profile-info">
                 <p>
                   <RiLockPasswordLine />
-                  <a onClick={() => navigate("/esqueceuSenha")}>
-                    Alterar senha
-                  </a>
+                  <a onClick={() => navigate("/esqueceuSenha")}>Alterar senha</a>
                 </p>
               </div>
-
               <div className="profile-terms">
                 <a onClick={() => navigate("/diretrizes")}>
                   <GoCheckCircle /> Termos de uso e segurança

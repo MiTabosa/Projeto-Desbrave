@@ -49,3 +49,9 @@
 .menu-drop button:hover {
   background: #f0f0f0;
 }
+
+@media (max-width: 768px) {
+  .usuario {
+    display: none;
+  }
+}

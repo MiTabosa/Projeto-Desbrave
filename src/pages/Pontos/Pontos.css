@@ -158,7 +158,7 @@
   margin-top: 5px;
 }
 
-@media only screen and (min-width: 300px) and (max-width: 767px) {
+@media (max-width: 768px) {
 
   /* pagina inicial */
   .paragrafo-desktop {
@@ -184,10 +184,11 @@
     width: 220px;
   }
 
-  .button-init {
-    z-index: 10;
+.button-init {
+    z-index: 100;
     position: relative;
-  }
+  } 
+
 
 
 /* scanner  */
@@ -195,8 +196,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw; /* Ocupa 100% da largura */
-  height: 100vh; /* Ocupa 100% da altura */
+  width: 100vw; 
+  height: 100vh; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -242,7 +243,7 @@
     margin-top: 40px;
   } 
 
-  /* unvalido */
+  /* invalido */
 
   .button-container-erro {
     flex-direction: column;
@@ -250,6 +251,5 @@
     gap: 30px;
   }
 
-  
 
 } 

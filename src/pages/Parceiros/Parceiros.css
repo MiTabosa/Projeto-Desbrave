@@ -34,7 +34,7 @@
 }
 
 .seja-parceiro {
-    width: 250px;
+    width: 450px;
     padding: 20px;
     background: white;
     box-shadow: 0px 4px 10px #484d50;
@@ -43,11 +43,10 @@
     border: 2px solid #0367A5;
     margin-top: 120px;
     margin-right: 300px;
-
 }
 
 .seja-nosso-parceiro {
-    font-size: 16px;
+    font-size: 24px;
     color: #0367A5;
     margin-bottom: 10px;
 }
@@ -62,6 +61,7 @@
     font-size: 13px;
     margin-bottom: 20px;
     margin-top: -10px;
+    
 }
 
 .saiba-mais-btn {
@@ -93,6 +93,37 @@
 .info-saiba-mais {
     font-size: 14px;
     line-height: 1.5;
+}
+
+/* Responsivo */
+
+@media (max-width: 768px) {
+    .conteiner-parceiros {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .lista-parceiros {
+        gap: 25px;
+    }
+
+    .parceiros-logo {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .seja-parceiro {
+        width: 100%;
+        padding: 15px;
+        margin-right: 0;
+    }
+
+    .saiba-mais-btn {
+        font-size: 14px;
+        padding: 10px;
+        outline: none;
+    }
 }
 
 

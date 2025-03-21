@@ -127,3 +127,28 @@
     font-weight: bold;
     cursor: pointer; 
 }
+
+
+/* Responsivo */
+
+@media (max-width: 768px) {
+    .text-titulo-sobre {
+        font-size: 40px;
+        margin-bottom: -15px;
+    }
+
+    .text-subtitulo-sobre {
+        font-size: 25px;
+        line-height: 40px;
+        margin-bottom: -15px;
+    }
+
+    .text-sobre {
+        margin-top: 20px;
+        font-size: 12px;
+    }
+
+    .cards-container-sobre {
+        justify-content: center;
+    }
+}

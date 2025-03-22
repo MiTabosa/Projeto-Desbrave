@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import data from '../../data/cursos.json';
-import Navbar from '../../components/Navbar/Navbar'
+import Navbar from '../../components/Navbar/Navbar';
 import './GestCurso.css';
 import Button from '../../components/Button/Button';
 
 const GestCurso = () => {
-    const [cursos, setCursos] = useState(data.cursos); 
+    const [cursos, setCursos] = useState(data.cursos);
     const [formData, setFormData] = useState({
         nome: '',
         descricao: '',
@@ -14,6 +14,15 @@ const GestCurso = () => {
         urlExterna: '',
         empresa: ''
     });
+
+    useEffect(() => {
+        localStorage.setItem('cursos', JSON.stringify(cursos));
+    }, [cursos]);
+
+    useEffect(() => {
+        const savedCursos = JSON.parse(localStorage.getItem('cursos')) || [];
+        setCursos(savedCursos);
+    }, []);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -28,12 +37,25 @@ const GestCurso = () => {
             return;
         }
 
-        const novoCurso = {
-            id: cursos.length + 1,
-            ...formData
-        };
+        if (formData.urlExterna && !formData.urlExterna.startsWith('http')) {
+            alert('A URL externa deve começar com "http" ou "https".');
+            return;
+        }
 
-        setCursos([...cursos, novoCurso]);
+        if (formData.id) {
+            // Atualizar 
+            const updatedCursos = cursos.map(curso =>
+                curso.id === formData.id ? { ...formData } : curso
+            );
+            setCursos(updatedCursos);
+        } else {
+            // Adicionar novo curso
+            const novoCurso = {
+                id: cursos.length + 1,
+                ...formData
+            };
+            setCursos([...cursos, novoCurso]);
+        }
 
         setFormData({
             nome: '',
@@ -41,12 +63,26 @@ const GestCurso = () => {
             categoria: '',
             cargaHoraria: '',
             urlExterna: '',
-            empresa: '' 
+            empresa: ''
         });
-
-        console.log('Curso cadastrado:', novoCurso);
     };
-    // const exclude = ()
+
+    const excluir = (id) => {
+        const updatedCursos = cursos.filter(curso => curso.id !== id);
+        setCursos(updatedCursos);
+    };
+
+    const editar = (curso) => {
+        setFormData({
+            id: curso.id,
+            nome: curso.nome,
+            descricao: curso.descricao,
+            categoria: curso.categoria,
+            cargaHoraria: curso.cargaHoraria,
+            urlExterna: curso.urlExterna,
+            empresa: curso.empresa
+        });
+    };
 
     return (
         <div className='gestao-cursos'>
@@ -121,15 +157,15 @@ const GestCurso = () => {
                             name='empresa'
                             value={formData.empresa}
                             onChange={handleInputChange}
-                            required 
+                            required
                         />
                     </div>
-
-                    <Button className="buttonGestão" text="Vamos Desbravar" color="#0367A5" size="medium" onClick={() => navigate("/login")} />
+                    <div className='buttonContainerForm'>
+                        <Button className="buttonGestão" text="Cadastrar" color="#0367A5" size="medium" onClick={() => navigate("/login")} />
+                    </div>
                 </form>
             </div>
 
-            {/* Lista de Cursos Cadastrados */}
             <div className='lista-cursos'>
                 <h2>Cursos Cadastrados</h2>
                 <ul>
@@ -141,8 +177,10 @@ const GestCurso = () => {
                             <p><strong>Carga Horária:</strong> {curso.cargaHoraria}</p>
                             <p><strong>URL Externa:</strong> <a href={curso.urlExterna} target='_blank' rel='noopener noreferrer'>{curso.urlExterna}</a></p>
                             <p><strong>Empresa:</strong> {curso.empresa}</p>
-                            {/* <button onClick={}>Alterar</button>
-                            <button onClick={exclude}>Excluir</button> */}
+                            <div className='buttonEdicao'>
+                                <button className='buttonEditar' onClick={() => editar(curso)}>Editar</button>
+                                <button className='buttonExcluir' onClick={() => excluir(curso.id)}>Excluir</button>
+                            </div>
                         </li>
                     ))}
                 </ul>

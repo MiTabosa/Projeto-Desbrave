@@ -1,4 +1,4 @@
-/* seção topo */
+/* Seção superior */
 .secao-superior {
   display: flex;
   justify-content: space-between;
@@ -11,12 +11,12 @@
 .titulo-dashboard {
   margin: 0;
   font-size: 40px;
-  color: #ffff;
+  color: #ffffff;
 }
 
 .paragrafo-dashboard {
   font-size: 16px;
-  color: #ffff;
+  color: #ffffff;
 }
 
 .cabecalho-painel {
@@ -48,7 +48,7 @@
   gap: 8px;
   background-color: #35a150;
   border: none;
-  color: #ffff;
+  color: #ffffff;
   padding: 5px 15px;
   border-radius: 6px;
   font-size: 14px;
@@ -58,7 +58,7 @@
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* CURSOS E ESTRELAS */
+/* Cartões Cursos e Estrelas - desktop */
 .info-geral {
   display: flex;
   gap: 16px;
@@ -79,27 +79,27 @@
   font-weight: bold;
 }
 
-.info-card-courses {
+.info-card-curso {
   background: linear-gradient(to right, #d4a017, #c69715);
 }
 
-.info-card-star {
+.info-card-estrela {
   background: linear-gradient(to right, #0a5fa3, #08578f);
 }
 
-.icon-number {
+.icone-numero {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.number-text {
+.texto-numero {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.icon-container {
+.icone-container {
   width: 50px;
   height: 45px;
   background-color: white;
@@ -109,12 +109,12 @@
   justify-content: center;
 }
 
-.icon-general {
+.icone-geral {
   font-size: 40px;
   color: #c69715;
 }
 
-.number-general {
+.numero-geral {
   font-size: 25px;
   font-weight: bold;
   margin: 0;
@@ -123,13 +123,23 @@
   margin-top: 10px;
 }
 
-.label-general {
+.paragrafo-geral {
   font-size: 16px;
   font-weight: normal;
   color: white;
 }
 
-.init-Courses {
+/* Área de cursos */
+.area-cursos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.inicio-curso {
   flex: 3;
   background-color: #ffffff;
   border-radius: 6px;
@@ -141,7 +151,7 @@
   flex-direction: column;
 }
 
-.header-courses {
+.cabecalho-curso {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -150,12 +160,11 @@
   color: #0367a5;
 }
 
-.courses-paragraph {
+.titulo-cabecalho {
   color: #0367a5;
 }
 
-/* filtro */
-
+/* Filtro */
 .filtro-container {
   display: flex;
   align-items: center;
@@ -176,15 +185,14 @@
   outline: none;
 }
 
-/* cursos */
-
-.container-courses {
+/* Cartões de curso */
+.container-curso-dashboard {
   display: flex;
   gap: 15px;
   justify-content: center;
 }
 
-.curso-card {
+.curso-card-dashboard {
   background-color: #f4f4f4;
   border-radius: 6px;
   width: 200px;
@@ -193,12 +201,7 @@
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.curso-img {
-  width: 100%;
-  height: 120px;
-}
-
-.curso-title {
+.curso-titulo-dashboard {
   font-weight: bold;
   font-size: 17px;
   color: #0367a5;
@@ -206,266 +209,9 @@
   margin-bottom: 10px;
 }
 
-.progress {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #dbdbdb;
-  border: 4 solid #0367a5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  color: #0367a5;
-  font-size: 14px;
-}
-
-.button-curso {
+.botao-curso-dashboard {
   margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* profile */
-
-.secao-esquerda {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-}
-
-.container-profile {
-  width: 320px;
-  height: 660px;
-  background: white;
-  border-radius: 6px;
-  padding: 20px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #ddd;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.content-wrap {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.name-dashboard,
-.subname-dashboard {
-  color: #000000;
-  font-size: 25px;
-  font-weight: 500;
-}
-
-.subtitle-dashboard {
-  font-size: 15px;
-}
-.perfil-banner {
-  width: 90px;
-  height: 90px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  margin-top: -40px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-}
-
-.img-profile {
-  font-size: 90px;
-  color: #777;
-}
-
-.profile-title svg {
-  font-size: 14px;
-  color: #0367a5;
-  cursor: pointer;
-}
-
-/* input de edição */
-
-.input-profile {
-  width: 200px;
-  height: 25px;
-  margin-top: 10px;
-  border: 1px solid #575757;
-  outline: none;
-}
-.info {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid #ddd;
-}
-
-.profile-info {
-  margin-top: 10px;
-  padding-top: 10px;
-  text-align: center;
-  border-top: 1px solid #ddd;
-  z-index: 10;
-}
-
-.profile-info p {
-  font-size: 14px;
-  color: #000000;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 10px 0;
-}
-
-.profile-info a {
-  color: #0367a5;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.profile-input {
-  font-size: 25px;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  background: none;
-  text-align: center;
-  color: #333;
-  width: 200px;
-}
-
-.profile-terms {
-  margin-top: 15px;
-  padding-top: 10px;
-  width: 100%;
-  text-align: center;
-  border-top: 1px solid #ddd;
-  margin-top: 100px;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.profile-terms a {
-  color: #666;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 20px;
-}
-
-@media (min-width: 769px) {
-
-  .container-profile .info-geral {
-    display: none;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .cabecalho-painel{
-    display: none;
-  }
-
-
-  .content-wrap {
-    display: none;
-  } 
-
-
-  
-.secao-esquerda{
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-}
-
-
-
-.container-profile {
-  width: 300px;
-  height: 600px;
-  background: white;
-  border-radius: 6px;
-  padding: 20px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #ddd;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.info-geral {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.info-card-dashboard {
-  width: 48%;
-  background: #f4f4f4;
-  padding: 10px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.info-card-courses {
-  background: #d4a017;
-}
-
-.info-card-star {
-  background: #1e90ff;
-}
-
-.icon-number {
-  display: flex;
-  align-items: center;
-}
-
-.icon-container {
-  width: 40px;
-  height: 40px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 10px;
-}
-
-.number-text {
-  text-align: left;
-}
-
-.number-general {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.label-general {
-  font-size: 12px;
-}
-
-
 }

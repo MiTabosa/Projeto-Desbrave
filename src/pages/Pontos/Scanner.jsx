@@ -51,111 +51,71 @@ function Scanner() {
         navigate("/InvalidScanner");
       }
 
-      const finalizarScanner = () => {
-        if (scannerRef.current) {
-          scannerRef.current.clear();
-          scannerRef.current = null;
-        }
-    
-        if (html5QrCodeRef.current) {
-          html5QrCodeRef.current
-            .stop()
-            .then(() => html5QrCodeRef.current.clear())
-            .then(() => {
-              if (valoresValidos.includes(result)) {
-                setScanResult(result); // mostra tela de sucesso
-              } else {
-                navigate("/InvalidScanner");
-              }
-            })
-            .catch((e) => {
-              console.warn("Erro ao limpar scanner:", e);
-              if (valoresValidos.includes(result)) {
-                setScanResult(result);
-              } else {
-                navigate("/InvalidScanner");
-              }
-            });
-        } else {
-          // fallback caso o scanner não exista
-          if (valoresValidos.includes(result)) {
-            setScanResult(result);
-          } else {
-            navigate("/InvalidScanner");
-          }
-        }
-      };
-    
-      finalizarScanner();
+      if (scannerRef.current) {
+        scannerRef.current.clear();
+        scannerRef.current = null;
+      }
 
+      if (html5QrCodeRef.current) {
+        html5QrCodeRef.current
+          .stop()
+          .then(() => html5QrCodeRef.current.clear())
+          .catch((e) => console.warn("Erro ao limpar scanner:", e));
+      }
     };
+
     const onScanError = (error) => {
       console.warn("ERRO AO ESCANEAR:", error);
     };
 
-   if (isMobile) {
-  html5QrCodeRef.current = new Html5Qrcode(readerId);
+    if (isMobile) {
+      html5QrCodeRef.current = new Html5Qrcode(readerId);
+      Html5Qrcode.getCameras().then((devices) => {
+        if (!devices || devices.length === 0) {
+          console.error("Nenhuma câmera encontrada.");
+          return;
+        }
 
-  Html5Qrcode.getCameras().then((devices) => {
-    if (!devices || devices.length === 0) {
-      console.error("Nenhuma câmera encontrada.");
-      return;
-    }
+        const backCam = devices.find((d) =>
+          d.label.toLowerCase().includes("back")
+        );
+        const cameraId = backCam ? backCam.id : devices[0].id;
 
-    const backCam = devices.find((d) =>
-      d.label.toLowerCase().includes("back")
-    );
-    const cameraId = backCam ? backCam.id : devices[0].id;
-
-    setTimeout(() => {
-      const readerEl = document.getElementById(readerId);
-      if (readerEl) {
-        readerEl.innerHTML = ""; // evita canvas duplicado
-      }
-
-      html5QrCodeRef.current
-        .clear()
-        .catch(() => {})
-        .finally(() => {
+        setTimeout(() => {
           html5QrCodeRef.current
             .start(
               cameraId,
               {
-                fps: 10,
-                qrbox: function (viewfinderWidth, viewfinderHeight) {
-                  const minEdgePercentage = 0.6;
-                  const minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
-                  const qrboxSize = Math.floor(minEdgeSize * minEdgePercentage);
-                  return { width: qrboxSize, height: qrboxSize };
-                },
+                fps: 5,
+                qrbox: { width: 250, height: 250 },
                 disableFlip: true,
                 formatsToSupport: [Html5QrcodeSupportedFormats.QR_CODE],
               },
-              (decodedText) => {
-                console.log("✅ Código detectado (mobile):", decodedText);
-                const valoresValidos = ["marco zero", "paço do frevo", "rua bom jesus!!"];
-                const formatado = decodedText.trim().toLowerCase();
-
-                html5QrCodeRef.current
-                  .stop()
-                  .then(() => html5QrCodeRef.current.clear())
-                  .finally(() => {
-                    if (valoresValidos.includes(formatado)) {
-                      setScanResult(decodedText);
-                    } else {
-                      navigate("/InvalidScanner");
-                    }
-                  });
-              },
-              (error) => {
-                console.warn("Erro ao escanear no mobile:", error);
-              }
+              onScanSuccess,
+              onScanError
             )
             .catch((err) => console.error("Erro ao iniciar scanner:", err));
+        }, 500);
+      });
+    } else {
+      setTimeout(() => {
+        const readerElement = document.getElementById(readerId);
+        if (!readerElement) {
+          console.error("Elemento #reader não encontrado!");
+          return;
+        }
+
+        scannerRef.current = new Html5QrcodeScanner(readerId, {
+          qrbox: { width: 250, height: 250 },
+          fps: 5,
+          disableFlip: true,
+          supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
         });
-    }, 500);
-  });
-}
+
+        scannerRef.current.render(onScanSuccess, onScanError);
+      }, 500);
+    }
+
     return () => {
       if (scannerRef.current) {
         try {

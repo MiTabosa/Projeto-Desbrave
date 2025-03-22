@@ -37,8 +37,8 @@ const Dashboard = () => {
   }, []);
 
   // troca de nomes, sobrenome e descrição
-  const nameRef = useRef(null);
-  const SubNameRef = useRef(null);
+  const nomeRef = useRef(null);
+  const SubNomeRef = useRef(null);
   const SubRef = useRef(null);
 
   const editClick = () => {
@@ -48,8 +48,8 @@ const Dashboard = () => {
   const handleEnter = () => {
     setTimeout(() => {
       if (
-        document.activeElement !== nameRef.current &&
-        document.activeElement !== SubNameRef.current &&
+        document.activeElement !== nomeRef.current &&
+        document.activeElement !== SubNomeRef.current &&
         document.activeElement !== SubRef.current
       ) {
         setEditing(false);
@@ -98,16 +98,16 @@ const Dashboard = () => {
           <NavbarDashboard />
 
           {/* Seção Topo - Cabeçalho, Info e Perfil */}
-          <div className="top-section">
-            <div className="left-section">
-              <div className="header-dashboard">
-                <h2 className="Title-dashboard">
+          <div className="secao-superior">
+            <div className="esquerda-secao">
+              <div className="cabecalho-painel">
+                <h2 className="titulo-dashboard">
                   Olá, {name} {subName}!
                 </h2>
-                <p className="paragraf-dashboard">Bem-vinda de volta! 😃</p>
+                <p className="paragrafo-dashboard">Bem-vinda de volta! 😃</p>
                 <img src={elementoVerde} alt="elemento verde" />
                 <button
-                  className="forum-button"
+                  className="forum-botao"
                   onClick={() => navigate("/forum")}
                 >
                   Ir para fórum <BsArrow90DegRight />
@@ -116,7 +116,7 @@ const Dashboard = () => {
 
               {/* Exibir os cartões apenas no desktop */}
               {!isMobile && (
-                <div className="info-general">
+                <div className="info-geral">
                   <div className="info-card-dashboard info-card-courses">
                     <div className="icon-number">
                       <div className="icon-container">
@@ -155,8 +155,8 @@ const Dashboard = () => {
               <div className="title-profile">
                 {editing ? (
                   <div>
-                    <input ref={nameRef} type="text" value={name} onChange={(e) => setName(e.target.value)} onBlur={handleEnter} className="input-profile" autoFocus />
-                    <input ref={SubNameRef} type="text" value={subName} onChange={(e) => setSubName(e.target.value)} onBlur={handleEnter} className="input-profile" />
+                    <input ref={nomeRef} type="text" value={name} onChange={(e) => setName(e.target.value)} onBlur={handleEnter} className="input-profile" autoFocus />
+                    <input ref={SubNomeRef} type="text" value={subName} onChange={(e) => setSubName(e.target.value)} onBlur={handleEnter} className="input-profile" />
                     <input ref={SubRef} type="text" value={subtitle} onChange={(e) => setSubtitle(e.target.value)} onBlur={handleEnter} className="input-profile" />
                   </div>
                 ) : (
@@ -173,7 +173,7 @@ const Dashboard = () => {
 
               {/* Renderiza os cartões apenas no mobile */}
               {isMobile && (
-                <div className="info-general">
+                <div className="info-geral">
                   <div className="info-card-dashboard info-card-courses">
                     <RiGraduationCapLine className="icon-general" />
                     <p className="number-general">{infoGeral.cursos}</p>

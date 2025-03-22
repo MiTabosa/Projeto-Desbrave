@@ -181,14 +181,13 @@
 
 
   .pontos-image {
-    width: 220px;
+    display: none;
   }
 
-.button-init {
-    z-index: 100;
+  .button-init {
     position: relative;
-  } 
-
+    z-index: 9999;
+  }
 
 
 /* scanner  */

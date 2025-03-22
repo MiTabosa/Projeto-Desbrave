@@ -1,5 +1,5 @@
 /* seção topo */
-.top-section {
+.secao-superior {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -8,18 +8,18 @@
   margin-bottom: 20px;
 }
 
-.Title-dashboard {
+.titulo-dashboard {
   margin: 0;
   font-size: 40px;
   color: #ffff;
 }
 
-.paragraf-dashboard {
+.paragrafo-dashboard {
   font-size: 16px;
   color: #ffff;
 }
 
-.header-dashboard {
+.cabecalho-painel {
   position: relative;
   width: 700px;
   height: 165px;
@@ -33,7 +33,7 @@
   margin-top: -20px;
 }
 
-.header-dashboard img {
+.cabecalho-painel img {
   position: absolute;
   width: 165px;
   height: 165px;
@@ -41,7 +41,7 @@
   right: 0;
 }
 
-.forum-button {
+.forum-botao {
   display: flex;
   margin-top: 10px;
   align-items: center;
@@ -59,7 +59,7 @@
 }
 
 /* CURSOS E ESTRELAS */
-.info-general {
+.info-geral {
   display: flex;
   gap: 16px;
   margin-top: 20px;
@@ -229,7 +229,7 @@
 
 /* profile */
 
-.left-section {
+.secao-esquerda {
   flex: 3;
   display: flex;
   flex-direction: column;
@@ -371,14 +371,14 @@
 
 @media (min-width: 769px) {
 
-  .container-profile .info-general {
+  .container-profile .info-geral {
     display: none;
   }
 }
 
 
 @media (max-width: 768px) {
-  .header-dashboard {
+  .cabecalho-painel{
     display: none;
   }
 
@@ -389,7 +389,7 @@
 
 
   
-.left-section {
+.secao-esquerda{
   flex: 3;
   display: flex;
   flex-direction: column;
@@ -414,7 +414,7 @@
   right: 0;
 }
 
-.info-general {
+.info-geral {
   display: flex;
   justify-content: space-between;
   width: 100%;

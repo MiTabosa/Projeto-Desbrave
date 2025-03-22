@@ -21,7 +21,9 @@ function Scanner() {
   const hasInitialized = useRef(false);
   const readerId = "reader";
 
-  const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+  const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(
+    navigator.userAgent
+  );
 
   useEffect(() => {
     if (hasInitialized.current || scanResult) return;
@@ -40,17 +42,14 @@ function Scanner() {
     ajustarReader();
     window.addEventListener("resize", ajustarReader);
 
-    const onScanSuccess = (result) => {
-      console.log("Código escaneado:", result);
-      const valoresValidos = ["Marco Zero", "Paço do frevo", "Rua bom Jesus!!"];
-      if (valoresValidos.includes(result)) {
-        setScanResult(result);
-        console.log("Código válido! Redirecionando...");
-      } else {
-        console.warn("Código inválido! Redirecionando...");
-        navigate("/InvalidScanner");
-      }
+    const config = {
+      fps: 5,
+      qrbox: { width: 250, height: 250 },
+      disableFlip: true,
+      formatsToSupport: [Html5QrcodeSupportedFormats.QR_CODE],
+    };
 
+    const stopScanner = () => {
       if (scannerRef.current) {
         scannerRef.current.clear();
         scannerRef.current = null;
@@ -64,8 +63,23 @@ function Scanner() {
       }
     };
 
+    const onScanSuccess = (result) => {
+      console.log("Código escaneado:", result);
+      const valoresValidos = ["Marco Zero", "Paço do frevo", "Rua bom Jesus!!"];
+
+      if (valoresValidos.includes(result)) {
+        setScanResult(result);
+        stopScanner();
+        console.log("Código válido! Redirecionando...");
+      } else {
+        console.warn("Código inválido! Redirecionando...");
+        stopScanner();
+        setTimeout(() => navigate("/InvalidScanner"), 300);
+      }
+    };
+
     const onScanError = (error) => {
-      console.warn("ERRO AO ESCANEAR:", error);
+      console.warn("Erro ao escanear:", error);
     };
 
     if (isMobile) {
@@ -82,19 +96,17 @@ function Scanner() {
         const cameraId = backCam ? backCam.id : devices[0].id;
 
         setTimeout(() => {
+          const readerEl = document.getElementById(readerId);
+          if (readerEl) readerEl.innerHTML = "";
+
           html5QrCodeRef.current
-            .start(
-              cameraId,
-              {
-                fps: 5,
-                qrbox: { width: 250, height: 250 },
-                disableFlip: true,
-                formatsToSupport: [Html5QrcodeSupportedFormats.QR_CODE],
-              },
-              onScanSuccess,
-              onScanError
-            )
-            .catch((err) => console.error("Erro ao iniciar scanner:", err));
+            .clear()
+            .catch(() => {})
+            .finally(() => {
+              html5QrCodeRef.current
+                .start(cameraId, config, onScanSuccess, onScanError)
+                .catch((err) => console.error("Erro ao iniciar scanner:", err));
+            });
         }, 500);
       });
     } else {
@@ -106,9 +118,7 @@ function Scanner() {
         }
 
         scannerRef.current = new Html5QrcodeScanner(readerId, {
-          qrbox: { width: 250, height: 250 },
-          fps: 5,
-          disableFlip: true,
+          ...config,
           supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
         });
 
@@ -117,20 +127,7 @@ function Scanner() {
     }
 
     return () => {
-      if (scannerRef.current) {
-        try {
-          scannerRef.current.clear();
-          scannerRef.current = null;
-        } catch (err) {
-          console.warn("Erro ao limpar scanner:", err);
-        }
-      }
-      if (html5QrCodeRef.current) {
-        html5QrCodeRef.current
-          .stop()
-          .then(() => html5QrCodeRef.current.clear())
-          .catch((e) => console.warn("Erro ao limpar scanner:", e));
-      }
+      stopScanner();
       window.removeEventListener("resize", ajustarReader);
     };
   }, [scanResult]);
@@ -146,7 +143,10 @@ function Scanner() {
               <div className="text-container">
                 <h2>QR CODE ESCANEADO COM SUCESSO!</h2>
                 <p>
-                  Você ganhou +50 pontos! <a href={scanResult}></a>
+                  Você ganhou +50 pontos!{" "}
+                  <a href={scanResult} target="_blank" rel="noopener noreferrer">
+                    Abrir
+                  </a>
                 </p>
               </div>
             </div>

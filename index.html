@@ -9,5 +9,101 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+
+    <div id="acessibilidade">
+      <button id="botao">🔊</button>
+    </div>
+    
+    <style>
+      #acessibilidade {
+        position: fixed;
+        top: 56%;
+        right: 10px;
+        transform: translateY(-50%);
+        z-index: 9999;
+      }
+    
+      #botao {
+        padding: 10px;
+        font-size: 10px;
+        cursor: pointer;
+        border-radius: 8px;
+        border: none;
+        background-color: #007aff;
+        color: #ffffff;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease-in-out;
+      }
+    
+      #botao:hover {
+        background-color: #005bb5;
+        transform: scale(1.1);
+      }
+    </style>
+    
+    <script>
+      let synth = window.speechSynthesis;
+      let isEnabled = false;
+      let currentUtterance = null;
+    
+      document.getElementById("botao").addEventListener("click", function () {
+        isEnabled = !isEnabled;
+        this.innerText = isEnabled ? "⏹️" : "🔊";
+        if (!isEnabled) {
+          synth.cancel();
+        }
+      });
+  
+      function falarTextoTouch(event) {
+        if (isEnabled && event.target.innerText.trim() !== "") {
+          if (currentUtterance) {
+            synth.cancel();
+          }
+          currentUtterance = new SpeechSynthesisUtterance(event.target.innerText);
+          currentUtterance.lang = "pt-BR";
+          currentUtterance.rate = 1.5; 
+          synth.speak(currentUtterance);
+        }
+      }
+  
+      function falarTextoMouse(event) {
+        if (isEnabled && event.target.innerText.trim() !== "") {
+          if (currentUtterance) {
+            synth.cancel();
+          }
+          currentUtterance = new SpeechSynthesisUtterance(event.target.innerText);
+          currentUtterance.lang = "pt-BR";
+          currentUtterance.rate = 1.5; 
+          synth.speak(currentUtterance);
+        }
+      }
+    
+      const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    
+      if (isMobile) {
+        document.addEventListener("touchstart", falarTextoTouch);
+      } else {
+        
+        document.addEventListener("mouseover", falarTextoMouse);
+      }
+    
+      document.getElementById("botao").addEventListener("touchstart", function(event) {
+        event.stopPropagation();
+      });
+    
+    </script>
+    
   </body>
 </html>

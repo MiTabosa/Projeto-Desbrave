@@ -18,11 +18,14 @@ import Sobre from "./pages/Sobre/Sobre";
 import Parceiros from "./pages/Parceiros/Parceiros";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import DescricaoCurso from './pages/Curso/DescricaoCurso';
-import GestForm from "./pages/GestCurso/Gestcurso";
+import GestaoCursos from "./pages/GestCurso/Gestcurso";
+import GestaoForum from "./pages/GestForum/GestForum";
 import CuponsDashboard from './pages/Cupons/CuponsDashboard';
 import CuponsUsados from "./pages/Cupons/CuponsUsados";
 import MeusCursos from "./pages/MeusCursos/MeusCursos"
 import Certificados from "./pages/Certificados/Certificados";
+import MeusCursos from "./pages/MeusCursos/MeusCursos";
+import DashboardAdmin from "./pages/DashboardAdmin/DashboardAdmin";
 
 function App() {
   const [isLogged, setIsLogged] = useState(!!localStorage.getItem("user"));
@@ -50,9 +53,12 @@ function App() {
         <Route path="/CuponsUsados" element={<CuponsUsados />} />
         <Route path="/Forum" element={<Forum />} />
         <Route path="/forumChat" element={<ForumChat />} />
-        <Route path="/gestao" element={<GestForm />} />
+        <Route path="/gestaoCursos" element={<GestaoCursos />} />
+        <Route path="/gestaoForum" element={<GestaoForum />} />
         <Route path="/meusCursos" element={<MeusCursos/>} />
         <Route path="/Certificados" element={<Certificados/>} />
+        <Route path="/dashboardAdmin" element={<DashboardAdmin/>} />
+        
       </Routes>
     </Router>
   );

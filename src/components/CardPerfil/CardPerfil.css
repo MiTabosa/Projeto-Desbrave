@@ -1,154 +1,150 @@
 .container-perfil {
-    width: 320px;
-    height: 660px;
-    background: white;
-    border-radius: 6px;
-    padding: 20px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid #ddd;
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-  
-  .perfil-banner {
-    width: 90px;
-    height: 90px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
+  width: 320px;
+  height: 620px;
+  background: white;
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.perfil-banner {
+  width: 90px;
+  height: 90px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: -40px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.img-perfil {
+  font-size: 90px;
+  color: #777;
+}
+
+.titulo-perfil h2 {
+  margin: 10px 0;
+}
+
+.nome-dashboard,
+.subnome-dashboard {
+  color: #000000;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.subtitulo-dashboard {
+  font-size: 15px;
+}
+
+.input-perfil {
+  width: 200px;
+  height: 25px;
+  margin-top: 10px;
+  border: 1px solid #575757;
+  outline: none;
+}
+
+.perfil-info {
+  margin-top: 10px;
+  padding-top: 10px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  z-index: 10;
+}
+
+.perfil-info p {
+  font-size: 14px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.perfil-info a {
+  color: #0367a5;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.perfil-termos {
+  margin-top: 15px;
+  padding-top: 10px;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  margin-top: 100px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.perfil-termos a {
+  color: #666;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .container-perfil {
+    width: 460px;
+    height: 530px;
     justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-top: -40px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+    background-color: #f4f4f4;
+    box-shadow: none;
+    border: none;
   }
-  
-  .img-perfil {
-    font-size: 90px;
-    color: #777;
-  }
-  
-  .titulo-perfil h2 {
-    margin: 10px 0;
-  }
-  
-  .nome-dashboard,
-  .subnome-dashboard {
-    color: #000000;
-    font-size: 25px;
-    font-weight: 500;
-  }
-  
+
   .subtitulo-dashboard {
-    font-size: 15px;
+    line-height: 1.1;
+
   }
   
-  .input-perfil {
-    width: 200px;
-    height: 25px;
-    margin-top: 10px;
-    border: 1px solid #575757;
-    outline: none;
+  .info-geral {
+ display: flex;
+ 
   }
   
-  .perfil-info {
-    margin-top: 10px;
-    padding-top: 10px;
-    text-align: center;
-    border-top: 1px solid #ddd;
-    z-index: 10;
+  .info-card-dashboard {
+   
   }
   
-  .perfil-info p {
-    font-size: 14px;
-    color: #000000;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 10px 0;
+  .icone-container {
+   
   }
   
-  .perfil-info a {
-    color: #0367a5;
-    font-weight: bold;
-    cursor: pointer;
+  .texto-container {
+   
   }
   
-  .perfil-termos {
-    margin-top: 15px;
-    padding-top: 10px;
-    width: 100%;
-    text-align: center;
-    border-top: 1px solid #ddd;
-    margin-top: 100px;
-    cursor: pointer;
-    z-index: 10;
+  .numero-geral {
+  
   }
   
-  .perfil-termos a {
-    color: #666;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 20px;
+  .paragrafo-geral {
+
+  }
+  .info-card-curso {
+    background: #d4a017;
   }
   
-  @media (max-width: 768px) {
-    .container-perfil {
-      width: 300px;
-      height: 600px;
-    }
-  
-    .info-geral {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      margin-top: 10px;
-    }
-  
-    .info-card-dashboard {
-      width: 48%;
-      background: #f4f4f4;
-      padding: 10px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .info-card-curso {
-      background: #d4a017;
-    }
-  
-    .info-card-estrela {
-      background: #1e90ff;
-    }
-  
-    .icone-container {
-      width: 40px;
-      height: 40px;
-      background: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 10px;
-    }
-  
-    .numero-geral {
-      font-size: 18px;
-      font-weight: bold;
-    }
-  
-    .paragrafo-geral {
-      font-size: 12px;
-    }
+  .info-card-estrela {
+    background: #1e90ff;
   }
-  
+}
+

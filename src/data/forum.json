@@ -1,0 +1,12 @@
+{
+    "forum": [
+      {
+        "id": 1,
+        "nome": "Dúvidas Gerais"
+      },
+      {
+        "id": 2,
+        "nome": "Suporte Técnico"
+      }
+    ]
+  }

@@ -3,12 +3,22 @@
     height: 100vh;
 }
 
-.imagemEsquerda {
+.RedImagemEsquerda {
+    width: 50%;
+    height: 100%;
     background: url("/src/assets/img-senha.png") no-repeat center center;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
 }
 
-.formDireita {
+.RedLadoDireito {
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,19 +30,19 @@
     ;
 }
 
-.formDireita h1 {
+.RedLadoDireito h1 {
     color: #0367A5;
     font-size: 60px;
     font-weight: bold;
 }
 
-.formDireita p {
+.RedLadoDireito p {
     color: #333;
     font-size: 20px;
     margin-bottom: 50px;
 }
 
-.senhaInput {
+.RedInputSenha {
     position: relative;
     margin-bottom: 15px;
     width: 80%;
@@ -80,58 +90,16 @@
     text-decoration: underline;
 }
 
-@media (max-width: 1024px) {
-    .redefinirSenhaContainer {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .imagemEsquerda {
-        height: 250px;
-        flex: none;
-    }
-
-    .formDireita {
-        flex: none;
-        padding: 30px;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-    }
-}
-
 @media (max-width: 768px) {
-    h1 {
-        font-size: 1.5rem;
-    }
 
-    p {
-        font-size: 0.9rem;
+    .redefinirSenhaContainer {
+      flex-direction: column;
     }
-
-    .senhaInput, .continuar {
-        width: 90%;
-        font-size: 0.9rem;
+    .RedImagemEsquerda{
+      display: none !important;
     }
-
-    .voltarLogin {
-        font-size: 0.9rem;
+    .RedLadoDireito {
+      display: block;
+      width: 100%;
     }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.3rem;
-    }
-
-    .senhaInput, .continuar {
-        width: 100%;
-        font-size: 0.85rem;
-        padding: 10px;
-    }
-
-    .voltarLogin {
-        font-size: 0.85rem;
-    }
-}
+  }

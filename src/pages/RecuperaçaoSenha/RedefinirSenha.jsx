@@ -19,16 +19,16 @@ const RedefinirSenha = () => {
 
   return (
     <div className="redefinirSenhaContainer">
-      <div className="imagemEsquerda"></div>
+      <div className="RedImagemEsquerda"></div>
 
-      <div className="formDireita">
+      <div className="RedLadoDireito">
         <h1>Redefinir Senha</h1>
         <p>Digite sua nova senha</p>
 
         <input
           type="password"
           placeholder="Senha"
-          className="senhaInput"
+          className="RedInputSenha"
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
         />
@@ -36,7 +36,7 @@ const RedefinirSenha = () => {
         <input
           type="password"
           placeholder="Digite a senha novamente"
-          className="senhaInput"
+          className="RedInputSenha"
           value={senhaConfirm}
           onChange={(e) => setSenhaConfirm(e.target.value)}
         />

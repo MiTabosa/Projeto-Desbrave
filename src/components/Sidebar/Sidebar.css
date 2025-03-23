@@ -56,12 +56,11 @@
   padding: 10px;
 } 
 
-.sidebar-item-active .iconTickt {
+.iconTickt{
   width: 24px; 
   height: 24px;
   margin-right: 8px; 
 }
-
 .dashboard-content {
   flex-grow: 1;
   display: flex;

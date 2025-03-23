@@ -22,7 +22,8 @@ import GestaoCursos from "./pages/GestCurso/Gestcurso";
 import GestaoForum from "./pages/GestForum/GestForum";
 import CuponsDashboard from './pages/Cupons/CuponsDashboard';
 import CuponsUsados from "./pages/Cupons/CuponsUsados";
-import MeusCursos from "./pages/MeusCursos/MeusCursos";
+import MeusCursos from "./pages/MeusCursos/MeusCursos"
+import Certificados from "./pages/Certificados/Certificados";
 import DashboardAdmin from "./pages/DashboardAdmin/DashboardAdmin";
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
         <Route path="/gestaoCursos" element={<GestaoCursos />} />
         <Route path="/gestaoForum" element={<GestaoForum />} />
         <Route path="/meusCursos" element={<MeusCursos/>} />
+        <Route path="/Certificados" element={<Certificados/>} />
         <Route path="/dashboardAdmin" element={<DashboardAdmin/>} />
         
       </Routes>

@@ -63,6 +63,7 @@ export default function Sidebar({ children }) {
             <GrTicket className="iconTickt" /> 
             {!isMobile && <span>Meus Cupons</span>}
           </li>
+          
         </ul>
       </aside>
       <div className="dashboard-content">{children}</div>

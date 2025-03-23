@@ -25,16 +25,16 @@ export default function Login() {
       </div>
 
       <div className="loginDireita">
-        <h2 className="loginTitle">Login</h2>
-        <p className="loginSubtitle">Entre na sua conta!</p>
+        <h2 className="loginTitulo">Login</h2>
+        <p className="loginSubtitulo">Entre na sua conta!</p>
         
-        <div className="loginForm">
-          <div className="inputGroup">
-            <FaUser className="inputIcon" />
+        <div className="loginformulario">
+          <div className="inputCampo">
+            <FaUser className="inputIcone" />
             <input type="email" placeholder="E-mail" />
           </div>
-          <div className="inputGroup">
-            <FaLock className="inputIcon" />
+          <div className="inputCampo">
+            <FaLock className="inputIcone" />
             <input 
               type={showPassword ? "text" : "password"} 
               placeholder="Senha" 
@@ -44,7 +44,7 @@ export default function Login() {
             </span>
           </div>
           <Link to="/esqueceuSenha" className="EsqueciSenha">Esqueceu sua senha?</Link>
-          <button className="loginButon">Entrar</button>
+          <button className="EntrarBotao">Entrar</button>
         </div>
 
         <p className="connecText">Ou conecte-se com:</p>

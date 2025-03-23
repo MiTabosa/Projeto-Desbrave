@@ -20,13 +20,13 @@ const RecuperarSenha = () => {
   };
 
   return (
-    <div className="containerSenha">
-      <div className="form-container-senha">
-        <h2 className="title">Recupere sua senha</h2>
-        <p className="subtitle">
+    <div className="containerRecupSenha">
+      <div className="RecuperarSenhaForm">
+        <h2 className="RecTitulo">Recupere sua senha</h2>
+        <p className="RecSubTitulo">
           Insira abaixo o código que foi enviado por e-mail
         </p>
-        <div className="code-inputs">
+        <div className="InputCodigos">
           {codigo.map((num, index) => (
             <input
               key={index}
@@ -37,13 +37,13 @@ const RecuperarSenha = () => {
             />
           ))}
         </div>
-        <button className="confirm-button" onClick={handleSubmit}>
+        <button className="RecBotao" onClick={handleSubmit}>
           Confirmar
         </button>
-        <a href="/esqueceuSenha"><p className="resend">Reenviar código</p></a>
+        <a href="/esqueceuSenha"><p className="ReenviarCodigo">Reenviar código</p></a>
       </div>
-      <div className="image-container">
-        <div className="imagemEsquerda"></div>
+      <div className="ImagemContainer">
+        <div className="RecImagemEsquerda"></div>
       </div>
     </div>
   );

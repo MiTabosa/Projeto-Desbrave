@@ -1,8 +1,8 @@
 
-.cupons-container {
+.cuponsContainer {
   background: #E9E8E8;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 6px;
   width: calc(100% - 10px);
   height: calc(100vh - 10px);
   margin: 5px;
@@ -38,15 +38,15 @@
   color: #D98D30;
   width: 90px;
   height: 70px;
-  border-radius: 5px;
+  border-radius: 6px;
   
 }
-.estrela-box {
+.estrelaCaixa {
   display: flex;
   background: #0367A6;
   color: #ffffff;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 1.2em;
   font-weight: bold;
   width: 200px;
@@ -68,7 +68,7 @@
   padding: 8px;
   border: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 18px;
   font-weight: bold;
   width: 200px;
@@ -84,7 +84,7 @@
   padding: 8px;
   border: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 18px;
   font-weight: bold;
   width: 200px;
@@ -95,63 +95,92 @@
   transform: scale(1.02);
 }
 
-.cuponsGrade {
+.AreaCupons {
   position: absolute;
-  margin-top: 150px;
+  margin-top: 110px;
   margin-right: 100px;
   width: 45vw;
   height: 500px;
   background: #E0E0E0;
-  padding: 30px;
-  border-radius: 10px;
+  padding: 20px;
+  border-radius: 6px;
   max-width: 900px;
   display: flex;
   justify-content:center; 
   align-self: flex-end; 
 }
 
-.cupons-grid {
+.cuponsGrade {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 60px;
+  gap: 30px;
 }
-
-.cupom {
-  background: #E0E0E0;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  
-}
-
-.cupom.valido {
+.cupomValido5 {
   background: #D98D30;
   color: white;
+  padding: 20px;
+  border-radius: 6px;
+  text-align: center;
+  border-bottom-style: inherit;
+}
+.cupomTitulo5{
+  margin-bottom: -20px;
+  color: #ffffff;
+}
+.cupomDescricao5{
+  color: #ffffff;
+}
+
+.cupomDesabilitado10 {
+  background: #C4C4C4;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 6px;
+  text-align: center;
   border-bottom-style: inherit;
 }
 
-.cupom.desabilitado {
+.cupomTitulo10{
+  margin-bottom: -20px;
+  color: #ffffff;
+}
+
+.cupomDescricao10{
+  color: #ffffff;
+}
+
+.cupomValido20 {
+  background: #D98D30;
+  color: white;
+  padding: 20px;
+  border-radius: 6px;
+  text-align: center;
+  border-bottom-style: inherit;
+}
+.cupomTitulo20{
+  margin-bottom: -20px;
+  color: #ffffff;
+}
+.cupomDescricao20{
+  color: #ffffff;
+}
+
+.cupomDesabilitado50 {
   background: #C4C4C4;
   color: #ffffff;
+  padding: 20px;
+  border-radius: 6px;
+  text-align: center;
+  border-bottom-style: inherit;
 }
 
-.cupom-titulo{
+.cupomTitulo50{
+  margin-bottom: -20px;
   color: #ffffff;
 }
 
-.cupom-descricao{
+.cupomDescricao50{
   color: #ffffff;
-}
-
-.input .text{
-  background-color: #ffffff;
-  padding: 30px;
-}
-
-.cupom-titulo {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 5px;
 }
 
 .des10{
@@ -187,13 +216,7 @@
   height: 35px;
 }
 
-.cupom-descricao {
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.copy {
+.copiar {
   color: #D98D30;
   position: absolute;
   justify-content: flex-end;
@@ -223,7 +246,7 @@
   transform: scale(1.02);
 }
 
-.modal-overlay {
+.modalSaibaMais {
   position: fixed;
   top: 0;
   left: 0;
@@ -236,7 +259,7 @@
   z-index: 1000;
 }
 
-.modal-content {
+.modalConteudo {
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -247,19 +270,19 @@
   position: relative;
 }
 
-.modal-content h3 {
+.modalConteudo h3 {
   font-size: 18px;
   font-weight: bold;
   color: #d48806;
 }
 
-.modal-content p {
+.modalConteudo p {
   font-size: 14px;
   color: #333;
   margin-top: 10px;
 }
 
-.modal-content button {
+.modalConteudo button {
   margin-top: 15px;
   padding: 8px 16px;
   border: none;
@@ -270,14 +293,70 @@
   cursor: pointer;
 }
 
-.modal-content button:hover {
+.modalConteudo button:hover {
   background: #b37405;
 }
 
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 18px;
-  cursor: pointer;
+@media (max-width: 768px) {
+  .AreaCupons {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    padding: 10px;
+    background: #E0E0E0;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    overflow-y: auto;
+    max-height: 400px;
+  }
+
+  .botaoUsados {
+    margin-bottom: 10px;
+  }
+
+  .cuponsGrade {
+    flex-direction: column;
+    display: block;
+    gap: 15px;
+    width: 100%;
+    overflow-y: auto;
+    max-height: 300px;
+    padding-right: 10px;
+  }
+
+  .cupomValido5, .cupomValido20 {
+    flex-direction: column;
+    display: flexbox; 
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  .cupomTitulo5, .cupomTitulo20 {
+      flex-direction: column;
+      display: block; 
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+  }
+
+  .cupomDescricao5, .cupomDescricao20 {
+      flex-direction: column;
+      display: block; 
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+  }
+
+  /* Esconde cupons desabilitados */
+  .cupomDesabilitado10, .cupomDesabilitado50 {
+    display: none;
+  }
 }

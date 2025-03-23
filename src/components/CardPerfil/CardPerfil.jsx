@@ -92,20 +92,24 @@ const CardPerfil = ({ name, setName, subName, setSubName }) => {
             <div className="icone-container">
               <RiGraduationCapLine className="icone-geral" />
             </div>
+            <div className="texto-numero">
             <p className="numero-geral">{infoGeral.cursos}</p>
             <p className="paragrafo-geral">Cursos</p>
+            </div>
           </div>
 
           <div className="info-card-dashboard info-card-estrela">
             <div className="icone-container">
               <CiStar className="icone-geral" />
             </div>
+            <div className="texto-numero">
             <p className="numero-geral">
               {infoGeral.estrelas < 10
                 ? `0${infoGeral.estrelas}`
                 : infoGeral.estrelas}
             </p>
             <p className="paragrafo-geral">Estrelas</p>
+            </div>
           </div>
         </div>
       )}

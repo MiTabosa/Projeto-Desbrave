@@ -21,14 +21,9 @@
 
 
 @media (max-width: 768px) {
-    .container {
-        background-color: #dddbdb;
-    
-        
-    }
 
     .content {
-      
+      background: #f4f4f4;
         box-shadow: none
     }
 

@@ -15,12 +15,12 @@ const EsqueceuSenha = () => {
     <div className="esqueceuSenhaContainer">
       <div
         className="imagemEsquerdaES"
-        style={{ backgroundImage: `url(${imgRecupSenha})` }}
+        style={{ backgroundImage: `url(${imgRecupSenha})` }} 
       ></div>
 
       <div className="LadoDireitoES">
-        <h2 className="LadoTitulo">Esqueceu sua senha?</h2>
-        <p className="LadoDescricao">Digite seu e-mail cadastrado</p>
+        <h2>Esqueceu sua senha?</h2>
+        <p>Digite seu e-mail cadastrado</p>
 
         <input
           type="email"

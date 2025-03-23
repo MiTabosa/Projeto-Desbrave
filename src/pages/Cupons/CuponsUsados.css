@@ -7,30 +7,26 @@
     margin: 5px;
     box-shadow: 0 4px 20px #0000001a;
     display: flex;
-    flex-direction: column;
     align-items: rigth;
     
   }
   
   .tituloPaginaUsados{
-    gap: 20px; 
-    padding: 50px; 
+    gap: 20px;  
     margin-top: 50px;
     font-size: 32px;
     font-weight: bold;
     color: #000000;
     text-align: left;
-    position: absolute;
-  
+    
   }
   
   .boxEstrelaUsados{
     gap: 20px; 
-    padding: 50px; 
+    padding: 40px; 
     display: flex;
     flex-direction: column;
     align-items: left;
-    margin-bottom: 300px;
   }
   .iconeEstrela{
     background-color: #ffffff;
@@ -77,6 +73,11 @@
   .botaoResgatarMais:hover{
     transform: scale(1.02);
   }
+  .voltarLoginCupons{
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #000;
+  }
   .botaoCuponsUsados{
     background: #D98D30;
     color: white;
@@ -95,26 +96,25 @@
   }
   
   .gradeCuponsUsados {
-    background: #E0E0E0;
-    padding: 60px;
-    border-radius: 10px;
-    max-width: 900px;
-    display:flexbox;
     flex-direction: column;
-    align-items: center;
-    margin-top: 200px;
-    margin-right: 150px;
-    position: absolute;
-    top: 0;
-    right: 20px;
-}
+    margin-right: 100px;
+    width: 45vw;
+    height: 400px;
+    background: #E0E0E0;
+    padding: 20px 40px; 
+    border-radius: 6px;
+    max-width: 900px;
+    display: flex;
+    justify-content:center; 
+    align-self: flex-end; 
+  }
 .h1{
     color: #000;
     align-items: left;
     justify-content: left;
     position: left;
     margin-bottom: 30px;
-}
+  }
 
 .gridCupons {
     display: grid;
@@ -166,4 +166,21 @@
     position: absolute;
     bottom: -20px;
     right: 10px;
+}
+@media (max-width: 768px) {
+  .containerCuponsUsados{
+    flex-direction: column;
+  }
+  .gridCupons {
+    grid-template-columns: repeat(1, 1fr); 
+  }
+  .gradeCuponsUsados {
+    width: 100%;
+    margin-right: 0;
+    height: 600px;
+    margin-bottom: 100px;
+  }
+  .h1{
+    font-size: 24px;
+  }
 }

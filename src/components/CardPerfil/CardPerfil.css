@@ -1,6 +1,6 @@
 .container-perfil {
   width: 320px;
-  height: 685px;
+  height: 620px;
   background: white;
   border-radius: 6px;
   padding: 20px;
@@ -112,53 +112,33 @@
 
   .subtitulo-dashboard {
     line-height: 1.1;
-  }
 
+  }
+  
   .info-geral {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    width: 100%;
-    margin-top: 10px;
+ display: flex;
  
   }
-
+  
   .info-card-dashboard {
-    width: 48%;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+   
   }
-
+  
   .icone-container {
-    width: 50px;
-    height: 50px;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
+   
   }
-
+  
   .texto-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1; 
-    min-width: 0; 
+   
   }
   
   .numero-geral {
-    font-size: 18px;
-    font-weight: bold;
+  
   }
-
+  
   .paragrafo-geral {
-    font-size: 12px;
-  }
 
+  }
   .info-card-curso {
     background: #d4a017;
   }

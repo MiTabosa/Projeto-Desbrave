@@ -20,9 +20,9 @@ export default function CuponsDashboard() {
     <Sidebar>
     <BottomDashboard>
       <div className="cuponsContainer">
-        <NavbarDashboard />
-
-        <h2 className="titulo">Meus Cupons</h2>
+    
+        <div>
+          <h2 className="titulo">Meus Cupons</h2>
 
         <div className="estrela">
           <div className="estrelaCaixa">
@@ -33,7 +33,9 @@ export default function CuponsDashboard() {
           <a href="/Scanner"><button className="botaoResgate">Resgatar Mais</button></a>
           <a href="/CuponsUsados"><button className="botaoUsados">Cupons Usados</button></a>
         </div>
-
+        </div>
+        <div className="CuponsConteudo">
+        <NavbarDashboard />
         <div className="AreaCupons">
           <div className="cuponsGrade">
             <div className="cupomValido5">
@@ -65,6 +67,7 @@ export default function CuponsDashboard() {
               <button className="botaoSaiba" onClick={() => handleSaibaMaisClick("Para desbloquear o cupom de 50% OFF, você precisa acumular 50 estrelas. No momento, você ainda não tem estrelas suficientes para gerar o código do cupom. Mas não se preocupe! Você pode visitar um de nossos pontos turísticos parceiros e escanear o QR Code disponível para ganhar estrelas. Cada ponto visitado rende 1 estrela, então quanto mais lugares você explorar, mais rápido poderá resgatar seu desconto!")}> &gt;&gt; Saiba Mais</button>
             </div>
           </div>
+        </div>
         </div>
       </div>
       {modalOpen && (

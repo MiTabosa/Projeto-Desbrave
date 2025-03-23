@@ -6,9 +6,10 @@
 .imagemEsquerdaES {
   flex: 1;
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 30%; 
   background-repeat: no-repeat;
 }
+
 
 .LadoDireitoES {
   flex: 1;
@@ -27,6 +28,7 @@
   font-size: 2rem;
   font-weight: bold;
 }
+
 
 .LadoDescricao {
   margin-top: 30px;
@@ -100,9 +102,24 @@
   .imagemEsquerdaES {
     display: none !important;
   }
+}
+  
+  @media (max-width: 768px) {
 
-  .LadoDireitoES {
-    display: block;
-    width:100%;
-}
-}
+    .esqueceuSenhaContainer {
+      flex-direction: column;
+      display: flex; 
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+    }
+    .imagemEsquerdaES {
+      display: none !important;
+    }
+    .LadoDireitoES {
+      display: block;
+      width: 100%;
+    }
+  }

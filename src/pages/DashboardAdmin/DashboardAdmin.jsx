@@ -20,9 +20,9 @@ const DashboardAdmin = () => {
   const [subName, setSubName] = useState("User");
 
   return (
-    <SidebarAdmin>
-      <BottomDashboard>
-        <NavbarDashboard />
+        <SidebarAdmin>
+    <BottomDashboard>
+        <NavbarDashboard/>
 
         {/* Seção Topo */}
         <div className="secao-superior">
@@ -39,6 +39,13 @@ const DashboardAdmin = () => {
               <img src={elementoVerde} alt="elemento verde" />
             </div>
           </div>
+              {/* Card de Perfil */}
+          {/* <div className="menu-lateral-admin"> */}
+          <CardPerfil
+          name={name}
+          subName={subName}
+        />
+        {/* </div> */}
         </div>
 
         {/* Painel do Administrador */}
@@ -80,16 +87,10 @@ const DashboardAdmin = () => {
               size="medium"
               onClick={() => navigate("/gestaoForum")}
             />
+      
           </div>
         </div>
 
-        {/* Card de Perfil */}
-        <div className="menu-lateral-admin">
-        <CardPerfil
-          name={name}
-          subName={subName}
-        />
-        </div>
       </BottomDashboard>
     </SidebarAdmin>
   );

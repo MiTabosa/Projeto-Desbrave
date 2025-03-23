@@ -62,7 +62,7 @@ const Dashboard = () => {
     <div className="container-dashboard">
       <Sidebar>
         <BottomDashboard>
-          <NavbarDashboard />
+          <NavbarDashboard/>
 
           {/* Seção Topo */}
           <div className="secao-superior">

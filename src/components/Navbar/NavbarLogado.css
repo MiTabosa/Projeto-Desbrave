@@ -3,7 +3,7 @@
   max-width: 2220px;
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Alinha a logo e os links verticalmente */
+  align-items: center;
   padding: 10px 50px;
   background: #ffffff;
   position: relative;
@@ -14,16 +14,16 @@
   height: 40px;
 }
 
-.nav-links {
+.links-nav {
   list-style: none;
   display: flex;
   gap: 50px;
-  align-items: center; /* Alinha os itens verticalmente ao centro */
-  margin: 0; /* Remove margens padrão */
-  padding: 0; /* Remove paddings padrão */
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
-.nav-links li a {
+.links-nav li a {
   text-decoration: none;
   font-family: sans-serif;
   font-weight: bold;
@@ -31,10 +31,9 @@
   transition: color 0.3s;
   font-size: 18px;
   position: relative;
-  margin-top: 0; /* Remove a margem superior */
 }
 
-.nav-links li a::after {
+.links-nav li a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -45,100 +44,68 @@
   transition: all 0.3s ease-in-out;
 }
 
-.nav-links li a:hover::after {
+.links-nav li a:hover::after {
   width: 80%;
 }
 
-.nav-links li a:hover {
+.links-nav li a:hover {
   color: #35A150;
 }
 
-.user-area {
+.area-usuario {
   display: flex;
   align-items: center;
   gap: 10px;
-  position: relative;
   margin-left: 50px;
 }
 
-.user-info {
+.info-usuario {
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
 }
 
-.user-icon {
+.icone-usuario {
   width: 40px;
   height: 40px;
-  color: #0367A5; /* Cor azul */
+  color: #0367A5;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.user-icon:hover {
-  color: #024b7a; /* Tom de azul mais escuro ao passar o mouse */
+.icone-usuario:hover {
+  color: #024b7a;
 }
 
-.user-name {
+.nome-usuario {
   font-size: 16px;
   font-weight: bold;
   color: #0367A5;
 }
 
-.dropdown-menu {
-  width: 200px;
-  height: 120px;
-  position: absolute;
-  top: 50px;
-  right: 0;
-  background: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px;
-  z-index: 1000;
-}
-
-.dropdown-menu button {
-  background: none;
-  border: none;
-  padding: 8px 16px;
-  font-size: 14px;
-  color: #0367A5;
-  cursor: pointer;
-  text-align: left;
-}
-
-.dropdown-menu button:hover {
-  background: #f0f0f0;
-}
-
-.menu-icon {
+.icone-menu {
   display: none;
   font-size: 24px;
   cursor: pointer;
   color: #0367A5;
 }
 
-
+/* Estilos para mobile */
 @media (max-width: 768px) {
   .navbar {
     position: relative;
     z-index: 1000;
   }
 
-  .menu-icon {
+  .icone-menu {
     display: block;
     font-size: 30px;
     cursor: pointer;
     z-index: 1500;
   }
 
-  .nav-links {
+  .links-nav {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -156,34 +123,30 @@
     z-index: 2000;
   }
 
-  .nav-links.active {
+  .links-nav.ativo {
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* Coloca o usuário no topo do menu */
-  .user-area {
+  .area-usuario {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
+    margin-left: 0; /* Remove a margem esquerda */
   }
 
-  .user-icon {
+  .icone-usuario {
     width: 50px;
     height: 50px;
-    color: #0367A5;
   }
 
-  .user-name {
+  .nome-usuario {
     font-size: 18px;
-    font-weight: bold;
-    color: #0367A5;
   }
 
-  /* Botões abaixo dos links */
-  .buttons {
+  .botoesNavLogado {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -192,8 +155,10 @@
     padding-top: 20px;
   }
 
-  .buttons button {
-    width: 80%;
+  .botoesNavLogado button {
+    width: 150px;
+    height: 30px;
+    max-width: 200px;
     padding: 12px;
     font-size: 16px;
     font-weight: bold;
@@ -203,11 +168,12 @@
     border: none;
     text-align: center;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .buttons button:hover {
+  .botoesNavLogado button:hover {
     background-color: #024b7a;
   }
 }
-
-

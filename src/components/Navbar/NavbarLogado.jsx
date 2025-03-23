@@ -1,21 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./NavbarLogado.css"; // Estilos específicos para o Navbar logado
+import "./NavbarLogado.css";
 import logo from "../../assets/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { FaUserCircle } from "react-icons/fa"; // Ícone de usuário
+import { FaUserCircle } from "react-icons/fa";
 
 const NavbarLogado = () => {
   const navigate = useNavigate();
   const [menuAberto, setMenuAberto] = useState(false);
-  const [dropdownAberto, setDropdownAberto] = useState(false);
 
   const alternarMenu = () => {
     setMenuAberto(!menuAberto);
-  };
-
-  const alternarDropdown = () => {
-    setDropdownAberto(!dropdownAberto);
   };
 
   const handleLogout = () => {
@@ -34,10 +29,16 @@ const NavbarLogado = () => {
         <a href="/">
           <img className="logo" src={logo} alt="Logo" />
         </a>
-        <div className="menu-icon" onClick={alternarMenu}>
+        <div className="icone-menu" onClick={alternarMenu}>
           <GiHamburgerMenu />
         </div>
-        <ul className={`nav-links ${menuAberto ? "active" : ""}`}>
+        <ul className={`links-nav ${menuAberto ? "ativo" : ""}`}>
+          <div className="area-usuario">
+            <div className="info-usuario">
+              <FaUserCircle className="icone-usuario" />
+              <span className="nome-usuario">Usuário</span>
+            </div>
+          </div>
           <li>
             <a href="#" onClick={() => navigate("/")}>
               Início
@@ -46,11 +47,6 @@ const NavbarLogado = () => {
           <li>
             <a href="#" onClick={() => navigate("/sobre")}>
               Sobre
-            </a>
-          </li>
-          <li>
-            <a href="#" onClick={() => navigate("/destaque")}>
-              Destaque
             </a>
           </li>
           <li>
@@ -63,17 +59,9 @@ const NavbarLogado = () => {
               Mapa
             </a>
           </li>
-          <div className={`user-area ${menuAberto ? "active" : ""}`}>
-            <div className="user-info" onClick={alternarDropdown}>
-              <FaUserCircle className="user-icon" />
-              <span className="user-name">Usuário</span>
-            </div>
-            {dropdownAberto && (
-              <div className="dropdown-menu">
-                <button onClick={handlePerfil}>Perfil</button>
-                <button onClick={handleLogout}>Sair</button>
-              </div>
-            )}
+          <div className="botoesNavLogado">
+            <button onClick={handlePerfil}>Ver Perfil</button>
+            <button onClick={handleLogout}>Sair</button>
           </div>
         </ul>
       </nav>

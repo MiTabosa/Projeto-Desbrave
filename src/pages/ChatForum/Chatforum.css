@@ -106,7 +106,7 @@ button:hover {
 .backpage :hover {
     cursor: pointer;
 }
-/* 
-.pontos-image {
-    z-index: 0; 
-} */
+
+.button-voltar-f{
+    background-color: #ffff;
+}

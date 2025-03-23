@@ -19,6 +19,7 @@
 .textos {
     margin-left: 42px;
     margin-top: 10px;
+    max-width: none;
 }
 
 /* Responsivo */

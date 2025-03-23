@@ -1,0 +1,34 @@
+.dashboard-container {
+    display: flex;
+  }
+  
+  .sidebar-admin {
+    width: 250px;
+    background-color: #0367A5;
+    color: white;
+    padding: 20px;
+    height: 100vh; 
+  }
+  
+  .sidebar-admin ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar-item:hover {
+    background-color: #0A5FA3; 
+  }
+  
+  .dashboard-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f0f0f0;
+  }

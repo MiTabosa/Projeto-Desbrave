@@ -1,4 +1,4 @@
-.containerCupons {
+.containerCuponsUsados {
     background: #E9E8E8;
     padding: 20px;
     border-radius: 10px;
@@ -12,7 +12,7 @@
     
   }
   
-  .tituloPagina{
+  .tituloPaginaUsados{
     gap: 20px; 
     padding: 50px; 
     margin-top: 50px;
@@ -24,7 +24,7 @@
   
   }
   
-  .boxEstrela {
+  .boxEstrelaUsados{
     gap: 20px; 
     padding: 50px; 
     display: flex;

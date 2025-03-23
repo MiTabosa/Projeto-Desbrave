@@ -22,6 +22,7 @@ import GestForm from "./pages/GestCurso/Gestcurso";
 import CuponsDashboard from './pages/Cupons/CuponsDashboard';
 import CuponsUsados from "./pages/Cupons/CuponsUsados";
 import MeusCursos from "./pages/MeusCursos/MeusCursos"
+import Certificados from "./pages/Certificados/Certificados";
 
 function App() {
   const [isLogged, setIsLogged] = useState(!!localStorage.getItem("user"));
@@ -51,6 +52,7 @@ function App() {
         <Route path="/forumChat" element={<ForumChat />} />
         <Route path="/gestao" element={<GestForm />} />
         <Route path="/meusCursos" element={<MeusCursos/>} />
+        <Route path="/Certificados" element={<Certificados/>} />
       </Routes>
     </Router>
   );

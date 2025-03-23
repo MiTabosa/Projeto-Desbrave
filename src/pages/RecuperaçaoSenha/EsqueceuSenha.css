@@ -3,15 +3,15 @@
   height: 100vh;
 }
 
-.imagemEsquerda {
+.imagemEsquerdaES {
   flex: 1;
   background-size: cover;
-  background-position: center 30%; /* Ajusta o foco para 30% do topo */
+  background-position: center 30%; 
   background-repeat: no-repeat;
 }
 
 
-.formDireita {
+.LadoDireitoES {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -31,6 +31,7 @@
   }
   
   p {
+    margin-top: 30px;
     color: #333;
     font-size: 1rem;
     max-width: 400px;
@@ -38,12 +39,13 @@
   
   .emailInput {
     position: relative;
+    margin-top: 50px;
     margin-bottom: 15px;
     width: 90%;
     padding: 12px 40px;
     font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 6px;
     outline: none;
   }
   
@@ -56,7 +58,7 @@
     font-size: 1rem;
     font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     margin-top: 50px;
     transition: transform 0.3s ease-in-out;
@@ -85,59 +87,22 @@
     text-decoration: underline;
   }
   
-  
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
+
     .esqueceuSenhaContainer {
       flex-direction: column;
-      height: auto;
-    }
-  
-    .imagemEsquerda {
-      height: 250px;
-      flex: none;
-    }
-  
-    .formDireita {
-      flex: none;
-      padding: 30px;
-    }
-  
-    h2 {
-      font-size: 1.8rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    h2 {
-      font-size: 1.5rem;
-    }
-  
-    p {
-      font-size: 0.9rem;
-    }
-  
-    .emailInput, .enviarCodigo {
-      width: 90%;
-      font-size: 0.9rem;
-    }
-  
-    .voltarLogin {
-      font-size: 0.9rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    h2 {
-      font-size: 1.3rem;
-    }
-  
-    .emailInput, .enviarCodigo {
+      display: flex; 
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       width: 100%;
-      font-size: 0.85rem;
-      padding: 10px;
+      text-align: center;
     }
-  
-    .voltarLogin {
-      font-size: 0.85rem;
+    .imagemEsquerdaES {
+      display: none !important;
+    }
+    .LadoDireitoES {
+      display: block;
+      width: 100%;
     }
   }

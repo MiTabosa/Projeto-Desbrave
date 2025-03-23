@@ -2,17 +2,19 @@ import React from "react";
 import "./CuponsUsados.css";
 import { MdStarOutline } from "react-icons/md";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
 import NavbarDashboard from "../../components/NavbarDashboard/NavbarDashboard";
 
 export default function CuponsUsados() {
   return (
     <Sidebar>
-      <div className="containerCupons">
+      <BottomDashboard>
+        <div className="containerCuponsUsados">
         <NavbarDashboard />
 
-        <h2 className="tituloPagina">Meus Cupons</h2>
+        <h2 className="tituloPaginaUsados">Meus Cupons</h2>
 
-        <div className="boxEstrela">
+        <div className="boxEstrelaUsados">
           <div className="boxEstrelaInterno">
             <span><MdStarOutline className="iconeEstrela" /></span>
             <h1 className="tituloEstrela">Estrelas</h1>
@@ -39,6 +41,8 @@ export default function CuponsUsados() {
           </div>
         </div>
       </div>
+      </BottomDashboard>
+      
     </Sidebar>
   );
 }

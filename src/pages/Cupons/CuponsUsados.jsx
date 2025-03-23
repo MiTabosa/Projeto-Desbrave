@@ -10,8 +10,8 @@ export default function CuponsUsados() {
     <Sidebar>
       <BottomDashboard>
         <div className="containerCuponsUsados">
-        <NavbarDashboard />
 
+      <div>
         <h2 className="tituloPaginaUsados">Meus Cupons</h2>
 
         <div className="boxEstrelaUsados">
@@ -22,8 +22,13 @@ export default function CuponsUsados() {
           </div>
           <a href="/Scanner"><button className="botaoResgatarMais">Resgatar Mais</button></a>
           <button className="botaoCuponsUsados">Cupons Usados</button>
-          <a href="/cupons" className="voltarLogin">↩ Voltar para meus cupons</a>
-        </div>
+          <a href="/cupons" className="voltarLoginCupons">↩ Voltar para meus cupons</a>
+        </div>    
+      </div>
+        
+        <div className="CuponsConteudo"> 
+          <NavbarDashboard />
+
         <div className="gradeCuponsUsados">
           <h2 className="h1">Cupons Usados</h2>
           <div className="gridCupons">
@@ -39,6 +44,7 @@ export default function CuponsUsados() {
               <div className="avisoUso">Você já utilizou esse cupom.</div>
             </div>
           </div>
+        </div>
         </div>
       </div>
       </BottomDashboard>

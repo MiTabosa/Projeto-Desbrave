@@ -9,7 +9,14 @@ import gov_br from "../../assets/gov_br.png";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  
+  const [email, setEmail] = useState("")
+  const [senha, setSenha] = useState("")
+
+  function handleLogin() {
+    console.log("Email: ", email)
+    console.log("Senha: ", senha)
+
+  }
 
   return (
     <div className="loginContainer">
@@ -31,20 +38,23 @@ export default function Login() {
         <div className="loginformulario">
           <div className="inputCampo">
             <FaUser className="inputIcone" />
-            <input type="email" placeholder="E-mail" />
+            <input type="email" placeholder="E-mail" 
+            onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="inputCampo">
             <FaLock className="inputIcone" />
             <input 
               type={showPassword ? "text" : "password"} 
               placeholder="Senha" 
+              onChange={(e) => setSenha(e.target.value)}
             />
             <span className="Senha" onClick={() => setShowPassword(!showPassword)}>
               {showPassword ? <IoEyeOff /> : <IoEye />}
             </span>
           </div>
           <Link to="/esqueceuSenha" className="EsqueciSenha">Esqueceu sua senha?</Link>
-          <button className="EntrarBotao">Entrar</button>
+          <button className="EntrarBotao" onClick={() => handleLogin()}>Entrar</button>
         </div>
 
         <p className="connecText">Ou conecte-se com:</p>

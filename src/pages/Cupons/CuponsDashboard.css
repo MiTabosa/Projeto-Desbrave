@@ -8,20 +8,22 @@
   margin: 5px;
   box-shadow: 0 4px 20px #0000001a;
   display: flex;
-  flex-direction: column;
   align-items: rigth;
   
 }
 
+.CuponsConteudo{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  height: 100%;
+}
 .titulo {
-  gap: 20px; 
-  padding: 50px; 
   margin-top: 50px;
   font-size: 32px;
   font-weight: bold;
   color: #000000;
   text-align: left;
-  position: absolute;
 
 }
 
@@ -31,7 +33,6 @@
   display: flex;
   flex-direction: column;
   align-items: left;
-  margin-bottom: 300px;
 }
 .estrelaIcon{
   background-color: #ffffff;
@@ -96,8 +97,6 @@
 }
 
 .AreaCupons {
-  position: absolute;
-  margin-top: 110px;
   margin-right: 100px;
   width: 45vw;
   height: 500px;
@@ -218,7 +217,6 @@
 
 .copiar {
   color: #D98D30;
-  position: absolute;
   justify-content: flex-end;
   align-items: rigth;
   font-size: 12px;
@@ -298,65 +296,43 @@
 }
 
 @media (max-width: 768px) {
-  .AreaCupons {
-    display: block;
-    width: 100%;
-    max-width: 320px;
-    padding: 10px;
-    background: #E0E0E0;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    overflow-y: auto;
-    max-height: 400px;
-  }
-
-  .botaoUsados {
-    margin-bottom: 10px;
+  .cupomDesabilitado10, .cupomDesabilitado50 {
+    display: none;
   }
 
   .cuponsGrade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    display: block;
-    gap: 15px;
+    gap: 1rem;
+  }
+  .AreaCupons {
+    margin-bottom: 80px;
+    margin-right: 0;
     width: 100%;
-    overflow-y: auto;
-    max-height: 300px;
-    padding-right: 10px;
+    display: flex;
+    justify-content:center; 
+    align-items: center;
+  }
+  .cuponsContainer {
+    display: flex;
+    flex-direction: column;
+  
+  }
+  .CuponsConteudo{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 
   .cupomValido5, .cupomValido20 {
-    flex-direction: column;
-    display: flexbox; 
-    align-items: center;
-    justify-content: center;
     width: 100%;
-    text-align: center;
+    margin: 0;
   }
 
-  .cupomTitulo5, .cupomTitulo20 {
-      flex-direction: column;
-      display: block; 
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      text-align: center;
-  }
-
-  .cupomDescricao5, .cupomDescricao20 {
-      flex-direction: column;
-      display: block; 
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      text-align: center;
-  }
-
-  /* Esconde cupons desabilitados */
-  .cupomDesabilitado10, .cupomDesabilitado50 {
-    display: none;
+  .botaoResgate, .botaoUsados {
+    width: 100%;
+    margin: 10px 0;
   }
 }

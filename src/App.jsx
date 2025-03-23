@@ -24,7 +24,6 @@ import CuponsDashboard from './pages/Cupons/CuponsDashboard';
 import CuponsUsados from "./pages/Cupons/CuponsUsados";
 import MeusCursos from "./pages/MeusCursos/MeusCursos"
 import Certificados from "./pages/Certificados/Certificados";
-import MeusCursos from "./pages/MeusCursos/MeusCursos";
 import DashboardAdmin from "./pages/DashboardAdmin/DashboardAdmin";
 
 function App() {

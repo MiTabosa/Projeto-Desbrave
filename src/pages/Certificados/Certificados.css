@@ -13,14 +13,11 @@
   }
   
   .tituloCertificado{
-    gap: 20px; 
-    padding: 50px; 
-    margin-top: 50px;
+    margin-bottom: 40px; 
     font-size: 32px;
     font-weight: bold;
     color: #000000;
     text-align: left;
-    position: absolute;
   
   }
 
@@ -67,3 +64,27 @@
     color: #ffff;
     padding: 10px;
   }
+
+  @media (max-width: 768px) {
+    .CertificadoContainer {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+    .tituloCertificado {
+      margin-bottom: 0;
+      font-size: 20px;
+      padding-top: 100px;
+    }
+    .Curso1Certif{
+        margin-top: 50px;
+    }
+    .Curso2Certif,
+    .Curso3Certif,
+    .Curso4Certif {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+}

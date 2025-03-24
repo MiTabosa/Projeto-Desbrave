@@ -8,8 +8,7 @@
   margin: 5px;
   box-shadow: 0 4px 20px #0000001a;
   display: flex;
-  align-items: rigth;
-  
+  align-items: rigth; 
 }
 
 .CuponsConteudo{
@@ -18,13 +17,13 @@
   align-items: end;
   height: 100%;
 }
+
 .titulo {
   margin-top: 50px;
   font-size: 32px;
   font-weight: bold;
   color: #000000;
   text-align: left;
-
 }
 
 .estrela {
@@ -34,6 +33,7 @@
   flex-direction: column;
   align-items: left;
 }
+
 .estrelaIcon{
   background-color: #ffffff;
   color: #D98D30;
@@ -114,6 +114,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
+
 .cupomValido5 {
   background: #D98D30;
   color: white;
@@ -123,7 +124,7 @@
   border-bottom-style: inherit;
 }
 .cupomTitulo5{
-  margin-bottom: -20px;
+  /* margin-bottom: -20px; */
   color: #ffffff;
 }
 .cupomDescricao5{
@@ -140,7 +141,7 @@
 }
 
 .cupomTitulo10{
-  margin-bottom: -20px;
+  /* margin-bottom: -20px; */
   color: #ffffff;
 }
 
@@ -157,7 +158,7 @@
   border-bottom-style: inherit;
 }
 .cupomTitulo20{
-  margin-bottom: -20px;
+  /* margin-bottom: -20px; */
   color: #ffffff;
 }
 .cupomDescricao20{
@@ -174,7 +175,7 @@
 }
 
 .cupomTitulo50{
-  margin-bottom: -20px;
+  /* margin-bottom: -20px; */
   color: #ffffff;
 }
 
@@ -296,69 +297,6 @@
 }
 
 @media (max-width: 768px) {
-<<<<<<< HEAD
-  .AreaCupons {
-    display: block;
-    width: 100%;
-    max-width: 320px;
-    padding: 10px;
-    background: #E0E0E0;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    overflow-y: auto;
-    max-height: 400px;
-  }
-
-  .botaoUsados {
-    margin-bottom: 10px;
-  }
-
-  .cuponsGrade {
-    flex-direction: column;
-    display: block;
-    gap: 15px;
-    width: 100%;
-    overflow-y: auto;
-    max-height: 300px;
-    padding-right: 10px;
-  }
-
-  .cupomValido5, .cupomValido20 {
-    flex-direction: column;
-    display: flexbox; 
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    text-align: center;
-  }
-
-  .cupomTitulo5, .cupomTitulo20 {
-      flex-direction: column;
-      display: block; 
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      text-align: center;
-  }
-
-  .cupomDescricao5, .cupomDescricao20 {
-      flex-direction: column;
-      display: block; 
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      text-align: center;
-  }
-
-  /* Esconde cupons desabilitados */
-  .cupomDesabilitado10, .cupomDesabilitado50 {
-    display: none;
-  }
-=======
   .cupomDesabilitado10, .cupomDesabilitado50 {
     display: none;
   }
@@ -398,5 +336,4 @@
     width: 100%;
     margin: 10px 0;
   }
->>>>>>> 6aab1051b44c20e6778924445322a0f4281821c8
 }

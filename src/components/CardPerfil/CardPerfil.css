@@ -99,8 +99,8 @@
   gap: 6px;
   margin-top: 20px;
 }
-
-@media (max-width: 768px) {
+ 
+ @media (max-width: 768px) {
   .container-perfil {
     max-width: 360px;; 
     margin: 0 auto;
@@ -163,4 +163,4 @@
     margin: 0;
     line-height: 1;
   }
-}
+} 

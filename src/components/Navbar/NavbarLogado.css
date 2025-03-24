@@ -1,65 +1,36 @@
 .navbar {
-  width: 100%;
-  max-width: 2220px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 50px;
-  background: #ffffff;
-  position: relative;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-  width: 160px;
-  height: 40px;
+.icone-menu {
+  display: none; 
+  font-size: 30px;
+  cursor: pointer;
 }
 
 .links-nav {
-  list-style: none;
   display: flex;
-  gap: 50px;
   align-items: center;
-  margin: 0;
-  padding: 0;
+  gap: 20px;
 }
 
-.links-nav li a {
+.links-nav li {
+  list-style: none;
+}
+
+.links-nav a {
   text-decoration: none;
-  font-family: sans-serif;
-  font-weight: bold;
   color: #0367A5;
-  transition: color 0.3s;
-  font-size: 18px;
-  position: relative;
-}
-
-.links-nav li a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0%;
-  height: 2px;
-  background-color: #35A150;
-  transition: all 0.3s ease-in-out;
-}
-
-.links-nav li a:hover::after {
-  width: 80%;
-}
-
-.links-nav li a:hover {
-  color: #35A150;
+  font-weight: bold;
 }
 
 .area-usuario {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 50px;
-}
-
-.info-usuario {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -70,12 +41,6 @@
   width: 40px;
   height: 40px;
   color: #0367A5;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.icone-usuario:hover {
-  color: #024b7a;
 }
 
 .nome-usuario {
@@ -84,70 +49,87 @@
   color: #0367A5;
 }
 
-.icone-menu {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #0367A5;
+.menu-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  height: 110px;
+  width: 150px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none; 
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  z-index: 1000;
 }
 
-/* Estilos para mobile */
-@media (max-width: 768px) {
-  .navbar {
-    position: relative;
-    z-index: 1000;
-  }
+.menu-dropdown.ativo {
+  display: flex;
+}
 
+.menu-dropdown button {
+  background-color: transparent;
+  border: none;
+  color: #0367A5;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+  height: 30px;
+  padding: 10px;
+}
+
+.menu-dropdown button:hover {
+  color: #024b7a;
+  background-color: #ddd;
+  border-radius: 3px;
+}
+
+.botoesNavLogado {
+  display: none !important; 
+}
+
+@media (max-width: 768px) {
   .icone-menu {
-    display: block;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 1500;
+    display: block; 
   }
 
   .links-nav {
-    display: flex;
+    display: none; 
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 60px;
+    top: 60px; 
     left: 0;
     width: 100%;
-    background: #ffffffd4;
-    padding: 20px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
     opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    gap: 20px;
-    z-index: 2000;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
   }
 
   .links-nav.ativo {
+    display: flex; 
     opacity: 1;
     transform: translateY(0);
   }
 
   .area-usuario {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
     gap: 10px;
     margin-bottom: 20px;
-    margin-left: 0; /* Remove a margem esquerda */
+    order: -1; 
   }
 
-  .icone-usuario {
-    width: 50px;
-    height: 50px;
-  }
-
-  .nome-usuario {
-    font-size: 18px;
+  .menu-dropdown {
+    display: none !important; 
   }
 
   .botoesNavLogado {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -156,9 +138,8 @@
   }
 
   .botoesNavLogado button {
-    width: 150px;
+    width: 45%;
     height: 30px;
-    max-width: 200px;
     padding: 12px;
     font-size: 16px;
     font-weight: bold;

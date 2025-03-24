@@ -91,4 +91,12 @@
         justify-content: center;
     }
 
+    .card-box strong {
+        font-size: 0.8rem; 
+    }
+
+    .valor {
+        font-size: 0.8rem;
+    }
+
 }

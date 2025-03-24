@@ -35,11 +35,6 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => navigate("/destaque")}>
-              Destaque
-            </a>
-          </li>
-          <li>
             <a href="#" onClick={() => navigate("/parceiros")}>
               Parceiros
             </a>

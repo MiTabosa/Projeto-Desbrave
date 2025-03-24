@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./NavbarLogado.css";
 import logo from "../../assets/logo.png";
@@ -8,9 +8,15 @@ import { FaUserCircle } from "react-icons/fa";
 const NavbarLogado = () => {
   const navigate = useNavigate();
   const [menuAberto, setMenuAberto] = useState(false);
+  const [dropdownAberto, setDropdownAberto] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const alternarMenu = () => {
     setMenuAberto(!menuAberto);
+  };
+
+  const alternarDropdown = () => {
+    setDropdownAberto(!dropdownAberto);
   };
 
   const handleLogout = () => {
@@ -21,6 +27,16 @@ const NavbarLogado = () => {
   const handlePerfil = () => {
     navigate("/dashboard");
   };
+
+  // Verifica o tamanho da tela ao carregar e redimensionar
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
@@ -33,12 +49,6 @@ const NavbarLogado = () => {
           <GiHamburgerMenu />
         </div>
         <ul className={`links-nav ${menuAberto ? "ativo" : ""}`}>
-          <div className="area-usuario">
-            <div className="info-usuario">
-              <FaUserCircle className="icone-usuario" />
-              <span className="nome-usuario">Usuário</span>
-            </div>
-          </div>
           <li>
             <a href="#" onClick={() => navigate("/")}>
               Início
@@ -59,10 +69,23 @@ const NavbarLogado = () => {
               Mapa
             </a>
           </li>
-          <div className="botoesNavLogado">
-            <button onClick={handlePerfil}>Ver Perfil</button>
-            <button onClick={handleLogout}>Sair</button>
+          <div className="area-usuario" onClick={alternarDropdown}>
+            <FaUserCircle className="icone-usuario" />
+            <span className="nome-usuario">Usuário</span>
+            {dropdownAberto && (
+              <div className="menu-dropdown ativo">
+                <button onClick={handlePerfil}>Perfil</button>
+                <button onClick={handleLogout}>Sair</button>
+              </div>
+            )}
           </div>
+          {/* Botões para mobile */}
+          {isMobile && menuAberto && (
+            <div className="botoesNavLogado">
+              <button onClick={handlePerfil}>Ver Perfil</button>
+              <button onClick={() => navigate("/login")}>Entrar</button>
+            </div>
+          )}
         </ul>
       </nav>
     </>

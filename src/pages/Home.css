@@ -90,7 +90,6 @@ html, body {
 .possibilidades p {
   margin-bottom: 3.125rem;
   font-size: 1.125rem;
-  max-width: none;
 }
 
 .explore {
@@ -115,7 +114,6 @@ html, body {
   margin-bottom: 2rem;
   font-size: 1.125rem;
   display: block;
-  max-width: none; /*Linha para definir o tamanho da caixa do texto*/
 }
 
 .lugares-imperdiveis {
@@ -129,7 +127,6 @@ html, body {
 
 .lugares-imperdiveis p {
   font-size: 1.125rem;
-  max-width: none;
 }
 
 .lugaresImperdiveis-text {

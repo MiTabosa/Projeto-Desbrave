@@ -68,8 +68,13 @@ const GestCurso = () => {
     };
 
     const excluir = (id) => {
-        const updatedCursos = cursos.filter(curso => curso.id !== id);
+        const confirmar =  window.confirm('Deseja excluir o curso?')
+            if(confirmar) {
+                const updatedCursos = cursos.filter(curso => curso.id !== id);
         setCursos(updatedCursos);
+        console.log('Curso excluido com sucesso')
+        }
+      
     };
 
     const editar = (curso) => {

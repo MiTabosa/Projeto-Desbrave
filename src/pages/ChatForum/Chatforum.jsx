@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import Navbar from "../../components/Navbar/Navbar";
-import './Chatforum.css'
-import elementDesign from "../../assets/element-design.png";
+import './Chatforum.css';
 import { FaUserAlt } from "react-icons/fa";
 import { IoReturnUpBackOutline } from "react-icons/io5";
 
 const Chatforum = () => {
+    const navigate = useNavigate(); 
     const [comments, setComments] = useState([
         { user: "Livia Ferreira", date: "2 de janeiro de 2025", comment: "Olá! Não entendo muito de tecnologia, mas uso meu computador/tablet para estudar. Como posso protegê-lo contra ataques online e garantir que meus dados estejam seguros enquanto aprendo?" },
         { user: "Luiz Paulo", date: "12 de janeiro de 2025", comment: "Olá, Lívia! Mantenha o sistema operacional e os aplicativos sempre atualizados para corrigir falhas de segurança. Utilize um antivírus confiável e evite baixar arquivos de fontes desconhecidas. Ative senhas fortes e, se possível, a autenticação de dois fatores (2FA) para proteger acessos. Evite conectar-se a redes Wi-Fi públicas sem VPN, pois elas podem expor seus dados."}
@@ -23,12 +24,16 @@ const Chatforum = () => {
         setNewComment("");
     }
 
+    const handleBackToForums = () => {
+        navigate("/forum"); 
+    }
+
     return (
         <section className="chat-f">
             <Navbar />
             <span className="backpage">
                 <IoReturnUpBackOutline size={24} />
-                <p>Voltar para seção anterior</p>
+                <button onClick={handleBackToForums} className="button-voltar-f">Voltar para seção anterior</button>
             </span>
             <h3 className="titulo-chat">Segurança Digital</h3>
 
@@ -59,12 +64,6 @@ const Chatforum = () => {
                 />
                 <button className="button-enviar" onClick={addComment}>Enviar</button>
             </div>
-            {/* <img
-                className="pontos-image"
-                src={elementDesign}
-                alt="imagem de elemento"
-                
-            /> */}
         </section>
     );
 };

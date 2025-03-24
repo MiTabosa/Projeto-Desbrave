@@ -6,7 +6,7 @@
 
 .text-titulo-sobre {
     font-size: 55px;
-    margin-top: 80px;
+    margin-top: 50px;
     margin-left: 45px;
 }
 
@@ -19,7 +19,6 @@
 .text-sobre {
     margin-left: 45px;
     margin-top: 50px;
-    max-width: none;
 }
 
 .text-m {
@@ -32,9 +31,11 @@
 
 .cards-container-sobre {
     display: flex;
-    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    gap: 130px;
     margin-left: 45px;
-    max-width: 1100px;
+    /* max-width: 1220px; */
     margin-bottom: 80px;
     margin-top: 50px;
     flex-wrap: wrap;
@@ -135,6 +136,7 @@
     .text-titulo-sobre {
         font-size: 40px;
         margin-bottom: -15px;
+        margin-top: 10px;
     }
 
     .text-subtitulo-sobre {
@@ -145,10 +147,15 @@
 
     .text-sobre {
         margin-top: 20px;
-        font-size: 12px;
+        font-size: 0.8rem;
+        margin-right: 30px;
     }
 
     .cards-container-sobre {
+        display: flex;
+        align-items: center;
         justify-content: center;
+        margin-left: 0;
+        gap: 20px;
     }
 }

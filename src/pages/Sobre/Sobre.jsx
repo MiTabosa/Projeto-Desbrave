@@ -17,8 +17,10 @@ function Sobre() {
             <Navbar />
             <h1 className="text-titulo-sobre">Desbrave</h1>
             <h2 className="text-subtitulo-sobre">O FUTURO DA EDUCAÇÃO DIGITAL!</h2>
-            <p className="text-sobre">Somos uma plataforma que une cultura, tecnologia e aprendizado para <br/>
-                jovens explorarem o mundo digital de forma consciente e criativa.
+            <p className="text-sobre">Somos uma plataforma que une cultura, tecnologia e aprendizado para jovens explorarem o mundo digital de forma consciente e criativa. 
+  No Desbrave, incentivamos a valorização dos pontos turísticos e da história local através de desafios interativos e um sistema de QR Codes espalhados pela cidade. 
+  Além disso, oferecemos acesso a cursos em parceria com diversas instituições e microempreendedores, promovendo oportunidades reais de crescimento pessoal e profissional. 
+  Nosso propósito é conectar as pessoas à cultura de Recife, estimular práticas cidadãs e transformar cada experiência em conhecimento e impacto positivo.
             </p>
 
             <div className="cards-container-sobre">
@@ -38,7 +40,6 @@ function Sobre() {
                         <Button text="Saiba mais" color="#D98D30" size="medium" onClick={() => setExpanded("missao")} />
                     )}
                 </div>
-
 
                 <div className="card-v">
                     <h3 className="text-v">VISÃO</h3>

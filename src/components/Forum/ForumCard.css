@@ -60,18 +60,42 @@
     width: 10rem;
     min-height: 3rem;
 }
-@media (max-width: 768px){
-    .card-box-1{
-        display: none;
+@media (max-width: 768px) {
+    .card-box-1 {
+        display: none; 
     }
-    .card-box{
+
+    .card-box {
         width: 5.89rem;
-        
-    } 
-    .fcard-icon{
-        font-size: 3rem;
     }
-    .card-title{
-    font-size: 1rem;
+
+    .fcard-icon {
+        width: 3.8rem; 
+        height: 100%; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+    }
+
+    .card-title {
+        font-size: 0.8rem; 
+    }
+
+    .card-forum {
+        height: 80px; 
+        flex-direction: row; 
+    }
+
+    .card-left, .card-right {
+        justify-content: center;
+    }
+
+    .card-box strong {
+        font-size: 0.8rem; 
+    }
+
+    .valor {
+        font-size: 0.8rem;
     }
 }

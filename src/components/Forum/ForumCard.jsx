@@ -5,7 +5,7 @@ import { FaUsers } from "react-icons/fa6";
 
 const data = [
   { id: 1, title: "SEGURANÇA DIGITAL", messages: 1000, activeUsers: 15 },
-  { id: 2, title: "PROGRAMACAO", messages: 500, activeUsers: 10 },
+  { id: 2, title: "PROGRAMAÇÃO", messages: 500, activeUsers: 10 },
   { id: 3, title: "DESIGN", messages: 300, activeUsers: 8 },
 ];
 

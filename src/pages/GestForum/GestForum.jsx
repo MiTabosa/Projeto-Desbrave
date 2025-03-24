@@ -57,8 +57,15 @@ const GestForum = () => {
   };
 
   const excluir = (id) => {
+
+    const confirma = window.confirm('Deseja excluir esse Fórum?');
+
+    if(confirma){
     const updatedForum = forum.filter(f => f.id !== id);
     setForum(updatedForum);
+
+    console.log('Fórum excluido com sucesso')
+    }
   };
 
   const editar = (forum) => {

@@ -102,49 +102,65 @@
 
 @media (max-width: 768px) {
   .container-perfil {
-    width: 460px;
-    height: 530px;
-    justify-content: center;
-    background-color: #f4f4f4;
-    box-shadow: none;
+    max-width: 360px;; 
+    margin: 0 auto;
+    padding: 20px;
+    background: none;
     border: none;
   }
 
+  .nome-dashboard,
+  .subnome-dashboard {
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
   .subtitulo-dashboard {
-    line-height: 1.1;
-
+    font-size: 15px;
+    margin-bottom: 10px;
   }
-  
+
   .info-geral {
- display: flex;
- 
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
   }
-  
-  .info-card-dashboard {
-   
-  }
-  
-  .icone-container {
-   
-  }
-  
-  .texto-container {
-   
-  }
-  
-  .numero-geral {
-  
-  }
-  
-  .paragrafo-geral {
 
+  .info-card-dashboard {
+    max-width: 140px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
   }
-  .info-card-curso {
-    background: #d4a017;
+
+  .icone-container {
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  
-  .info-card-estrela {
-    background: #1e90ff;
+
+  .texto-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .numero-geral {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .paragrafo-geral {
+    font-size: 14px;
+    margin: 0;
+    line-height: 1;
   }
 }
-

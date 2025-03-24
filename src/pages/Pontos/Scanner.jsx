@@ -10,10 +10,29 @@ import elementDesign from "../../assets/element-design.png";
 function Scanner() {
   const navigate = useNavigate();
   const [scanResult, setScanResult] = useState(null);
+  const [cameraPermissionGranted, setCameraPermissionGranted] = useState(false);
   const scannerRef = useRef(null);
   const readerId = "reader";
 
+  const requestCameraPermission = () => {
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then(() => {
+        setCameraPermissionGranted(true);
+      })
+      .catch((error) => {
+        console.error("Permissão da câmera negada ou erro ao acessar a câmera:", error);
+        alert("Permissão da câmera é necessária para escanear QR codes.");
+        navigate("/PaginaInicial"); // Redireciona para outra página se a permissão for negada
+      });
+  };
+
   useEffect(() => {
+    if (!cameraPermissionGranted) {
+      requestCameraPermission();
+      return;
+    }
+
     if (scanResult) return;
 
     let scanner;
@@ -103,7 +122,7 @@ function Scanner() {
       }
       window.removeEventListener("resize", handleResize);
     };
-  }, [scanResult]);
+  }, [scanResult, cameraPermissionGranted]);
 
   return (
     <div>
@@ -137,119 +156,3 @@ function Scanner() {
 }
 
 export default Scanner;
-
-
-// import "./Pontos.css";
-// import { Html5QrcodeScanner, Html5QrcodeScanType } from "html5-qrcode";
-// import { useEffect, useRef, useState } from "react";
-// import ScannerComponent from "./ScannerComponent";
-// import { useNavigate } from "react-router-dom";
-// import Button from "../../components/Button/Button";
-// import { BsCheck2Circle } from "react-icons/bs";
-// import elementDesign from "../../assets/element-design.png";
-
-// function Scanner() {
-//   const navigate = useNavigate();
-
-//   const [scanResult, setScanResult] = useState(null);
-//   const scannerRef = useRef(null);
-//   const hasInitialized = useRef(false);
-//   const readerId = "reader";
-
-//   useEffect(() => {
-//     if (hasInitialized.current || scanResult) return;
-//     hasInitialized.current = true;
-
-//     function ajustarReader() {
-//       const readerElement = document.getElementById(readerId);
-//       if (readerElement) {
-//         readerElement.style.width = window.innerWidth + "px";
-//         readerElement.style.height = window.innerHeight + "px";
-//       }
-//     }
-
-//     ajustarReader();
-
-//     window.addEventListener("resize", ajustarReader);
-
-//     setTimeout(() => {
-//       const readerElement = document.getElementById(readerId);
-//       if (!readerElement) {
-//         console.error("Elemento #reader não encontrado!");
-//         return;
-//       }
-  
-//       scannerRef.current = new Html5QrcodeScanner(readerId, {
-//         qrbox: { width: 250, height: 250 },
-//         fps: 5,
-//         disableFlip: true,
-//         supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
-//       });
-  
-//       scannerRef.current.render(
-//         (result) => {
-//           console.log("Código escaneado:", result);
-  
-//           const valoresValidos = ["Marco Zero", "Paço do frevo", "Rua bom Jesus!!"]; // Lista de códigos aceitos
-  
-//           if (valoresValidos.includes(result)) {
-//             setScanResult(result);
-         
-//           } else {
-//             navigate("/InvalidScanner");
-//           }
-  
-//           if (scannerRef.current) {
-//             scannerRef.current.clear();
-//             scannerRef.current = null;
-//           }
-//         },
-//         (error) => {
-//           console.warn("ERRO AO ESCANEAR:", error);
-//         }
-//       );
-//     }, 500);
-  
-//     return () => {
-//       if (scannerRef.current) {
-//         console.log("Limpando scanner...");
-//         try {
-//           scannerRef.current.clear();
-//           scannerRef.current = null;
-//         } catch (err) {
-//           console.warn("Erro ao limpar scanner:", err);
-//         }
-//       }
-//       window.removeEventListener("resize", ajustarReader);
-//     };
-//   }, [scanResult]);
-
- 
- 
-//   return (
-//     <div>
-//       <ScannerComponent />
-//       {scanResult ? (
-//         <section className="vector-section">
-//       <div className="initial-vector">
-//      <div className="title-container">
-//     < BsCheck2Circle className="vector-img"/>
-//     <div className="text-container"> 
-//       <h2>QR CODE ESCANEADO COM SUCESSO!</h2>
-//       <p>Você ganhou +50 pontos! <a href={scanResult}></a></p>
-//     </div>
-//   </div>
-// </div>
-// <div className="button-container">
-//   <Button text="Continuar Explorando" color="#0367A5" size="small" onClick={() => navigate("/Mapa")} />
-// </div>
-// <img className="pontos-image" src={elementDesign} alt="imagem de elemento" />
-//         </section>
-//       ) : (
-//         <div id={readerId}></div>
-//       )}
-//     </div>
-//   );
-// }
-
-// export default Scanner;

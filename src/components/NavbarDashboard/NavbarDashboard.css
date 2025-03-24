@@ -50,8 +50,22 @@
   background: #f0f0f0;
 }
 
+.menu-dashboard-icon {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  .usuario {
-    display: none;
-  }
+.user {
+  display: none;
+}
+/* 
+  .menu-dashboard-icon {
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 80px;
+    cursor: pointer;
+    color: #0367a5;
+    z-index: 100;
+  } */
 }

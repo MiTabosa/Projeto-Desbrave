@@ -1,7 +1,6 @@
 .container {
     display: flex;
     flex-direction: column;
-    background-color: #0367A5; 
     min-height: 100vh; 
     height: auto; 
     align-items: stretch; 
@@ -22,6 +21,9 @@
 
 @media (max-width: 768px) {
 
+    .container {
+        margin-top: -20px;
+    }
     .content {
       background: #f4f4f4;
         box-shadow: none

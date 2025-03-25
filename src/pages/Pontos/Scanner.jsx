@@ -41,7 +41,6 @@ function Scanner() {
       const readerElement = document.getElementById(readerId);
       if (!readerElement) return;
 
-      // Reset visual + tamanho
       readerElement.classList.remove("ready");
       readerElement.style.width = window.innerWidth + "px";
       readerElement.style.height = window.innerHeight + "px";
@@ -82,7 +81,7 @@ function Scanner() {
         }
       );
 
-      // ✅ Aplica fade-in após renderização
+ 
       setTimeout(() => {
         const reader = document.getElementById(readerId);
         if (reader) {
@@ -91,10 +90,10 @@ function Scanner() {
       }, 300);
     };
 
-    // Inicializa scanner
+  
     startScanner();
 
-    // Debounce do resize
+
     let lastWidth = window.innerWidth;
     let resizeTimeout;
 

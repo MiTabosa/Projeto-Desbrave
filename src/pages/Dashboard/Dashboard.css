@@ -30,7 +30,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 20px;
-  margin-top: -20px;
+  margin-top: 20px;
 }
 
 .cabecalho-painel img {
@@ -136,11 +136,9 @@
   width: 100%;
   margin-top: 0;
   position: relative;
-  z-index: 1;
 }
 
 .inicio-curso {
-  flex: 3;
   background-color: #ffffff;
   border-radius: 6px;
   padding: 20px;

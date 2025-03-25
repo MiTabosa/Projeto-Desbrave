@@ -35,7 +35,7 @@ const cursos = [
 
 ]
 
-const handleCardClick = (id) => {
+const manipularCartaoClick = (id) => {
     Navigate('/cursos/${id}')
 }
 
@@ -45,12 +45,12 @@ const MeusCursos = () => {
     return (
             <Sidebar>
         <BottomDashboard>
-            <NavbarDashboard/>
+            {/* <NavbarDashboard/> */}
            <div className="container-meusCursos">
-            <h2 className="titulo-headerCursos">Meus Cursos</h2>
+            <h2 className="titulo-inicio-cursos">Meus Cursos</h2>
             <div className="cursos-list">
                 {cursos.map((curso) => (
-                    <div key={curso.id} className="curso-dcard" onClick={() => handleCardClick(curso.id)}>
+                    <div key={curso.id} className="curso-dcard" onClick={() => manipularCartaoClick(curso.id)}>
                         
                         <h3 className="title-dash">{curso.titulo}</h3>
                         <div className="progresso-container">

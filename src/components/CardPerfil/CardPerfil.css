@@ -1,6 +1,6 @@
 .container-perfil {
   width: 320px;
-  height: 620px;
+  height: 690px;
   background: white;
   border-radius: 6px;
   padding: 20px;
@@ -13,6 +13,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  margin-top: 20px;
 }
 
 .perfil-banner {
@@ -24,7 +25,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-top: -40px;
+  /* margin-top: -40px; */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
 }
 

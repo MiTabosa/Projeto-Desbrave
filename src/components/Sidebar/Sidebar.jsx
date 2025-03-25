@@ -5,6 +5,7 @@ import { FaAward } from "react-icons/fa";
 import { GrTicket } from "react-icons/gr";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import logoSimplicada from "../../assets/logo-simplificada.png";
 
 export default function Sidebar({ children }) {
   const navigate = useNavigate();
@@ -24,6 +25,9 @@ export default function Sidebar({ children }) {
   return (
     <div className="dashboard-container">
       <aside className={`sidebar ${isMobile ? "mobile-sidebar" : ""}`}>
+      <div className="conteiner-logo" onClick={() => navigate("/")}>
+              <img className="logo-simplificada" src={logoSimplicada} alt="Logo" />
+          </div>
         <ul>
           <li
             className={`sidebar-item ${
@@ -68,6 +72,7 @@ export default function Sidebar({ children }) {
       </aside>
       <div className="dashboard-content">{children}</div>
     </div>
+ 
   );
 }
 

@@ -1,4 +1,4 @@
-.titulo-headerCursos {
+.titulo-inicio-cursos {
     color: #000;
     font-size: 30px;
     margin-left: 35px;
@@ -52,7 +52,7 @@
 }
 
 @media (max-width: 768px) {
-    .titulo-headerCursos {
+    .titulo-inicio-cursos{
         font-size: 25px;
     }
 

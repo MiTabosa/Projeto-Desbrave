@@ -16,7 +16,7 @@ const Chatforum = () => {
     const addComment = () => {
         if (newComment.trim() === "") return;
         const newPost = {
-            user: "dTown",
+            user: "user",
             date: new Date().toLocaleDateString("pt-BR"),
             comment: newComment
         }
@@ -37,20 +37,22 @@ const Chatforum = () => {
             </span>
             <h3 className="titulo-chat">Segurança Digital</h3>
 
-            {comments.map((item, index) => (
-                <div key={index} className="box-chat">
-                    <span className="cf-icon">
-                        <FaUserAlt />
-                    </span>
-                    <div className="info-card">
-                        <div className="user-date">
-                            <h4>{item.user}</h4>
-                            <p>{item.date}</p>
+            <div className="comments-container">
+                {comments.map((item, index) => (
+                    <div key={index} className="box-chat">
+                        <span className="cf-icon">
+                            <FaUserAlt />
+                        </span>
+                        <div className="info-card">
+                            <div className="user-date">
+                                <h4>{item.user}</h4>
+                                <p>{item.date}</p>
+                            </div>
+                            <p>{item.comment}</p>
                         </div>
-                        <p>{item.comment}</p>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
 
             <div className="comentar">
                 <span className="bar-icon">

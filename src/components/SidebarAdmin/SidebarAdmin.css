@@ -1,34 +1,143 @@
 .dashboard-container {
-    display: flex;
-  }
-  
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #0367A6; 
+}
+
+.sidebar-admin {
+  width: 250px;
+  background: #0367A6; 
+  color: #ffffff;
+  padding: 20px;
+  position: fixed; 
+  height: 100vh; 
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.sidebar-admin ul {
+  list-style: none;
+  padding: 5px;
+  margin: 5px;
+}
+
+.sidebar-admin li {
+  padding: 15px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.sidebar-item .icon {
+  width: 30px;
+  height: 30px;
+  justify-items: center;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.sidebar-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sidebar-item-active {
+  display: flex;
+  align-items: center; 
+  background-color: #35A150;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.dashboard-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 250px; 
+  padding: 20px;
+}
+
+.conteiner-logoAdmin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 50px;
+  padding: 0 20px 10px 20px;
+}
+
+.logo-simplificadaAdmin {
+  width: 80px;
+  height: 80px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+/* Estilos para mobile */
+@media (max-width: 768px) {
   .sidebar-admin {
-    width: 250px;
-    background-color: #0367A5;
-    color: white;
-    padding: 20px;
-    height: 100vh; 
+    display: none;
   }
   
-  .sidebar-admin ul {
-    list-style: none;
+  .dashboard-content {
+    margin-left: 0;
+    padding-bottom: 80px;
+  }
+  
+  .mobile-sidebar {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    border-radius: 6px 6px 0 0;
+    bottom: 0;
+    top: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    z-index: 10;
+    background: #0367A6;
+  }
+  
+  .mobile-sidebar ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
     padding: 0;
     margin: 0;
   }
   
-  .sidebar-item {
+  .mobile-sidebar li {
+    flex: 1;
+    text-align: center;
     padding: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    margin: 0;
   }
   
-  .sidebar-item:hover {
-    background-color: #0A5FA3; 
+  .mobile-sidebar .sidebar-item {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
   }
   
-  .dashboard-content {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: #f0f0f0;
+  .mobile-sidebar .sidebar-item .icon {
+    width: 24px;
+    height: 24px;
+    margin: 0;
   }
+  
+  .mobile-sidebar .sidebar-item-active {
+    background: none;
+  }
+}

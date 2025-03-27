@@ -9,7 +9,7 @@ import logoSimplicada from "../../assets/logo-simplificada.png";
 
 export default function Sidebar({ children }) {
   const navigate = useNavigate();
-  const location = useLocation(); // Obtém a URL atual
+  const location = useLocation(); 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {

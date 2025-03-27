@@ -6,9 +6,9 @@ import { FaComments } from "react-icons/fa";
 import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
 import SidebarAdmin from "../../components/SidebarAdmin/SidebarAdmin";
 import NavbarDashboard from "../../components/NavbarDashboard/NavbarDashboard";
-import CardPerfil from "../../components/CardPerfil/CardPerfil";
 import elementoVerde from "../../assets/elemento-verde.png"; 
 import Button from "../../components/Button/Button";
+import CardPerfilAdmin from "../../components/CardPerfilAdmin/CardPerfilAdmin";
 
 const DashboardAdmin = () => {
   const navigate = useNavigate();
@@ -30,7 +30,6 @@ const DashboardAdmin = () => {
     <SidebarAdmin>
       <BottomDashboard>
         <NavbarDashboard/>
-        {!isMobile && (
           <div className="secao-superior">
             <div className="esquerda-secao">
               <div className="cabecalho-painel">
@@ -45,12 +44,16 @@ const DashboardAdmin = () => {
                 <img src={elementoVerde} alt="elemento verde" />
               </div>
             </div>
-            <CardPerfil
+            <CardPerfilAdmin
               name={name}
               subName={subName}
+              numCursos={numCursos}
+              numForuns={numForuns}
+              
             />
           </div>
-        )}
+    
+          {!isMobile && (
         <div className="admin-dashboard-container">
           <h2 className="admin-title">Painel do Administrador</h2>
 
@@ -95,6 +98,7 @@ const DashboardAdmin = () => {
             </div>
           </div>
         </div>
+          )}
       </BottomDashboard>
     </SidebarAdmin>
   );

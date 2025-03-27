@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import "./Certificados.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
-import NavbarDashboard from "../../components/NavbarDashboard/NavbarDashboard";
 
 export default function Certificado() {
   return (
       <Sidebar>
         <BottomDashboard>
           <div className="CertificadoContainer">
-          <NavbarDashboard />
   
         <h1 className="tituloCertificado">Meus Certificados</h1>
   

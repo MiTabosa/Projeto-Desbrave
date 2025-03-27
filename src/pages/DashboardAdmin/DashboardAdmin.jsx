@@ -5,7 +5,6 @@ import { PiBookOpenTextThin } from "react-icons/pi";
 import { FaComments } from "react-icons/fa";
 import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
 import SidebarAdmin from "../../components/SidebarAdmin/SidebarAdmin";
-import NavbarDashboard from "../../components/NavbarDashboard/NavbarDashboard";
 import elementoVerde from "../../assets/elemento-verde.png"; 
 import Button from "../../components/Button/Button";
 import CardPerfilAdmin from "../../components/CardPerfilAdmin/CardPerfilAdmin";
@@ -29,7 +28,6 @@ const DashboardAdmin = () => {
   return (
     <SidebarAdmin>
       <BottomDashboard>
-        <NavbarDashboard/>
           <div className="secao-superior">
             <div className="esquerda-secao">
               <div className="cabecalho-painel">

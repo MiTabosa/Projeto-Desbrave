@@ -5,7 +5,7 @@ import { FaCopy } from "react-icons/fa6";
 import { PiGreaterThanThin } from "react-icons/pi";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
-import NavbarDashboard from "../../components/NavbarDashboard/NavbarDashboard";
+
 
 export default function CuponsDashboard() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -35,7 +35,6 @@ export default function CuponsDashboard() {
         </div>
         </div>
         <div className="CuponsConteudo">
-        <NavbarDashboard />
         <div className="AreaCupons">
           <div className="cuponsGrade">
             <div className="cupomValido5">

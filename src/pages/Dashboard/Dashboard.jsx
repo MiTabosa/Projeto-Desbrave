@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import NavbarDashboard from "../../components/NavbarDashboard/NavbarDashboard";
 import Button from "../../components/Button/Button";
 import ProgressCircle from "../../components/ProgressCircle/ProgressCircle";
 import CardPerfil from "../../components/CardPerfil/CardPerfil";
@@ -62,7 +61,6 @@ const Dashboard = () => {
     <div className="container-dashboard">
       <Sidebar>
         <BottomDashboard>
-          <NavbarDashboard/>
 
           {/* Seção Topo */}
           <div className="secao-superior">

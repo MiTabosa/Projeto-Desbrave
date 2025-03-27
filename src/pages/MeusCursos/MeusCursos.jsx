@@ -1,5 +1,4 @@
 import BottomDashboard from "../../components/BottomDashboard/BottomDashboard"
-import NavbarDashboard from "../../components/NavbarDashboard/NavbarDashboard"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import "./MeusCursos.css";
 import ProgressCircle from "../../components/ProgressCircle/ProgressCircle";
@@ -45,7 +44,6 @@ const MeusCursos = () => {
     return (
             <Sidebar>
         <BottomDashboard>
-            {/* <NavbarDashboard/> */}
            <div className="container-meusCursos">
             <h2 className="titulo-inicio-cursos">Meus Cursos</h2>
             <div className="cursos-list">

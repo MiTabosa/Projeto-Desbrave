@@ -3,7 +3,6 @@ import "./CuponsUsados.css";
 import { MdStarOutline } from "react-icons/md";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
-import NavbarDashboard from "../../components/NavbarDashboard/NavbarDashboard";
 
 export default function CuponsUsados() {
   return (
@@ -27,7 +26,6 @@ export default function CuponsUsados() {
       </div>
         
         <div className="CuponsConteudo"> 
-          <NavbarDashboard />
 
         <div className="gradeCuponsUsados">
           <h2 className="h1">Cupons Usados</h2>

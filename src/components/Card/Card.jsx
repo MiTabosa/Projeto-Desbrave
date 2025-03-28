@@ -10,6 +10,7 @@ const Card = ({ title, description, image, extraClass, buttonText, link, icon: I
     navigate(link);
   };
 
+
   return (
     <div className={`card ${extraClass} ${layout}`} style={{ border: `3px solid ${borderColor}` }}>
       {layout === "layout1" && (

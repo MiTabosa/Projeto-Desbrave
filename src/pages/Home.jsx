@@ -66,7 +66,7 @@ const Home = () => {
       extraClass: "card-azul",
       borderColor: "#0367A6",
       buttonText: "Saiba Mais",
-      link: "/marco-zero",
+      link: "https://www.instagram.com/p/DHwZgl5JO8D/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       layout: "layout2",
     },
     {

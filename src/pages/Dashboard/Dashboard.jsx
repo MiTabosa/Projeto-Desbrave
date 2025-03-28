@@ -103,7 +103,7 @@ const Dashboard = () => {
                             ? `0${infoGeral.estrelas}`
                             : infoGeral.estrelas}
                         </p>
-                        <p className="paragrafo-geral">Estrelas</p>
+                        <p className="paragrafo-geral">Pontos</p>
                       </div>
                     </div>
                   </div>

@@ -109,7 +109,7 @@ const CardPerfil = ({ name, setName, subName, setSubName }) => {
                 : infoGeral.estrelas}
             </p>
             
-            <p className="paragrafo-geral">Estrelas</p>
+            <p className="paragrafo-geral">Pontos</p>
             </div>
           </div>
         </div>

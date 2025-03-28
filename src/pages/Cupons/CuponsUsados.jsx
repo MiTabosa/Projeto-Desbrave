@@ -16,7 +16,7 @@ export default function CuponsUsados() {
         <div className="boxEstrelaUsados">
           <div className="boxEstrelaInterno">
             <span><MdStarOutline className="iconeEstrela" /></span>
-            <h1 className="tituloEstrela">Estrelas</h1>
+            <h1 className="tituloEstrela">Pontos</h1>
             <span>20</span>
           </div>
           <a href="/Scanner"><button className="botaoResgatarMais">Resgatar Mais</button></a>

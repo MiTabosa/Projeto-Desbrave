@@ -27,7 +27,7 @@ export default function CuponsDashboard() {
         <div className="estrela">
           <div className="estrelaCaixa">
             <span><MdStarOutline  className="estrelaIcon"/></span>
-            <h1 className="estrelaH1">Estrelas</h1>
+            <h1 className="estrelaH1">Pontos</h1>
             <span>20</span>
           </div>
           <a href="/Scanner"><button className="botaoResgate">Resgatar Mais</button></a>

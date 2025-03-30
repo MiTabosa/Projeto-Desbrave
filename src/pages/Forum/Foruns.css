@@ -21,11 +21,18 @@
     margin-top: 30px;
 }
 
-.barra-pesquisa {
-    width: 100%;
+.areaDePesquisaForum{
+    display: flex;
+    flex-direction: column;
+}
+
+/* .barra-pesquisa {
+    width: 70%;
     max-width: 400px;
     margin: 20px auto;
-}
+} */
+
+
 
 /* Media Query para Mobile */
 @media (max-width: 768px) {

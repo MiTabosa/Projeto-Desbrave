@@ -182,8 +182,12 @@
   }
 
   .admin-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 1.3rem;
+  }
+
+  .admin-card-text p{
+    font-size: 0.8rem;
   }
 
   .admin-info-cards {
@@ -192,14 +196,14 @@
   }
 
   .admin-card {
-    height: 155px;
+ 
+    width: 250px;
     padding: 1.1rem;
   }
 
   .admin-buttons {
     bottom: 0.9rem;
-    left: 1.1rem;
-    right: 1.1rem;
+    display: flex;
   }
 }
 

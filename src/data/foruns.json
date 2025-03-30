@@ -1,0 +1,44 @@
+{
+  "foruns": [
+    {
+      "nome": "Manguebeat: A Cena Musical Recifense",
+      "categoria": "Cultura",
+      "quantidade_mensagens": 1280,
+      "quantidade_usuarios_ativos": 380,
+      "data_criacao": "2019-05-14",
+      "descricao": "Discussões sobre o movimento manguebeat e a música alternativa de Recife"
+    },
+    {
+      "nome": "Bonecos de Olinda e Recife",
+      "categoria": "Cultura",
+      "quantidade_mensagens": 890,
+      "quantidade_usuarios_ativos": 210,
+      "data_criacao": "2020-08-30",
+      "descricao": "Fórum sobre a tradição dos bonecos gigantes e folguedos populares"
+    },
+    {
+      "nome": "Inclusão Digital nas Comunidades do Recife",
+      "categoria": "Cidadania Digital",
+      "quantidade_mensagens": 670,
+      "quantidade_usuarios_ativos": 190,
+      "data_criacao": "2022-02-15",
+      "descricao": "Projetos e discussões sobre acesso à tecnologia nas periferias recifenses"
+    },
+    {
+      "nome": "Segurança Digital para Pequenos Negócios",
+      "categoria": "Cidadania Digital",
+      "quantidade_mensagens": 1120,
+      "quantidade_usuarios_ativos": 320,
+      "data_criacao": "2021-11-03",
+      "descricao": "Orientação sobre proteção digital para empreendedores locais"
+    },
+    {
+      "nome": "Polo Tecnológico do Porto Digital",
+      "categoria": "Tecnologia",
+      "quantidade_mensagens": 2450,
+      "quantidade_usuarios_ativos": 650,
+      "data_criacao": "2018-09-20",
+      "descricao": "Discussões sobre inovação e startups no ecossistema tecnológico recifense"
+    }
+  ]
+}

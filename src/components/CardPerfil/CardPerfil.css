@@ -101,12 +101,12 @@
   margin-top: 20px;
 }
 /* revisar */
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   .container-perfil {
     right: 170px; 
     margin-top: 15px;
   }
-}
+} */
  
  @media (max-width: 768px) {
   .container-perfil {

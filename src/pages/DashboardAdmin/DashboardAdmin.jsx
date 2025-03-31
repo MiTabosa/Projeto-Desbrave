@@ -5,7 +5,7 @@ import { PiBookOpenTextThin } from "react-icons/pi";
 import { FaComments } from "react-icons/fa";
 import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
 import SidebarAdmin from "../../components/SidebarAdmin/SidebarAdmin";
-import elementoVerde from "../../assets/elemento-verde.png"; 
+import elementoDashboard from "../../assets/elemento-dashboard.png";
 import Button from "../../components/Button/Button";
 import CardPerfilAdmin from "../../components/CardPerfilAdmin/CardPerfilAdmin";
 
@@ -30,7 +30,7 @@ const DashboardAdmin = () => {
       <BottomDashboard>
           <div className="secao-superior">
             <div className="esquerda-secao">
-              <div className="cabecalho-painel">
+              <div className="cabecalho-painel-adm">
                 <h2 className="titulo-dashboard">Olá, {name} {subName}!</h2>
                 <p className="paragrafo-dashboard">Bem-vinda de volta! 😃</p>
                 <button
@@ -39,7 +39,7 @@ const DashboardAdmin = () => {
                 >
                   Home
                 </button>
-                <img src={elementoVerde} alt="elemento verde" />
+               <img src={elementoDashboard} alt="elemento dashboard colorido" />
               </div>
             </div>
             <CardPerfilAdmin

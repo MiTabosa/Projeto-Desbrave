@@ -8,7 +8,7 @@ import ProgressCircle from "../../components/ProgressCircle/ProgressCircle";
 import CardPerfil from "../../components/CardPerfil/CardPerfil";
 
 // imagens e ícones
-import elementoVerde from "../../assets/elemento-verde.png";
+import elementoDashboard from "../../assets/elemento-dashboard.png";
 import { BsArrow90DegRight } from "react-icons/bs";
 import { RiGraduationCapLine } from "react-icons/ri";
 import { CiStar } from "react-icons/ci";
@@ -68,7 +68,7 @@ const Dashboard = () => {
               <div className="cabecalho-painel">
                 <h2 className="titulo-dashboard">Olá, {name} {subName}!</h2>
                 <p className="paragrafo-dashboard">Bem-vinda de volta! 😃</p>
-                <img src={elementoVerde} alt="elemento verde" />
+                <img src={elementoDashboard} alt="elemento dashboard colorido" />
                 <button
                   className="forum-botao"
                   onClick={() => navigate("/forum")}

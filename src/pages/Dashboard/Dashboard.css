@@ -33,13 +33,14 @@
   margin-top: 20px;
 }
 
-.cabecalho-painel img {
+ .cabecalho-painel img {
   position: absolute;
   width: 165px;
   height: 165px;
   top: 0;
   right: 0;
-}
+} 
+
 
 .forum-botao {
   display: flex;

@@ -115,11 +115,11 @@
 }
 
 .admin-card-cursos {
-  border: 3px solid #0367a5;
+  background: linear-gradient(to right, #d4a017, #c69715);
 }
 
 .admin-card-foruns {
-  border: 3px solid #0367a5;
+  background: linear-gradient(to right, #0a5fa3, #08578f);
 }
 
 .admin-card-content {
@@ -147,16 +147,19 @@
   gap: 0.3rem;
 }
 
-.admin-card-text p {
-  margin: 0;
-  color: #000000;
-  font-size: 1rem;
+.texto-card-adm{
+  font-size: 16px;
+  font-weight: normal;
+  color: #ffffff;
 }
 
 .admin-card-number {
-  font-size: 2.3rem;
+  font-size: 25px;
   font-weight: bold;
-  color: #000000;
+  margin: 0;
+  color: white;
+  line-height: 15px;
+  margin-top: 10px;
 }
 
 .admin-buttons {

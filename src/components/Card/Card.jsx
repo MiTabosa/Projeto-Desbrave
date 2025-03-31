@@ -7,9 +7,12 @@ const Card = ({ title, description, image, extraClass, buttonText, link, icon: I
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(link);
+    if (layout === "layout1") {
+      navigate(link);
+    } else if (layout === "layout2") {
+      window.open(link, "_blank");
+    }
   };
-
 
   return (
     <div className={`card ${extraClass} ${layout}`} style={{ border: `3px solid ${borderColor}` }}>

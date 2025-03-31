@@ -15,7 +15,7 @@ const ForumCard = ({ filtroAtual }) => {
     switch(categoria) {
       case 'Cultura': return '#0367A5';
       case 'Tecnologia': return '#2E8B57';
-      case 'Cidadania Digital': return '#FF8C00';
+      case 'Cidadania Digital': return '#c69715';
       default: return '#0367A5';
     }
   };

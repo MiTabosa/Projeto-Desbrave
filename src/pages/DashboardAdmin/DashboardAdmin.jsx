@@ -59,17 +59,17 @@ const DashboardAdmin = () => {
             <div className="admin-card admin-card-cursos">
               <div className="admin-card-content">
                 <div className="admin-card-icon">
-                  <PiBookOpenTextThin size={35} color="#0A5FA3" />
+                  <PiBookOpenTextThin size={35} color="#c69715" />
                 </div>
                 <div className="admin-card-text">
                   <p className="admin-card-number">{numCursos}</p>
-                  <p>Cursos cadastrados</p>
+                  <p className="texto-card-adm">Cursos cadastrados</p>
                 </div>
               </div>
               <div className="admin-buttons">
                 <Button
                   text="Cadastrar Curso"
-                  color="#0367A5"
+                  color=" #35A150"
                   size={isMobile ? "small" : "medium"}
                   onClick={() => navigate("/gestaoCursos")}
                 />
@@ -78,17 +78,17 @@ const DashboardAdmin = () => {
             <div className="admin-card admin-card-foruns">
               <div className="admin-card-content">
                 <div className="admin-card-icon">
-                  <FaComments size={30} color="#0A5FA3" />
+                  <FaComments size={30} color="#c69715" />
                 </div>
                 <div className="admin-card-text">
                   <p className="admin-card-number">{numForuns}</p>
-                  <p>Fóruns cadastrados</p>
+                  <p className="texto-card-adm">Fóruns cadastrados</p>
                 </div>
               </div>
               <div className="admin-buttons">
                 <Button
                   text="Cadastrar Fórum"
-                  color="#0A5FA3"
+                  color=" #35A150"
                   size={isMobile ? "small" : "medium"}
                   onClick={() => navigate("/gestaoForum")}
                 />

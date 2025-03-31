@@ -35,6 +35,7 @@
 }
 
 .estrelaIcon{
+  margin-top: 20px;
   background-color: #ffffff;
   color: #D98D30;
   width: 90px;
@@ -51,7 +52,7 @@
   font-size: 1.2em;
   font-weight: bold;
   width: 200px;
-  height: 150px;
+  height: 170px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -124,7 +125,6 @@
   border-bottom-style: inherit;
 }
 .cupomTitulo5{
-  /* margin-bottom: -20px; */
   color: #ffffff;
 }
 .cupomDescricao5{

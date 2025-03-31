@@ -216,6 +216,7 @@
   align-items: center;
 }
 
+
 @media (max-width: 768px) {
   .cabecalho-painel {
     display: none;

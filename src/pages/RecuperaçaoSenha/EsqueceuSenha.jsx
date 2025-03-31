@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./EsqueceuSenha.css";
 import { useNavigate } from "react-router-dom";
-import imgRecupSenha from "../../assets/img-senha.png";
+import imgRecupSenha from "../../assets/login-senha.jpg";
 
 const EsqueceuSenha = () => {
   const [email, setEmail] = useState("");

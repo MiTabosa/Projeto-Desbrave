@@ -29,6 +29,7 @@
     align-items: left;
   }
   .iconeEstrela{
+    margin-top: 20px;
     background-color: #ffffff;
     color: #D98D30;
     width: 90px;
@@ -45,7 +46,7 @@
     font-size: 1.2em;
     font-weight: bold;
     width: 200px;
-    height: 150px;
+    height: 170px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,12 +126,12 @@
 }
 
 .cupomDesabilitado {
-    background: #28a745;
+    background: #C4C4C4;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
     text-align: center;
-    color: white;
+    color: #ffffff;
     font-weight: bold;
     position: relative;
 }
@@ -158,15 +159,14 @@
 }
 
 .avisoUso {
-    background: #ffffff;
+    background: #D98D30;
     color: #000;
-    padding: 5px;
     border-radius: 5px;
     font-size: 11px;
-    position: absolute;
-    bottom: -20px;
-    right: 10px;
+    position: center;
+    margin-top: 5px;
 }
+
 @media (max-width: 768px) {
   .containerCuponsUsados{
     flex-direction: column;

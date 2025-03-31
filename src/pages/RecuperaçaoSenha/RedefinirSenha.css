@@ -6,7 +6,7 @@
 .RedImagemEsquerda {
     width: 50%;
     height: 100%;
-    background: url("/src/assets/img-senha.png") no-repeat center center;
+    background: url("/src/assets/login-senha.jpg") no-repeat center center;
     background-size: cover;
     display: flex;
     flex-direction: column;

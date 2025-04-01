@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { BsCheck2Circle } from "react-icons/bs";
 import elementDesign from "../../assets/element-design.png";
-import { api } from "../../service/api"
 
 function Scanner() {
   const navigate = useNavigate();

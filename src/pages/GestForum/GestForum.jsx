@@ -93,6 +93,20 @@ const GestForum = () => {
               required
             />
           </div>
+          <div className='form-1'>
+                        <label>Categoria:</label>
+                        <select
+                            name='categoria'
+                            value={formData.categoria}
+                            onChange={handleInputChange}
+                            required
+                        >
+                            <option value=''>Selecione...</option>
+                            <option value='CidadaniaDigital'>Cidadania Digital</option>
+                            <option value='Tecnologia'>Tecnologia</option>
+                            <option value='Cultura'>Cultura</option>
+                        </select>
+                    </div>
           <div className='buttonContainerForm'>
             <Button className="buttonGestaoForum" text="Cadastrar" color="#0367A5" size="medium" />
           </div>

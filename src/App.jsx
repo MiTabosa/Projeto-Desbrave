@@ -99,6 +99,9 @@ const App = () => {
 
         <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
         <Route path="/dashboardAdmin" element={<Layout><DashboardAdmin /></Layout>} />
+        <Route path="/gestaoCursos" element={<Layout><GestaoCursos /></Layout>} />
+        <Route path="/gestaoForum" element={<Layout><GestaoForum /></Layout>} />
+
 
 
         {/* Rotas privadas */}
@@ -113,8 +116,8 @@ const App = () => {
 
         {/* Rotas do admin */}
         {/* <Route path="/dashboardAdmin" element={<Layout><AdminRoute><DashboardAdmin /></AdminRoute></Layout>} /> */}
-        <Route path="/gestaoCursos" element={<Layout><AdminRoute><GestaoCursos /></AdminRoute></Layout>} />
-        <Route path="/gestaoForum" element={<Layout><AdminRoute><GestaoForum /></AdminRoute></Layout>} />
+        {/* <Route path="/gestaoCursos" element={<Layout><AdminRoute><GestaoCursos /></AdminRoute></Layout>} />
+        <Route path="/gestaoForum" element={<Layout><AdminRoute><GestaoForum /></AdminRoute></Layout>} /> */}
 
         {/*  Rota curinga */}
         <Route path="*" element={<Navigate to="/" replace />} />

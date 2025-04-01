@@ -88,7 +88,7 @@
 /* Lista de Cursos */
 .lista-cursos {
     background-color: var(--secondary-color);
-    padding: 20px;
+    padding: 20px 130px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

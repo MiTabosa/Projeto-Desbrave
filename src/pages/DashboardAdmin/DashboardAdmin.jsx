@@ -28,75 +28,74 @@ const DashboardAdmin = () => {
   return (
     <SidebarAdmin>
       <BottomDashboard>
-          <div className="secao-superior">
-            <div className="esquerda-secao">
-              <div className="cabecalho-painel-adm">
-                <h2 className="titulo-dashboard">Olá, {name} {subName}!</h2>
-                <p className="paragrafo-dashboard">Bem-vinda de volta! 😃</p>
-                <button
-                    className="adm-home-botao"
-                    onClick={() => navigate("/")}
-                >
-                  Home
-                </button>
-               <img src={elementoDashboard} alt="elemento dashboard colorido" />
-              </div>
+        <div className="secao-superior">
+          {/* Parte esquerda */}
+          <div className="esquerda-secao">
+            <div className="cabecalho-painel-adm">
+              <h2 className="titulo-dashboard">Olá, {name} {subName}!</h2>
+              <p className="paragrafo-dashboard">Bem-vindo de volta! 😃</p>
+              <button
+                className="adm-home-botao"
+                onClick={() => navigate("/")}
+              >
+                Home
+              </button>
+              <img src={elementoDashboard} alt="elemento dashboard colorido" />
             </div>
-            <CardPerfilAdmin
-              name={name}
-              subName={subName}
-              numCursos={numCursos}
-              numForuns={numForuns}
-              
-            />
-          </div>
-    
-          {!isMobile && (
-        <div className="admin-dashboard-container">
-          <h2 className="admin-title">Painel do Administrador</h2>
 
-          <div className="admin-info-cards">
-            <div className="admin-card admin-card-cursos">
-              <div className="admin-card-content">
-                <div className="admin-card-icon">
-                  <PiBookOpenTextThin size={35} color="#c69715" />
+            {/* Cartões de cursos e fóruns */}
+            {!isMobile && (
+              <div className="admin-info-cards">
+                <div className="admin-card admin-card-cursos">
+                  <div className="admin-card-content">
+                    <div className="admin-card-icon">
+                      <PiBookOpenTextThin size={35} color="#c69715" />
+                    </div>
+                    <div className="admin-card-text">
+                      <p className="admin-card-number">{numCursos}</p>
+                      <p className="texto-card-adm">Cursos cadastrados</p>
+                    </div>
+                  </div>
+                  <div className="admin-buttons">
+                    <Button
+                      text="Cadastrar Curso"
+                      color=" #35A150"
+                      size="medium"
+                      onClick={() => navigate("/gestaoCursos")}
+                    />
+                  </div>
                 </div>
-                <div className="admin-card-text">
-                  <p className="admin-card-number">{numCursos}</p>
-                  <p className="texto-card-adm">Cursos cadastrados</p>
+               
+                <div className="admin-card admin-card-foruns">
+                  <div className="admin-card-content">
+                    <div className="admin-card-icon">
+                      <FaComments size={30} color="#c69715" />
+                    </div>
+                    <div className="admin-card-text">
+                      <p className="admin-card-number">{numForuns}</p>
+                      <p className="texto-card-adm">Fóruns cadastrados</p>
+                    </div>
+                  </div>
+                  <div className="admin-buttons">
+                    <Button
+                      text="Cadastrar Fórum"
+                      color=" #35A150"
+                      size="medium"
+                      onClick={() => navigate("/gestaoForum")}
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="admin-buttons">
-                <Button
-                  text="Cadastrar Curso"
-                  color=" #35A150"
-                  size={isMobile ? "small" : "medium"}
-                  onClick={() => navigate("/gestaoCursos")}
-                />
-              </div>
-            </div>
-            <div className="admin-card admin-card-foruns">
-              <div className="admin-card-content">
-                <div className="admin-card-icon">
-                  <FaComments size={30} color="#c69715" />
-                </div>
-                <div className="admin-card-text">
-                  <p className="admin-card-number">{numForuns}</p>
-                  <p className="texto-card-adm">Fóruns cadastrados</p>
-                </div>
-              </div>
-              <div className="admin-buttons">
-                <Button
-                  text="Cadastrar Fórum"
-                  color=" #35A150"
-                  size={isMobile ? "small" : "medium"}
-                  onClick={() => navigate("/gestaoForum")}
-                />
-              </div>
-            </div>
+         
+            )}
           </div>
+          <CardPerfilAdmin
+            name={name}
+            subName={subName}
+            numCursos={numCursos}
+            numForuns={numForuns}
+          />
         </div>
-          )}
       </BottomDashboard>
     </SidebarAdmin>
   );

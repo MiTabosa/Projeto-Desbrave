@@ -1,6 +1,6 @@
 .container-perfil {
   width: 320px;
-  height: 690px;
+  height: 685px;
   background: white;
   border-radius: 6px;
   padding: 20px;
@@ -10,10 +10,8 @@
   flex-direction: column;
   align-items: center;
   border: 1px solid #ddd;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 20px;
+  position: static;
+  margin-top: 18px;
 }
 
 .perfil-banner {

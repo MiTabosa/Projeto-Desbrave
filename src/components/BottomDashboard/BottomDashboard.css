@@ -3,20 +3,20 @@
     flex-direction: column;
     min-height: 100vh; 
     height: auto; 
-    align-items: stretch; 
+    align-items: center;
 }
 
 .content {
     background: #E9E8E8; 
     padding: 20px;
     border-radius: 6px;
-    width: 100%; 
+    max-width: 1200px;
+    margin: 0 auto;
     min-height: 100vh;
-    flex-grow: 1;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-
+    box-sizing: border-box;
 }
 
 

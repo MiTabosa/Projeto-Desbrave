@@ -61,14 +61,13 @@ const Dashboard = () => {
     <div className="container-dashboard">
       <Sidebar>
         <BottomDashboard>
-
           {/* Seção Topo */}
           <div className="secao-superior">
             <div className="esquerda-secao">
               <div className="cabecalho-painel">
-                <h2 className="titulo-dashboard">Olá, {name} {subName}!</h2>
+                <h2 className="titulo-dashboard">Olá, {name} {subName}! </h2>
                 <p className="paragrafo-dashboard">Bem-vinda de volta! 😃</p>
-                <img src={elementoDashboard} alt="elemento dashboard colorido" />
+                <img src={elementoDashboard} alt="elemento dashboard colorido"/>
                 <button
                   className="forum-botao"
                   onClick={() => navigate("/forum")}
@@ -109,56 +108,55 @@ const Dashboard = () => {
                   </div>
                 </div>
               )}
-            </div>
+              
+            <div className="area-cursos">
+              <div className="inicio-curso">
+                <div className="cabecalho-curso">
+                  <PiBookOpenTextThin />
+                  <p className="titulo-cabecalho">Meus cursos</p>
+                </div>
 
-           
+                <div className="filtro-container">
+                  <label htmlFor="filtro">Cursos Iniciados:</label>
+                  <select
+                    id="filtro"
+                    value={filtro}
+                    onChange={(e) => setFiltro(e.target.value)}
+                  >
+                    <option value="todos">Todos</option>
+                    <option value="andamento">Em Andamento</option>
+                    <option value="concluido">Concluídos</option>
+                  </select>
+                </div>
+
+                <div className="container-curso-dashboard">
+                  {cursosFiltrados.map((curso) => (
+                    <div key={curso.id} className="curso-card-dashboard">
+                      <p className="curso-titulo-dashboard">{curso.titulo}</p>
+                      <ProgressCircle percent={curso.progresso} />
+                      <div className="botao-curso-dashboard">
+                        <Button
+                          text="Retomar"
+                          color="#0367A5"
+                          size="small"
+                          onClick={() => navigate("/curso")}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            </div>
+            
             <CardPerfil
               name={name}
               setName={setName}
               subName={subName}
               setSubName={setSubName}
             />
-          </div>
+    </div>
 
-      
-          <div className="area-cursos">
-            <div className="inicio-curso">
-              <div className="cabecalho-curso">
-                <PiBookOpenTextThin />
-                <p className="titulo-cabecalho">Meus cursos</p>
-              </div>
-
-              <div className="filtro-container">
-                <label htmlFor="filtro">Cursos Iniciados:</label>
-                <select
-                  id="filtro"
-                  value={filtro}
-                  onChange={(e) => setFiltro(e.target.value)}
-                >
-                  <option value="todos">Todos</option>
-                  <option value="andamento">Em Andamento</option>
-                  <option value="concluido">Concluídos</option>
-                </select>
-              </div>
-
-              <div className="container-curso-dashboard">
-                {cursosFiltrados.map((curso) => (
-                  <div key={curso.id} className="curso-card-dashboard">
-                    <p className="curso-titulo-dashboard">{curso.titulo}</p>
-                    <ProgressCircle percent={curso.progresso} />
-                    <div className="botao-curso-dashboard">
-                      <Button
-                        text="Retomar"
-                        color="#0367A5"
-                        size="small"
-                        onClick={() => navigate("/curso")}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </BottomDashboard>
       </Sidebar>
     </div>

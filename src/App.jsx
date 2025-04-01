@@ -8,8 +8,6 @@ import {
 } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import NavbarLogado from './components/Navbar/NavbarLogado';
-
-// Import all page components
 import Home from './pages/Home';
 import Login from './pages/Login/Login';
 import Cadastro from './pages/Cadastro/Cadastro';
@@ -48,7 +46,9 @@ const App = () => {
       '/cadastro',
       '/esqueceuSenha',
       '/recuperarSenha',
-      '/redefinirSenha'
+      '/redefinirSenha',
+      '/dashboard',
+      '/dashboardAdmin'
     ];
     const shouldShowNavbar = !hideNavbarPaths.includes(window.location.pathname);
 
@@ -97,10 +97,14 @@ const App = () => {
         <Route path="/mapa" element={<Layout><Mapa /></Layout>} />
         <Route path="/paginaInicial" element={<Layout><PaginaInicial /></Layout>} />
 
+        <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
+        <Route path="/dashboardAdmin" element={<Layout><DashboardAdmin /></Layout>} />
+
+
         {/* Rotas privadas */}
         <Route path="/invalidScanner" element={<Layout><PrivateRoute><InvalidScanner /></PrivateRoute></Layout>} />
         <Route path="/scanner" element={<Layout><PrivateRoute><Scanner /></PrivateRoute></Layout>} />
-        <Route path="/dashboard" element={<Layout><PrivateRoute><Dashboard /></PrivateRoute></Layout>} />
+        {/* <Route path="/dashboard" element={<Layout><PrivateRoute><Dashboard /></PrivateRoute></Layout>} /> */}
         <Route path="/cupons" element={<Layout><PrivateRoute><CuponsDashboard /></PrivateRoute></Layout>} />
         <Route path="/CuponsUsados" element={<Layout><PrivateRoute><CuponsUsados /></PrivateRoute></Layout>} />
         <Route path="/forumChat" element={<Layout><PrivateRoute><ForumChat /></PrivateRoute></Layout>} />
@@ -108,7 +112,7 @@ const App = () => {
         <Route path="/Certificados" element={<Layout><PrivateRoute><Certificados /></PrivateRoute></Layout>} />
 
         {/* Rotas do admin */}
-        <Route path="/dashboardAdmin" element={<Layout><AdminRoute><DashboardAdmin /></AdminRoute></Layout>} />
+        {/* <Route path="/dashboardAdmin" element={<Layout><AdminRoute><DashboardAdmin /></AdminRoute></Layout>} /> */}
         <Route path="/gestaoCursos" element={<Layout><AdminRoute><GestaoCursos /></AdminRoute></Layout>} />
         <Route path="/gestaoForum" element={<Layout><AdminRoute><GestaoForum /></AdminRoute></Layout>} />
 

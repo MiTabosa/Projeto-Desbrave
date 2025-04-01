@@ -86,11 +86,12 @@
 }
 
 .admin-info-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 0.8rem;
-  margin-bottom: 2rem;
-  width: 60%;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 5rem;
+  width: 100%;
 }
 
 

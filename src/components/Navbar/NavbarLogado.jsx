@@ -10,6 +10,10 @@ const NavbarLogado = () => {
   const [menuAberto, setMenuAberto] = useState(false);
   const [dropdownAberto, setDropdownAberto] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  
+  // Obtém dados do usuário do localStorage
+  const userData = JSON.parse(localStorage.getItem("user"));
+  const isAdmin = userData?.role === "admin";
 
   const alternarMenu = () => {
     setMenuAberto(!menuAberto);
@@ -20,15 +24,15 @@ const NavbarLogado = () => {
   };
 
   const handleLogout = () => {
-    // Lógica para logout (esperar o back)
+    localStorage.removeItem("user");
     navigate("/login");
   };
 
   const handlePerfil = () => {
-    navigate("/dashboard");
+    // Redireciona para o dashboard apropriado
+    navigate(isAdmin ? "/dashboardAdmin" : "/dashboard");
   };
 
-  // Verifica o tamanho da tela ao carregar e redimensionar
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -71,19 +75,24 @@ const NavbarLogado = () => {
           </li>
           <div className="area-usuario" onClick={alternarDropdown}>
             <FaUserCircle className="icone-usuario" />
-            <span className="nome-usuario">Usuário</span>
+            <span className="nome-usuario">
+              {userData?.name || "Usuário"} {isAdmin ? "(Admin)" : ""}
+            </span>
             {dropdownAberto && (
               <div className="menu-dropdown ativo">
-                <button onClick={handlePerfil}>Perfil</button>
+                <button onClick={handlePerfil}>
+                  {isAdmin ? "Painel Admin" : "Meu Perfil"}
+                </button>
                 <button onClick={handleLogout}>Sair</button>
               </div>
             )}
           </div>
-          {/* Botões para mobile */}
           {isMobile && menuAberto && (
             <div className="botoesNavLogado">
-              <button onClick={handlePerfil}>Ver Perfil</button>
-              <button onClick={() => navigate("/login")}>Entrar</button>
+              <button onClick={handlePerfil}>
+                {isAdmin ? "Painel Admin" : "Meu Perfil"}
+              </button>
+              <button onClick={handleLogout}>Sair</button>
             </div>
           )}
         </ul>

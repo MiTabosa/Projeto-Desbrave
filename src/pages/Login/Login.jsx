@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { IoEyeOff, IoEye } from "react-icons/io5";
 
-export default function Login() {
+export default function Login({ setIsLogged, setUserData }) {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -15,10 +15,15 @@ export default function Login() {
     console.log("Senha: ", senha);
 
     if (email === "usuario@exemplo.com" && senha === "123456") {
+      const usuario = { 
+        email, 
+        nome: "Usuário Exemplo",
+        role: "user" // ou "admin" para teste
+      }; 
       
-      const usuario = { email, nome: "Usuário Exemplo" }; 
       localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
-
+      setIsLogged(true);
+      setUserData(usuario);
       navigate("/");
     } else {
       alert("Credenciais inválidas!");
@@ -59,7 +64,7 @@ export default function Login() {
           <Link to="/esqueceuSenha" className="EsqueciSenha">
             Esqueceu sua senha?
           </Link>
-          <button className="EntrarBotao" onClick={() => handleLogin()}>
+          <button className="EntrarBotao" onClick={handleLogin}>
             Entrar
           </button>
         </div>

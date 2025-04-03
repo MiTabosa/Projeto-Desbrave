@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
-  Outlet
+  Navigate
 } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import NavbarLogado from './components/Navbar/NavbarLogado';
@@ -35,11 +34,19 @@ import GestaoCursos from './pages/GestCurso/Gestcurso';
 import GestaoForum from './pages/GestForum/GestForum';
 
 const App = () => {
-  const [isLogged, setIsLogged] = useState(!!localStorage.getItem('user'));
-  const userData = isLogged ? JSON.parse(localStorage.getItem('user')) : null;
-  const isAdmin = userData?.role === 'admin';
+  const [isLogged, setIsLogged] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  // Sem vizualizar o Nav
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('usuarioLogado'));
+    if (user) {
+      setIsLogged(true);
+      setUserData(user);
+      setIsAdmin(user.role === 'admin');
+    }
+  }, []);
+
   const Layout = ({ children }) => {
     const hideNavbarPaths = [
       '/login',
@@ -48,13 +55,19 @@ const App = () => {
       '/recuperarSenha',
       '/redefinirSenha',
       '/dashboard',
+      '/scanner',
+      '/diretrizes',
+      '/cupons',
+      '/CuponsUsados',
+      '/meusCursos',
+      '/Certificados',
       '/dashboardAdmin'
     ];
     const shouldShowNavbar = !hideNavbarPaths.includes(window.location.pathname);
 
     return (
       <>
-        {shouldShowNavbar && (isLogged ? <NavbarLogado /> : <Navbar />)}
+        {shouldShowNavbar && (isLogged ? <NavbarLogado userData={userData} /> : <Navbar />)}
         {children}
       </>
     );
@@ -67,7 +80,6 @@ const App = () => {
     return children;
   };
 
-  // Visualizar perfil 
   const AdminRoute = ({ children }) => {
     if (!isLogged) {
       return <Navigate to="/login" replace />;
@@ -81,9 +93,9 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Rotas Publicas */}
+        {/* Rotas Públicas */}
         <Route path="/" element={<Layout><Home /></Layout>} />
-        <Route path="/login" element={<Login setIsLogged={setIsLogged} />} />
+        <Route path="/login" element={<Login setIsLogged={setIsLogged} setUserData={setUserData} />} />
         <Route path="/cadastro" element={<Layout><Cadastro /></Layout>} />
         <Route path="/esqueceuSenha" element={<Layout><EsqueceuSenha /></Layout>} />
         <Route path="/recuperarSenha" element={<Layout><RecuperarSenha /></Layout>} />
@@ -97,29 +109,22 @@ const App = () => {
         <Route path="/mapa" element={<Layout><Mapa /></Layout>} />
         <Route path="/paginaInicial" element={<Layout><PaginaInicial /></Layout>} />
 
-        <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
-        <Route path="/dashboardAdmin" element={<Layout><DashboardAdmin /></Layout>} />
-        <Route path="/gestaoCursos" element={<Layout><GestaoCursos /></Layout>} />
-        <Route path="/gestaoForum" element={<Layout><GestaoForum /></Layout>} />
+        {/* Rotas Privadas */}
+        <Route path="/dashboard" element={<PrivateRoute><Layout><Dashboard /></Layout></PrivateRoute>} />
+        <Route path="/invalidScanner" element={<PrivateRoute><Layout><InvalidScanner /></Layout></PrivateRoute>} />
+        <Route path="/scanner" element={<PrivateRoute><Layout><Scanner /></Layout></PrivateRoute>} />
+        <Route path="/cupons" element={<PrivateRoute><Layout><CuponsDashboard /></Layout></PrivateRoute>} />
+        <Route path="/CuponsUsados" element={<PrivateRoute><Layout><CuponsUsados /></Layout></PrivateRoute>} />
+        <Route path="/forumChat" element={<PrivateRoute><Layout><ForumChat /></Layout></PrivateRoute>} />
+        <Route path="/meusCursos" element={<PrivateRoute><Layout><MeusCursos /></Layout></PrivateRoute>} />
+        <Route path="/Certificados" element={<PrivateRoute><Layout><Certificados /></Layout></PrivateRoute>} />
 
+        {/* Rotas de Admin */}
+        <Route path="/dashboardAdmin" element={<AdminRoute><Layout><DashboardAdmin /></Layout></AdminRoute>} />
+        <Route path="/gestaoCursos" element={<AdminRoute><Layout><GestaoCursos /></Layout></AdminRoute>} />
+        <Route path="/gestaoForum" element={<AdminRoute><Layout><GestaoForum /></Layout></AdminRoute>} />
 
-
-        {/* Rotas privadas */}
-        <Route path="/invalidScanner" element={<Layout><PrivateRoute><InvalidScanner /></PrivateRoute></Layout>} />
-        <Route path="/scanner" element={<Layout><PrivateRoute><Scanner /></PrivateRoute></Layout>} />
-        {/* <Route path="/dashboard" element={<Layout><PrivateRoute><Dashboard /></PrivateRoute></Layout>} /> */}
-        <Route path="/cupons" element={<Layout><PrivateRoute><CuponsDashboard /></PrivateRoute></Layout>} />
-        <Route path="/CuponsUsados" element={<Layout><PrivateRoute><CuponsUsados /></PrivateRoute></Layout>} />
-        <Route path="/forumChat" element={<Layout><PrivateRoute><ForumChat /></PrivateRoute></Layout>} />
-        <Route path="/meusCursos" element={<Layout><PrivateRoute><MeusCursos /></PrivateRoute></Layout>} />
-        <Route path="/Certificados" element={<Layout><PrivateRoute><Certificados /></PrivateRoute></Layout>} />
-
-        {/* Rotas do admin */}
-        {/* <Route path="/dashboardAdmin" element={<Layout><AdminRoute><DashboardAdmin /></AdminRoute></Layout>} /> */}
-        {/* <Route path="/gestaoCursos" element={<Layout><AdminRoute><GestaoCursos /></AdminRoute></Layout>} />
-        <Route path="/gestaoForum" element={<Layout><AdminRoute><GestaoForum /></AdminRoute></Layout>} /> */}
-
-        {/*  Rota curinga */}
+        {/* Rota curinga */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

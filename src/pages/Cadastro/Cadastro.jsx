@@ -20,19 +20,10 @@ export default function Cadastro() {
         </label>
         </div>
         <button className="botaoCadastro">Criar conta</button>
-        <p className="conecteText">Ou cadastre-se com:</p>
-        <div className="socialIcons">
-          <img src= {img_conecta_recife} alt="Conecta Recife" className="socialImg"/>
-          <img src= {gov_br} alt="GOVBr" className="socialImg2"/>
-          <FaGooglePlus className="GoogleIcon"/>
-        </div>
+        <a href="/login" className="BotaoLogin">Já tenho uma conta</a>
+  
       </div>
       <div className="cadastroDireita">
-        <h2 className="bemVindo">Bem-vindo <br />de volta!</h2>
-        <p className="subtexto">Se mantenha conectado fazendo <br />login com as suas informações!</p>
-        <Link to="/Login">
-        <button className="loginButaoCadastro">Já tenho uma conta</button> 
-        </Link>
       </div>
     </div>
   );

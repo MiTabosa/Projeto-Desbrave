@@ -28,7 +28,7 @@
     padding: 12px 40px;
     font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 6px;
     outline: none;
     transition: 0.3s;
     
@@ -57,12 +57,13 @@
   }
   
   .botaoCadastro {
+    margin-top: 40px;
     background: #0367A5;
     color: #fff;
     border: none;
     padding: 0.75rem;
     width: 30%;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 1rem;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
@@ -72,59 +73,6 @@
   .botaoCadastro:hover {
     transform: scale(1.10);
     box-shadow: 2px 4px 6px #0367A5(0, 0, 0, 0.2);
-  }
-  
-  .conecteText {
-    margin-top: 40px;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-    color: #0c0c0c;
-  }
-  
-  .socialIcons {
-    display: flex;
-    gap: 30px;
-    margin-top: 10px;
-  }
-  
-  .socialIcons svg {
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .socialImg {
-    display: block;
-    width: 35px; 
-    height: 35px;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .socialImg:hover {
-    transform: scale(1.2);
-  }
-
-  .socialImg2 {
-    display: block;
-    width: 55px;
-    height: 35px;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .socialImg2:hover {
-    transform: scale(1.2);
-  }
-  .GoogleIcon {
-    color: #db4437;
-  }
-  .GoogleIcon {
-    color: #db4437;
-  }
-  
-  .socialIcons svg:hover {
-    transform: scale(1.1);
   }
   
   .cadastroDireita {
@@ -138,40 +86,17 @@
     filter: brightness(90%);
   }
   
-  .bemVindo {
-    font-size: 60px;
-    font-weight: bold;
-    margin-bottom: 300px;
-    margin-top: 0.1px;
-    color: #fff;
-  }
-  
-  .subtexto {
-    font-size: 1.2rem;
-    margin: 15px 0;
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 20px;
-  }
-  
-  .loginButaoCadastro {
-    margin-top: 10px;
-    background: #999;
-    color: #ffffff;
-    border: none;
-    padding: 0.75rem 2rem;
+  .BotaoLogin{
+    margin-top: 50px;
+    color: rgba(0, 0, 0, 0.692);
+    text-decoration: none;
     font-size: 1rem;
-    border-radius: 8px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
     transition: 0.3s;
-  }
-  
-  .loginButaoCadastro:hover {
-    background: #999;
-    color: #fff;
-    transform: scale(1.10);
-    box-shadow: 2px 4px 6px #555555(0, 0, 0, 0.2);
   }
   
   @media (max-width: 768px) {

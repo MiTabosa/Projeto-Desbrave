@@ -74,6 +74,28 @@
     transform: scale(1.10);
     box-shadow: 2px 4px 6px #0367A5(0, 0, 0, 0.2);
   }
+  .inputSenhaContainer{
+    position: relative;
+    width: 100%;
+  }
+  
+  .inputSenhaContainer input {
+    width: 100%;
+    padding-right: 50px; 
+  }
+  
+  .toggleSenha {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.2rem;
+    cursor: pointer;
+    outline: none;
+  }
   
   .cadastroDireita {
     width: 40%;

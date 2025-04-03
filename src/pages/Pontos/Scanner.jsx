@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { BsCheck2Circle } from "react-icons/bs";
 import elementDesign from "../../assets/element-design.png";
+import { api } from "../../service/api";
 
 function Scanner() {
   const navigate = useNavigate();
@@ -60,17 +61,38 @@ function Scanner() {
 
       scannerRef.current = scanner;
 
+      const fetchQRCodeData = async (id) => {
+        try {
+          await api.post(`/qrcodes/${id}`)
+            .then((response) => {
+              console.log("Dados do QR Code:", response.data);
+              setScanResult(response.data);
+            })
+            .catch((error) => {
+              console.error("Erro ao buscar QR Code:", error.response?.data || error.message);
+              navigate("/InvalidScanner");
+            });
+        } catch (error) {
+          console.error("Erro inesperado:", error.message);
+          navigate("/InvalidScanner");
+        }
+      };
       scanner.render(
         (result) => {
           console.log("Código escaneado:", result);
-          const valoresValidos = ["Marco Zero", "Paço do frevo", "Rua bom Jesus!!"];
-
-          if (valoresValidos.includes(result)) {
-            setScanResult(result);
+      
+          const regex = new RegExp("qrcodes/([\w-]+)");
+          const match = result.match(regex);
+      
+          if (match) {
+            const id = match[1];
+            console.log("ID extraído:", id);
+            fetchQRCodeData(id);
           } else {
+            console.warn("QR Code inválido");
             navigate("/InvalidScanner");
           }
-
+      
           scanner.clear().catch((e) => console.warn("Erro ao limpar scanner:", e));
           scannerRef.current = null;
         },

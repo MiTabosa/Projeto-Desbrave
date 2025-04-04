@@ -22,7 +22,6 @@ function DescricaoCurso() {
 
   return (
     <>
-      <NavBar />
       <div className="descricao-curso-container">
         <div className='descricaoText'>
             <h1>{curso.nome}</h1>

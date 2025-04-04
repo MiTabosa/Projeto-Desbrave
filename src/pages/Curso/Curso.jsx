@@ -20,7 +20,6 @@ function Curso() {
 
     return (
         <>
-            <NavBar />
             <div className="cursos-container">
                 <BarraPesquisa onSearch={handleSearch} />
                 <div className="cursos-list">

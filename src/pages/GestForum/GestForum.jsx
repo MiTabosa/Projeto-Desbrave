@@ -77,7 +77,6 @@ const GestForum = () => {
 
   return (
     <div className='gestao-forum'>
-      <Navbar />
 
       {/* Formulário de Cadastro */}
       <div className='formulario'>

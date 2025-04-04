@@ -52,7 +52,9 @@ const App = () => {
       '/dashboard',
       '/dashboardAdmin',
       '/CuponsUsados',
-      '/cupons'
+      '/cupons',
+      '/certificados',
+      '/meusCursos'
     ];
 
     const shouldShowNavbar = !hideNavbarPaths.includes(location.pathname);
@@ -112,6 +114,7 @@ const App = () => {
         <Route path="/meusCursos" element={<Layout isLogged={isLogged}><MeusCursos /></Layout>} />
         <Route path="/cupons" element={<Layout isLogged={isLogged}><CuponsDashboard /></Layout>} />
         <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><CuponsUsados /></Layout>} />
+        <Route path="/certificados" element={<Layout isLogged={isLogged}><Certificados /></Layout>} />
 
         {/* Rotas Privadas */}
         <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><PrivateRoute><InvalidScanner /></PrivateRoute></Layout>} />
@@ -120,7 +123,7 @@ const App = () => {
         <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsUsados /></PrivateRoute></Layout>} /> */}
         <Route path="/forumChat" element={<Layout isLogged={isLogged}><PrivateRoute><ForumChat /></PrivateRoute></Layout>} />
         {/* <Route path="/meusCursos" element={<Layout isLogged={isLogged}><PrivateRoute><MeusCursos /></PrivateRoute></Layout>} /> */}
-        <Route path="/Certificados" element={<Layout isLogged={isLogged}><PrivateRoute><Certificados /></PrivateRoute></Layout>} />
+        {/* <Route path="/Certificados" element={<Layout isLogged={isLogged}><PrivateRoute><Certificados /></PrivateRoute></Layout>} /> */}
 
         {/* Rotas do Admin */}
         {/* <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><AdminRoute><DashboardAdmin /></AdminRoute></Layout>} />

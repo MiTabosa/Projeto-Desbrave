@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  Navigate,
+  useLocation,
 } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import NavbarLogado from './components/Navbar/NavbarLogado';
@@ -47,7 +48,10 @@ const App = () => {
     }
   }, []);
 
-  const Layout = ({ children }) => {
+  // Sem vizualizar o Nav
+  const Layout = ({ isLogged, children }) => {
+    const location = useLocation();
+
     const hideNavbarPaths = [
       '/login',
       '/cadastro',
@@ -55,19 +59,18 @@ const App = () => {
       '/recuperarSenha',
       '/redefinirSenha',
       '/dashboard',
-      '/scanner',
-      '/diretrizes',
-      '/cupons',
+      '/dashboardAdmin',
       '/CuponsUsados',
-      '/meusCursos',
-      '/Certificados',
-      '/dashboardAdmin'
+      '/cupons'
     ];
-    const shouldShowNavbar = !hideNavbarPaths.includes(window.location.pathname);
+
+    const shouldShowNavbar = !hideNavbarPaths.includes(location.pathname);
 
     return (
       <>
-        {shouldShowNavbar && (isLogged ? <NavbarLogado userData={userData} /> : <Navbar />)}
+        {shouldShowNavbar && (
+          isLogged ? <NavbarLogado /> : <Navbar />
+        )}
         {children}
       </>
     );
@@ -94,37 +97,50 @@ const App = () => {
     <Router>
       <Routes>
         {/* Rotas Públicas */}
-        <Route path="/" element={<Layout><Home /></Layout>} />
-        <Route path="/login" element={<Login setIsLogged={setIsLogged} setUserData={setUserData} />} />
-        <Route path="/cadastro" element={<Layout><Cadastro /></Layout>} />
-        <Route path="/esqueceuSenha" element={<Layout><EsqueceuSenha /></Layout>} />
-        <Route path="/recuperarSenha" element={<Layout><RecuperarSenha /></Layout>} />
-        <Route path="/redefinirSenha" element={<Layout><RedefinirSenha /></Layout>} />
-        <Route path="/diretrizes" element={<Layout><Diretrizes /></Layout>} />
-        <Route path="/sobre" element={<Layout><Sobre /></Layout>} />
-        <Route path="/parceiros" element={<Layout><Parceiros /></Layout>} />
-        <Route path="/curso" element={<Layout><Curso /></Layout>} />
-        <Route path="/descricaoCurso/:id" element={<Layout><DescricaoCurso /></Layout>} />
-        <Route path="/Forum" element={<Layout><Forum /></Layout>} />
-        <Route path="/mapa" element={<Layout><Mapa /></Layout>} />
-        <Route path="/paginaInicial" element={<Layout><PaginaInicial /></Layout>} />
-
-        {/* Rotas Privadas */}
-        <Route path="/dashboard" element={<PrivateRoute><Layout><Dashboard /></Layout></PrivateRoute>} />
-        <Route path="/invalidScanner" element={<PrivateRoute><Layout><InvalidScanner /></Layout></PrivateRoute>} />
-        <Route path="/scanner" element={<PrivateRoute><Layout><Scanner /></Layout></PrivateRoute>} />
-        <Route path="/cupons" element={<PrivateRoute><Layout><CuponsDashboard /></Layout></PrivateRoute>} />
-        <Route path="/CuponsUsados" element={<PrivateRoute><Layout><CuponsUsados /></Layout></PrivateRoute>} />
-        <Route path="/forumChat" element={<PrivateRoute><Layout><ForumChat /></Layout></PrivateRoute>} />
-        <Route path="/meusCursos" element={<PrivateRoute><Layout><MeusCursos /></Layout></PrivateRoute>} />
-        <Route path="/Certificados" element={<PrivateRoute><Layout><Certificados /></Layout></PrivateRoute>} />
+        <Route path="/" element={<Layout isLogged={isLogged}><Home /></Layout>} />
+        <Route path="/login" element={<Login setIsLogged={setIsLogged} />} />
+        <Route path="/cadastro" element={<Layout isLogged={isLogged}><Cadastro /></Layout>} />
+        <Route path="/esqueceuSenha" element={<Layout isLogged={isLogged}><EsqueceuSenha /></Layout>} />
+        <Route path="/recuperarSenha" element={<Layout isLogged={isLogged}><RecuperarSenha /></Layout>} />
+        <Route path="/redefinirSenha" element={<Layout isLogged={isLogged}><RedefinirSenha /></Layout>} />
+        <Route path="/diretrizes" element={<Layout isLogged={isLogged}><Diretrizes /></Layout>} />
+        <Route path="/sobre" element={<Layout isLogged={isLogged}><Sobre /></Layout>} />
+        <Route path="/parceiros" element={<Layout isLogged={isLogged}><Parceiros /></Layout>} />
+        <Route path="/curso" element={<Layout isLogged={isLogged}><Curso /></Layout>} />
+        <Route path="/descricaoCurso/:id" element={<Layout isLogged={isLogged}><DescricaoCurso /></Layout>} />
+        <Route path="/Forum" element={<Layout isLogged={isLogged}><Forum /></Layout>} />
+        <Route path="/mapa" element={<Layout isLogged={isLogged}><Mapa /></Layout>} />
+        <Route path="/paginaInicial" element={<Layout isLogged={isLogged}><PaginaInicial /></Layout>} />
 
         {/* Rotas de Admin */}
         <Route path="/dashboardAdmin" element={<AdminRoute><Layout><DashboardAdmin /></Layout></AdminRoute>} />
         <Route path="/gestaoCursos" element={<AdminRoute><Layout><GestaoCursos /></Layout></AdminRoute>} />
         <Route path="/gestaoForum" element={<AdminRoute><Layout><GestaoForum /></Layout></AdminRoute>} />
 
-        {/* Rota curinga */}
+        {/*teste de rotas  */}
+        <Route path="/dashboard" element={<Layout isLogged={isLogged}><Dashboard /></Layout>} />
+        <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><DashboardAdmin /></Layout>} />
+        <Route path="/gestaoCursos" element={<Layout isLogged={isLogged}><GestaoCursos /></Layout>} />
+        <Route path="/gestaoForum" element={<Layout isLogged={isLogged}><GestaoForum /></Layout>} />
+        <Route path="/meusCursos" element={<Layout isLogged={isLogged}><MeusCursos /></Layout>} />
+        <Route path="/cupons" element={<Layout isLogged={isLogged}><CuponsDashboard /></Layout>} />
+        <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><CuponsUsados /></Layout>} />
+
+        {/* Rotas Privadas */}
+        <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><PrivateRoute><InvalidScanner /></PrivateRoute></Layout>} />
+        <Route path="/scanner" element={<Layout isLogged={isLogged}><PrivateRoute><Scanner /></PrivateRoute></Layout>} />
+        {/* <Route path="/cupons" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsDashboard /></PrivateRoute></Layout>} />
+        <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsUsados /></PrivateRoute></Layout>} /> */}
+        <Route path="/forumChat" element={<Layout isLogged={isLogged}><PrivateRoute><ForumChat /></PrivateRoute></Layout>} />
+        {/* <Route path="/meusCursos" element={<Layout isLogged={isLogged}><PrivateRoute><MeusCursos /></PrivateRoute></Layout>} /> */}
+        <Route path="/Certificados" element={<Layout isLogged={isLogged}><PrivateRoute><Certificados /></PrivateRoute></Layout>} />
+
+        {/* Rotas do Admin */}
+        {/* <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><AdminRoute><DashboardAdmin /></AdminRoute></Layout>} />
+        <Route path="/gestaoCursos" element={<Layout isLogged={isLogged}><AdminRoute><GestaoCursos /></AdminRoute></Layout>} />
+        <Route path="/gestaoForum" element={<Layout isLogged={isLogged}><AdminRoute><GestaoForum /></AdminRoute></Layout>} /> */}
+
+        {/* Rota Curinga */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

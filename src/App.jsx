@@ -50,7 +50,9 @@ const App = () => {
       '/recuperarSenha',
       '/redefinirSenha',
       '/dashboard',
-      '/dashboardAdmin'
+      '/dashboardAdmin',
+      '/CuponsUsados',
+      '/cupons'
     ];
 
     const shouldShowNavbar = !hideNavbarPaths.includes(location.pathname);
@@ -108,7 +110,7 @@ const App = () => {
         <Route path="/gestaoCursos" element={<Layout isLogged={isLogged}><GestaoCursos /></Layout>} />
         <Route path="/gestaoForum" element={<Layout isLogged={isLogged}><GestaoForum /></Layout>} />
         <Route path="/meusCursos" element={<Layout isLogged={isLogged}><MeusCursos /></Layout>} />
-        <Route path="/cupons" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsDashboard /></PrivateRoute></Layout>} />
+        <Route path="/cupons" element={<Layout isLogged={isLogged}><CuponsDashboard /></Layout>} />
         <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><CuponsUsados /></Layout>} />
 
         {/* Rotas Privadas */}

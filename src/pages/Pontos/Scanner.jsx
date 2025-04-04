@@ -11,6 +11,7 @@ import { api } from "../../service/api";
 function Scanner() {
   const navigate = useNavigate();
   const [scanResult, setScanResult] = useState(null);
+  const [pontos, setPontos] = useState(null)
   const [cameraPermissionGranted, setCameraPermissionGranted] = useState(false);
   const scannerRef = useRef(null);
   const readerId = "reader";
@@ -63,15 +64,23 @@ function Scanner() {
 
       const fetchQRCodeData = async (id) => {
         try {
-          await api.post(`/qrcodes/${id}`)
-            .then((response) => {
-              console.log("Dados do QR Code:", response.data);
-              setScanResult(response.data);
-            })
-            .catch((error) => {
-              console.error("Erro ao buscar QR Code:", error.response?.data || error.message);
-              navigate("/InvalidScanner");
-            });
+          // Buscar o QR Code 
+         const response = await api.get(`/qrcodes/${id}`);
+         setScanResult(response.data);
+         console.log("Dados do QR code:", response.data) // Ter acesso aos dados retornados
+
+           // buscar usuario
+          const usuarioId = localStorage.getItem("usuarioId");
+
+          //associação de qr code do usuario e somar pontos
+         const res = await api.post("/usuario-qrcode", {
+            usuarioId: usuarioId,
+            qrCodeId: id
+          })
+
+          console.log("pontuado:", res.data);
+          setPontos(res.data.pontuacaoTotal);
+
         } catch (error) {
           console.error("Erro inesperado:", error.message);
           navigate("/InvalidScanner");
@@ -155,7 +164,10 @@ function Scanner() {
               <BsCheck2Circle className="vector-img" />
               <div className="text-container">
                 <h2>QR CODE ESCANEADO COM SUCESSO!</h2>
-                <p>Você ganhou +50 pontos! <a href={scanResult}></a></p>
+                <p>Você ganhou +50 pontos! 
+                  {pontos && (
+                    <span><br/>Agpra você tem <strong>{pontos}</strong> pontos!</span>
+                  )}</p>
               </div>
             </div>
           </div>

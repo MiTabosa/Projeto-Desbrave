@@ -10,7 +10,6 @@ function PaginaInicial() {
 
   return (
     <>
-      <Navbar />
       <section className="pontos-section">
         <div className="pontos-text">
           <h2>EXPLORE RECIFE E GANHE PONTOS!</h2>

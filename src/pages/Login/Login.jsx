@@ -10,26 +10,45 @@ export default function Login({ setIsLogged, setUserData }) {
   const [senha, setSenha] = useState("");
   const navigate = useNavigate(); 
 
-  function handleLogin() {
-    console.log("Email: ", email);
-    console.log("Senha: ", senha);
-
-    if (email === "usuario@exemplo.com" && senha === "123456") {
-      const usuario = { 
-        email, 
-        nome: "Usuário Exemplo",
-        role: "user" // ou "admin" para teste
-      }; 
-      
-      localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
-      setIsLogged(true);
-      setUserData(usuario);
-      navigate("/");
-    } else {
-      alert("Credenciais inválidas!");
-    }
+  async function handleLogin() {
+    await api
+      .post("/autenticacao/login", {
+        email: email,
+        senha: senha,
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          localStorage.setItem("token", response.data.token); 
+          navigate("/home"); 
+        } else {
+          alert("Erro ao fazer login!");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Erro ao fazer login!");
+      });
   }
 
+  async function handleLogin() {
+    await api 
+    . post("/autenticacao/logout", {
+      email: email,
+      senha: senha,
+    })
+    .then((response) => { 
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token); 
+        navigate("/home"); 
+      } else {
+        alert("Erro ao fazer login!");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Erro ao fazer login!");
+    });
+  }
   return (
     <div className="loginContainer">
       <div className="loginEsquerda"></div>

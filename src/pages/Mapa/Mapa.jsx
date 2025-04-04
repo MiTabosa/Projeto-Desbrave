@@ -8,7 +8,6 @@ function Mapa() {
 
     return (
         <>
-            <Navbar />
             <MapSection tipo="map-detalhado" />
         </>
     );

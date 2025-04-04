@@ -30,7 +30,6 @@ const Chatforum = () => {
 
     return (
         <section className="chat-f">
-            <Navbar />
             <span className="backpage">
                 <IoReturnUpBackOutline size={24} />
                 <button onClick={handleBackToForums} className="button-voltar-f">Voltar para seção anterior</button>

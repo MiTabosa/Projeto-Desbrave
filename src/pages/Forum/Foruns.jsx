@@ -17,7 +17,6 @@ function Foruns(){
     
     return(
         <div className="forum">
-            <Navbar/>
             <section className="hero-forum">
                 <div className="text-forum">
                     <h2 className="titulo-forum">Fóruns da Comunidade</h2>

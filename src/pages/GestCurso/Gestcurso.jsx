@@ -91,7 +91,6 @@ const GestCurso = () => {
 
     return (
         <div className='gestao-cursos'>
-            <Navbar />
 
             {/* Formulário de Cadastro */}
             <div className='formulario'>

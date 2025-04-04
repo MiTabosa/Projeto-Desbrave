@@ -14,7 +14,6 @@ function Sobre() {
 
     return (
         <div>
-            <Navbar />
             <h1 className="text-titulo-sobre">Desbrave</h1>
             <h2 className="text-subtitulo-sobre">O FUTURO DA EDUCAÇÃO DIGITAL!</h2>
             <p className="text-sobre">Somos uma plataforma que une cultura, tecnologia e aprendizado para jovens explorarem o mundo digital de forma consciente e criativa. 

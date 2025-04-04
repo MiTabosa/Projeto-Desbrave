@@ -14,7 +14,6 @@ function Parceiros () {
     const [showInfo, setShowInfo] = useState(false);
     return (
         <div>
-            <Navbar />
             <div className="conteiner-parceiros">
             <div>
         <h2 className="text-nossos-parceiros">NOSSOS PARCEIROS</h2>

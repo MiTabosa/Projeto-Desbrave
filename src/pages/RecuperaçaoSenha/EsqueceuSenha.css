@@ -103,6 +103,17 @@
     display: none !important;
   }
 }
+
+.erroMensagem {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.inputErro {
+  border: 1px solid red;
+}
+
   
   @media (max-width: 768px) {
 

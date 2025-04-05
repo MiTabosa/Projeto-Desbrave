@@ -1,4 +1,3 @@
-
 .loginContainer {
     display: flex;
     max-width: 100%;
@@ -59,7 +58,8 @@
   }
   
   .inputCampo input {
-    width: 100%;
+    width: 100%; 
+    max-width: 350px; 
     padding: 12px 40px;
     font-size: 1rem;
     border: 1px solid #ccc;
@@ -152,4 +152,3 @@
       width: 100%;
     }
   }
-  

@@ -128,10 +128,13 @@ const App = () => {
         <Route path="/cupons" element={<Layout isLogged={isLogged}><CuponsDashboard /></Layout>} />
         <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><CuponsUsados /></Layout>} />
         <Route path="/certificados" element={<Layout isLogged={isLogged}><Certificados /></Layout>} />
+        <Route path="/scanner" element={<Layout isLogged={isLogged}><Scanner /></Layout>} />
+        <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><InvalidScanner /></Layout>} />
+
 
         {/* Rotas Privadas */}
-        <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><PrivateRoute><InvalidScanner /></PrivateRoute></Layout>} />
-        <Route path="/scanner" element={<Layout isLogged={isLogged}><PrivateRoute><Scanner /></PrivateRoute></Layout>} />
+        {/* <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><PrivateRoute><InvalidScanner /></PrivateRoute></Layout>} /> */}
+        {/* <Route path="/scanner" element={<Layout isLogged={isLogged}><PrivateRoute><Scanner /></PrivateRoute></Layout>} /> */}
         {/* <Route path="/cupons" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsDashboard /></PrivateRoute></Layout>} />
         <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsUsados /></PrivateRoute></Layout>} /> */}
         <Route path="/forumChat" element={<Layout isLogged={isLogged}><PrivateRoute><ForumChat /></PrivateRoute></Layout>} />

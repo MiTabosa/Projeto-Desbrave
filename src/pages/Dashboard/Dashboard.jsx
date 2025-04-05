@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Dashboard.css";
 import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Button from "../../components/Button/Button";
 import ProgressCircle from "../../components/ProgressCircle/ProgressCircle";
 import CardPerfil from "../../components/CardPerfil/CardPerfil";
+import { api } from "../../service/api";
+
 
 // imagens e ícones
 import elementoDashboard from "../../assets/elemento-dashboard.png";
@@ -16,13 +18,12 @@ import { PiBookOpenTextThin } from "react-icons/pi";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [infoGeral, setInfoGeral] = useState({ cursos: 23, estrelas: 1 });
+  const [infoGeral, setInfoGeral] = useState({ cursos: 23, pontos: 0});
   const [filtro, setFiltro] = useState("todos");
+  const [name, setName] = useState("");
 
-  // estado compartilhado com o perfil
-  const [name, setName] = useState("Milena");
-  const [subName, setSubName] = useState("Tabosa");
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,6 +32,36 @@ const Dashboard = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const usuarioId = localStorage.getItem("usuarioId");
+
+        // nomeUsuario
+        const userResponse = await api.get(`/usuario/${usuarioId}`);
+        setName(userResponse.data.nome);
+
+        // pontos
+        const pontosResponse = await api.get(`/historicoResgate/usuario/${usuarioId}`);
+        const totalPontos = pontosResponse.data.reduce((acc, item) => acc + item.pontosGanhos, 0);
+        setInfoGeral((prev) => ({
+          ...prev,
+          pontos: totalPontos,
+        }));
+
+     } catch (error) {
+      console.error("Erro ao buscar histórico de resgate:", error);
+      setInfoGeral((prev) => ({
+        ...prev,
+        pontos: 0, 
+      }));
+     }
+    };
+
+    fetchData();
+  }, [location]);
 
   const cursos = [
     {
@@ -65,7 +96,7 @@ const Dashboard = () => {
           <div className="secao-superior">
             <div className="esquerda-secao">
               <div className="cabecalho-painel">
-                <h2 className="titulo-dashboard">Olá, {name} {subName}! </h2>
+                <h2 className="titulo-dashboard">Olá, {name}! </h2>
                 <p className="paragrafo-dashboard">Bem-vinda de volta! 😃</p>
                 <img src={elementoDashboard} alt="elemento dashboard colorido"/>
                 <button
@@ -98,9 +129,9 @@ const Dashboard = () => {
                       </div>
                       <div className="texto-numero">
                         <p className="numero-geral">
-                          {infoGeral.estrelas < 10
-                            ? `0${infoGeral.estrelas}`
-                            : infoGeral.estrelas}
+                          {infoGeral.pontos < 10
+                            ? `0${infoGeral.pontos}`
+                            : infoGeral.pontos}
                         </p>
                         <p className="paragrafo-geral">Pontos</p>
                       </div>
@@ -152,8 +183,6 @@ const Dashboard = () => {
             <CardPerfil
               name={name}
               setName={setName}
-              subName={subName}
-              setSubName={setSubName}
             />
     </div>
 

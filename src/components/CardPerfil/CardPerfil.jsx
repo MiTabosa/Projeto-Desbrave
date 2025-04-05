@@ -7,17 +7,14 @@ import { GoCheckCircle } from "react-icons/go";
 import { CiStar } from "react-icons/ci";
 import { RiGraduationCapLine } from "react-icons/ri";
 import "./CardPerfil.css";
+import { api } from "../../service/api";
 
-const CardPerfil = ({ name, setName, subName, setSubName }) => {
+const CardPerfil = ({ name, setName }) => {
   const navigate = useNavigate();
-  const [subtitle, setSubtitle] = useState("Professora de História");
   const [editing, setEditing] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [infoGeral, setInfoGeral] = useState({ cursos: 23, estrelas: 1 });
-
+  const [pontos, setPontos] = useState(0); // 👈 Agora temos um estado separado para pontos
   const nomeRef = useRef(null);
-  const subNomeRef = useRef(null);
-  const subRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,16 +24,45 @@ const CardPerfil = ({ name, setName, subName, setSubName }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleEnter = () => {
-    setTimeout(() => {
-      if (
-        document.activeElement !== nomeRef.current &&
-        document.activeElement !== subNomeRef.current &&
-        document.activeElement !== subRef.current
-      ) {
-        setEditing(false);
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const usuarioId = localStorage.getItem("usuarioId");
+        // Buscar nome do usuário
+        const response = await api.get(`/usuario/${usuarioId}`);
+        setName(response.data.nome);
+
+        // Buscar pontos do usuário
+        const pontosResponse = await api.get(`/historicoResgate/usuario/${usuarioId}`);
+        const totalPontos = pontosResponse.data.reduce((acc, item) => acc + item.pontosGanhos, 0);
+        setPontos(totalPontos);
+
+      } catch (error) {
+        console.error("Erro ao buscar usuário ou pontos:", error);
       }
-    }, 100);
+    };
+
+    fetchUser();
+  }, []);
+
+  const handleSave = async () => {
+    try {
+      const usuarioId = localStorage.getItem("usuarioId");
+      await api.put(`/usuario/${usuarioId}`, {
+        nome: name,
+      });
+      alert("Nome atualizado com sucesso!");
+      setEditing(false);
+    } catch (error) {
+      console.error("Erro ao atualizar nome:", error);
+      alert("Erro ao atualizar nome. Tente novamente.");
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSave();
+    }
   };
 
   return (
@@ -53,39 +79,24 @@ const CardPerfil = ({ name, setName, subName, setSubName }) => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              onBlur={handleEnter}
+              onKeyDown={handleKeyDown}
+              onBlur={handleSave}
               className="input-perfil"
               autoFocus
             />
-            <input
-              ref={subNomeRef}
-              type="text"
-              value={subName}
-              onChange={(e) => setSubName(e.target.value)}
-              onBlur={handleEnter}
-              className="input-perfil"
-            />
-            <input
-              ref={subRef}
-              type="text"
-              value={subtitle}
-              onChange={(e) => setSubtitle(e.target.value)}
-              onBlur={handleEnter}
-              className="input-perfil"
-            />
+            <button onClick={handleSave} className="botao-salvar">Salvar</button>
           </div>
         ) : (
           <>
             <h2>
               <span className="nome-dashboard">{name}</span>
-              <span className="subnome-dashboard"> {subName}</span>
             </h2>
-            <p className="subtitulo-dashboard">{subtitle}</p>
             <FaPencil onClick={() => setEditing(true)} style={{ cursor: "pointer" }} />
           </>
         )}
       </div>
 
+      {/* Exibe Cursos e Pontos no Mobile */}
       {isMobile && (
         <div className="info-geral">
           <div className="info-card-dashboard info-card-curso">
@@ -93,8 +104,8 @@ const CardPerfil = ({ name, setName, subName, setSubName }) => {
               <RiGraduationCapLine className="icone-geral" />
             </div>
             <div className="texto-container">
-            <p className="numero-geral">{infoGeral.cursos}</p>
-            <p className="paragrafo-geral">Cursos</p>
+              <p className="numero-geral">23</p> {/* Cursos fixos */}
+              <p className="paragrafo-geral">Cursos</p>
             </div>
           </div>
 
@@ -103,13 +114,10 @@ const CardPerfil = ({ name, setName, subName, setSubName }) => {
               <CiStar className="icone-geral" />
             </div>
             <div className="texto-container">
-            <p className="numero-geral">
-              {infoGeral.estrelas < 10
-                ? `0${infoGeral.estrelas}`
-                : infoGeral.estrelas}
-            </p>
-            
-            <p className="paragrafo-geral">Pontos</p>
+              <p className="numero-geral">
+                {pontos < 10 ? `0${pontos}` : pontos}
+              </p>
+              <p className="paragrafo-geral">Pontos</p>
             </div>
           </div>
         </div>

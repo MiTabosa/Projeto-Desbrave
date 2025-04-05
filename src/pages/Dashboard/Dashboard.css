@@ -217,6 +217,18 @@
   align-items: center;
 }
 
+.botao-salvar {
+  margin-top: 10px;
+  background-color: #9f9fa0;
+  color: white;
+  border: none;
+  padding: 5px 16px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+
 @media (max-width: 768px) {
   .cabecalho-painel {
     display: none;

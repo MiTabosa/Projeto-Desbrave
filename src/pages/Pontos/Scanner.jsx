@@ -11,10 +11,12 @@ import { api } from "../../service/api";
 function Scanner() {
   const navigate = useNavigate();
   const [scanResult, setScanResult] = useState(null);
-  const [pontos, setPontos] = useState(null)
+  const [pontos, setPontos] = useState(null);
   const [cameraPermissionGranted, setCameraPermissionGranted] = useState(false);
   const scannerRef = useRef(null);
   const readerId = "reader";
+
+  const usandoMock = true; 
 
   const requestCameraPermission = () => {
     navigator.mediaDevices
@@ -25,17 +27,73 @@ function Scanner() {
       .catch((error) => {
         console.error("Permissão da câmera negada ou erro ao acessar a câmera:", error);
         alert("Permissão da câmera é necessária para escanear QR codes.");
-        navigate("/PaginaInicial"); // Redireciona para outra página se a permissão for negada
+        navigate("/PaginaInicial");
       });
   };
 
+  const fetchQRCodeData = async (id) => {
+    try {
+      if (usandoMock) {
+        const mockScanner = {
+          id: id,
+          codigo: `qrcodes/${id}`,
+          nome: "QR Code de Teste",
+          descricao: "Descrição do QR Code de Teste",
+          pontos: 50,
+        };
+        setScanResult(mockScanner);
+        setPontos(mockScanner.pontos);
+        console.log("Dados do QR code:", mockScanner);
+
+        localStorage.setItem("pontuacaoTotal", mockScanner.pontos);
+      } else {
+        const response = await api.get(`/qrcodes/${id}`);
+        setScanResult(response.data);
+
+        console.log("Dados do QR code:", response.data);
+
+        const usuarioId = localStorage.getItem("usuarioId");
+        const associacoes = await api.get(`/usuario-qrcode/usuario/${usuarioId}`);
+        const qrcodesEscaneados = associacoes.data.map((assoc) => assoc.qrCode.id);
+
+        if (qrcodesEscaneados.includes(parseInt(id))) {
+          alert("Você já escaneou esse QR Code!");
+          navigate("/Mapa");
+          return;
+        }
+
+        const res = await api.post("/usuario-qrcode", {
+          usuarioId: usuarioId,
+          qrCodeId: id,
+        });
+
+        setPontos(res.data.pontuacaoTotal);
+        localStorage.setItem("pontuacaoTotal", res.data.pontuacaoTotal);
+      }
+    } catch (error) {
+      console.error("Erro inesperado:", error.message);
+      if (!usandoMock) {
+        navigate("/InvalidScanner"); // Só navega se não for mock
+      }
+    }
+  };
+
   useEffect(() => {
+    const pontosSalvos = localStorage.getItem("pontuacaoTotal");
+    if (pontosSalvos) {
+      setPontos(parseInt(pontosSalvos));
+    }
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+
     if (!cameraPermissionGranted) {
       requestCameraPermission();
       return;
     }
 
-    if (scanResult) return;
+    if (scanResult || !isMounted) return;
 
     let scanner;
 
@@ -47,7 +105,6 @@ function Scanner() {
       readerElement.style.width = window.innerWidth + "px";
       readerElement.style.height = window.innerHeight + "px";
 
-      // Limpa scanner anterior, se existir
       if (scannerRef.current) {
         scannerRef.current.clear().catch((e) => console.warn("Erro ao limpar scanner:", e));
         scannerRef.current = null;
@@ -62,37 +119,14 @@ function Scanner() {
 
       scannerRef.current = scanner;
 
-      const fetchQRCodeData = async (id) => {
-        try {
-          // Buscar o QR Code 
-         const response = await api.get(`/qrcodes/${id}`);
-         setScanResult(response.data);
-         console.log("Dados do QR code:", response.data) // Ter acesso aos dados retornados
-
-           // buscar usuario
-          const usuarioId = localStorage.getItem("usuarioId");
-
-          //associação de qr code do usuario e somar pontos
-         const res = await api.post("/usuario-qrcode", {
-            usuarioId: usuarioId,
-            qrCodeId: id
-          })
-
-          console.log("pontuado:", res.data);
-          setPontos(res.data.pontuacaoTotal);
-
-        } catch (error) {
-          console.error("Erro inesperado:", error.message);
-          navigate("/InvalidScanner");
-        }
-      };
       scanner.render(
         (result) => {
+          if (!isMounted) return;
           console.log("Código escaneado:", result);
-      
-          const regex = new RegExp("qrcodes/([\w-]+)");
+
+          const regex = /qrcodes\/(\d+)/;
           const match = result.match(regex);
-      
+
           if (match) {
             const id = match[1];
             console.log("ID extraído:", id);
@@ -100,19 +134,22 @@ function Scanner() {
           } else {
             console.warn("QR Code inválido");
             navigate("/InvalidScanner");
+            if (!usandoMock) {
+              navigate("/InvalidScanner");
+            }
           }
-      
+
           scanner.clear().catch((e) => console.warn("Erro ao limpar scanner:", e));
           scannerRef.current = null;
         },
         (error) => {
+          if (!isMounted) return;
           if (error !== "NotFoundException") {
             console.warn("Erro ao escanear:", error);
           }
         }
       );
 
- 
       setTimeout(() => {
         const reader = document.getElementById(readerId);
         if (reader) {
@@ -121,9 +158,7 @@ function Scanner() {
       }, 300);
     };
 
-  
     startScanner();
-
 
     let lastWidth = window.innerWidth;
     let resizeTimeout;
@@ -146,6 +181,7 @@ function Scanner() {
     window.addEventListener("resize", handleResize);
 
     return () => {
+      isMounted = false;
       if (scannerRef.current) {
         scannerRef.current.clear().catch((e) => console.warn("Erro ao limpar scanner:", e));
         scannerRef.current = null;
@@ -164,10 +200,13 @@ function Scanner() {
               <BsCheck2Circle className="vector-img" />
               <div className="text-container">
                 <h2>QR CODE ESCANEADO COM SUCESSO!</h2>
-                <p>Você ganhou +50 pontos! 
+                <p>
                   {pontos && (
-                    <span><br/>Agpra você tem <strong>{pontos}</strong> pontos!</span>
-                  )}</p>
+                    <span>
+                      Você resgatou <strong>{pontos}</strong> pontos!!
+                    </span>
+                  )}
+                </p>
               </div>
             </div>
           </div>
@@ -176,7 +215,14 @@ function Scanner() {
               text="Continuar Explorando"
               color="#0367A5"
               size="small"
-              onClick={() => navigate("/Mapa")}
+              onClick={() => {
+                if (scannerRef.current) {
+                  scannerRef.current.clear().catch((e) => console.warn("Erro ao limpar scanner:", e));
+                  scannerRef.current = null;
+                }
+                setScanResult(null);
+                navigate("/Mapa");
+              }}
             />
           </div>
           <img className="pontos-image" src={elementDesign} alt="imagem de elemento" />

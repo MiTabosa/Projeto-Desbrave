@@ -123,13 +123,9 @@ const App = () => {
         <Route path="/cupons" element={<Layout isLogged={isLogged}><CuponsDashboard /></Layout>} />
         <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><CuponsUsados /></Layout>} />
         <Route path="/certificados" element={<Layout isLogged={isLogged}><Certificados /></Layout>} />
-<<<<<<< HEAD
         <Route path="/scanner" element={<Layout isLogged={isLogged}><Scanner /></Layout>} />
         <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><InvalidScanner /></Layout>} />
-
-=======
         <Route path="/forumChat" element={<Layout isLogged={isLogged}><ForumChat /></Layout>} />
->>>>>>> 9d86b5c348b7da6f15e28f6b8181bdfd6a0ec88a
 
         {/* Rotas Privadas */}
         {/* <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><PrivateRoute><InvalidScanner /></PrivateRoute></Layout>} /> */}

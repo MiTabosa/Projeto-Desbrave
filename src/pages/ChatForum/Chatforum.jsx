@@ -18,6 +18,7 @@ const Chatforum = () => {
     }, [comments] 
 
 
+
     const addComment = async () => {
         if (newComment.trim() === "") return;
 

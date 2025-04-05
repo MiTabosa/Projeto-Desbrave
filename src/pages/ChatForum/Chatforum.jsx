@@ -1,32 +1,59 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import './Chatforum.css';
 import { FaUserAlt } from "react-icons/fa";
 import { IoReturnUpBackOutline } from "react-icons/io5";
 
 const Chatforum = () => {
-    const navigate = useNavigate(); 
-    const [comments, setComments] = useState([
-        { user: "Livia Ferreira", date: "2 de janeiro de 2025", comment: "Olá! Não entendo muito de tecnologia, mas uso meu computador/tablet para estudar. Como posso protegê-lo contra ataques online e garantir que meus dados estejam seguros enquanto aprendo?" },
-        { user: "Luiz Paulo", date: "12 de janeiro de 2025", comment: "Olá, Lívia! Mantenha o sistema operacional e os aplicativos sempre atualizados para corrigir falhas de segurança. Utilize um antivírus confiável e evite baixar arquivos de fontes desconhecidas. Ative senhas fortes e, se possível, a autenticação de dois fatores (2FA) para proteger acessos. Evite conectar-se a redes Wi-Fi públicas sem VPN, pois elas podem expor seus dados."}
-    ]);
+    const navigate = useNavigate();
+    const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
 
-    const addComment = () => {
+    const bottomRef = useRef(null);
+    useEffect => () {
+        if(bottomRef.current){
+            bottomRef.current.scrollIntoView({behavior: 'smooth'})
+        }
+    }, [comments] 
+
+
+    const addComment = async () => {
         if (newComment.trim() === "") return;
+
         const newPost = {
             user: "user",
             date: new Date().toLocaleDateString("pt-BR"),
             comment: newComment
+        };
+
+        try {
+            const response = await fetch("http://localhost:8081/postagem", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newPost)
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao enviar comentário");
+            }
+
+            const savedComment = await response.json();
+            setComments([...comments, savedComment]); 
+            setNewComment("");
+
+        } catch (error) {
+            console.error(error);
         }
         setComments([...comments, newPost]);
         setNewComment("");
-    }
+    };
 
     const handleBackToForums = () => {
-        navigate("/forum"); 
-    }
+        navigate("/forum");
+    };
 
     return (
         <section className="chat-f">
@@ -34,7 +61,7 @@ const Chatforum = () => {
                 <IoReturnUpBackOutline size={24} />
                 <button onClick={handleBackToForums} className="button-voltar-f">Voltar para seção anterior</button>
             </span>
-            <h3 className="titulo-chat">Segurança Digital</h3>
+            <h3 className="titulo-chat"></h3>
 
             <div className="comments-container">
                 {comments.map((item, index) => (
@@ -62,6 +89,10 @@ const Chatforum = () => {
                     placeholder="Responder"
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            addComment();
+                        }}}
                 />
                 <button className="button-enviar" onClick={addComment}>Enviar</button>
             </div>

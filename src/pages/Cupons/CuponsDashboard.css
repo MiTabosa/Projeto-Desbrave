@@ -141,7 +141,6 @@
 }
 
 .cupomTitulo10{
-  /* margin-bottom: -20px; */
   color: #ffffff;
 }
 
@@ -158,7 +157,6 @@
   border-bottom-style: inherit;
 }
 .cupomTitulo20{
-  /* margin-bottom: -20px; */
   color: #ffffff;
 }
 .cupomDescricao20{
@@ -175,7 +173,6 @@
 }
 
 .cupomTitulo50{
-  /* margin-bottom: -20px; */
   color: #ffffff;
 }
 
@@ -196,7 +193,7 @@
   background-color: #ffffff;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 10px;
   margin-top: 10px;
   width: 200px;
@@ -209,7 +206,7 @@
   color: #000; 
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 5px;
   margin-top: 2px;
   width: 200px;
@@ -217,7 +214,7 @@
 }
 
 .copiar {
-  color: #D98D30;
+  color: #ffffff;
   justify-content: flex-end;
   align-items: rigth;
   font-size: 12px;
@@ -232,7 +229,7 @@
   padding: 4px;
   background: transparent;
   border: 1px dashed #ffffff;
-  border-radius: 8px;
+  border-radius: 6px;
   color: #ffffff;
   text-decoration: none;
   font-size: 14px;
@@ -259,7 +256,7 @@
 }
 
 .modalConteudo {
-  background: white;
+  background: #ffffff;
   padding: 20px;
   border-radius: 10px;
   max-width: 500px;

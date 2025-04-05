@@ -1,19 +1,45 @@
 import React, { useState } from "react";
 import "./RedefinirSenha.css";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import axios from "axios";
 
 const RedefinirSenha = () => {
-  const [senha, setSenha] = useState("");
-  const [senhaConfirm, setSenhaConfirm] = useState("");
-  const navigate = useNavigate();
+  const [novaSenha, setNovaSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+  const [mensagemErro, setMensagemErro] = useState("");
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+  const [mostrarConfirmarSenha, setMostrarConfirmarSenha] = useState(false);
+  const navegar = useNavigate();
 
-  const handleSubmit = () => {
-    
-    if (senha !== senhaConfirm) {
-      alert("As senhas não coincidem. Tente novamente.");
-    } else {
-    
-      navigate("/recuperarSenha"); 
+  const lidarComEnvio = async () => {
+    if (novaSenha !== confirmarSenha) {
+      setMensagemErro("As senhas não coincidem. Tente novamente.");
+      return;
+    }
+
+    try {
+      const email = localStorage.getItem("emailRecuperacao");
+
+      if (!email) {
+        setMensagemErro("E-mail de recuperação não encontrado.");
+        return;
+      }
+
+      const resposta = await axios.post("http://localhost:3000/redefinir-senha", {
+        email,
+        novaSenha,
+      });
+
+      if (resposta.status === 200) {
+        alert("Senha redefinida com sucesso!");
+        navegar("/login");
+      } else {
+        setMensagemErro("Erro ao redefinir a senha. Tente novamente.");
+      }
+    } catch (erro) {
+      console.error("Erro ao redefinir senha:", erro);
+      setMensagemErro("Erro ao conectar com o servidor.");
     }
   };
 
@@ -25,27 +51,43 @@ const RedefinirSenha = () => {
         <h1>Redefinir Senha</h1>
         <p>Digite sua nova senha</p>
 
-        <input
-          type="password"
-          placeholder="Senha"
-          className="RedInputSenha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-        />
+        <div className="inputCampo">
+          <input
+            type={mostrarSenha ? "text" : "password"}
+            placeholder="Senha"
+            className="RedInputSenha"
+            value={novaSenha}
+            onChange={(e) => setNovaSenha(e.target.value)}
+          />
+          <span
+            className="iconeSenha"
+            onClick={() => setMostrarSenha(!mostrarSenha)}
+          >
+            {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
 
-        <input
-          type="password"
-          placeholder="Digite a senha novamente"
-          className="RedInputSenha"
-          value={senhaConfirm}
-          onChange={(e) => setSenhaConfirm(e.target.value)}
-        />
+        <div className="inputCampo">
+          <input
+            type={mostrarConfirmarSenha ? "text" : "password"}
+            placeholder="Digite a senha novamente"
+            className="RedInputSenha"
+            value={confirmarSenha}
+            onChange={(e) => setConfirmarSenha(e.target.value)}
+          />
+          <span
+            className="iconeSenha"
+            onClick={() => setMostrarConfirmarSenha(!mostrarConfirmarSenha)}
+          >
+            {mostrarConfirmarSenha ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
 
-        <button className="continuar" onClick>
+        {mensagemErro && <p className="mensagem-erro">{mensagemErro}</p>}
+
+        <button className="continuar" onClick={lidarComEnvio}>
           Continuar
         </button>
-{/* 
-        <a href="/login" className="voltarLogin">↩ Voltar para página de Login</a> */}
       </div>
     </div>
   );

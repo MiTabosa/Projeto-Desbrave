@@ -114,11 +114,6 @@ const App = () => {
         <Route path="/mapa" element={<Layout isLogged={isLogged}><Mapa /></Layout>} />
         <Route path="/paginaInicial" element={<Layout isLogged={isLogged}><PaginaInicial /></Layout>} />
 
-        {/* Rotas de Admin */}
-        <Route path="/dashboardAdmin" element={<AdminRoute><Layout><DashboardAdmin /></Layout></AdminRoute>} />
-        <Route path="/gestaoCursos" element={<AdminRoute><Layout><GestaoCursos /></Layout></AdminRoute>} />
-        <Route path="/gestaoForum" element={<AdminRoute><Layout><GestaoForum /></Layout></AdminRoute>} />
-
         {/*teste de rotas  */}
         <Route path="/dashboard" element={<Layout isLogged={isLogged}><Dashboard /></Layout>} />
         <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><DashboardAdmin /></Layout>} />

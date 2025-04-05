@@ -14,8 +14,8 @@ const DashboardAdmin = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [numCursos, setNumCursos] = useState(12);
   const [numForuns, setNumForuns] = useState(5);
-  const [name, setName] = useState("Admin");
-  const [subName, setSubName] = useState("User");
+  const [name, setName] = useState(""); 
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,6 +25,20 @@ const DashboardAdmin = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        const usuarioId = localStorage.getItem("usuarioId");
+        const response = await api.get(`/usuario/${usuarioId}`);
+        setName(response.data.nome); 
+      } catch (error) {
+        console.error("Erro ao buscar nome do usuário:", error);
+      }
+    };
+
+    fetchUserName();
+  }, []);
+
   return (
     <SidebarAdmin>
       <BottomDashboard>
@@ -32,7 +46,7 @@ const DashboardAdmin = () => {
           {/* Parte esquerda */}
           <div className="esquerda-secao">
             <div className="cabecalho-painel-adm">
-              <h2 className="titulo-dashboard">Olá, {name} {subName}!</h2>
+              <h2 className="titulo-dashboard">Olá, {name}!</h2>
               <p className="paragrafo-dashboard">Bem-vindo de volta! 😃</p>
               <button
                 className="adm-home-botao"
@@ -89,9 +103,7 @@ const DashboardAdmin = () => {
           </div>
           <CardPerfilAdmin
             name={name}
-            subName={subName}
-            numCursos={numCursos}
-            numForuns={numForuns}
+            setName={setName}
           />
         </div>
       </BottomDashboard>

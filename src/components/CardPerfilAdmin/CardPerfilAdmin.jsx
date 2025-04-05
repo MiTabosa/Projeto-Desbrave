@@ -76,6 +76,7 @@ const CardPerfil = ({ name, setName, numCursos, numForuns }) => {
               className="input-perfil"
               autoFocus
             />
+            <button onClick={handleSave} className="botao-salvar">Salvar</button>
           </div>
         ) : (
           <>

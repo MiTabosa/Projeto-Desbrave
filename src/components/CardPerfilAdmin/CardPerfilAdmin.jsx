@@ -10,13 +10,11 @@ import Button from "../../components/Button/Button";
 
 const CardPerfil = ({ name, setName, subName, setSubName, numCursos, numForuns }) => {
   const navigate = useNavigate();
-  const [subtitle, setSubtitle] = useState("Professora de História");
   const [editing, setEditing] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const nomeRef = useRef(null);
   const subNomeRef = useRef(null);
-  const subRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,8 +28,7 @@ const CardPerfil = ({ name, setName, subName, setSubName, numCursos, numForuns }
     setTimeout(() => {
       if (
         document.activeElement !== nomeRef.current &&
-        document.activeElement !== subNomeRef.current &&
-        document.activeElement !== subRef.current
+        document.activeElement !== subNomeRef.current
       ) {
         setEditing(false);
       }
@@ -64,14 +61,6 @@ const CardPerfil = ({ name, setName, subName, setSubName, numCursos, numForuns }
               onBlur={handleEnter}
               className="input-perfil"
             />
-            <input
-              ref={subRef}
-              type="text"
-              value={subtitle}
-              onChange={(e) => setSubtitle(e.target.value)}
-              onBlur={handleEnter}
-              className="input-perfil"
-            />
           </div>
         ) : (
           <>
@@ -79,7 +68,6 @@ const CardPerfil = ({ name, setName, subName, setSubName, numCursos, numForuns }
               <span className="nome-dashboard">{name}</span>
               <span className="subnome-dashboard"> {subName}</span>
             </h2>
-            <p className="subtitulo-dashboard">{subtitle}</p>
             <FaPencil
               onClick={() => setEditing(true)}
               style={{ cursor: "pointer" }}

@@ -11,6 +11,18 @@ const ForumCard = ({ filtroAtual }) => {
     setForuns(dadosForuns.foruns);
   }, []);
 
+
+  // useEffect(() => {
+  //   const fetcforum = async () => {
+  //     try{
+  //       const response = await feach("http://localhost:8081/postagem");
+  //       if(!response.ok);
+  //       throw new Error("Erro ao buscar do backend");
+  //     }
+  //     }
+  //   }
+  // });
+
   const obterCorCategoria = (categoria) => {
     switch(categoria) {
       case 'Cultura': return '#0367A5';

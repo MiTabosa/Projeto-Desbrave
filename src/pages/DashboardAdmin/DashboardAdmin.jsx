@@ -52,7 +52,6 @@ const DashboardAdmin = () => {
                       <PiBookOpenTextThin size={35} color="#c69715" />
                     </div>
                     <div className="admin-card-text">
-                      <p className="admin-card-number">{numCursos}</p>
                       <p className="texto-card-adm">Cursos cadastrados</p>
                     </div>
                   </div>
@@ -72,7 +71,6 @@ const DashboardAdmin = () => {
                       <FaComments size={30} color="#c69715" />
                     </div>
                     <div className="admin-card-text">
-                      <p className="admin-card-number">{numForuns}</p>
                       <p className="texto-card-adm">Fóruns cadastrados</p>
                     </div>
                   </div>

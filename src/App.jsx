@@ -125,7 +125,7 @@ const App = () => {
         <Route path="/certificados" element={<Layout isLogged={isLogged}><Certificados /></Layout>} />
         <Route path="/scanner" element={<Layout isLogged={isLogged}><Scanner /></Layout>} />
         <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><InvalidScanner /></Layout>} />
-        <Route path="/forumChat" element={<Layout isLogged={isLogged}><ForumChat /></Layout>} />
+        <Route path="/forumChat/:id" element={<Layout isLogged={isLogged}><ForumChat /></Layout>} />
 
         {/* Rotas Privadas */}
         {/* <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><PrivateRoute><InvalidScanner /></PrivateRoute></Layout>} /> */}

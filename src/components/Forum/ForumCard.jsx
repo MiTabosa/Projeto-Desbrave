@@ -1,27 +1,54 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FaUsers } from 'react-icons/fa6';
-import dadosForuns from '../../data/foruns.json'; 
 import './ForumCard.css';
 
 const ForumCard = ({ filtroAtual }) => {
   const [foruns, setForuns] = useState([]);
+  const navigate = useNavigate();
+
+  // Dados mockados - mesmo formato original
+  const mockForuns = [
+    {
+      id: 1,
+      nome: "Tecnologia em Recife",
+      categoria: "Tecnologia",
+      quantidade_mensagens: 24,
+      quantidade_usuarios_ativos: 15
+    },
+    {
+      id: 2,
+      nome: "Cultura Local",
+      categoria: "Cultura",
+      quantidade_mensagens: 18,
+      quantidade_usuarios_ativos: 12
+    },
+    {
+      id: 3,
+      nome: "Cidadania",
+      categoria: "Cidadania Digital",
+      quantidade_mensagens: 18,
+      quantidade_usuarios_ativos: 12
+    }
+  ];
 
   useEffect(() => {
-    setForuns(dadosForuns.foruns);
+    setForuns(mockForuns);
+    
+    /* CÓDIGO PARA BACK-END (mantido comentado):
+    const fetchForuns = async () => {
+      try {
+        const response = await fetch('http://localhost:8081/foruns');
+        const data = await response.json();
+        setForuns(data);
+      } catch (error) {
+        console.error("Erro:", error);
+        setForuns(mockForuns); // Fallback
+      }
+    };
+    fetchForuns();
+    */
   }, []);
-
-
-  // useEffect(() => {
-  //   const fetcforum = async () => {
-  //     try{
-  //       const response = await feach("http://localhost:8081/postagem");
-  //       if(!response.ok);
-  //       throw new Error("Erro ao buscar do backend");
-  //     }
-  //     }
-  //   }
-  // });
 
   const obterCorCategoria = (categoria) => {
     switch(categoria) {
@@ -30,6 +57,10 @@ const ForumCard = ({ filtroAtual }) => {
       case 'Cidadania Digital': return '#c69715';
       default: return '#0367A5';
     }
+  };
+
+  const handleCardClick = (forumId) => {
+    navigate(`/chat/${forumId}`);
   };
 
   const forunsFiltrados = filtroAtual === 'Todas' 
@@ -42,52 +73,33 @@ const ForumCard = ({ filtroAtual }) => {
         const corCategoria = obterCorCategoria(forum.categoria);
         
         return (
-          <Link 
-            to={`/forumChat/${forum.id}`} 
-            className="forum-link" 
+          <div 
             key={forum.id}
+            className="forum-card"
+            onClick={() => handleCardClick(forum.id)}
+            style={{ borderColor: corCategoria }}
           >
-            <div 
-              className="forum-card" 
-              style={{ borderColor: corCategoria }}
-            >
-              <div className="forum-card-esquerda">
+            <div className="forum-card-esquerda">
+              <span 
+                className="forum-icone" 
+                style={{ backgroundColor: corCategoria }}
+              >
+                <FaUsers />
+              </span>
+              <div>
+                <h2 className="forum-titulo" style={{ color: corCategoria }}>
+                  {forum.nome}
+                </h2>
                 <span 
-                  className="forum-icone" 
+                  className="forum-categoria-badge" 
                   style={{ backgroundColor: corCategoria }}
                 >
-                  <FaUsers />
+                  {forum.categoria}
                 </span>
-                <div>
-                  <h2 className="forum-titulo" style={{ color: corCategoria }}>
-                    {forum.nome}
-                  </h2>
-                  <span 
-                    className="forum-categoria-badge" 
-                    style={{ backgroundColor: corCategoria }}
-                  >
-                    {forum.categoria}
-                  </span>
-                </div>
               </div>
-              {/* <div className="forum-card-direita">
-                <div 
-                  className="forum-info-box" 
-                  style={{ borderColor: corCategoria }}
-                >
-                  <p><strong>Mensagens</strong></p>
-                  <p className="forum-valor">{forum.quantidade_mensagens}</p>
-                </div>
-                <div 
-                  className="forum-info-box" 
-                  style={{ borderColor: corCategoria }}
-                >
-                  <p><strong>Usuários Ativos</strong></p>
-                  <p className="forum-valor">{forum.quantidade_usuarios_ativos}</p>
-                </div>
-              </div> */}
             </div>
-          </Link>
+
+          </div>
         );
       })}
     </div>

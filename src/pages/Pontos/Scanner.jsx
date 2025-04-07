@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { BsCheck2Circle } from "react-icons/bs";
 import { api } from "../../service/api";
-
 function Scanner() {
   const navigate = useNavigate();
   const [scanResult, setScanResult] = useState(null);
@@ -16,8 +15,6 @@ function Scanner() {
   const scannerRef = useRef(null);
   const readerId = "reader";
 
-  const usandoMock = true; 
-
   const requestCameraPermission = () => {
     navigator.mediaDevices
       .getUserMedia({ video: true })
@@ -25,56 +22,51 @@ function Scanner() {
         setCameraPermissionGranted(true);
       })
       .catch((error) => {
-        console.error("Permissão da câmera negada ou erro ao acessar a câmera:", error);
+        console.error(
+          "Permissão da câmera negada ou erro ao acessar a câmera:",
+          error
+        );
         alert("Permissão da câmera é necessária para escanear QR codes.");
-        navigate("/PaginaInicial");
+        navigate("/PaginaInicial"); // Redireciona para outra página se a permissão for negada
       });
   };
 
   const fetchQRCodeData = async (id) => {
     try {
-      if (usandoMock) {
-        const mockScanner = {
-          id: id,
-          codigo: `qrcodes/${id}`,
-          nome: "QR Code de Teste",
-          descricao: "Descrição do QR Code de Teste",
-          pontos: 50,
-        };
-        setScanResult(mockScanner);
-        setPontos(mockScanner.pontos);
-        console.log("Dados do QR code:", mockScanner);
 
-        localStorage.setItem("pontuacaoTotal", mockScanner.pontos);
-      } else {
-        const response = await api.get(`/qrcodes/${id}`);
-        setScanResult(response.data);
+       const response = await api.get(`/qrcodes/${id}`);
+      setScanResult(response.data);
 
-        console.log("Dados do QR code:", response.data);
+      console.log("Dados do QR code:", response.data); // Ter acesso aos dados retornados
 
-        const usuarioId = localStorage.getItem("usuarioId");
-        const associacoes = await api.get(`/usuario-qrcode/usuario/${usuarioId}`);
-        const qrcodesEscaneados = associacoes.data.map((assoc) => assoc.qrCode.id);
+      const usuarioId = localStorage.getItem("usuarioId");
 
-        if (qrcodesEscaneados.includes(parseInt(id))) {
-          alert("Você já escaneou esse QR Code!");
-          navigate("/Mapa");
-          return;
-        }
+      // buscar usuario
+      const associacoes = await api.get(`/usuario-qrcode/usuario/${usuarioId}`);
+      const qrcodesEscaneados = associacoes.data.map(
+        (assoc) => assoc.qrCode.id
+      );
 
-        const res = await api.post("/usuario-qrcode", {
-          usuarioId: usuarioId,
-          qrCodeId: id,
-        });
-
-        setPontos(res.data.pontuacaoTotal);
-        localStorage.setItem("pontuacaoTotal", res.data.pontuacaoTotal);
+      //  verifica se o qrcode escaaneado já foi resgatado
+      if (qrcodesEscaneados.includes(parseInt(id))) {
+        alert("Você já escaneou esse QR Code!");
+        navigate("/Mapa");
+        return;
       }
+
+      // se não foi escaneado ainda, faz associação e pontua
+      const res = await api.post("/usuario-qrcode", {
+        usuarioId: usuarioId,
+        qrCodeId: id,
+      });
+
+
+      setPontos(res.data.pontuacaoTotal); // atualiza pontuação
+      localStorage.setItem("pontuacaoTotal", res.data.pontuacaoTotal);
+
     } catch (error) {
       console.error("Erro inesperado:", error.message);
-      if (!usandoMock) {
-        navigate("/InvalidScanner"); // Só navega se não for mock
-      }
+      navigate("/InvalidScanner");
     }
   };
 
@@ -86,14 +78,12 @@ function Scanner() {
   }, []);
 
   useEffect(() => {
-    let isMounted = true;
-
     if (!cameraPermissionGranted) {
       requestCameraPermission();
       return;
     }
 
-    if (scanResult || !isMounted) return;
+    if (scanResult) return;
 
     let scanner;
 
@@ -105,8 +95,11 @@ function Scanner() {
       readerElement.style.width = window.innerWidth + "px";
       readerElement.style.height = window.innerHeight + "px";
 
+      // Limpa scanner anterior, se existir
       if (scannerRef.current) {
-        scannerRef.current.clear().catch((e) => console.warn("Erro ao limpar scanner:", e));
+        scannerRef.current
+          .clear()
+          .catch((e) => console.warn("Erro ao limpar scanner:", e));
         scannerRef.current = null;
       }
 
@@ -121,7 +114,6 @@ function Scanner() {
 
       scanner.render(
         (result) => {
-          if (!isMounted) return;
           console.log("Código escaneado:", result);
 
           const regex = /qrcodes\/(\d+)/;
@@ -134,16 +126,14 @@ function Scanner() {
           } else {
             console.warn("QR Code inválido");
             navigate("/InvalidScanner");
-            if (!usandoMock) {
-              navigate("/InvalidScanner");
-            }
           }
 
-          scanner.clear().catch((e) => console.warn("Erro ao limpar scanner:", e));
+          scanner
+            .clear()
+            .catch((e) => console.warn("Erro ao limpar scanner:", e));
           scannerRef.current = null;
         },
         (error) => {
-          if (!isMounted) return;
           if (error !== "NotFoundException") {
             console.warn("Erro ao escanear:", error);
           }
@@ -181,9 +171,10 @@ function Scanner() {
     window.addEventListener("resize", handleResize);
 
     return () => {
-      isMounted = false;
       if (scannerRef.current) {
-        scannerRef.current.clear().catch((e) => console.warn("Erro ao limpar scanner:", e));
+        scannerRef.current
+          .clear()
+          .catch((e) => console.warn("Erro ao limpar scanner:", e));
         scannerRef.current = null;
       }
       window.removeEventListener("resize", handleResize);
@@ -201,9 +192,11 @@ function Scanner() {
               <div className="text-container">
                 <h2>QR CODE ESCANEADO COM SUCESSO!</h2>
                 <p>
+                  Você ganhou +50 pontos!
                   {pontos && (
                     <span>
-                      Você resgatou <strong>{pontos}</strong> pontos!!
+                      <br />
+                      Agora você tem <strong>{pontos}</strong> pontos!
                     </span>
                   )}
                 </p>
@@ -225,7 +218,11 @@ function Scanner() {
               }}
             />
           </div>
-          <img className="pontos-image" src={elementDesign} alt="imagem de elemento" />
+          <img
+            className="pontos-image"
+            src={elementDesign}
+            alt="imagem de elemento"
+          />
         </section>
       ) : (
         <div id={readerId}></div>

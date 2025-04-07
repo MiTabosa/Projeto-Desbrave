@@ -11,35 +11,29 @@ export default function CuponsUsados() {
   const [modalAberto, setModalAberto] = useState(false);
   const [cupomSelecionado, setCupomSelecionado] = useState(null);
 
-  // useEffect(() => {
-  //   const buscarCuponsUsados = async () => {
-  //     try {
-  //       const { data: dadosCupons } = await axios.get("http://localhost:3000/cupomUsado");
-  //       setCuponsUsados(dadosCupons);
-  //       const { data: dadosPontos } = await axios.get("http://localhost:3000/pontos");
-  //       setPontos(dadosPontos.pontos);
-  //     } catch (error) {
-  //       console.error("Erro ao buscar dados:", error);
-  //     }
-  //   };
-  //   buscarCuponsUsados();
-  // }, []);
-
   useEffect(() => {
-    const buscarCuponsUsados = () => {
+    const buscarCuponsUsados = async () => {
+      try {
+        const { data: dadosCupons } = await axios.get("http://localhost:8081/cupom");
+        setCuponsUsados(dadosCupons);
+        const { data: dadosPontos } = await axios.get("http://localhost:8081/cupom");
+        setPontos(dadosPontos.pontos);
+      } catch (error) {
+        console.error("Erro ao buscar dados:", error);
+      }
+
       setTimeout(() => {
-        // Mock de cupons usados
+       
         const dadosCupons = [
           { id: 1, desconto: "5% OFF", descricao: "COM APENAS 01 ESTRELA" },
           { id: 2, desconto: "10% OFF", descricao: "COM APENAS 5 ESTRELAS" },
         ];
         setCuponsUsados(dadosCupons);
 
-        // Mock de pontos do usuário
+        
         setPontos(20);
       }, 1000);
     };
-
     buscarCuponsUsados();
   }, []);
 

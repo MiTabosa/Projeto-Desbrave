@@ -4,13 +4,16 @@ import "./NavbarLogado.css";
 import logo from "../../assets/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaUserCircle } from "react-icons/fa";
+import { useAutenticacao } from "../../context/AutenticacaoContext";
 
 const NavbarLogado = ({ userData }) => {
   const navigate = useNavigate();
   const [menuAberto, setMenuAberto] = useState(false);
   const [dropdownAberto, setDropdownAberto] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  
+  const { deslogar } = useAutenticacao();
+
+  const { usuario } = useAutenticacao();
   const isAdmin = userData?.role === "admin";
 
   const alternarMenu = () => {
@@ -21,11 +24,17 @@ const NavbarLogado = ({ userData }) => {
     setDropdownAberto(!dropdownAberto);
   };
 
+  // const handleLogout = () => {
+  //   localStorage.removeItem("usuarioLogado");
+  //   navigate("/login");
+  //   window.location.reload();
+  // };
+
   const handleLogout = () => {
-    localStorage.removeItem("usuarioLogado");
+    deslogar(); // limpa o contexto e localStorage
     navigate("/login");
-    window.location.reload();
   };
+  
 
   const handlePerfil = () => {
     navigate(isAdmin ? "/dashboardAdmin" : "/dashboard");

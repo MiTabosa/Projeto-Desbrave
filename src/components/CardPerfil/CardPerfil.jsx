@@ -13,7 +13,8 @@ const CardPerfil = ({ name, setName }) => {
   const navigate = useNavigate();
   const [editing, setEditing] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [pontos, setPontos] = useState(0); // 👈 Agora temos um estado separado para pontos
+  const [pontos, setPontos] = useState(0); 
+  const [quantidadeCursos, setQuantidadeCursos] = useState(0); 
   const nomeRef = useRef(null);
 
   useEffect(() => {
@@ -28,6 +29,7 @@ const CardPerfil = ({ name, setName }) => {
     const fetchUser = async () => {
       try {
         const usuarioId = localStorage.getItem("usuarioId");
+
         // Buscar nome do usuário
         const response = await api.get(`/usuario/${usuarioId}`);
         setName(response.data.nome);
@@ -36,6 +38,9 @@ const CardPerfil = ({ name, setName }) => {
         const pontosResponse = await api.get(`/historicoResgate/usuario/${usuarioId}`);
         const totalPontos = pontosResponse.data.reduce((acc, item) => acc + item.pontosGanhos, 0);
         setPontos(totalPontos);
+
+        const cursosResponse = await api.get(`/usuarios/${usuarioId}/cursos-com-progresso`);
+        setQuantidadeCursos(cursosResponse.data.length);
 
       } catch (error) {
         console.error("Erro ao buscar usuário ou pontos:", error);
@@ -104,7 +109,7 @@ const CardPerfil = ({ name, setName }) => {
               <RiGraduationCapLine className="icone-geral" />
             </div>
             <div className="texto-container">
-              <p className="numero-geral">23</p> {/* Cursos fixos */}
+              <p className="numero-geral">{quantidadeCursos}</p>
               <p className="paragrafo-geral">Cursos</p>
             </div>
           </div>

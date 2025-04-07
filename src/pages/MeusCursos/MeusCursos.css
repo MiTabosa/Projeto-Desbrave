@@ -43,6 +43,12 @@
     flex-direction: column;
 }
 
+.nenhum-curso {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+    color: #555;
+  }
 
 .info-progresso {
     font-size: 12px;

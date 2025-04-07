@@ -1,11 +1,11 @@
 import "./Pontos.css";
 import { Html5QrcodeScanner, Html5QrcodeScanType } from "html5-qrcode";
+import ScannerComponent from "../../components/Scanner/ScannerComponent";
+import elementDesign from "../../assets/element-design.png";
 import { useEffect, useRef, useState } from "react";
-import ScannerComponent from "./ScannerComponent";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { BsCheck2Circle } from "react-icons/bs";
-import elementDesign from "../../assets/element-design.png";
 import { api } from "../../service/api";
 
 function Scanner() {

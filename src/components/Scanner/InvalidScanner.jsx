@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import elementDesign from "../../assets/element-design.png";
-import "./Pontos.css";
-import Button from "../../components/Button/Button";
+import "../../pages/Pontos/Pontos.css";
+import Button from "../Button/Button";
 import { MdErrorOutline } from "react-icons/md";
 
 

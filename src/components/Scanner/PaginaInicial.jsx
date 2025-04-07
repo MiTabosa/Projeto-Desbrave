@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./Pontos.css";
-import Navbar from "../../components/Navbar/Navbar";
+import "../../pages/Pontos/Pontos.css";
 import elementDesign from "../../assets/element-design.png";
 import Button from "../../components/Button/Button";
 

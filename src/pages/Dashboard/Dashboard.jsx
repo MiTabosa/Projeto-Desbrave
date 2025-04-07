@@ -20,9 +20,10 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [infoGeral, setInfoGeral] = useState({ cursos: 23, pontos: 0});
+  const [infoGeral, setInfoGeral] = useState({ cursos: 0, pontos: 0});
   const [filtro, setFiltro] = useState("todos");
   const [name, setName] = useState("");
+  const [cursosIniciados, setCursosIniciados] = useState([]);
 
 
   useEffect(() => {
@@ -34,7 +35,6 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-
     const fetchData = async () => {
       try {
         const usuarioId = localStorage.getItem("usuarioId");
@@ -46,46 +46,31 @@ const Dashboard = () => {
         // pontos
         const pontosResponse = await api.get(`/historicoResgate/usuario/${usuarioId}`);
         const totalPontos = pontosResponse.data.reduce((acc, item) => acc + item.pontosGanhos, 0);
+
+        // cursos iniciados 
+        const cursosResponse = await api.get(`/usuarios/${usuarioId}/cursos-com-progresso`);
+
+
         setInfoGeral((prev) => ({
-          ...prev,
+          cursos: cursosResponse.data.length,
           pontos: totalPontos,
         }));
 
+        setCursosIniciados(cursosResponse.data);
+
      } catch (error) {
       console.error("Erro ao buscar histórico de resgate:", error);
-      setInfoGeral((prev) => ({
-        ...prev,
-        pontos: 0, 
-      }));
+      setInfoGeral((prev) => ({...prev,pontos: 0}));
      }
     };
 
     fetchData();
   }, [location]);
 
-  const cursos = [
-    {
-      id: 1,
-      titulo: "Cursos de Extensão IA para direito",
-      status: "andamento",
-      progresso: 40,
-    },
-    {
-      id: 2,
-      titulo: "Desenvolvimento Android Moderno",
-      status: "andamento",
-      progresso: 70,
-    },
-    {
-      id: 3,
-      titulo: "Frevo ao Manguebeat",
-      status: "concluido",
-      progresso: 100,
-    },
-  ];
-
-  const cursosFiltrados = cursos.filter(
-    (curso) => filtro === "todos" || curso.status === filtro
+  const cursosFiltrados = cursosIniciados.filter(
+    (curso) => filtro === "todos" || 
+   (filtro === "andamento" && curso.progresso < 100) ||
+   (filtro === "concluido" && curso.progresso === 100)
   );
 
   return (
@@ -160,24 +145,29 @@ const Dashboard = () => {
                   </select>
                 </div>
 
+            
                 <div className="container-curso-dashboard">
-                  {cursosFiltrados.map((curso) => (
-                    <div key={curso.id} className="curso-card-dashboard">
-                      <p className="curso-titulo-dashboard">{curso.titulo}</p>
-                      <ProgressCircle percent={curso.progresso} />
-                      <div className="botao-curso-dashboard">
-                        <Button
-                          text="Retomar"
-                          color="#0367A5"
-                          size="small"
-                          onClick={() => navigate("/curso")}
-                        />
-                      </div>
-                    </div>
-                  ))}
+                    {cursosFiltrados.length === 0 ? (
+                      <p>Você ainda não iniciou nenhum curso.</p>
+                    ) : (
+                      cursosFiltrados.map((curso, index) => (
+                        <div key={index} className="curso-card-dashboard">
+                          <p className="curso-titulo-dashboard">{curso.tituloCurso}</p>
+                          <ProgressCircle percent={curso.progresso} />
+                          <div className="botao-curso-dashboard">
+                            <Button
+                              text="Retomar"
+                              color="#0367A5"
+                              size="small"
+                              onClick={() => navigate("/curso")} 
+                            />
+                          </div>
+                        </div>
+                      ))
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
             
             <CardPerfil

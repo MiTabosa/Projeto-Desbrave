@@ -13,25 +13,15 @@ const GestForum = () => {
     categoria: ''
   });
 
-  // Carrega fóruns
+  // Carrega fóruns da API
   useEffect(() => {
     const fetchForuns = async () => {
       try {
-        // Modo de desenvolvimento (mock)
-        const mockForuns = [
-          { id: 1, nome: "Fórum de Tecnologia", categoria: "Tecnologia" },
-          { id: 2, nome: "Fórum de Cultura", categoria: "Cultura" },
-          { id: 3, nome: "Fórum de Cidadania digital", categoria: "Cidadania" },
-        ];
-        setForum(mockForuns);
+        const response = await api.get('/forum');
+        setForum(response.data);
         setLoading(false);
-        
-        // Modo produção (descomente quando o backend estiver pronto)
-        // const response = await api.get('/forum');
-        // setForum(response.data);
-        // setLoading(false);
       } catch (err) {
-        setError("Erro ao carregar fóruns");
+        setError("Erro ao carregar fóruns: " + (err.response?.data?.message || err.message));
         setLoading(false);
       }
     };
@@ -56,9 +46,11 @@ const GestForum = () => {
       if (formData.id) {
         // Atualização
         await api.put(`/forum/${formData.id}`, formData);
+        alert('Fórum atualizado com sucesso!');
       } else {
         // Criação
         await api.post('/forum', formData);
+        alert('Fórum cadastrado com sucesso!');
       }
 
       // Recarrega os dados
@@ -70,7 +62,7 @@ const GestForum = () => {
       
     } catch (err) {
       console.error("Erro ao salvar fórum:", err);
-      alert('Erro ao salvar fórum. Tente novamente.');
+      alert(`Erro: ${err.response?.data?.message || 'Erro ao salvar fórum'}`);
     }
   };
 
@@ -81,9 +73,10 @@ const GestForum = () => {
       try {
         await api.delete(`/forum/${id}`);
         setForum(forum.filter(f => f.id !== id));
+        alert('Fórum excluído com sucesso!');
       } catch (err) {
         console.error("Erro ao excluir fórum:", err);
-        alert('Erro ao excluir fórum. Tente novamente.');
+        alert(`Erro: ${err.response?.data?.message || 'Erro ao excluir fórum'}`);
       }
     }
   };
@@ -94,6 +87,7 @@ const GestForum = () => {
       nome: forum.nome,
       categoria: forum.categoria
     });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   if (loading) return <div className="loading">Carregando fóruns...</div>;
@@ -103,20 +97,21 @@ const GestForum = () => {
     <div className='gestao-forum'>
       {/* Formulário de Cadastro */}
       <div className='formulario'>
-        <h2>{formData.id ? 'Editar Fórum' : 'Cadastro de Fóruns'}</h2>
+        <h2>{formData.id ? `Editando Fórum #${formData.id}` : 'Cadastro de Fóruns'}</h2>
         <form onSubmit={handleSubmit}>
           <div className='form-1'>
-            <label>Nome do Fórum:</label>
+            <label>Nome do Fórum*:</label>
             <input
               type='text'
               name='nome'
               value={formData.nome}
               onChange={handleInputChange}
               required
+              placeholder='Nome do fórum'
             />
           </div>
           <div className='form-1'>
-            <label>Categoria:</label>
+            <label>Categoria*:</label>
             <select
               name='categoria'
               value={formData.categoria}
@@ -140,7 +135,7 @@ const GestForum = () => {
             {formData.id && (
               <Button 
                 className="buttonCancelar" 
-                text="Cancelar" 
+                text="Cancelar Edição" 
                 color="#f44336" 
                 size="medium" 
                 onClick={() => setFormData({ nome: '', categoria: '' })}

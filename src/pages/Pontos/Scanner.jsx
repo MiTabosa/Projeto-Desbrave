@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { BsCheck2Circle } from "react-icons/bs";
 import { api } from "../../service/api";
+import { jwtDecode } from "jwt-decode";
+
+
 function Scanner() {
   const navigate = useNavigate();
   const [scanResult, setScanResult] = useState(null);
@@ -31,39 +34,46 @@ function Scanner() {
       });
   };
 
-  const fetchQRCodeData = async (id) => {
+  const fetchQRCodeData = async (codigo) => {
     try {
+      const token = localStorage.getItem("token");
+      const decodedToken = jwtDecode(token);
+      const usuarioId = decodedToken?.sub;
 
-       const response = await api.get(`/qrcodes/${id}`);
-      setScanResult(response.data);
+      const codigoSemAspas = codigo.replace(/^"|"$/g, '');
+  
+      const response = await api.get(`/qrcodes?codigo=${codigoSemAspas}`)
 
-      console.log("Dados do QR code:", response.data); // Ter acesso aos dados retornados
+      const corretoQrcode = response.data.find(qr => qr.codigo === codigoSemAspas);
 
-      const usuarioId = localStorage.getItem("usuarioId");
+      if(!corretoQrcode) {
+        throw new Error ("Qr code não encontrado")
+      }
 
-      // buscar usuario
+
+      setScanResult(corretoQrcode);
+  
+      const id = corretoQrcode.id 
+  
+      console.log("Dados do QR code:", corretoQrcode);
+  
       const associacoes = await api.get(`/usuario-qrcode/usuario/${usuarioId}`);
-      const qrcodesEscaneados = associacoes.data.map(
-        (assoc) => assoc.qrCode.id
-      );
-
-      //  verifica se o qrcode escaaneado já foi resgatado
+      const qrcodesEscaneados = associacoes.data.map((assoc) => assoc.qrCode.id);
+  
       if (qrcodesEscaneados.includes(parseInt(id))) {
         alert("Você já escaneou esse QR Code!");
         navigate("/Mapa");
         return;
       }
-
-      // se não foi escaneado ainda, faz associação e pontua
+  
       const res = await api.post("/usuario-qrcode", {
         usuarioId: usuarioId,
         qrCodeId: id,
       });
-
-
-      setPontos(res.data.pontuacaoTotal); // atualiza pontuação
+  
       localStorage.setItem("pontuacaoTotal", res.data.pontuacaoTotal);
-
+      setPontos(res.data.pontuacaoTotal);
+  
     } catch (error) {
       console.error("Erro inesperado:", error.message);
       navigate("/InvalidScanner");
@@ -115,19 +125,8 @@ function Scanner() {
       scanner.render(
         (result) => {
           console.log("Código escaneado:", result);
-
-          const regex = /qrcodes\/(\d+)/;
-          const match = result.match(regex);
-
-          if (match) {
-            const id = match[1];
-            console.log("ID extraído:", id);
-            fetchQRCodeData(id);
-          } else {
-            console.warn("QR Code inválido");
-            navigate("/InvalidScanner");
-          }
-
+          fetchQRCodeData(result); // passa o texto escaneado (ex: "Marco Zero")
+          
           scanner
             .clear()
             .catch((e) => console.warn("Erro ao limpar scanner:", e));

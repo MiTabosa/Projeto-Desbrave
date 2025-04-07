@@ -8,6 +8,8 @@ import { CiStar } from "react-icons/ci";
 import { RiGraduationCapLine } from "react-icons/ri";
 import "./CardPerfil.css";
 import { api } from "../../service/api";
+import {jwtDecode} from "jwt-decode";
+
 
 const CardPerfil = ({ name, setName }) => {
   const navigate = useNavigate();
@@ -25,37 +27,46 @@ const CardPerfil = ({ name, setName }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
+
     const fetchUser = async () => {
       try {
-        const usuarioId = localStorage.getItem("usuarioId");
+        const token = localStorage.getItem("token");
+        const decodedToken = jwtDecode(token);
+    
+        const usuarioId = decodedToken?.sub;
 
+  
         // Buscar nome do usuário
-        const response = await api.get(`/usuario/${usuarioId}`);
+        const response = await api.get(`/api/usuarios/${usuarioId}`);
         setName(response.data.nome);
-
+        
         // Buscar pontos do usuário
         const pontosResponse = await api.get(`/historicoResgate/usuario/${usuarioId}`);
         const totalPontos = pontosResponse.data.reduce((acc, item) => acc + item.pontosGanhos, 0);
         setPontos(totalPontos);
-
-        const cursosResponse = await api.get(`/usuarios/${usuarioId}/cursos-com-progresso`);
+        
+        // Buscar cursos
+        const cursosResponse = await api.get(`/api/usuarios/${usuarioId}/cursos-com-progresso`);
         setQuantidadeCursos(cursosResponse.data.length);
 
       } catch (error) {
         console.error("Erro ao buscar usuário ou pontos:", error);
       }
     };
-
+    
+    useEffect(() => {
     fetchUser();
-  }, []);
+    },[])
+
 
   const handleSave = async () => {
     try {
-      const usuarioId = localStorage.getItem("usuarioId");
-      await api.put(`/usuario/${usuarioId}`, {
-        nome: name,
-      });
+      const token = localStorage.getItem("token");
+      const decodedToken = jwtDecode(token);
+      const usuarioId = decodedToken?.sub;
+
+      await api.put(`/api/usuarios/${usuarioId}`,{ nome: name });
+      
       alert("Nome atualizado com sucesso!");
       setEditing(false);
     } catch (error) {
@@ -142,5 +153,6 @@ const CardPerfil = ({ name, setName }) => {
     </div>
   );
 };
+
 
 export default CardPerfil;

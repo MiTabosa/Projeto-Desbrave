@@ -28,7 +28,6 @@ import CuponsDashboard from './pages/Cupons/CuponsDashboard';
 import CuponsUsados from './pages/Cupons/CuponsUsados';
 import Forum from './pages/Forum/Foruns';
 import ForumChat from './pages/ChatForum/Chatforum';
-import MeusCursos from './pages/MeusCursos/MeusCursos';
 import Certificados from './pages/Certificados/Certificados';
 import DashboardAdmin from './pages/DashboardAdmin/DashboardAdmin';
 import GestaoCursos from './pages/GestCurso/Gestcurso';
@@ -119,7 +118,6 @@ const App = () => {
         <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><DashboardAdmin /></Layout>} />
         <Route path="/gestaoCursos" element={<Layout isLogged={isLogged}><GestaoCursos /></Layout>} />
         <Route path="/gestaoForum" element={<Layout isLogged={isLogged}><GestaoForum /></Layout>} />
-        <Route path="/meusCursos" element={<Layout isLogged={isLogged}><MeusCursos /></Layout>} />
         <Route path="/cupons" element={<Layout isLogged={isLogged}><CuponsDashboard /></Layout>} />
         <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><CuponsUsados /></Layout>} />
         <Route path="/certificados" element={<Layout isLogged={isLogged}><Certificados /></Layout>} />

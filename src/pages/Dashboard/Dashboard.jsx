@@ -4,11 +4,10 @@ import "./Dashboard.css";
 import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Button from "../../components/Button/Button";
-import ProgressCircle from "../../components/ProgressCircle/ProgressCircle";
 import CardPerfil from "../../components/CardPerfil/CardPerfil";
+import BarraPesquisa from "../../components/BarraPesquisa/barra"; 
 import { api } from "../../service/api";
-import {jwtDecode} from "jwt-decode";
-
+import { jwtDecode } from "jwt-decode";
 
 // imagens e ícones
 import elementoDashboard from "../../assets/elemento-dashboard.png";
@@ -21,11 +20,10 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [infoGeral, setInfoGeral] = useState({ cursos: 0, pontos: 0});
-  const [filtro, setFiltro] = useState("todos");
+  const [infoGeral, setInfoGeral] = useState({ cursos: 0, pontos: 0 });
   const [name, setName] = useState("");
-  const [cursosIniciados, setCursosIniciados] = useState([]);
-
+  const [cursos, setCursos] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,14 +33,12 @@ const Dashboard = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-
   const fetchData = async () => {
     try {
       const token = localStorage.getItem("token");
       const decodedToken = jwtDecode(token);
-  
-      const usuarioId = decodedToken?.sub;
 
+      const usuarioId = decodedToken?.sub;
 
       // nomeUsuario
       const userResponse = await api.get(`/api/usuarios/${usuarioId}`);
@@ -52,31 +48,32 @@ const Dashboard = () => {
       const pontosResponse = await api.get(`/historicoResgate/usuario/${usuarioId}`);
       const totalPontos = pontosResponse.data.reduce((acc, item) => acc + item.pontosGanhos, 0);
 
-      // cursos iniciados 
-      const cursosResponse = await api.get(`/api/usuarios/${usuarioId}/cursos-com-progresso`);
-
-
+      // todos cursos
+      const cursosResponse = await api.get(`/cursos`);
+      
       setInfoGeral({
         cursos: cursosResponse.data.length,
         pontos: totalPontos,
       });
 
-      setCursosIniciados(cursosResponse.data);
+      setCursos(cursosResponse.data);
 
-   } catch (error) {
-    console.error("Erro ao buscar histórico de resgate:", error);
-    setInfoGeral((prev) => ({...prev,pontos: 0}));
-   }
+    } catch (error) {
+      console.error("Erro ao buscar histórico de resgate:", error);
+      setInfoGeral((prev) => ({ ...prev, pontos: 0 }));
+    }
   };
 
   useEffect(() => {
     fetchData();
   }, [location]);
 
-  const cursosFiltrados = cursosIniciados.filter(
-    (curso) => filtro === "todos" || 
-   (filtro === "andamento" && curso.progresso < 100) ||
-   (filtro === "concluido" && curso.progresso === 100)
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
+  const cursosFiltrados = cursos.filter((curso) =>
+    curso.titulo.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -87,9 +84,9 @@ const Dashboard = () => {
           <div className="secao-superior">
             <div className="esquerda-secao">
               <div className="cabecalho-painel">
-                <h2 className="titulo-dashboard">Olá, {name}! </h2>
+                <h2 className="titulo-dashboard">Olá, {name}!</h2>
                 <p className="paragrafo-dashboard">Bem-vinda de volta! 😃</p>
-                <img src={elementoDashboard} alt="elemento dashboard colorido"/>
+                <img src={elementoDashboard} alt="elemento dashboard colorido" />
                 <button
                   className="forum-botao"
                   onClick={() => navigate("/forum")}
@@ -120,7 +117,7 @@ const Dashboard = () => {
                       </div>
                       <div className="texto-numero">
                         <p className="numero-geral">
-                          {isNaN(infoGeral.pontos) < 10
+                          {infoGeral.pontos < 10
                             ? `0${infoGeral.pontos}`
                             : infoGeral.pontos}
                         </p>
@@ -130,42 +127,32 @@ const Dashboard = () => {
                   </div>
                 </div>
               )}
-              
-            <div className="area-cursos">
-              <div className="inicio-curso">
-                <div className="cabecalho-curso">
-                  <PiBookOpenTextThin />
-                  <p className="titulo-cabecalho">Inicie um curso</p>
-                </div>
 
-                <div className="filtro-container">
-                  <label htmlFor="filtro">Cursos Iniciados:</label>
-                  <select
-                    id="filtro"
-                    value={filtro}
-                    onChange={(e) => setFiltro(e.target.value)}
-                  >
-                    <option value="todos">Todos</option>
-                    <option value="andamento">Em Andamento</option>
-                    <option value="concluido">Concluídos</option>
-                  </select>
-                </div>
+              {/* Área de cursos */}
+              <div className="area-cursos">
+                <div className="inicio-curso">
+                  <div className="cabecalho-curso">
+                    <PiBookOpenTextThin />
+                    <p className="titulo-cabecalho">Explore os cursos</p>
+                  </div>
 
-            
-                <div className="container-curso-dashboard">
+                  {/* Barra de Pesquisa */}
+                  <BarraPesquisa onSearch={handleSearch} />
+
+                  {/* Lista de cursos */}
+                  <div className="container-curso-dashboard">
                     {cursosFiltrados.length === 0 ? (
-                      <p>Você ainda não iniciou nenhum curso.</p>
+                      <p>Nenhum curso encontrado.</p>
                     ) : (
                       cursosFiltrados.map((curso, index) => (
                         <div key={index} className="curso-card-dashboard">
-                          <p className="curso-titulo-dashboard">{curso.tituloCurso}</p>
-                          <ProgressCircle percent={curso.progresso} />
+                          <p className="curso-titulo-dashboard">{curso.titulo}</p>
                           <div className="botao-curso-dashboard">
                             <Button
-                              text="Retomar"
-                              color="#0367A5"
+                              text="Saiba Mais"
+                              color="#35a150"
                               size="small"
-                              onClick={() => navigate("/curso")} 
+                              onClick={() => navigate(`/descricaoCurso/${curso.idcursos}`)}
                             />
                           </div>
                         </div>
@@ -175,13 +162,12 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            
+
             <CardPerfil
               name={name}
               setName={setName}
             />
-    </div>
-
+          </div>
         </BottomDashboard>
       </Sidebar>
     </div>

@@ -61,8 +61,8 @@ function Scanner() {
       const qrcodesEscaneados = associacoes.data.map((assoc) => assoc.qrCode.id);
   
       if (qrcodesEscaneados.includes(parseInt(id))) {
-        alert("Você já escaneou esse QR Code!");
-        navigate("/Mapa");
+        alert("Você já escaneou esse QR Code! A pontuação não foi efetuada");
+        navigate("/InvalidScanner");
         return;
       }
   

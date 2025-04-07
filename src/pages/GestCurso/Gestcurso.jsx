@@ -1,201 +1,3 @@
-// import { useState, useEffect } from 'react';
-// import data from '../../data/cursos.json';
-// import Navbar from '../../components/Navbar/Navbar';
-// import './GestCurso.css';
-// import Button from '../../components/Button/Button';
-
-// const GestCurso = () => {
-//     const [cursos, setCursos] = useState(data.cursos);
-//     const [formData, setFormData] = useState({
-//         nome: '',
-//         descricao: '',
-//         categoria: '',
-//         cargaHoraria: '',
-//         urlExterna: '',
-//         empresa: ''
-//     });
-
-//     useEffect(() => {
-//         localStorage.setItem('cursos', JSON.stringify(cursos));
-//     }, [cursos]);
-
-//     useEffect(() => {
-//         const savedCursos = JSON.parse(localStorage.getItem('cursos')) || [];
-//         setCursos(savedCursos);
-//     }, []);
-
-//     const handleInputChange = (e) => {
-//         const { name, value } = e.target;
-//         setFormData({ ...formData, [name]: value });
-//     };
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-
-//         if (!formData.nome || !formData.descricao || !formData.categoria || !formData.cargaHoraria || !formData.empresa) {
-//             alert('Por favor, preencha todos os campos obrigatórios.');
-//             return;
-//         }
-
-//         if (formData.urlExterna && !formData.urlExterna.startsWith('http')) {
-//             alert('A URL externa deve começar com "http" ou "https".');
-//             return;
-//         }
-
-//         if (formData.id) {
-//             // Atualizar 
-//             const updatedCursos = cursos.map(curso =>
-//                 curso.id === formData.id ? { ...formData } : curso
-//             );
-//             setCursos(updatedCursos);
-//         } else {
-//             // Adicionar novo curso
-//             const novoCurso = {
-//                 id: cursos.length + 1,
-//                 ...formData
-//             };
-//             setCursos([...cursos, novoCurso]);
-//         }
-
-//         setFormData({
-//             nome: '',
-//             descricao: '',
-//             categoria: '',
-//             cargaHoraria: '',
-//             urlExterna: '',
-//             empresa: ''
-//         });
-//     };
-
-//     const excluir = (id) => {
-//         const confirmar =  window.confirm('Deseja excluir o curso?')
-//             if(confirmar) {
-//                 const updatedCursos = cursos.filter(curso => curso.id !== id);
-//         setCursos(updatedCursos);
-//         console.log('Curso excluido com sucesso')
-//         }
-      
-//     };
-
-//     const editar = (curso) => {
-//         setFormData({
-//             id: curso.id,
-//             nome: curso.nome,
-//             descricao: curso.descricao,
-//             categoria: curso.categoria,
-//             cargaHoraria: curso.cargaHoraria,
-//             urlExterna: curso.urlExterna,
-//             empresa: curso.empresa
-//         });
-//     };
-
-//     return (
-//         <div className='gestao-cursos'>
-
-//             {/* Formulário de Cadastro */}
-//             <div className='formulario'>
-//                 <h2>Cadastro de Cursos</h2>
-//                 <form onSubmit={handleSubmit}>
-//                     <div className='form-1'>
-//                         <label>Nome do Curso:</label>
-//                         <input
-//                             type='text'
-//                             name='nome'
-//                             value={formData.nome}
-//                             onChange={handleInputChange}
-//                             required
-//                         />
-//                     </div>
-
-//                     <div className='form-1'>
-//                         <label>Descrição:</label>
-//                         <textarea
-//                             name='descricao'
-//                             value={formData.descricao}
-//                             onChange={handleInputChange}
-//                             rows='4'
-//                             cols='50'
-//                             required
-//                         />
-//                     </div>
-
-//                     <div className='form-1'>
-//                         <label>Categoria:</label>
-//                         <select
-//                             name='categoria'
-//                             value={formData.categoria}
-//                             onChange={handleInputChange}
-//                             required
-//                         >
-//                             <option value=''>Selecione...</option>
-//                             <option value='Front-end'>Front-end</option>
-//                             <option value='Back-end'>Back-end</option>
-//                         </select>
-//                     </div>
-
-//                     <div className='form-1'>
-//                         <label>Carga Horária:</label>
-//                         <input
-//                             type='text'
-//                             name='cargaHoraria'
-//                             value={formData.cargaHoraria}
-//                             onChange={handleInputChange}
-//                             required
-//                         />
-//                     </div>
-
-//                     <div className='form-1'>
-//                         <label>URL Externa:</label>
-//                         <input
-//                             type='text'
-//                             name='urlExterna'
-//                             value={formData.urlExterna}
-//                             onChange={handleInputChange}
-//                         />
-//                     </div>
-
-//                     <div className='form-1'>
-//                         <label>Empresa:</label>
-//                         <input
-//                             type='text'
-//                             name='empresa'
-//                             value={formData.empresa}
-//                             onChange={handleInputChange}
-//                             required
-//                         />
-//                     </div>
-//                     <div className='buttonContainerForm'>
-//                         <Button className="buttonGestão" text="Cadastrar" color="#0367A5" size="medium" onClick={() => navigate("/login")} />
-//                     </div>
-//                 </form>
-//             </div>
-
-//             <div className='lista-cursos'>
-//                 <h2>Cursos Cadastrados</h2>
-//                 <ul>
-//                     {cursos.map((curso) => (
-//                         <li key={curso.id}>
-//                             <h3>{curso.nome}</h3>
-//                             <p><strong>Descrição:</strong> {curso.descricao}</p>
-//                             <p><strong>Categoria:</strong> {curso.categoria}</p>
-//                             <p><strong>Carga Horária:</strong> {curso.cargaHoraria}</p>
-//                             <p><strong>URL Externa:</strong> <a href={curso.urlExterna} target='_blank' rel='noopener noreferrer'>{curso.urlExterna}</a></p>
-//                             <p><strong>Empresa:</strong> {curso.empresa}</p>
-//                             <div className='buttonEdicao'>
-//                                 <button className='buttonEditar' onClick={() => editar(curso)}>Editar</button>
-//                                 <button className='buttonExcluir' onClick={() => excluir(curso.id)}>Excluir</button>
-//                             </div>
-//                         </li>
-//                     ))}
-//                 </ul>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default GestCurso;
-
-
 import { useState, useEffect } from 'react';
 import { api } from '../../service/api';
 import './GestCurso.css';
@@ -207,32 +9,45 @@ const GestCurso = () => {
     const [error, setError] = useState(null);
     
     const [formData, setFormData] = useState({
-        nome: '',
+        titulo: '',
         descricao: '',
         categoria: '',
-        cargaHoraria: '',
-        urlExterna: '',
-        empresa: ''
+        cargaHoraria: 0,
+        status: 'ATIVO',
+        urlExterna: ''
     });
 
-    // Carrega cursos
+    const sanitizeCursos = (data) => {
+        if (!data) return [];
+        
+        try {
+            if (typeof data === 'string') data = JSON.parse(data);
+            if (Array.isArray(data)) return data;
+            if (typeof data === 'object') return [data];
+            return [];
+        } catch (e) {
+            console.error("Falha ao sanitizar dados:", e);
+            return [];
+        }
+    };
+
     useEffect(() => {
         const fetchCursos = async () => {
             try {
-                // Modo desenvolvimento (mock)
-                const mockCursos = [
-                    { id: 1, nome: "Curso de React", descricao: "Aprenda React do zero", categoria: "Front-end", cargaHoraria: "40h", urlExterna: "", empresa: "Digital College" },
-                    { id: 2, nome: "Curso de Node.js", descricao: "Backend com JavaScript", categoria: "Back-end", cargaHoraria: "30h", urlExterna: "https://exemplo.com", empresa: "Digital House" }
-                ];
-                setCursos(mockCursos);
-                setLoading(false);
+                const response = await api.get('/cursos');
+                console.log('Resposta da API:', response.data); 
                 
-                // Modo produção (descomente quando o backend estiver pronto)
-                // const response = await api.get('/cursos');
-                // setCursos(response.data);
-                // setLoading(false);
+                const dadosSanitizados = sanitizeCursos(response.data);
+                setCursos(dadosSanitizados);
+                
+                if (dadosSanitizados.length === 0) {
+                    console.warn('A API retornou 0 cursos');
+                }
             } catch (err) {
-                setError("Erro ao carregar cursos");
+                console.error("Erro completo:", err);
+                setError(`Erro ao carregar cursos: ${err.message}`);
+                setCursos([]);
+            } finally {
                 setLoading(false);
             }
         };
@@ -242,111 +57,112 @@ const GestCurso = () => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        setFormData(prev => ({
+            ...prev,
+            [name]: name === 'cargaHoraria' ? Number(value) : value
+        }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!formData.nome || !formData.descricao || !formData.categoria || !formData.cargaHoraria || !formData.empresa) {
-            alert('Por favor, preencha todos os campos obrigatórios.');
-            return;
-        }
-
-        if (formData.urlExterna && !formData.urlExterna.startsWith('http')) {
-            alert('A URL externa deve começar com "http" ou "https".');
+        if (!formData.titulo || !formData.descricao || !formData.categoria || formData.cargaHoraria <= 0) {
+            alert('Preencha todos os campos obrigatórios com valores válidos!');
             return;
         }
 
         try {
-            if (formData.id) {
-                // Atualização
-                await api.put(`/cursos/${formData.id}`, formData);
+            const cursoData = {
+                ...formData,
+                cargaHoraria: Number(formData.cargaHoraria)
+            };
+
+            if (formData.idcursos) {
+                await api.put(`/cursos/${formData.idcursos}`, cursoData);
+                alert('Curso atualizado com sucesso!');
             } else {
-                // Criação
-                await api.post('/cursos', formData);
+                await api.post('/cursos', cursoData);
+                alert('Curso cadastrado com sucesso!');
             }
 
-            // Recarrega os dados
             const response = await api.get('/cursos');
-            setCursos(response.data);
+            setCursos(sanitizeCursos(response.data));
             
-            // Reseta formulário
             setFormData({
-                nome: '',
+                titulo: '',
                 descricao: '',
                 categoria: '',
-                cargaHoraria: '',
-                urlExterna: '',
-                empresa: ''
+                cargaHoraria: 0,
+                status: 'ATIVO',
+                urlExterna: ''
             });
             
         } catch (err) {
-            console.error("Erro ao salvar curso:", err);
-            alert('Erro ao salvar curso. Tente novamente.');
+            console.error("Erro ao salvar:", err);
+            alert(`Erro: ${err.response?.data?.message || err.message}`);
         }
     };
 
     const excluir = async (id) => {
-        const confirmar = window.confirm('Deseja excluir o curso?');
+        if (!window.confirm('Confirmar exclusão?')) return;
         
-        if(confirmar) {
-            try {
-                await api.delete(`/cursos/${id}`);
-                setCursos(cursos.filter(curso => curso.id !== id));
-            } catch (err) {
-                console.error("Erro ao excluir curso:", err);
-                alert('Erro ao excluir curso. Tente novamente.');
-            }
+        try {
+            await api.delete(`/cursos/${id}`);
+            setCursos(prev => prev.filter(curso => curso.idcursos !== id));
+            alert('Curso excluído!');
+        } catch (err) {
+            console.error("Erro ao excluir:", err);
+            alert(`Erro: ${err.response?.data?.message || err.message}`);
         }
     };
 
     const editar = (curso) => {
         setFormData({
-            id: curso.id,
-            nome: curso.nome,
-            descricao: curso.descricao,
-            categoria: curso.categoria,
-            cargaHoraria: curso.cargaHoraria,
-            urlExterna: curso.urlExterna,
-            empresa: curso.empresa
+            idcursos: curso.idcursos,
+            titulo: curso.titulo || '',
+            descricao: curso.descricao || '',
+            categoria: curso.categoria || '',
+            cargaHoraria: curso.cargaHoraria ? Number(curso.cargaHoraria) : 0,
+            status: curso.status || 'ATIVO',
+            urlExterna: curso.urlExterna || ''
         });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    if (loading) return <div className="loading">Carregando cursos...</div>;
-    if (error) return <div className="error">Erro: {error}</div>;
+    if (loading) return <div className="loading">Carregando...</div>;
+    if (error) return <div className="error">{error}</div>;
 
     return (
         <div className='gestao-cursos'>
-            {/* Formulário de Cadastro */}
             <div className='formulario'>
-                <h2>{formData.id ? 'Editar Curso' : 'Cadastro de Cursos'}</h2>
+                <h2>{formData.idcursos ? `Editando Curso #${formData.idcursos}` : 'Novo Curso'}</h2>
                 <form onSubmit={handleSubmit}>
                     <div className='form-1'>
-                        <label>Nome do Curso:</label>
+                        <label>Título*:</label>
                         <input
                             type='text'
-                            name='nome'
-                            value={formData.nome}
+                            name='titulo'
+                            value={formData.titulo}
                             onChange={handleInputChange}
                             required
+                            placeholder='Nome do curso'
                         />
                     </div>
 
                     <div className='form-1'>
-                        <label>Descrição:</label>
+                        <label>Descrição*:</label>
                         <textarea
                             name='descricao'
                             value={formData.descricao}
                             onChange={handleInputChange}
                             rows='4'
-                            cols='50'
                             required
+                            placeholder='Descrição completa'
                         />
                     </div>
 
                     <div className='form-1'>
-                        <label>Categoria:</label>
+                        <label>Categoria*:</label>
                         <select
                             name='categoria'
                             value={formData.categoria}
@@ -354,63 +170,68 @@ const GestCurso = () => {
                             required
                         >
                             <option value=''>Selecione...</option>
-                            <option value='Front-end'>Front-end</option>
-                            <option value='Back-end'>Back-end</option>
+                            <option value='Cultura'>Cultura</option>
+                            <option value='Cidadania Digital'>Cidadania Digital</option>
+                            <option value='Tecnologia'>Tecnologia</option>
                         </select>
                     </div>
 
                     <div className='form-1'>
-                        <label>Carga Horária:</label>
+                        <label>Carga Horária (horas)*:</label>
                         <input
-                            type='text'
+                            type='number'
                             name='cargaHoraria'
                             value={formData.cargaHoraria}
                             onChange={handleInputChange}
+                            min='1'
                             required
                         />
+                    </div>
+
+                    <div className='form-1'>
+                        <label>Status:</label>
+                        <select
+                            name='status'
+                            value={formData.status}
+                            onChange={handleInputChange}
+                        >
+                            <option value='ATIVO'>Ativo</option>
+                            <option value='INATIVO'>Inativo</option>
+                        </select>
                     </div>
 
                     <div className='form-1'>
                         <label>URL Externa:</label>
                         <input
-                            type='text'
+                            type='url'
                             name='urlExterna'
                             value={formData.urlExterna}
                             onChange={handleInputChange}
+                            placeholder='https://exemplo.com'
                         />
                     </div>
-
-                    <div className='form-1'>
-                        <label>Empresa:</label>
-                        <input
-                            type='text'
-                            name='empresa'
-                            value={formData.empresa}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </div>
+                    
                     <div className='buttonContainerForm'>
                         <Button 
                             className="buttonGestão" 
-                            text={formData.id ? 'Atualizar' : 'Cadastrar'} 
+                            text={formData.idcursos ? 'Atualizar' : 'Cadastrar'} 
                             color="#0367A5" 
                             size="medium" 
                             type="submit"
                         />
-                        {formData.id && (
+                        {formData.idcursos && (
                             <Button 
                                 className="buttonCancelar" 
-                                text="Cancelar" 
+                                text="Cancelar Edição" 
                                 color="#f44336" 
                                 size="medium" 
                                 onClick={() => setFormData({
-                                    nome: '',
+                                    titulo: '',
                                     descricao: '',
                                     categoria: '',
-                                    cargaHoraria: '',
-                                    urlExterna: '',
-                                    empresa: ''
+                                    cargaHoraria: 0,
+                                    status: 'ATIVO',
+                                    urlExterna: ''
                                 })}
                             />
                         )}
@@ -420,23 +241,46 @@ const GestCurso = () => {
 
             <div className='lista-cursos'>
                 <h2>Cursos Cadastrados</h2>
-                {cursos.length === 0 ? (
-                    <p>Nenhum curso cadastrado ainda.</p>
+                
+                {!Array.isArray(cursos) ? (
+                    <p className="error">Formato de dados inválido</p>
+                ) : cursos.length === 0 ? (
+                    <p>Nenhum curso encontrado</p>
                 ) : (
                     <ul>
-                        {cursos.map((curso) => (
-                            <li key={curso.id}>
-                                <h3>{curso.nome}</h3>
-                                <p><strong>Descrição:</strong> {curso.descricao}</p>
-                                <p><strong>Categoria:</strong> {curso.categoria}</p>
-                                <p><strong>Carga Horária:</strong> {curso.cargaHoraria}</p>
+                        {cursos.map(curso => (
+                            <li key={curso.idcursos || Math.random()}>
+                                <h3>{curso.titulo || 'Sem título'} 
+                                    <span className={`status-${curso.status?.toLowerCase()}`}>
+                                        ({curso.status || 'ATIVO'})
+                                    </span>
+                                </h3>
+                                <p><strong>Categoria:</strong> {curso.categoria || 'Não informada'}</p>
+                                <p><strong>Carga Horária:</strong> {curso.cargaHoraria || 0} horas</p>
+                                {curso.descricao && <p><strong>Descrição:</strong> {curso.descricao}</p>}
                                 {curso.urlExterna && (
-                                    <p><strong>URL Externa:</strong> <a href={curso.urlExterna} target='_blank' rel='noopener noreferrer'>{curso.urlExterna}</a></p>
+                                    <p>
+                                        <strong>URL: </strong>
+                                        <a href={curso.urlExterna} target="_blank" rel="noreferrer">
+                                            {curso.urlExterna.length > 30 
+                                                ? `${curso.urlExterna.substring(0, 30)}...` 
+                                                : curso.urlExterna}
+                                        </a>
+                                    </p>
                                 )}
-                                <p><strong>Empresa:</strong> {curso.empresa}</p>
                                 <div className='buttonEdicao'>
-                                    <button className='buttonEditar' onClick={() => editar(curso)}>Editar</button>
-                                    <button className='buttonExcluir' onClick={() => excluir(curso.id)}>Excluir</button>
+                                    <button 
+                                        className='buttonEditar'
+                                        onClick={() => editar(curso)}
+                                    >
+                                        Editar
+                                    </button>
+                                    <button 
+                                        className='buttonExcluir'
+                                        onClick={() => excluir(curso.idcursos)}
+                                    >
+                                        Excluir
+                                    </button>
                                 </div>
                             </li>
                         ))}

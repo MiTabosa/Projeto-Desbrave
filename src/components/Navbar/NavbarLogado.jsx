@@ -24,7 +24,7 @@ const NavbarLogado = ({ userData }) => {
   const handleLogout = () => {
     localStorage.removeItem("usuarioLogado");
     navigate("/login");
-    window.location.reload(); // Para atualizar o estado da aplicação
+    window.location.reload();
   };
 
   const handlePerfil = () => {

@@ -32,7 +32,8 @@ const MapSection = ({ tipo, usuarioId }) => {
     if (tipo === "map-detalhado" && usuarioId) {
       axios.get(`http://localhost:8081/usuario-qrcode/usuario/${usuarioId}`)
         .then(response => {
-          const ids = response.data.map(item => item.qrCodeId);
+          console.log("Dados recebidos do usuário:", response.data); 
+          const ids = response.data.map(item => item.qrCode.id);
           setPontosLidos(ids);
         })
         .catch((error) => console.error("Erro ao buscar QR Codes:", error));

@@ -39,43 +39,55 @@ function Scanner() {
       const token = localStorage.getItem("token");
       const decodedToken = jwtDecode(token);
       const usuarioId = decodedToken?.sub;
+      console.log("Decoded token:", decodedToken);
 
-      const codigoSemAspas = codigo.replace(/^"|"$/g, '');
-  
-      const response = await api.get(`/qrcodes?codigo=${codigoSemAspas}`)
+      const codigoSemAspas = codigo.replace(/^"|"$/g, "");
 
+      const response = await api.get(`/qrcodes?codigo=${codigoSemAspas}`);
       const corretoQrcode = response.data.find(qr => qr.codigo === codigoSemAspas);
 
-      if(!corretoQrcode) {
-        throw new Error ("Qr code não encontrado")
-      }
-
+      if (!corretoQrcode) {
+        throw new Error("Qr code não encontrado");
+    }
 
       setScanResult(corretoQrcode);
-  
-      const id = corretoQrcode.id 
-  
-      console.log("Dados do QR code:", corretoQrcode);
-  
+
+
+      const id = corretoQrcode.id;
+
       const associacoes = await api.get(`/usuario-qrcode/usuario/${usuarioId}`);
-      const qrcodesEscaneados = associacoes.data.map((assoc) => assoc.qrCode.id);
-  
+      const qrcodesEscaneados = associacoes.data.map(assoc => assoc.qrCode.id);
+
+
       if (qrcodesEscaneados.includes(parseInt(id))) {
         alert("Você já escaneou esse QR Code! A pontuação não foi efetuada");
         navigate("/InvalidScanner");
         return;
       }
-  
+
       const res = await api.post("/usuario-qrcode", {
         usuarioId: usuarioId,
         qrCodeId: id,
-      });
-  
-      localStorage.setItem("pontuacaoTotal", res.data.pontuacaoTotal);
-      setPontos(res.data.pontuacaoTotal);
-  
+        dataEscaneamento: new Date().toISOString()
+    });
+
+     const pontosGanhos = parseInt(res.data.pontosGanhos || res.data.pontosGanhos || 50);
+
+     setPontos(pontosGanhos);
+     localStorage.setItem("pontuacaoTotal", pontosGanhos.toString())
+
+     if (pontosGanhos > 0) {
+      <p>
+      <span>
+        <br />
+        Agora você tem <strong>{pontos}</strong> pontos!
+      </span>
+    </p>
+     }
+
     } catch (error) {
       console.error("Erro inesperado:", error.message);
+      alert("Você já escaneou esse QR Code, Nenhuma pontuação foi atribuida!");
       navigate("/InvalidScanner");
     }
   };
@@ -126,7 +138,7 @@ function Scanner() {
         (result) => {
           console.log("Código escaneado:", result);
           fetchQRCodeData(result); // passa o texto escaneado (ex: "Marco Zero")
-          
+
           scanner
             .clear()
             .catch((e) => console.warn("Erro ao limpar scanner:", e));
@@ -191,8 +203,7 @@ function Scanner() {
               <div className="text-container">
                 <h2>QR CODE ESCANEADO COM SUCESSO!</h2>
                 <p>
-                  Você ganhou +50 pontos!
-                  {pontos && (
+                  {pontos !== null && (
                     <span>
                       <br />
                       Agora você tem <strong>{pontos}</strong> pontos!
@@ -209,7 +220,9 @@ function Scanner() {
               size="small"
               onClick={() => {
                 if (scannerRef.current) {
-                  scannerRef.current.clear().catch((e) => console.warn("Erro ao limpar scanner:", e));
+                  scannerRef.current
+                    .clear()
+                    .catch((e) => console.warn("Erro ao limpar scanner:", e));
                   scannerRef.current = null;
                 }
                 setScanResult(null);

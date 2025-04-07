@@ -3,7 +3,7 @@ import { FaUser, FaLock } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { IoEyeOff, IoEye } from "react-icons/io5";
-import axios from "axios";
+import { api } from "../../service/api";
 
 
 export default function Login() {
@@ -14,18 +14,17 @@ export default function Login() {
 
   async function realizarLogin() {
     try {
-      const resposta = await axios.post("http://localhost:8081/autenticacao/login", {
+      const resposta = await api.post("/autenticacao/login", {
         email: email,
         senha: senha,
-      });
-      console.log("Resposta da API:", resposta);
-
-      if (resposta.status === 200) {
-        localStorage.setItem("token", resposta.data.token);
+      }).then((Response) => {
         navegar("/home");
-      } else {
-        alert("Erro ao fazer login!");
-      }
+        localStorage.setItem("token", Response.data.token);
+      }).catch((error) => {
+        console.log(error);
+      })
+      
+
     } catch (erro) {
       console.error("Erro ao fazer login:", erro);
       alert("Erro ao conectar com o servidor.");

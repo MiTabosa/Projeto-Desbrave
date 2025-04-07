@@ -3,6 +3,7 @@ import "./Cadastro.css";
 import { Link } from "react-router-dom"; 
 import { useState } from "react";
 import axios from "axios";
+import { api } from "../../service/api";
 
 export default function Cadastro() {
   const [dadosFormulario, setDadosFormulario] = useState({
@@ -40,10 +41,12 @@ export default function Cadastro() {
     try {
       const { confirmarSenha, ...dadosParaAPI } = dadosFormulario;
 
-      const resposta = await axios.post("http://localhost:8081/api/usuarios/cadastrar", dadosParaAPI);
+      const resposta = await api.post("/api/usuarios/cadastrar", dadosParaAPI).then((Response) => {
+        alert("Cadastro realizado com sucesso!");
+      }).catch((error) => {
+        console.log(error);
+      })
 
-      alert("Cadastro realizado com sucesso!");
-      console.log(resposta.data); 
 
     } catch (error) {
       const mensagemErro = "Erro ao conectar com o servidor.";

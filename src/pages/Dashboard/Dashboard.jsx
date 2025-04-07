@@ -7,6 +7,7 @@ import Button from "../../components/Button/Button";
 import ProgressCircle from "../../components/ProgressCircle/ProgressCircle";
 import CardPerfil from "../../components/CardPerfil/CardPerfil";
 import { api } from "../../service/api";
+import {jwtDecode} from "jwt-decode";
 
 
 // imagens e ícones
@@ -34,36 +35,40 @@ const Dashboard = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const fetchData = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const decodedToken = jwtDecode(token);
+  
+      const usuarioId = decodedToken?.sub;
+      console.log(token)
+
+      // nomeUsuario
+      const userResponse = await api.get(`/usuario/${usuarioId}`);
+      setName(userResponse.data.nome);
+
+      // pontos
+      const pontosResponse = await api.get(`/historicoResgate/usuario/${usuarioId}`);
+      const totalPontos = pontosResponse.data.reduce((acc, item) => acc + item.pontosGanhos, 0);
+
+      // cursos iniciados 
+      const cursosResponse = await api.get(`/usuarios/${usuarioId}/cursos-com-progresso`);
+
+
+      setInfoGeral((prev) => ({
+        cursos: cursosResponse.data.length,
+        pontos: totalPontos,
+      }));
+
+      setCursosIniciados(cursosResponse.data);
+
+   } catch (error) {
+    console.error("Erro ao buscar histórico de resgate:", error);
+    setInfoGeral((prev) => ({...prev,pontos: 0}));
+   }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const usuarioId = localStorage.getItem("usuarioId");
-
-        // nomeUsuario
-        const userResponse = await api.get(`/usuario/${usuarioId}`);
-        setName(userResponse.data.nome);
-
-        // pontos
-        const pontosResponse = await api.get(`/historicoResgate/usuario/${usuarioId}`);
-        const totalPontos = pontosResponse.data.reduce((acc, item) => acc + item.pontosGanhos, 0);
-
-        // cursos iniciados 
-        const cursosResponse = await api.get(`/usuarios/${usuarioId}/cursos-com-progresso`);
-
-
-        setInfoGeral((prev) => ({
-          cursos: cursosResponse.data.length,
-          pontos: totalPontos,
-        }));
-
-        setCursosIniciados(cursosResponse.data);
-
-     } catch (error) {
-      console.error("Erro ao buscar histórico de resgate:", error);
-      setInfoGeral((prev) => ({...prev,pontos: 0}));
-     }
-    };
-
     fetchData();
   }, [location]);
 

@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { useNavigate } from "react-router-dom"; 
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./MapSection.css";
 
 const blueIcon = new L.Icon({
@@ -23,14 +24,28 @@ const greenIcon = new L.Icon({
   shadowSize: [41, 41],
 });
 
-const MapSection = ({ tipo }) => {
-  const navigate = useNavigate(); 
+const MapSection = ({ tipo, usuarioId }) => {
+  const [pontosLidos, setPontosLidos] = useState([]);
+  const navigate = useNavigate();
 
-  // Apenas carrega os pontos lidos se for o mapa detalhado
-  const [pontosLidos, setPontosLidos] = useState(tipo === "map-detalhado" ? JSON.parse(localStorage.getItem("pontosLidos")) || [] : []);
+  useEffect(() => {
+    if (usuarioId) {
+      axios.get(`http://localhost:8081/usuario-qrcode/usuario/${usuarioId}`)
+        .then(response => {
+          const ids = response.data.map(item => item.qrCodeId);
+          setPontosLidos(ids);
+        })
+        .catch((error) => console.error("Erro ao buscar QR Codes:", error));
+    }
+  }, [usuarioId]);
 
   const handleQRCodeScan = (pontoId) => {
-    navigate("/paginaInicial"); 
+    axios.post("http://localhost:8081/usuario-qrcode", {
+      usuarioId: usuarioId,
+      qrCodeId: pontoId,
+    })
+    .then(() => setPontosLidos([...pontosLidos, pontoId]))
+    .catch((error) => console.error("Erro ao registrar QR Code escaneado:", error));
   };
 
   const pontos = [
@@ -38,7 +53,7 @@ const MapSection = ({ tipo }) => {
     { id: 2, nome: "Instituto Ricardo Brennand", coords: [-8.055584, -34.949685], imagem: "url-da-imagem", descricao: "Centro cultural do Recife"},
     { id: 3, nome: "Casa da Cultura", coords: [-8.060673, -34.880772], imagem: "url-da-imagem", descricao: "Centro cultural do Recife" },
     { id: 4, nome: "Cais do Sertão", coords: [-8.061944, -34.870556], imagem: "url-da-imagem", descricao: "Centro cultural do Recife" },
-    { id: 5, nome: "Paço do Frevo", coords: [-8.061232, -34.870469], imagem: "url-da-imagem", descricao: "Centro cultural do Recife" },
+    { id: 5, nome: "Paço do Frevo", coords: [-8.061232, -34.870469], imagem: "./src/assets/PontosTuristicos/pacoDoFrevo.png", descricao: "Centro cultural do Recife" },
     { id: 6, nome: "Caixa Cultural Recife", coords: [-8.063104, -34.873418], imagem: "url-da-imagem", descricao: "Centro cultural do Recife" },
     { id: 7, nome: "Pátio de São Pedro", coords: [-8.063930, -34.873125], imagem: "url-da-imagem", descricao: "Centro cultural do Recife" },
     { id: 8, nome: "Palácio do Campo das Princesas", coords: [-8.064781, -34.873543], imagem: "url-da-imagem", descricao: "Centro cultural do Recife" },
@@ -51,41 +66,43 @@ const MapSection = ({ tipo }) => {
   ];
 
   return (
-    <section className={`map-section ${tipo}`}>
-      <MapContainer center={[-8.0608, -34.876]} zoom={15} className="map-container">
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; OpenStreetMap contributors'
-        />
-        {pontos.map((ponto) => {
-          // No mapa simples, todos os ícones são azuis
-          const foiEscaneado = tipo === "map-detalhado" && pontosLidos.includes(ponto.id);
-          const icone = tipo === "map-detalhado" ? (foiEscaneado ? greenIcon : blueIcon) : blueIcon;
+    <MapContainer center={[-8.0608, -34.876]} zoom={15} className="map-container">
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; OpenStreetMap contributors'
+      />
 
-          return (
-            <Marker key={ponto.id} position={ponto.coords} icon={icone}>
-              <Popup>
-                <div className="popup-content">
-                  <b className="popup-title">{ponto.nome}</b>
-                  {tipo === "map-detalhado" && (
-                    <>
-                      {ponto.imagem && <img className="popup-img" src={ponto.imagem} alt={ponto.nome} width="150px" />}
-                      {ponto.descricao && <p className="popup-desc">{ponto.descricao}</p>}
-                      <p className={foiEscaneado ? "escaneado" : "nao-escaneado"}>
-                        {foiEscaneado ? "✅ QR Code escaneado" : "❌ QR Code não escaneado"}
-                      </p>
-                      {!foiEscaneado && (
-                        <button onClick={() => handleQRCodeScan(ponto.id)}>Escanear QR Code</button>
-                      )}
-                    </>
-                  )}
-                </div>
-              </Popup>
-            </Marker>
-          );
-        })}
-      </MapContainer>
-    </section>
+      {pontos.map((ponto) => {
+        const foiEscaneado = pontosLidos.includes(ponto.id);
+        const icone = foiEscaneado ? greenIcon : blueIcon;
+
+        return (
+          <Marker key={ponto.id} position={ponto.coords} icon={icone}>
+            <Popup>
+              <div className="popup-content">
+                <b className="popup-title">{ponto.nome}</b>
+
+                {ponto.imagem && (
+                  <img className="popup-img" src={ponto.imagem} alt={ponto.nome}  width="150px"/>
+                )}
+
+                {ponto.descricao && (
+                  <p className="popup-desc">{ponto.descricao}</p>
+                )}
+
+                <p className={foiEscaneado ? "escaneado" : "nao-escaneado"}>
+                  {foiEscaneado ? "✅ QR Code escaneado" : "❌ QR Code não escaneado"}
+                </p>
+
+                {!foiEscaneado && (
+                  <button onClick={() => navigate(`/scanner/`)}>Escanear QR Code</button>
+                )}
+              </div>
+            </Popup>
+          </Marker>
+        );
+      })}
+    </MapContainer>
   );
 };
 

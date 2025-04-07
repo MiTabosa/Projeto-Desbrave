@@ -303,7 +303,6 @@ const App = () => {
       <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><DashboardAdmin /></Layout>} />
       <Route path="/gestaoCursos" element={<Layout isLogged={isLogged}><GestaoCursos /></Layout>} />
       <Route path="/gestaoForum" element={<Layout isLogged={isLogged}><GestaoForum /></Layout>} />
-      <Route path="/meusCursos" element={<Layout isLogged={isLogged}><MeusCursos /></Layout>} />
       <Route path="/cupons" element={<Layout isLogged={isLogged}><CuponsDashboard /></Layout>} />
       <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><CuponsUsados /></Layout>} />
       <Route path="/certificados" element={<Layout isLogged={isLogged}><Certificados /></Layout>} />

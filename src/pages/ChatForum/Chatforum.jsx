@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import { IoReturnUpBackOutline } from 'react-icons/io5';
 import './Chatforum.css';
+import { api } from '../../service/api';
 
 const Chatforum = () => {
   const { forumId } = useParams();
@@ -11,7 +12,6 @@ const Chatforum = () => {
   const [newComment, setNewComment] = useState("");
   const bottomRef = useRef(null);
 
-  // Dados mockados - mesmo formato original
   const mockComments = [
     {
       user: "João Silva",
@@ -28,19 +28,18 @@ const Chatforum = () => {
   useEffect(() => {
     setComments(mockComments);
     
-    /* CÓDIGO PARA BACK-END (mantido comentado):
+
     const fetchComments = async () => {
       try {
-        const response = await fetch(`http://localhost:8081/postagem?forumId=${forumId}`);
-        const data = await response.json();
-        setComments(data);
+        const response = await api.get(`/postagens?forumId=${forumId}`);
+        setComments(response.data);
       } catch (error) {
         console.error("Erro:", error);
-        setComments(mockComments); // Fallback
+        setComments(mockComments); 
       }
     };
     fetchComments();
-    */
+    
   }, [forumId]);
 
   useEffect(() => {
@@ -49,7 +48,7 @@ const Chatforum = () => {
     }
   }, [comments]);
 
-  const addComment = () => {
+  const addComment = async () => {
     if (newComment.trim() === "") return;
 
     const newPost = {
@@ -58,12 +57,12 @@ const Chatforum = () => {
       comment: newComment
     };
 
-    setComments([...comments, newPost]);
-    setNewComment("");
+    // setComments([...comments, newPost]);
+    // setNewComment("");
 
-    /* CÓDIGO PARA BACK-END (mantido comentado):
+    
     try {
-      const response = await fetch("http://localhost:8081/postagem", {
+      const response = await api.post("/postagens", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -71,17 +70,19 @@ const Chatforum = () => {
         body: JSON.stringify({
           forumId,
           comment: newComment,
-          userId: "currentUserId" // Substituir pelo ID real
+          userId: "currentUserId" 
         })
       });
+
       const savedComment = await response.json();
       setComments(prev => [...prev, savedComment]);
     } catch (error) {
       console.error(error);
-      // Adiciona localmente mesmo se falhar
-      setComments(prev => [...prev, newPost]);
+
+      setComments(prev => [...prev, newPost]); 
+      setNewComment("");
     }
-    */
+    
   };
 
   return (

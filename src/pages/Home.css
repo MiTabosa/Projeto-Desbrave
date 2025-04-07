@@ -97,20 +97,20 @@ html, body {
   flex-direction: column;
 }
 
-.map-text {
+.map-texto {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  
+  margin-bottom: 30px;
 }
 
-.map-text h2 {
+.map-texto h2 {
   color: #004aad;
   margin-bottom: 1rem;
 }
 
-.map-text p {
+.map-texto p {
   margin-bottom: 2rem;
   font-size: 1.125rem;
   display: block;

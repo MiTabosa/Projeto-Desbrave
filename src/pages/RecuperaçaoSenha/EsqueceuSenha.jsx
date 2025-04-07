@@ -25,7 +25,7 @@ const EsqueceuSenha = () => {
     setCarregando(true);
 
     try {
-      const resposta = await axios.post("http://localhost:8080/recuperar-senha", { email });
+      const resposta = await axios.post("http://localhost:8081/api/usuarios/recuperar-senha", { email });
 
       if (resposta.status === 200) {
         alert("Código de recuperação enviado para o seu e-mail.");
@@ -52,7 +52,7 @@ const EsqueceuSenha = () => {
         <input
           type="email"
           placeholder="E-mail"
-          className={`emailInput ${erroEmail ? "inputErro" : ""}`} // Adiciona classe de erro
+          className={`emailInput ${erroEmail ? "inputErro" : ""}`} 
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />

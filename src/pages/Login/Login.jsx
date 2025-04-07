@@ -1,3 +1,4 @@
+
 import "./Login.css";
 import { FaUser, FaLock } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,7 +7,7 @@ import { IoEyeOff, IoEye } from "react-icons/io5";
 import { api } from "../../service/api";
 
 
-export default function Login() {
+export default function Login({ setIsLogged, atualizarLogin }) {
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -15,19 +16,24 @@ export default function Login() {
   async function realizarLogin() {
     try {
       const resposta = await api.post("/autenticacao/login", {
-        email: email,
-        senha: senha,
-      }).then((Response) => {
-        navegar("/home");
-        localStorage.setItem("token", Response.data.token);
-      }).catch((error) => {
-        console.log(error);
-      })
-      
+        email,
+        senha,
+      });
 
+      const usuario = resposta.data.usuario;
+      const token = resposta.data.token;
+
+      localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
+      localStorage.setItem("token", token);
+
+      
+      setIsLogged(true);
+      if (atualizarLogin) atualizarLogin();
+
+      navegar("/home");
     } catch (erro) {
       console.error("Erro ao fazer login:", erro);
-      alert("Erro ao conectar com o servidor.");
+      alert("E-mail ou senha inválidos.");
     }
   }
 
@@ -49,6 +55,7 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
+
           <div className="inputCampo">
             <FaLock className="inputIcone" />
             <input
@@ -64,24 +71,27 @@ export default function Login() {
               {mostrarSenha ? <IoEyeOff /> : <IoEye />}
             </span>
           </div>
+
           <Link to="/esqueceuSenha" className="EsqueciSenha">
             Esqueceu sua senha?
           </Link>
+
           <button className="EntrarBotao" onClick={realizarLogin}>
             Entrar
           </button>
         </div>
 
-        <a href="/cadastro" className="BotaoCadastrar">
+        <Link to="/cadastro" className="BotaoCadastrar">
           Cadastrar-se
-        </a>
+        </Link>
 
         <div>
-          <a href="/" className="voltarinicio">
+          <Link to="/" className="voltarinicio">
             ↩ Voltar para o início
-          </a>
+          </Link>
         </div>
       </div>
     </div>
   );
 }
+

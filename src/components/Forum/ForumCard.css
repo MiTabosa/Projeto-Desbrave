@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    margin: 20px auto; 
+    margin: 70px auto; 
     max-width: 1220px; 
     width: 90%; 
   }
@@ -45,8 +45,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 60px;
     border-radius: 10px;
     font-size: 1.5rem;
     flex-shrink: 0;
@@ -54,8 +54,9 @@
   
   .forum-titulo {
     font-size: 1.2rem;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     font-weight: 600;
+    margin-top: 10px;
   }
   
   .forum-categoria-badge {
@@ -97,6 +98,7 @@
   
     .forum-titulo {
       font-size: 1rem;
+      margin-top: 30px;
     }
   }
   

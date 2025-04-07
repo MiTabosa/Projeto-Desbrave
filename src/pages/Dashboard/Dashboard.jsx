@@ -35,16 +35,17 @@ const Dashboard = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+
   const fetchData = async () => {
     try {
       const token = localStorage.getItem("token");
       const decodedToken = jwtDecode(token);
   
       const usuarioId = decodedToken?.sub;
-      console.log(token)
+
 
       // nomeUsuario
-      const userResponse = await api.get(`/usuario/${usuarioId}`);
+      const userResponse = await api.get(`/api/usuarios/${usuarioId}`);
       setName(userResponse.data.nome);
 
       // pontos
@@ -52,13 +53,13 @@ const Dashboard = () => {
       const totalPontos = pontosResponse.data.reduce((acc, item) => acc + item.pontosGanhos, 0);
 
       // cursos iniciados 
-      const cursosResponse = await api.get(`/usuarios/${usuarioId}/cursos-com-progresso`);
+      const cursosResponse = await api.get(`/api/usuarios/${usuarioId}/cursos-com-progresso`);
 
 
-      setInfoGeral((prev) => ({
+      setInfoGeral({
         cursos: cursosResponse.data.length,
         pontos: totalPontos,
-      }));
+      });
 
       setCursosIniciados(cursosResponse.data);
 
@@ -119,7 +120,7 @@ const Dashboard = () => {
                       </div>
                       <div className="texto-numero">
                         <p className="numero-geral">
-                          {infoGeral.pontos < 10
+                          {isNaN(infoGeral.pontos) < 10
                             ? `0${infoGeral.pontos}`
                             : infoGeral.pontos}
                         </p>
@@ -134,7 +135,7 @@ const Dashboard = () => {
               <div className="inicio-curso">
                 <div className="cabecalho-curso">
                   <PiBookOpenTextThin />
-                  <p className="titulo-cabecalho">Meus cursos</p>
+                  <p className="titulo-cabecalho">Inicie um curso</p>
                 </div>
 
                 <div className="filtro-container">

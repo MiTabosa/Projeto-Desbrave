@@ -42,13 +42,13 @@ function CardCurso({ curso }) {
     const navigate = useNavigate();
 
     const handleButtonClick = () => {
-        navigate(`/descricaoCurso/${curso.id}`);
+        navigate(`/descricaoCurso/${curso.idcursos}`);
     };
 
     return (
         <div className='cardCurso'>
             <p className='cursoCategoria'>{curso.categoria}</p>
-            <h2>{curso.nome}</h2>
+            <h2>{curso.titulo}</h2>
             <p>{curso.descricao}</p>
             <p className="cargaHoraria"><strong>Carga Horária:</strong> {curso.cargaHoraria}</p>
             <div className='buttonContainer'>

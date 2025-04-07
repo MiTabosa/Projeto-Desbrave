@@ -1,6 +1,6 @@
 .container-perfil {
   width: 320px;
-  height: 690px;
+  height: 685px;
   background: white;
   border-radius: 6px;
   padding: 20px;
@@ -10,10 +10,8 @@
   flex-direction: column;
   align-items: center;
   border: 1px solid #ddd;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 20px;
+  position: static;
+  margin-top: 18px;
 }
 
 .perfil-banner {
@@ -25,7 +23,6 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  /* margin-top: -40px; */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
 }
 
@@ -38,16 +35,12 @@
   margin: 10px 0;
 }
 
-.nome-dashboard,
-.subnome-dashboard {
+.nome-dashboard {
   color: #000000;
   font-size: 25px;
   font-weight: 500;
 }
 
-.subtitulo-dashboard {
-  font-size: 15px;
-}
 
 .input-perfil {
   width: 200px;
@@ -100,6 +93,7 @@
   gap: 6px;
   margin-top: 20px;
 }
+
  
  @media (max-width: 768px) {
   .container-perfil {
@@ -117,10 +111,12 @@
     margin-top: 10px;
   }
 
-  .subtitulo-dashboard {
-    font-size: 15px;
-    margin-bottom: 10px;
+  .botao-salvar {
+    margin-left: 5px;
+    font-size: 12px;
+    cursor: pointer;
   }
+  
 
   .info-geral {
     display: flex;
@@ -165,10 +161,11 @@
     line-height: 1;
   }
 
-  .admin-info-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+
+
+
+
+
+
 
 } 

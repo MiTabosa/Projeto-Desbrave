@@ -1,22 +1,38 @@
 import React, { useState } from "react";
 import "./RecuperarSenha.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const RecuperarSenha = () => {
   const [codigo, setCodigo] = useState(["", "", "", "", "", ""]);
-  const navigate = useNavigate();
+  const [mensagemErro, setMensagemErro] = useState("");
+  const navegar = useNavigate();
 
-  const handleChange = (index, value) => {
-    if (/^\d?$/.test(value)) {
-      let novoCodigo = [...codigo];
-      novoCodigo[index] = value;
+  const handleChange = (indice, valor) => {
+    if (/^\d?$/.test(valor)) {
+      const novoCodigo = [...codigo];
+      novoCodigo[indice] = valor;
       setCodigo(novoCodigo);
     }
   };
 
-  const handleSubmit = () => {
-    
-    navigate("/redefinirSenha"); 
+  const handleSubmit = async () => {
+    const codigoCompleto = codigo.join("");
+
+    try {
+      const resposta = await axios.post("http://localhost:3000/validar-codigo", {
+        codigo: codigoCompleto,
+      });
+
+      if (resposta.status === 200) {
+        navegar("/redefinirSenha");
+      } else {
+        setMensagemErro("Código inválido. Tente novamente.");
+      }
+    } catch (erro) {
+      console.error("Erro ao validar código:", erro);
+      setMensagemErro("Ocorreu um erro ao validar o código.");
+    }
   };
 
   return (
@@ -37,6 +53,7 @@ const RecuperarSenha = () => {
             />
           ))}
         </div>
+        {mensagemErro && <p className="mensagem-erro">{mensagemErro}</p>}
         <button className="RecBotao" onClick={handleSubmit}>
           Confirmar
         </button>

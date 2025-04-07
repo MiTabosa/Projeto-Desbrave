@@ -7,16 +7,13 @@ import { GoCheckCircle } from "react-icons/go";
 import { PiBookOpenTextThin } from "react-icons/pi";
 import { FaComments } from "react-icons/fa";
 import Button from "../../components/Button/Button";
+import { api } from "../../service/api";
 
-const CardPerfil = ({ name, setName, subName, setSubName, numCursos, numForuns }) => {
+const CardPerfil = ({ name, setName, numCursos, numForuns }) => {
   const navigate = useNavigate();
-  const [subtitle, setSubtitle] = useState("Professora de História");
   const [editing, setEditing] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
   const nomeRef = useRef(null);
-  const subNomeRef = useRef(null);
-  const subRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -26,16 +23,38 @@ const CardPerfil = ({ name, setName, subName, setSubName, numCursos, numForuns }
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleEnter = () => {
-    setTimeout(() => {
-      if (
-        document.activeElement !== nomeRef.current &&
-        document.activeElement !== subNomeRef.current &&
-        document.activeElement !== subRef.current
-      ) {
-        setEditing(false);
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const usuarioId = localStorage.getItem("usuarioId");
+        const response = await api.get(`/usuario/${usuarioId}`);
+        setName(response.data.nome);
+      } catch (error) {
+        console.error("Erro ao buscar usuário:", error);
       }
-    }, 100);
+    };
+
+    fetchUser();
+  }, [setName]);
+
+  const handleSave = async () => {
+    try {
+      const usuarioId = localStorage.getItem("usuarioId");
+      await api.put(`/usuario/${usuarioId}`, {
+        nome: name,
+      });
+      alert("Nome atualizado com sucesso!");
+      setEditing(false);
+    } catch (error) {
+      console.error("Erro ao atualizar nome:", error);
+      alert("Erro ao atualizar nome. Tente novamente.");
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSave();
+    }
   };
 
   return (
@@ -52,34 +71,18 @@ const CardPerfil = ({ name, setName, subName, setSubName, numCursos, numForuns }
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              onBlur={handleEnter}
+              onKeyDown={handleKeyDown}
+              onBlur={handleSave}
               className="input-perfil"
               autoFocus
             />
-            <input
-              ref={subNomeRef}
-              type="text"
-              value={subName}
-              onChange={(e) => setSubName(e.target.value)}
-              onBlur={handleEnter}
-              className="input-perfil"
-            />
-            <input
-              ref={subRef}
-              type="text"
-              value={subtitle}
-              onChange={(e) => setSubtitle(e.target.value)}
-              onBlur={handleEnter}
-              className="input-perfil"
-            />
+            <button onClick={handleSave} className="botao-salvar">Salvar</button>
           </div>
         ) : (
           <>
             <h2>
               <span className="nome-dashboard">{name}</span>
-              <span className="subnome-dashboard"> {subName}</span>
             </h2>
-            <p className="subtitulo-dashboard">{subtitle}</p>
             <FaPencil
               onClick={() => setEditing(true)}
               style={{ cursor: "pointer" }}
@@ -112,6 +115,7 @@ const CardPerfil = ({ name, setName, subName, setSubName, numCursos, numForuns }
                 />
               </div>
             </div>
+
             <div className="admin-card admin-card-foruns">
               <div className="admin-card-content">
                 <div className="admin-card-icon">
@@ -141,6 +145,7 @@ const CardPerfil = ({ name, setName, subName, setSubName, numCursos, numForuns }
           <a onClick={() => navigate("/esqueceuSenha")}>Alterar senha</a>
         </p>
       </div>
+
       <div className="perfil-termos">
         <a onClick={() => navigate("/diretrizes")}>
           <GoCheckCircle /> Termos de uso e segurança

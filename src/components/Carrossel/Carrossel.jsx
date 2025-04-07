@@ -32,15 +32,15 @@ const Carrossel = ({ cards, cardTipo }) => {
           },
         }}
       >
-        {cards.map((card, index) => (
-          <SwiperSlide key={index}>
-           {cardTipo === 'CardCurso' ? (
-              <CardCurso curso={card} /> 
-            ) : (
-              <Card {...card} /> 
-            )}
-          </SwiperSlide>
-        ))}
+        {Array.isArray(cards) && cards.map((card, index) => (
+  <SwiperSlide key={index}>
+    {cardTipo === 'CardCurso' ? (
+      <CardCurso curso={card} /> 
+    ) : (
+      <Card {...card} /> 
+    )}
+  </SwiperSlide>
+))}
       </Swiper>
     </div>
   );

@@ -1,16 +1,15 @@
 .secao-superior {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
   width: 100%;
   position: relative;
   margin-bottom: 1.5rem;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .esquerda-secao {
   flex: 1;
-}
+} 
 
 .titulo-dashboard {
   margin: 0;
@@ -27,10 +26,9 @@
   opacity: 0.9;
 }
 
-.cabecalho-painel {
+.cabecalho-painel-adm {
   position: relative;
-  width: 100%;
-  max-width: 700px;
+  width: 700px;
   height: 160px;
   border-radius: 6px;
   background-color: #0367a5;
@@ -43,13 +41,12 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-.cabecalho-painel img {
+.cabecalho-painel-adm img {
   position: absolute;
-  width: 150px;
-  height: 150px;
-  top: 5px;
-  right: 5px;
-  opacity: 0.8;
+  width: 165px;
+  height: 165px;
+  top: 0;
+  right: 0;
 }
 
 .adm-home-botao {
@@ -89,12 +86,12 @@
 }
 
 .admin-info-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 0.8rem;
-  margin-bottom: 2rem;
-  width: 60%;
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 5rem;
+  width: 100%;
 }
+
 
 .admin-card {
   width: 320px;
@@ -115,11 +112,11 @@
 }
 
 .admin-card-cursos {
-  border: 3px solid #0367a5;
+  background: linear-gradient(to right, #d4a017, #c69715);
 }
 
 .admin-card-foruns {
-  border: 3px solid #0367a5;
+  background: linear-gradient(to right, #0a5fa3, #08578f);
 }
 
 .admin-card-content {
@@ -141,22 +138,26 @@
   flex-shrink: 0;
 }
 
+
 .admin-card-text {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
 }
 
-.admin-card-text p {
-  margin: 0;
-  color: #000000;
-  font-size: 1rem;
+.texto-card-adm{
+  font-size: 16px;
+  font-weight: normal;
+  color: #ffffff;
 }
 
 .admin-card-number {
-  font-size: 2.3rem;
+  font-size: 25px;
   font-weight: bold;
-  color: #000000;
+  margin: 0;
+  color: white;
+  line-height: 15px;
+  margin-top: 10px;
 }
 
 .admin-buttons {
@@ -170,6 +171,10 @@
     display: none;
   }
 
+
+  .subtitulo-dashboard {
+    font-size: 15px;
+  }
   .secao-superior {
     flex-direction: column;
     align-items: center;
@@ -177,50 +182,48 @@
     gap: 0.8rem;
   }
 
-  .admin-dashboard-container {
-    padding: 1rem;
-  }
-
   .admin-title {
-    font-size: 1.5rem;
-    margin-bottom: 1.3rem;
-  }
+    display: none;
+  }  
 
   .admin-info-cards {
-    grid-template-columns: 1fr;
-    gap: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    gap: 8px;
   }
 
-  .admin-card {
-    height: 155px;
-    padding: 1.1rem;
+  .admin-card-icon svg {
+    width: 24px;
+    height: 24px;
   }
 
-  .admin-buttons {
-    bottom: 0.9rem;
-    left: 1.1rem;
-    right: 1.1rem;
+    .admin-card {
+      max-width: 100%;
+      height: 110px;
+      padding: 8px 12px;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+    } 
+
+   .admin-card-text p{
+    font-size: 12px;
+    margin: 0;
+    line-height: 1.2;
+    color: #ffffff;
+  } 
+  
+  .admin-card-number {
+    font-size: 20px !important; 
   }
+  
+
 }
 
 @media (max-width: 480px) {
-  .titulo-dashboard {
-    font-size: 2rem;
-  }
-  
-  .admin-card {
-    height: 145px;
-    padding: 1rem;
-  }
-
-  .admin-card-content {
-    gap: 0.8rem;
-  }
-
-  .admin-card-icon {
-    min-width: 44px;
-    height: 44px;
-  }
-
+.cabecalho-painel-adm {
+  display: none;
+}
 
 }

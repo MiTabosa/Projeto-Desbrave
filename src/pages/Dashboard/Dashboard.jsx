@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Dashboard.css";
 import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Button from "../../components/Button/Button";
 import ProgressCircle from "../../components/ProgressCircle/ProgressCircle";
 import CardPerfil from "../../components/CardPerfil/CardPerfil";
+import { api } from "../../service/api";
+import {jwtDecode} from "jwt-decode";
+
 
 // imagens e ícones
-import elementoVerde from "../../assets/elemento-verde.png";
+import elementoDashboard from "../../assets/elemento-dashboard.png";
 import { BsArrow90DegRight } from "react-icons/bs";
 import { RiGraduationCapLine } from "react-icons/ri";
 import { CiStar } from "react-icons/ci";
@@ -16,13 +19,13 @@ import { PiBookOpenTextThin } from "react-icons/pi";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [infoGeral, setInfoGeral] = useState({ cursos: 23, estrelas: 1 });
+  const [infoGeral, setInfoGeral] = useState({ cursos: 0, pontos: 0});
   const [filtro, setFiltro] = useState("todos");
+  const [name, setName] = useState("");
+  const [cursosIniciados, setCursosIniciados] = useState([]);
 
-  // estado compartilhado com o perfil
-  const [name, setName] = useState("Milena");
-  const [subName, setSubName] = useState("Tabosa");
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,43 +35,60 @@ const Dashboard = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const cursos = [
-    {
-      id: 1,
-      titulo: "Cursos de Extensão IA para direito",
-      status: "andamento",
-      progresso: 40,
-    },
-    {
-      id: 2,
-      titulo: "Desenvolvimento Android Moderno",
-      status: "andamento",
-      progresso: 70,
-    },
-    {
-      id: 3,
-      titulo: "Frevo ao Manguebeat",
-      status: "concluido",
-      progresso: 100,
-    },
-  ];
+  const fetchData = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const decodedToken = jwtDecode(token);
+  
+      const usuarioId = decodedToken?.sub;
+      console.log(token)
 
-  const cursosFiltrados = cursos.filter(
-    (curso) => filtro === "todos" || curso.status === filtro
+      // nomeUsuario
+      const userResponse = await api.get(`/usuario/${usuarioId}`);
+      setName(userResponse.data.nome);
+
+      // pontos
+      const pontosResponse = await api.get(`/historicoResgate/usuario/${usuarioId}`);
+      const totalPontos = pontosResponse.data.reduce((acc, item) => acc + item.pontosGanhos, 0);
+
+      // cursos iniciados 
+      const cursosResponse = await api.get(`/usuarios/${usuarioId}/cursos-com-progresso`);
+
+
+      setInfoGeral((prev) => ({
+        cursos: cursosResponse.data.length,
+        pontos: totalPontos,
+      }));
+
+      setCursosIniciados(cursosResponse.data);
+
+   } catch (error) {
+    console.error("Erro ao buscar histórico de resgate:", error);
+    setInfoGeral((prev) => ({...prev,pontos: 0}));
+   }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [location]);
+
+  const cursosFiltrados = cursosIniciados.filter(
+    (curso) => filtro === "todos" || 
+   (filtro === "andamento" && curso.progresso < 100) ||
+   (filtro === "concluido" && curso.progresso === 100)
   );
 
   return (
     <div className="container-dashboard">
       <Sidebar>
         <BottomDashboard>
-
           {/* Seção Topo */}
           <div className="secao-superior">
             <div className="esquerda-secao">
               <div className="cabecalho-painel">
-                <h2 className="titulo-dashboard">Olá, {name} {subName}!</h2>
+                <h2 className="titulo-dashboard">Olá, {name}! </h2>
                 <p className="paragrafo-dashboard">Bem-vinda de volta! 😃</p>
-                <img src={elementoVerde} alt="elemento verde" />
+                <img src={elementoDashboard} alt="elemento dashboard colorido"/>
                 <button
                   className="forum-botao"
                   onClick={() => navigate("/forum")}
@@ -99,9 +119,9 @@ const Dashboard = () => {
                       </div>
                       <div className="texto-numero">
                         <p className="numero-geral">
-                          {infoGeral.estrelas < 10
-                            ? `0${infoGeral.estrelas}`
-                            : infoGeral.estrelas}
+                          {infoGeral.pontos < 10
+                            ? `0${infoGeral.pontos}`
+                            : infoGeral.pontos}
                         </p>
                         <p className="paragrafo-geral">Pontos</p>
                       </div>
@@ -109,56 +129,58 @@ const Dashboard = () => {
                   </div>
                 </div>
               )}
-            </div>
+              
+            <div className="area-cursos">
+              <div className="inicio-curso">
+                <div className="cabecalho-curso">
+                  <PiBookOpenTextThin />
+                  <p className="titulo-cabecalho">Meus cursos</p>
+                </div>
 
-           
+                <div className="filtro-container">
+                  <label htmlFor="filtro">Cursos Iniciados:</label>
+                  <select
+                    id="filtro"
+                    value={filtro}
+                    onChange={(e) => setFiltro(e.target.value)}
+                  >
+                    <option value="todos">Todos</option>
+                    <option value="andamento">Em Andamento</option>
+                    <option value="concluido">Concluídos</option>
+                  </select>
+                </div>
+
+            
+                <div className="container-curso-dashboard">
+                    {cursosFiltrados.length === 0 ? (
+                      <p>Você ainda não iniciou nenhum curso.</p>
+                    ) : (
+                      cursosFiltrados.map((curso, index) => (
+                        <div key={index} className="curso-card-dashboard">
+                          <p className="curso-titulo-dashboard">{curso.tituloCurso}</p>
+                          <ProgressCircle percent={curso.progresso} />
+                          <div className="botao-curso-dashboard">
+                            <Button
+                              text="Retomar"
+                              color="#0367A5"
+                              size="small"
+                              onClick={() => navigate("/curso")} 
+                            />
+                          </div>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
             <CardPerfil
               name={name}
               setName={setName}
-              subName={subName}
-              setSubName={setSubName}
             />
-          </div>
+    </div>
 
-      
-          <div className="area-cursos">
-            <div className="inicio-curso">
-              <div className="cabecalho-curso">
-                <PiBookOpenTextThin />
-                <p className="titulo-cabecalho">Meus cursos</p>
-              </div>
-
-              <div className="filtro-container">
-                <label htmlFor="filtro">Cursos Iniciados:</label>
-                <select
-                  id="filtro"
-                  value={filtro}
-                  onChange={(e) => setFiltro(e.target.value)}
-                >
-                  <option value="todos">Todos</option>
-                  <option value="andamento">Em Andamento</option>
-                  <option value="concluido">Concluídos</option>
-                </select>
-              </div>
-
-              <div className="container-curso-dashboard">
-                {cursosFiltrados.map((curso) => (
-                  <div key={curso.id} className="curso-card-dashboard">
-                    <p className="curso-titulo-dashboard">{curso.titulo}</p>
-                    <ProgressCircle percent={curso.progresso} />
-                    <div className="botao-curso-dashboard">
-                      <Button
-                        text="Retomar"
-                        color="#0367A5"
-                        size="small"
-                        onClick={() => navigate("/curso")}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </BottomDashboard>
       </Sidebar>
     </div>

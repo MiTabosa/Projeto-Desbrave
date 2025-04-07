@@ -6,7 +6,7 @@ import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
 export default function Certificado() {
   return (
       <Sidebar>
-        <BottomDashboard>
+        {/* <BottomDashboard> */}
           <div className="CertificadoContainer">
   
         <h1 className="tituloCertificado">Meus Certificados</h1>
@@ -27,7 +27,7 @@ export default function Certificado() {
                 Curso 4:
             </div>
         </div>
-        </BottomDashboard>
+        {/* </BottomDashboard> */}
       </Sidebar>
     );
   }

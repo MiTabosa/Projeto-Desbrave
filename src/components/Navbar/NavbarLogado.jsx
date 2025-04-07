@@ -5,11 +5,13 @@ import logo from "../../assets/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaUserCircle } from "react-icons/fa";
 
-const NavbarLogado = () => {
+const NavbarLogado = ({ userData }) => {
   const navigate = useNavigate();
   const [menuAberto, setMenuAberto] = useState(false);
   const [dropdownAberto, setDropdownAberto] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  
+  const isAdmin = userData?.role === "admin";
 
   const alternarMenu = () => {
     setMenuAberto(!menuAberto);
@@ -20,15 +22,15 @@ const NavbarLogado = () => {
   };
 
   const handleLogout = () => {
-    // Lógica para logout (esperar o back)
+    localStorage.removeItem("usuarioLogado");
     navigate("/login");
+    window.location.reload();
   };
 
   const handlePerfil = () => {
-    navigate("/dashboard");
+    navigate(isAdmin ? "/dashboardAdmin" : "/dashboard");
   };
 
-  // Verifica o tamanho da tela ao carregar e redimensionar
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -49,41 +51,49 @@ const NavbarLogado = () => {
           <GiHamburgerMenu />
         </div>
         <ul className={`links-nav ${menuAberto ? "ativo" : ""}`}>
-          <li>
-            <a href="#" onClick={() => navigate("/")}>
-              Início
-            </a>
-          </li>
-          <li>
-            <a href="#" onClick={() => navigate("/sobre")}>
-              Sobre
-            </a>
-          </li>
-          <li>
-            <a href="#" onClick={() => navigate("/parceiros")}>
-              Parceiros
-            </a>
-          </li>
-          <li>
-            <a href="#" onClick={() => navigate("/mapa")}>
-              Mapa
-            </a>
-          </li>
+          <div className="links-navegacao">
+            <li>
+              <a href="#" onClick={() => navigate("/")}>
+                Início
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={() => navigate("/sobre")}>
+                Sobre
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={() => navigate("/parceiros")}>
+                Parceiros
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={() => navigate("/mapa")}>
+                Mapa
+              </a>
+            </li>
+          </div>
+          
           <div className="area-usuario" onClick={alternarDropdown}>
             <FaUserCircle className="icone-usuario" />
-            <span className="nome-usuario">Usuário</span>
+            <span className="nome-usuario">
+              {userData?.nome || "Usuário"} {isAdmin ? "(Admin)" : ""}
+            </span>
             {dropdownAberto && (
               <div className="menu-dropdown ativo">
-                <button onClick={handlePerfil}>Perfil</button>
+                <button onClick={handlePerfil}>
+                  {isAdmin ? "Painel Admin" : "Meu Perfil"}
+                </button>
                 <button onClick={handleLogout}>Sair</button>
               </div>
             )}
           </div>
-          {/* Botões para mobile */}
           {isMobile && menuAberto && (
             <div className="botoesNavLogado">
-              <button onClick={handlePerfil}>Ver Perfil</button>
-              <button onClick={() => navigate("/login")}>Entrar</button>
+              <button onClick={handlePerfil}>
+                {isAdmin ? "Painel Admin" : "Meu Perfil"}
+              </button>
+              <button onClick={handleLogout}>Sair</button>
             </div>
           )}
         </ul>

@@ -36,25 +36,15 @@
   .descricao-curso-container strong {
     color: #0367A5;
   }
-
-  .empresaCurso{
-    display: flex;
-    margin-top: 70px;
-    padding: 0 40px;
-    gap: 300px;
-  }
-
-  .empresaCurso p{
-    margin-top: 50px;
-  }
   
-  .button-container {
+  .button-container-desc-curso {
+    display: flex;
     flex-direction: row; 
-    flex-wrap: wrap; 
-    gap: 150px; 
-   
+    gap: 200px; 
+    margin-left: 42px;
+    margin-top: 100px;
+}
     
-  }
 
   .pontos-image {
     width: 300px;
@@ -83,22 +73,12 @@
         width: 220px;
       }
     
-      .empresaCurso {
+     .button-container-desc-curso {
         flex-direction: column;
-        gap: 10px;
-        margin-top: 20px;
-        padding: 0 ;
-      }
-
-      .empresaCurso p{
-        margin-top: 10px;
-       padding: 0 2.5rem;
-      }
-    
-      .button-container {
-        flex-direction: column;
-        gap: 10px;
+        gap: 40px;
         width: 100%;
+        align-items: center;
+        margin-left: 0;
       }
     
       .button-container button {

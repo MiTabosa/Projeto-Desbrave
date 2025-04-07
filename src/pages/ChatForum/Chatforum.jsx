@@ -11,7 +11,6 @@ const Chatforum = () => {
   const [newComment, setNewComment] = useState("");
   const bottomRef = useRef(null);
 
-  // Dados mockados - mesmo formato original
   const mockComments = [
     {
       user: "João Silva",
@@ -27,20 +26,6 @@ const Chatforum = () => {
 
   useEffect(() => {
     setComments(mockComments);
-    
-    /* CÓDIGO PARA BACK-END (mantido comentado):
-    const fetchComments = async () => {
-      try {
-        const response = await fetch(`http://localhost:8081/postagem?forumId=${forumId}`);
-        const data = await response.json();
-        setComments(data);
-      } catch (error) {
-        console.error("Erro:", error);
-        setComments(mockComments); // Fallback
-      }
-    };
-    fetchComments();
-    */
   }, [forumId]);
 
   useEffect(() => {
@@ -60,28 +45,6 @@ const Chatforum = () => {
 
     setComments([...comments, newPost]);
     setNewComment("");
-
-    /* CÓDIGO PARA BACK-END (mantido comentado):
-    try {
-      const response = await fetch("http://localhost:8081/postagem", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          forumId,
-          comment: newComment,
-          userId: "currentUserId" // Substituir pelo ID real
-        })
-      });
-      const savedComment = await response.json();
-      setComments(prev => [...prev, savedComment]);
-    } catch (error) {
-      console.error(error);
-      // Adiciona localmente mesmo se falhar
-      setComments(prev => [...prev, newPost]);
-    }
-    */
   };
 
   return (

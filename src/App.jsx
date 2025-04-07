@@ -274,6 +274,32 @@ const App = () => {
       <Route path="/mapa" element={<Layout isLogged={isLogged}><Mapa /></Layout>} />
       <Route path="/paginaInicial" element={<Layout isLogged={isLogged}><PaginaInicial /></Layout>} />
 
+        {/*teste de rotas  */}
+        <Route path="/dashboard" element={<Layout isLogged={isLogged}><Dashboard /></Layout>} />
+        <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><DashboardAdmin /></Layout>} />
+        <Route path="/gestaoCursos" element={<Layout isLogged={isLogged}><GestaoCursos /></Layout>} />
+        <Route path="/gestaoForum" element={<Layout isLogged={isLogged}><GestaoForum /></Layout>} />
+        <Route path="/meusCursos" element={<Layout isLogged={isLogged}><MeusCursos /></Layout>} />
+        <Route path="/cupons" element={<Layout isLogged={isLogged}><CuponsDashboard /></Layout>} />
+        <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><CuponsUsados /></Layout>} />
+        <Route path="/certificados" element={<Layout isLogged={isLogged}><Certificados /></Layout>} />
+        <Route path="/scanner" element={<Layout isLogged={isLogged}><Scanner /></Layout>} />
+        <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><InvalidScanner /></Layout>} />
+        <Route path="/chat/:forumId" element={<Layout isLogged={isLogged}><ForumChat /></Layout>} />
+
+        {/* Rotas Privadas */}
+        {/* <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><PrivateRoute><InvalidScanner /></PrivateRoute></Layout>} /> */}
+        {/* <Route path="/scanner" element={<Layout isLogged={isLogged}><PrivateRoute><Scanner /></PrivateRoute></Layout>} /> */}
+        {/* <Route path="/cupons" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsDashboard /></PrivateRoute></Layout>} />
+        <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsUsados /></PrivateRoute></Layout>} /> */}
+        {/* <Route path="/forumChat" element={<Layout isLogged={isLogged}><PrivateRoute><ForumChat /></PrivateRoute></Layout>} /> */}
+        {/* <Route path="/meusCursos" element={<Layout isLogged={isLogged}><PrivateRoute><MeusCursos /></PrivateRoute></Layout>} /> */}
+        {/* <Route path="/Certificados" element={<Layout isLogged={isLogged}><PrivateRoute><Certificados /></PrivateRoute></Layout>} /> */}
+
+        {/* Rotas do Admin */}
+        {/* <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><AdminRoute><DashboardAdmin /></AdminRoute></Layout>} />
+        <Route path="/gestaoCursos" element={<Layout isLogged={isLogged}><AdminRoute><GestaoCursos /></AdminRoute></Layout>} />
+        <Route path="/gestaoForum" element={<Layout isLogged={isLogged}><AdminRoute><GestaoForum /></AdminRoute></Layout>} /> */}
       {/* Rotas Teste */}
       <Route path="/dashboard" element={<Layout isLogged={isLogged}><Dashboard /></Layout>} />
       <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><DashboardAdmin /></Layout>} />
@@ -285,7 +311,7 @@ const App = () => {
       <Route path="/certificados" element={<Layout isLogged={isLogged}><Certificados /></Layout>} />
       <Route path="/scanner" element={<Layout isLogged={isLogged}><Scanner /></Layout>} />
       <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><InvalidScanner /></Layout>} />
-      <Route path="/forumChat/:id" element={<Layout isLogged={isLogged}><ForumChat /></Layout>} />
+      <Route path="/chat/:forumId" element={<Layout isLogged={isLogged}><ForumChat /></Layout>} />
 
       {/* Rota Curinga */}
       <Route path="*" element={<Navigate to="/" replace />} />

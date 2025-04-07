@@ -51,26 +51,29 @@ const NavbarLogado = ({ userData }) => {
           <GiHamburgerMenu />
         </div>
         <ul className={`links-nav ${menuAberto ? "ativo" : ""}`}>
-          <li>
-            <a href="#" onClick={() => navigate("/")}>
-              Início
-            </a>
-          </li>
-          <li>
-            <a href="#" onClick={() => navigate("/sobre")}>
-              Sobre
-            </a>
-          </li>
-          <li>
-            <a href="#" onClick={() => navigate("/parceiros")}>
-              Parceiros
-            </a>
-          </li>
-          <li>
-            <a href="#" onClick={() => navigate("/mapa")}>
-              Mapa
-            </a>
-          </li>
+          <div className="links-navegacao">
+            <li>
+              <a href="#" onClick={() => navigate("/")}>
+                Início
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={() => navigate("/sobre")}>
+                Sobre
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={() => navigate("/parceiros")}>
+                Parceiros
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={() => navigate("/mapa")}>
+                Mapa
+              </a>
+            </li>
+          </div>
+          
           <div className="area-usuario" onClick={alternarDropdown}>
             <FaUserCircle className="icone-usuario" />
             <span className="nome-usuario">

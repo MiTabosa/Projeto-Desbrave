@@ -1,46 +1,47 @@
-import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { FaUserAlt } from 'react-icons/fa';
+import { IoReturnUpBackOutline } from 'react-icons/io5';
 import './Chatforum.css';
-import { FaUserAlt } from "react-icons/fa";
-import { IoReturnUpBackOutline } from "react-icons/io5";
-
-// Dados mockados iniciais
-const mockComments = [
-  {
-    id: 1,
-    user: "João Silva",
-    date: new Date().toLocaleDateString("pt-BR"),
-    comment: "Olá pessoal, como vocês estão encontrando o curso?"
-  },
-  {
-    id: 2,
-    user: "Maria Oliveira",
-    date: new Date().toLocaleDateString("pt-BR"),
-    comment: "Estou adorando! As aulas são muito bem explicadas."
-  }
-];
 
 const Chatforum = () => {
+  const { forumId } = useParams();
   const navigate = useNavigate();
-  const [comments, setComments] = useState(mockComments);
+  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const bottomRef = useRef(null);
 
-  // Simula a chamada à API (será substituída quando o back-end estiver pronto)
-  const api = {
-    postComment: async (comment) => {
-      // Simula um delay de rede
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      // Retorna o comentário com um ID fictício
-      return {
-        id: Math.floor(Math.random() * 10000),
-        user: "Você", // Ou pegar do usuário logado
-        date: new Date().toLocaleDateString("pt-BR"),
-        comment: comment
-      };
+  // Dados mockados - mesmo formato original
+  const mockComments = [
+    {
+      user: "João Silva",
+      date: new Date().toLocaleDateString("pt-BR"),
+      comment: "Olá pessoal, como vocês estão encontrando o curso?"
+    },
+    {
+      user: "Maria Oliveira",
+      date: new Date().toLocaleDateString("pt-BR"),
+      comment: "Estou adorando! As aulas são muito bem explicadas."
     }
-  };
+  ];
+
+  useEffect(() => {
+    setComments(mockComments);
+    
+    /* CÓDIGO PARA BACK-END (mantido comentado):
+    const fetchComments = async () => {
+      try {
+        const response = await fetch(`http://localhost:8081/postagem?forumId=${forumId}`);
+        const data = await response.json();
+        setComments(data);
+      } catch (error) {
+        console.error("Erro:", error);
+        setComments(mockComments); // Fallback
+      }
+    };
+    fetchComments();
+    */
+  }, [forumId]);
 
   useEffect(() => {
     if (bottomRef.current) {
@@ -48,41 +49,53 @@ const Chatforum = () => {
     }
   }, [comments]);
 
-  const addComment = async () => {
+  const addComment = () => {
     if (newComment.trim() === "") return;
 
-    try {
-      // Simula a chamada à API
-      const savedComment = await api.postComment(newComment);
-      
-      // Adiciona o novo comentário à lista
-      setComments([...comments, savedComment]);
-      setNewComment("");
-      
-    } catch (error) {
-      console.error("Erro ao adicionar comentário:", error);
-      // Aqui você pode adicionar tratamento de erro para o usuário
-    }
-  };
+    const newPost = {
+      user: "Você",
+      date: new Date().toLocaleDateString("pt-BR"),
+      comment: newComment
+    };
 
-  const handleBackToForums = () => {
-    navigate("/forum");
+    setComments([...comments, newPost]);
+    setNewComment("");
+
+    /* CÓDIGO PARA BACK-END (mantido comentado):
+    try {
+      const response = await fetch("http://localhost:8081/postagem", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          forumId,
+          comment: newComment,
+          userId: "currentUserId" // Substituir pelo ID real
+        })
+      });
+      const savedComment = await response.json();
+      setComments(prev => [...prev, savedComment]);
+    } catch (error) {
+      console.error(error);
+      // Adiciona localmente mesmo se falhar
+      setComments(prev => [...prev, newPost]);
+    }
+    */
   };
 
   return (
     <section className="chat-f">
       <span className="backpage">
         <IoReturnUpBackOutline size={24} />
-        <button onClick={handleBackToForums} className="button-voltar-f">
+        <button onClick={() => navigate(-1)} className="button-voltar-f">
           Voltar para seção anterior
         </button>
       </span>
-      
-      <h3 className="titulo-chat">Discussão do Curso</h3>
 
       <div className="comments-container">
-        {comments.map((item) => (
-          <div key={item.id} className="box-chat">
+        {comments.map((item, index) => (
+          <div key={index} className="box-chat">
             <span className="cf-icon">
               <FaUserAlt />
             </span>
@@ -107,11 +120,7 @@ const Chatforum = () => {
           placeholder="Responder"
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              addComment();
-            }
-          }}
+          onKeyDown={(e) => e.key === 'Enter' && addComment()}
         />
         <button className="button-enviar" onClick={addComment}>
           Enviar

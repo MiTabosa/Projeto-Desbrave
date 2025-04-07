@@ -1,4 +1,4 @@
-import { FaGooglePlus, FaEye, FaEyeSlash } from "react-icons/fa"; 
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Cadastro.css";
 import { Link } from "react-router-dom"; 
 import { useState } from "react";
@@ -10,9 +10,11 @@ export default function Cadastro() {
     email: "",
     senha: "",
     confirmarSenha: "",
+    tipoUsuario: "USER"
   });
 
   const [mostrarSenha, setMostrarSenha] = useState(false);
+  const [erro, setErro] = useState("");
 
   const lidarComMudanca = (e) => {
     const { name, value } = e.target;
@@ -25,41 +27,32 @@ export default function Cadastro() {
 
   const lidarComEnvio = async (e) => {
     e.preventDefault();
+
     if (dadosFormulario.senha !== dadosFormulario.confirmarSenha) {
-      alert("As senhas não coincidem!");
+      const mensagemErro = "As senhas não coincidem!";
+      setErro(mensagemErro);
+      alert(mensagemErro);
       return;
     }
 
-  //   try {
-  //     const resposta = await axios.post("http://localhost:3000/usuario", {
-  //       nome: dadosFormulario.nome,
-  //       email: dadosFormulario.email,
-  //       senha: dadosFormulario.senha,
-  //     });
+    setErro("");
 
-  //     alert("Cadastro realizado com sucesso!");
-  //     console.log(resposta.data); 
+    try {
+      const { confirmarSenha, ...dadosParaAPI } = dadosFormulario;
 
-  //   } catch (error) {
-  //     console.error("Erro ao cadastrar usuário:", error);
-  //     alert("Erro ao conectar com o servidor.");
-  //   }
-  // };
-// Simulação de resposta da API
-setTimeout(() => {
-  const usuarioMockado = {
-    id: Math.floor(Math.random() * 1000),
-    nome: dadosFormulario.nome,
-    email: dadosFormulario.email,
-    senha: dadosFormulario.senha,
+      const resposta = await axios.post("http://localhost:8081/api/usuarios/cadastrar", dadosParaAPI);
+
+      alert("Cadastro realizado com sucesso!");
+      console.log(resposta.data); 
+
+    } catch (error) {
+      const mensagemErro = "Erro ao conectar com o servidor.";
+      console.error("Erro ao cadastrar usuário:", error.response || error.message || error);
+      setErro(mensagemErro);
+      alert(mensagemErro);
+    }
   };
 
-  console.log("Usuário cadastrado (mock):", usuarioMockado);
-  localStorage.setItem("usuario", JSON.stringify(usuarioMockado));
-
-  alert("Cadastro realizado com sucesso!");
-}, 1000);
-};
   return (
     <form onSubmit={lidarComEnvio} className="cadastroContainer">
       <div className="cadastroEsquerda">
@@ -122,7 +115,13 @@ setTimeout(() => {
             {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
           </button>
         </div>
-        
+
+        <input
+          type="hidden"
+          name="tipoUsuario"
+          value={dadosFormulario.tipoUsuario}
+        />
+
         <div className="termos">
           <input type="checkbox" id="termos" required />
           <label htmlFor="termos">

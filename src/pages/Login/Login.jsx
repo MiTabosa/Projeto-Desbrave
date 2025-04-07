@@ -14,7 +14,7 @@ export default function Login() {
 
   async function realizarLogin() {
     try {
-      const resposta = await axios.post("/autenticacao/login", {
+      const resposta = await axios.post("http://localhost:8081/autenticacao/login", {
         email: email,
         senha: senha,
       });

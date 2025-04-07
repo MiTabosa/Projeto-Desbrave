@@ -202,7 +202,6 @@ const App = () => {
       setIsAdmin(user.role === 'admin');
     } catch (error) {
       console.error('Erro ao fazer parse do usuário:', error);
-      // opcional: limpa o localStorage se estiver corrompido
       localStorage.removeItem('usuarioLogado');
     }
   }
@@ -286,18 +285,23 @@ const App = () => {
         <Route path="/chat/:forumId" element={<Layout isLogged={isLogged}><ForumChat /></Layout>} />
 
         {/* Rotas Privadas */}
-        {/* <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><PrivateRoute><InvalidScanner /></PrivateRoute></Layout>} /> */}
-        {/* <Route path="/scanner" element={<Layout isLogged={isLogged}><PrivateRoute><Scanner /></PrivateRoute></Layout>} /> */}
-        {/* <Route path="/cupons" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsDashboard /></PrivateRoute></Layout>} />
-        <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsUsados /></PrivateRoute></Layout>} /> */}
-        {/* <Route path="/forumChat" element={<Layout isLogged={isLogged}><PrivateRoute><ForumChat /></PrivateRoute></Layout>} /> */}
-        {/* <Route path="/meusCursos" element={<Layout isLogged={isLogged}><PrivateRoute><MeusCursos /></PrivateRoute></Layout>} /> */}
-        {/* <Route path="/Certificados" element={<Layout isLogged={isLogged}><PrivateRoute><Certificados /></PrivateRoute></Layout>} /> */}
+        <Route path="/invalidScanner" element={<Layout isLogged={isLogged}><PrivateRoute><InvalidScanner /></PrivateRoute></Layout>} /> 
+        <Route path="/scanner" element={<Layout isLogged={isLogged}><PrivateRoute><Scanner /></PrivateRoute></Layout>} /> 
+        <Route path="/cupons" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsDashboard /></PrivateRoute></Layout>} />
+        <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsUsados /></PrivateRoute></Layout>} /> 
+        <Route path="/forumChat" element={<Layout isLogged={isLogged}><PrivateRoute><ForumChat /></PrivateRoute></Layout>} /> 
+        <Route path="/meusCursos" element={<Layout isLogged={isLogged}><PrivateRoute><MeusCursos /></PrivateRoute></Layout>} /> 
+        <Route path="/certificados" element={<Layout isLogged={isLogged}><PrivateRoute><Certificados /></PrivateRoute></Layout>} /> {/*<-- Rota com nome maiusculo*/}
+        <Route path="/dashboard" element={<Layout isLogged={isLogged}><PrivateRoute><Dashboard /></PrivateRoute></Layout>} />
+        <Route path="/chat/:forumId" element={<Layout isLogged={isLogged}><PrivateRoute><ForumChat /></PrivateRoute></Layout>} />
+
 
         {/* Rotas do Admin */}
-        {/* <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><AdminRoute><DashboardAdmin /></AdminRoute></Layout>} />
+        <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><AdminRoute><DashboardAdmin /></AdminRoute></Layout>} />
         <Route path="/gestaoCursos" element={<Layout isLogged={isLogged}><AdminRoute><GestaoCursos /></AdminRoute></Layout>} />
-        <Route path="/gestaoForum" element={<Layout isLogged={isLogged}><AdminRoute><GestaoForum /></AdminRoute></Layout>} /> */}
+        <Route path="/gestaoForum" element={<Layout isLogged={isLogged}><AdminRoute><GestaoForum /></AdminRoute></Layout>} />
+
+
       {/* Rotas Teste */}
       <Route path="/dashboard" element={<Layout isLogged={isLogged}><Dashboard /></Layout>} />
       <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><DashboardAdmin /></Layout>} />

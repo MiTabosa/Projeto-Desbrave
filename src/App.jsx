@@ -28,7 +28,6 @@
 // import CuponsUsados from './pages/Cupons/CuponsUsados';
 // import Forum from './pages/Forum/Foruns';
 // import ForumChat from './pages/ChatForum/Chatforum';
-// import MeusCursos from './pages/MeusCursos/MeusCursos';
 // import Certificados from './pages/Certificados/Certificados';
 // import DashboardAdmin from './pages/DashboardAdmin/DashboardAdmin';
 // import GestaoCursos from './pages/GestCurso/Gestcurso';
@@ -63,7 +62,6 @@
 //       '/CuponsUsados',
 //       '/cupons',
 //       '/certificados',
-//       '/meusCursos'
 //     ];
 
 //     const shouldShowNavbar = !hideNavbarPaths.includes(location.pathname);
@@ -119,7 +117,6 @@
 //         <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><DashboardAdmin /></Layout>} />
 //         <Route path="/gestaoCursos" element={<Layout isLogged={isLogged}><GestaoCursos /></Layout>} />
 //         <Route path="/gestaoForum" element={<Layout isLogged={isLogged}><GestaoForum /></Layout>} />
-//         <Route path="/meusCursos" element={<Layout isLogged={isLogged}><MeusCursos /></Layout>} />
 //         <Route path="/cupons" element={<Layout isLogged={isLogged}><CuponsDashboard /></Layout>} />
 //         <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><CuponsUsados /></Layout>} />
 //         <Route path="/certificados" element={<Layout isLogged={isLogged}><Certificados /></Layout>} />
@@ -133,7 +130,6 @@
 //         {/* <Route path="/cupons" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsDashboard /></PrivateRoute></Layout>} />
 //         <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsUsados /></PrivateRoute></Layout>} /> */}
 //         {/* <Route path="/forumChat" element={<Layout isLogged={isLogged}><PrivateRoute><ForumChat /></PrivateRoute></Layout>} /> */}
-//         {/* <Route path="/meusCursos" element={<Layout isLogged={isLogged}><PrivateRoute><MeusCursos /></PrivateRoute></Layout>} /> */}
 //         {/* <Route path="/Certificados" element={<Layout isLogged={isLogged}><PrivateRoute><Certificados /></PrivateRoute></Layout>} /> */}
 
 //         {/* Rotas do Admin */}
@@ -222,7 +218,6 @@ const App = () => {
       '/CuponsUsados',
       '/cupons',
       '/certificados',
-      '/meusCursos'
     ];
 
     const shouldShowNavbar = !hideNavbarPaths.includes(location.pathname);
@@ -290,7 +285,6 @@ const App = () => {
         <Route path="/cupons" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsDashboard /></PrivateRoute></Layout>} />
         <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsUsados /></PrivateRoute></Layout>} /> 
         <Route path="/forumChat" element={<Layout isLogged={isLogged}><PrivateRoute><ForumChat /></PrivateRoute></Layout>} /> 
-        <Route path="/meusCursos" element={<Layout isLogged={isLogged}><PrivateRoute><MeusCursos /></PrivateRoute></Layout>} /> 
         <Route path="/certificados" element={<Layout isLogged={isLogged}><PrivateRoute><Certificados /></PrivateRoute></Layout>} /> {/*<-- Rota com nome maiusculo*/}
         <Route path="/dashboard" element={<Layout isLogged={isLogged}><PrivateRoute><Dashboard /></PrivateRoute></Layout>} />
         <Route path="/chat/:forumId" element={<Layout isLogged={isLogged}><PrivateRoute><ForumChat /></PrivateRoute></Layout>} />

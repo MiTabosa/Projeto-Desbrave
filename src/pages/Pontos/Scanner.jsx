@@ -122,7 +122,11 @@ function Scanner() {
       scanner.render(
         (result) => {
           console.log("Código escaneado:", result);
+<<<<<<< HEAD
           fetchQRCodeData(result);
+=======
+          fetchQRCodeData(result); 
+>>>>>>> 7e60cf9eda742726cfdc926acb49d76df54705ef
 
           scanner
             .clear()

@@ -13,7 +13,6 @@ const GestForum = () => {
     categoria: ''
   });
 
-  // Carrega fóruns da API
   useEffect(() => {
     const fetchForuns = async () => {
       try {
@@ -44,20 +43,16 @@ const GestForum = () => {
 
     try {
       if (formData.id) {
-        // Atualização
         await api.put(`/forum/${formData.id}`, formData);
         alert('Fórum atualizado com sucesso!');
       } else {
-        // Criação
         await api.post('/forum', formData);
         alert('Fórum cadastrado com sucesso!');
       }
 
-      // Recarrega os dados
       const response = await api.get('/forum');
       setForum(response.data);
       
-      // Reseta formulário
       setFormData({ nome: '', categoria: '' });
       
     } catch (err) {

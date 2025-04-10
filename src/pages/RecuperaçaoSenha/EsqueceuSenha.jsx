@@ -3,6 +3,8 @@ import "./EsqueceuSenha.css";
 import { useNavigate } from "react-router-dom";
 import imgRecupSenha from "../../assets/login-senha.jpg";
 import axios from "axios";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EsqueceuSenha = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +19,7 @@ const EsqueceuSenha = () => {
 
   const enviarCodigoRecuperacao = async () => {
     if (!validarEmail(email)) {
-      setErroEmail("Digite um e-mail válido."); 
+      toast.error("Digite um e-mail válido."); 
       return;
     }
 
@@ -28,7 +30,7 @@ const EsqueceuSenha = () => {
       const resposta = await axios.post("http://localhost:8081/api/usuarios/recuperar-senha", { email });
 
       if (resposta.status === 200) {
-        alert("Código de recuperação enviado para o seu e-mail.");
+        toast.success("Código de recuperação enviado para o seu e-mail.");
         navegar("/recuperarSenha");
       } else {
         setErroEmail("Erro ao enviar o código. Tente novamente.");
@@ -57,7 +59,7 @@ const EsqueceuSenha = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         
-        {erroEmail && <p className="erroMensagem">{erroEmail}</p>} {/* Mostra a mensagem de erro */}
+        {erroEmail && <p className="erroMensagem">{erroEmail}</p>} 
 
         <button className="enviarCodigo" onClick={enviarCodigoRecuperacao} disabled={carregando}>
           {carregando ? "Enviando..." : "Enviar código"}

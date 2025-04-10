@@ -1,4 +1,4 @@
-.redefinirSenhaContainer {
+/* .redefinirSenhaContainer {
     display: flex;
     height: 100vh;
 }
@@ -53,7 +53,6 @@
     outline: none;
 }
 
-
 .continuar {
     width: 100%;
     max-width: 200px;
@@ -103,4 +102,125 @@
       display: block;
       width: 100%;
     }
-  }
+  } */
+
+  .redefinirSenhaContainer {
+    display: flex;
+    height: 100vh;
+}
+
+.RedImagemEsquerda {
+    width: 50%;
+    height: 100%;
+    background: url("/src/assets/login-senha.jpg") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+.RedLadoDireito {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+    margin-bottom: 50px;
+    background-color: #ffffff;
+}
+
+.RedLadoDireito h1 {
+    color: #0367A5;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.RedLadoDireito p {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+.inputCampo {
+    max-width: 100%px;
+    position: relative;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.RedInputSenha {
+    width: 100%;
+    padding: 12px 40px 12px 12px; 
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+
+.iconeSenha {
+    position: absolute;
+    top: 50%;
+    right: 90px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+    font-size: 18px;
+}
+
+.continuar {
+    width: 100%;
+    max-width: 200px;
+    padding: 12px;
+    background-color: #0367A5;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 50px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.continuar:hover {
+    transform: scale(1.10);
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.voltarLogin {
+    margin-top: 50px;
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.voltarLogin:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .redefinirSenhaContainer {
+        flex-direction: column;
+    }
+
+    .RedImagemEsquerda {
+        display: none !important;
+    }
+
+    .RedLadoDireito {
+        display: block;
+        width: 100%;
+    }
+}

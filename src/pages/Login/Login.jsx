@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { IoEyeOff, IoEye } from "react-icons/io5";
 import { api } from "../../service/api";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Login({ setIsLogged, atualizarLogin }) {
@@ -33,7 +35,7 @@ export default function Login({ setIsLogged, atualizarLogin }) {
       navegar("/home");
     } catch (erro) {
       console.error("Erro ao fazer login:", erro);
-      alert("E-mail ou senha inválidos.");
+      toast.error("E-mail ou senha inválidos.");
     }
   }
 
@@ -46,7 +48,7 @@ export default function Login({ setIsLogged, atualizarLogin }) {
         <p className="loginSubtitulo">Entre na sua conta!</p>
 
         <div className="loginformulario">
-          <div className="inputCampo">
+          <div className="inputCampoLogin">
             <FaUser className="inputIcone" />
             <input
               type="email"
@@ -56,7 +58,7 @@ export default function Login({ setIsLogged, atualizarLogin }) {
             />
           </div>
 
-          <div className="inputCampo">
+          <div className="inputCampoLogin">
             <FaLock className="inputIcone" />
             <input
               type={mostrarSenha ? "text" : "password"}

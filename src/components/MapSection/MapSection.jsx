@@ -15,21 +15,13 @@ const blueIcon = new L.Icon({
   shadowSize: [41, 41],
 });
 
-const greenIcon = new L.Icon({
-  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
-  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
 
 const MapSection = ({ tipo, usuarioId }) => {
   const navigate = useNavigate(); 
   const [pontosLidos, setPontosLidos] = useState([]);
 
   useEffect(() => {
-    if (tipo === "map-detalhado" && usuarioId) {
+    if (tipo === "mapa-detalhado" && usuarioId) {
       axios.get(`http://localhost:8081/usuario-qrcode/usuario/${usuarioId}`)
         .then(response => {
           const ids = response.data.map(item => item.qrCodeId);
@@ -57,22 +49,21 @@ const MapSection = ({ tipo, usuarioId }) => {
   ];
 
   return (
-    <section className={`map-section ${tipo}`}>
-      <MapContainer center={[-8.0608, -34.876]} zoom={15} className="map-container">
+    <section className={`mapa-seção ${tipo}`}>
+      <MapContainer center={[-8.0608, -34.876]} zoom={15} className="mapa-container">
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; OpenStreetMap contributors'
         />
         {pontos.map((ponto) => {
-          const foiEscaneado = tipo === "map-detalhado" && pontosLidos.includes(ponto.id);
-          const icone = tipo === "map-detalhado" ? (foiEscaneado ? greenIcon : blueIcon) : blueIcon;
+          const foiEscaneado = tipo === "mapa-detalhado" && pontosLidos.includes(ponto.id);
 
           return (
             <Marker key={ponto.id} position={ponto.coords} icon={icone}>
               <Popup>
                 <div className="popup-content">
                   <b className="popup-title">{ponto.nome}</b>
-                  {tipo === "map-detalhado" && (
+                  {tipo === "mapa-detalhado" && (
                     <>
                       {ponto.imagem && <img className="popup-img" src={ponto.imagem} alt={ponto.nome} width="150px" />}
                       {ponto.descricao && <p className="popup-desc">{ponto.descricao}</p>}

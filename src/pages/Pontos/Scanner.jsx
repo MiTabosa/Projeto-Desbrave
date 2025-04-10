@@ -122,11 +122,7 @@ function Scanner() {
       scanner.render(
         (result) => {
           console.log("Código escaneado:", result);
-<<<<<<< HEAD
-          fetchQRCodeData(result);
-=======
           fetchQRCodeData(result); 
->>>>>>> 7e60cf9eda742726cfdc926acb49d76df54705ef
 
           scanner
             .clear()
@@ -188,7 +184,7 @@ function Scanner() {
           <div className="inicial-vetor">
             <div className="titulo-container">
               <BsCheck2Circle className="vetor-img" />
-              <div className="texto-container">
+              <div className="texto-container-pontos">
                 <h2>QR CODE ESCANEADO COM SUCESSO!</h2>
                 <p>
                   {pontos !== null && (

@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import { IoReturnUpBackOutline } from 'react-icons/io5';
 import './Chatforum.css';
-import { api } from '../../service/api';
 
 const Chatforum = () => {
   const { forumId } = useParams();
@@ -27,19 +26,6 @@ const Chatforum = () => {
 
   useEffect(() => {
     setComments(mockComments);
-    
-
-    const fetchComments = async () => {
-      try {
-        const response = await api.get(`/postagens?forumId=${forumId}`);
-        setComments(response.data);
-      } catch (error) {
-        console.error("Erro:", error);
-        setComments(mockComments); 
-      }
-    };
-    fetchComments();
-    
   }, [forumId]);
 
   useEffect(() => {
@@ -48,7 +34,7 @@ const Chatforum = () => {
     }
   }, [comments]);
 
-  const addComment = async () => {
+  const addComment = () => {
     if (newComment.trim() === "") return;
 
     const newPost = {
@@ -57,32 +43,8 @@ const Chatforum = () => {
       comment: newComment
     };
 
-    // setComments([...comments, newPost]);
-    // setNewComment("");
-
-    
-    try {
-      const response = await api.post("/postagens", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          forumId,
-          comment: newComment,
-          userId: "currentUserId" 
-        })
-      });
-
-      const savedComment = await response.json();
-      setComments(prev => [...prev, savedComment]);
-    } catch (error) {
-      console.error(error);
-
-      setComments(prev => [...prev, newPost]); 
-      setNewComment("");
-    }
-    
+    setComments([...comments, newPost]);
+    setNewComment("");
   };
 
   return (

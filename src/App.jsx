@@ -285,6 +285,7 @@ const App = () => {
         <Route path="/cupons" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsDashboard /></PrivateRoute></Layout>} />
         <Route path="/CuponsUsados" element={<Layout isLogged={isLogged}><PrivateRoute><CuponsUsados /></PrivateRoute></Layout>} /> 
         <Route path="/forumChat" element={<Layout isLogged={isLogged}><PrivateRoute><ForumChat /></PrivateRoute></Layout>} /> 
+        {/* <Route path="/meusCursos" element={<Layout isLogged={isLogged}><PrivateRoute><MeusCursos /></PrivateRoute></Layout>} />  */}
         <Route path="/certificados" element={<Layout isLogged={isLogged}><PrivateRoute><Certificados /></PrivateRoute></Layout>} /> {/*<-- Rota com nome maiusculo*/}
         <Route path="/dashboard" element={<Layout isLogged={isLogged}><PrivateRoute><Dashboard /></PrivateRoute></Layout>} />
         <Route path="/chat/:forumId" element={<Layout isLogged={isLogged}><PrivateRoute><ForumChat /></PrivateRoute></Layout>} />

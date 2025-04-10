@@ -137,7 +137,7 @@ function Scanner() {
       scanner.render(
         (result) => {
           console.log("Código escaneado:", result);
-          fetchQRCodeData(result); // passa o texto escaneado (ex: "Marco Zero")
+          fetchQRCodeData(result); 
 
           scanner
             .clear()

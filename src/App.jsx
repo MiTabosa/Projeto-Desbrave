@@ -146,10 +146,10 @@ const App = () => {
 
 
         {/* Rotas do Admin */}
-        {/* <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><AdminRoute><DashboardAdmin /></AdminRoute></Layout>} />
+        <Route path="/dashboardAdmin" element={<Layout isLogged={isLogged}><AdminRoute><DashboardAdmin /></AdminRoute></Layout>} />
         <Route path="/gestaoCursos" element={<Layout isLogged={isLogged}><AdminRoute><GestaoCursos /></AdminRoute></Layout>} />
         <Route path="/gestaoForum" element={<Layout isLogged={isLogged}><AdminRoute><GestaoForum /></AdminRoute></Layout>} />
-        <Route path="/gestaoQrcodes" element={<Layout isLogged={isLogged}><AdminRoute><GestaoQrcodes /></AdminRoute></Layout>} /> */}
+        <Route path="/gestaoQrcodes" element={<Layout isLogged={isLogged}><AdminRoute><GestaoQrcodes /></AdminRoute></Layout>} />
 
 
       {/* Rotas Teste */}

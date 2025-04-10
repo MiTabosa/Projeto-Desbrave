@@ -5,10 +5,10 @@ import Button from '../../components/Button/Button';
 
 const GestCurso = () => {
     const [cursos, setCursos] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [carregando, setCarregando] = useState(true);
+    const [erro, setErro] = useState(null);
     
-    const [formData, setFormData] = useState({
+    const [dadosFormulario, setDadosFormulario] = useState({
         titulo: '',
         descricao: '',
         categoria: '',
@@ -17,13 +17,13 @@ const GestCurso = () => {
         urlExterna: ''
     });
 
-    const sanitizeCursos = (data) => {
-        if (!data) return [];
+    const sanitizarCursos = (dados) => {
+        if (!dados) return [];
         
         try {
-            if (typeof data === 'string') data = JSON.parse(data);
-            if (Array.isArray(data)) return data;
-            if (typeof data === 'object') return [data];
+            if (typeof dados === 'string') dados = JSON.parse(dados);
+            if (Array.isArray(dados)) return dados;
+            if (typeof dados === 'object') return [dados];
             return [];
         } catch (e) {
             console.error("Falha ao sanitizar dados:", e);
@@ -32,12 +32,12 @@ const GestCurso = () => {
     };
 
     useEffect(() => {
-        const fetchCursos = async () => {
+        const buscarCursos = async () => {
             try {
-                const response = await api.get('/cursos');
-                console.log('Resposta da API:', response.data); 
+                const resposta = await api.get('/cursos');
+                console.log('Resposta da API:', resposta.data); 
                 
-                const dadosSanitizados = sanitizeCursos(response.data);
+                const dadosSanitizados = sanitizarCursos(resposta.data);
                 setCursos(dadosSanitizados);
                 
                 if (dadosSanitizados.length === 0) {
@@ -45,50 +45,50 @@ const GestCurso = () => {
                 }
             } catch (err) {
                 console.error("Erro completo:", err);
-                setError(`Erro ao carregar cursos: ${err.message}`);
+                setErro(`Erro ao carregar cursos: ${err.message}`);
                 setCursos([]);
             } finally {
-                setLoading(false);
+                setCarregando(false);
             }
         };
         
-        fetchCursos();
+        buscarCursos();
     }, []);
 
-    const handleInputChange = (e) => {
+    const handleMudancaInput = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({
+        setDadosFormulario(prev => ({
             ...prev,
             [name]: name === 'cargaHoraria' ? Number(value) : value
         }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleEnvio = async (e) => {
         e.preventDefault();
 
-        if (!formData.titulo || !formData.descricao || !formData.categoria || formData.cargaHoraria <= 0) {
+        if (!dadosFormulario.titulo || !dadosFormulario.descricao || !dadosFormulario.categoria || dadosFormulario.cargaHoraria <= 0) {
             alert('Preencha todos os campos obrigatórios com valores válidos!');
             return;
         }
 
         try {
-            const cursoData = {
-                ...formData,
-                cargaHoraria: Number(formData.cargaHoraria)
+            const dadosCurso = {
+                ...dadosFormulario,
+                cargaHoraria: Number(dadosFormulario.cargaHoraria)
             };
 
-            if (formData.idcursos) {
-                await api.put(`/cursos/${formData.idcursos}`, cursoData);
+            if (dadosFormulario.idcursos) {
+                await api.put(`/cursos/${dadosFormulario.idcursos}`, dadosCurso);
                 alert('Curso atualizado com sucesso!');
             } else {
-                await api.post('/cursos', cursoData);
+                await api.post('/cursos', dadosCurso);
                 alert('Curso cadastrado com sucesso!');
             }
 
-            const response = await api.get('/cursos');
-            setCursos(sanitizeCursos(response.data));
+            const resposta = await api.get('/cursos');
+            setCursos(sanitizarCursos(resposta.data));
             
-            setFormData({
+            setDadosFormulario({
                 titulo: '',
                 descricao: '',
                 categoria: '',
@@ -103,7 +103,7 @@ const GestCurso = () => {
         }
     };
 
-    const excluir = async (id) => {
+    const excluirCurso = async (id) => {
         if (!window.confirm('Confirmar exclusão?')) return;
         
         try {
@@ -116,8 +116,8 @@ const GestCurso = () => {
         }
     };
 
-    const editar = (curso) => {
-        setFormData({
+    const editarCurso = (curso) => {
+        setDadosFormulario({
             idcursos: curso.idcursos,
             titulo: curso.titulo || '',
             descricao: curso.descricao || '',
@@ -129,44 +129,44 @@ const GestCurso = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    if (loading) return <div className="loading">Carregando...</div>;
-    if (error) return <div className="error">{error}</div>;
+    if (carregando) return <div className="carregando">Carregando...</div>;
+    if (erro) return <div className="erro">{erro}</div>;
 
     return (
         <div className='gestao-cursos'>
             <div className='formulario'>
-                <h2>{formData.idcursos ? `Editando Curso #${formData.idcursos}` : 'Novo Curso'}</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className='form-1'>
+                <h2>{dadosFormulario.idcursos ? `Editando Curso #${dadosFormulario.idcursos}` : 'Novo Curso'}</h2>
+                <form onSubmit={handleEnvio}>
+                    <div className='grupo-formulario'>
                         <label>Título*:</label>
                         <input
                             type='text'
                             name='titulo'
-                            value={formData.titulo}
-                            onChange={handleInputChange}
+                            value={dadosFormulario.titulo}
+                            onChange={handleMudancaInput}
                             required
                             placeholder='Nome do curso'
                         />
                     </div>
 
-                    <div className='form-1'>
+                    <div className='grupo-formulario'>
                         <label>Descrição*:</label>
                         <textarea
                             name='descricao'
-                            value={formData.descricao}
-                            onChange={handleInputChange}
+                            value={dadosFormulario.descricao}
+                            onChange={handleMudancaInput}
                             rows='4'
                             required
                             placeholder='Descrição completa'
                         />
                     </div>
 
-                    <div className='form-1'>
+                    <div className='grupo-formulario'>
                         <label>Categoria*:</label>
                         <select
                             name='categoria'
-                            value={formData.categoria}
-                            onChange={handleInputChange}
+                            value={dadosFormulario.categoria}
+                            onChange={handleMudancaInput}
                             required
                         >
                             <option value=''>Selecione...</option>
@@ -176,56 +176,56 @@ const GestCurso = () => {
                         </select>
                     </div>
 
-                    <div className='form-1'>
+                    <div className='grupo-formulario'>
                         <label>Carga Horária (horas)*:</label>
                         <input
                             type='number'
                             name='cargaHoraria'
-                            value={formData.cargaHoraria}
-                            onChange={handleInputChange}
+                            value={dadosFormulario.cargaHoraria}
+                            onChange={handleMudancaInput}
                             min='1'
                             required
                         />
                     </div>
 
-                    <div className='form-1'>
+                    <div className='grupo-formulario'>
                         <label>Status:</label>
                         <select
                             name='status'
-                            value={formData.status}
-                            onChange={handleInputChange}
+                            value={dadosFormulario.status}
+                            onChange={handleMudancaInput}
                         >
                             <option value='ATIVO'>Ativo</option>
                             <option value='INATIVO'>Inativo</option>
                         </select>
                     </div>
 
-                    <div className='form-1'>
+                    <div className='grupo-formulario'>
                         <label>URL Externa:</label>
                         <input
                             type='url'
                             name='urlExterna'
-                            value={formData.urlExterna}
-                            onChange={handleInputChange}
+                            value={dadosFormulario.urlExterna}
+                            onChange={handleMudancaInput}
                             placeholder='https://exemplo.com'
                         />
                     </div>
                     
-                    <div className='buttonContainerForm'>
+                    <div className='container-botoes'>
                         <Button 
-                            className="buttonGestão" 
-                            text={formData.idcursos ? 'Atualizar' : 'Cadastrar'} 
+                            className="botao-gestao" 
+                            text={dadosFormulario.idcursos ? 'Atualizar' : 'Cadastrar'} 
                             color="#0367A5" 
                             size="medium" 
                             type="submit"
                         />
-                        {formData.idcursos && (
+                        {dadosFormulario.idcursos && (
                             <Button 
-                                className="buttonCancelar" 
+                                className="botao-cancelar" 
                                 text="Cancelar Edição" 
                                 color="#f44336" 
                                 size="medium" 
-                                onClick={() => setFormData({
+                                onClick={() => setDadosFormulario({
                                     titulo: '',
                                     descricao: '',
                                     categoria: '',
@@ -243,7 +243,7 @@ const GestCurso = () => {
                 <h2>Cursos Cadastrados</h2>
                 
                 {!Array.isArray(cursos) ? (
-                    <p className="error">Formato de dados inválido</p>
+                    <p className="erro">Formato de dados inválido</p>
                 ) : cursos.length === 0 ? (
                     <p>Nenhum curso encontrado</p>
                 ) : (
@@ -268,16 +268,16 @@ const GestCurso = () => {
                                         </a>
                                     </p>
                                 )}
-                                <div className='buttonEdicao'>
+                                <div className='botoes-edicao'>
                                     <button 
-                                        className='buttonEditar'
-                                        onClick={() => editar(curso)}
+                                        className='botao-editar'
+                                        onClick={() => editarCurso(curso)}
                                     >
                                         Editar
                                     </button>
                                     <button 
-                                        className='buttonExcluir'
-                                        onClick={() => excluir(curso.idcursos)}
+                                        className='botao-excluir'
+                                        onClick={() => excluirCurso(curso.idcursos)}
                                     >
                                         Excluir
                                     </button>

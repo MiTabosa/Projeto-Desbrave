@@ -49,7 +49,7 @@
   right: 0;
 }
 
-.adm-home-botao {
+.botao-home-adm {
   background-color: #35A150;
   border-radius: 5px;
   height: 2.8rem;
@@ -63,12 +63,12 @@
   transition: all 0.2s ease;
 }
 
-.adm-home-botao:hover {
+.botao-home-adm:hover {
   background-color: #2d8a43;
   transform: translateY(-1px);
 }
 
-.admin-info-cards {
+.cards-info-adm {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
@@ -76,7 +76,7 @@
   width: 100%;
 }
 
-.admin-card {
+.card-adm {
   width: 320px;
   height: 200px;
   border-radius: 8px;
@@ -89,31 +89,31 @@
   overflow: hidden;
 }
 
-.admin-card:hover {
+.card-adm:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
 }
 
-.admin-card-cursos {
+.card-cursos-adm {
   background: linear-gradient(to right, #0a5fa3, #08578f);
 }
 
-.admin-card-foruns {
+.card-foruns-adm {
   background: linear-gradient(to right, #0a5fa3, #08578f);
 }
 
-.admin-card-qrcode {
+.card-qrcode-adm {
   background: linear-gradient(to right, #0a5fa3, #08578f);
 }
 
-.admin-card-content {
+.conteudo-card-adm {
   display: flex;
   align-items: center;
   gap: 0.9rem;
   margin-bottom: 0.6rem;
 }
 
-.admin-card-icon {
+.icone-card-adm {
   min-width: 48px;
   height: 48px;
   background-color: white;
@@ -125,7 +125,7 @@
   flex-shrink: 0;
 }
 
-.admin-card-text {
+.texto-card-adm {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
@@ -137,7 +137,7 @@
   color: #ffffff;
 }
 
-.admin-card-number {
+.numero-card-adm {
   font-size: 25px;
   font-weight: bold;
   margin: 0;
@@ -146,7 +146,7 @@
   margin-top: 10px;
 }
 
-.admin-buttons {
+.botoes-adm {
   position: absolute;
   bottom: 1rem;
 }
@@ -167,22 +167,22 @@
     gap: 0.8rem;
   }
 
-  .admin-title {
+  .titulo-adm {
     display: none;
   }
 
-  .admin-info-cards {
+  .cards-info-adm {
     flex-direction: column;
     margin-top: 8px;
     gap: 8px;
   }
 
-  .admin-card-icon svg {
+  .icone-card-adm svg {
     width: 24px;
     height: 24px;
   }
 
-  .admin-card {
+  .card-adm {
     max-width: 100%;
     height: 110px;
     padding: 8px 12px;
@@ -191,14 +191,14 @@
     align-items: center;
   }
 
-  .admin-card-text p {
+  .texto-card-adm p {
     font-size: 12px;
     margin: 0;
     line-height: 1.2;
     color: #ffffff;
   }
 
-  .admin-card-number {
+  .numero-card-adm {
     font-size: 20px !important;
   }
 }

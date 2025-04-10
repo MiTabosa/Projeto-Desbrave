@@ -1,24 +1,22 @@
 :root {
-    --primary-color: #0367A5;
-    --secondary-color: #f9f9f9;
-    --background-color: #ffffff;
-    --text-color: #333;
-    --border-color: #ccc;
-    --hover-color: #e0e0e0;
+    --cor-primaria: #0367A5;
+    --cor-secundaria: #f9f9f9;
+    --cor-fundo: #ffffff;
+    --cor-texto: #333;
+    --cor-borda: #ccc;
+    --cor-hover: #e0e0e0;
 }
 
 .gestao-cursos {
     font-family: Arial, sans-serif;
-    color: var(--text-color);
+    color: var(--cor-texto);
     padding: 20px;
     margin: 0 auto;
-    
 }
-
 
 /* Formulário de Cadastro */
 .formulario {
-    background-color: var(--secondary-color);
+    background-color: var(--cor-secundaria);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -29,53 +27,52 @@
     margin-right: auto;
     display: flex;
     flex-direction: column;
-    
 }
 
 .formulario h2 {
     margin-bottom: 20px;
-    color: var(--primary-color);
+    color: var(--cor-primaria);
     text-align: center;
 }
 
-.form-1 {
+.grupo-formulario {
     margin-bottom: 15px;
 }
 
-.form-1 label {
+.grupo-formulario label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.form-1 input,
-.form-1 textarea,
-.form-1 select {
+.grupo-formulario input,
+.grupo-formulario textarea,
+.grupo-formulario select {
     width: 100%;
     padding: 10px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--cor-borda);
     border-radius: 4px;
     font-size: 1em;
     box-sizing: border-box;
 }
 
-.form-1 textarea {
+.grupo-formulario textarea {
     resize: vertical;
 }
 
-.form-1 select {
+.grupo-formulario select {
     appearance: none;
-    background-color: var(--background-color);
+    background-color: var(--cor-fundo);
 }
 
-.buttonContainerForm{
+.container-botoes {
     display: flex;
     justify-content: center; 
     margin-top: 20px;
 }
 
-.buttonGestão {
-    background-color: var(--primary-color);
+.botao-gestao {
+    background-color: var(--cor-primaria);
     color: white;
     padding: 10px 20px;
     border: none;
@@ -87,7 +84,7 @@
 
 /* Lista de Cursos */
 .lista-cursos {
-    background-color: var(--secondary-color);
+    background-color: var(--cor-secundaria);
     padding: 20px 130px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -95,7 +92,7 @@
 
 .lista-cursos h2 {
     margin-bottom: 20px;
-    color: var(--primary-color);
+    color: var(--cor-primaria);
 }
 
 .lista-cursos ul {
@@ -107,8 +104,8 @@
 }
 
 .lista-cursos li {
-    background-color: var(--background-color);
-    border: 1px solid var(--border-color);
+    background-color: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
     border-radius: 8px;
     padding: 10px;
     transition: box-shadow 0.3s ease;
@@ -132,7 +129,7 @@
 }
 
 .lista-cursos li a {
-    color: var(--primary-color);
+    color: var(--cor-primaria);
     text-decoration: none;
 }
 
@@ -148,36 +145,35 @@
     cursor: pointer;
     font-size: 0.9em;
     transition: background-color 0.3s ease;
-    
 }
 
-.buttonEdicao{
+.botoes-edicao {
     display: flex;
     justify-content: space-between;
     margin: 20px;
 }
 
-.buttonEditar{
+.botao-editar {
     background-color: #35A150;
-    color: var(--background-color);
+    color: var(--cor-fundo);
     width: 150px;
 }
 
-.buttonExcluir{
+.botao-excluir {
     background-color: #d20e0e;
-    color: var(--background-color);
+    color: var(--cor-fundo);
     width: 150px;
 }
 
-.buttonContainerForm {
+.container-botoes {
     display: flex;
     justify-content: center;
     gap: 15px; 
     margin-top: 20px;
 }
 
-.buttonGestão,
-.buttonCancelar {
+.botao-gestao,
+.botao-cancelar {
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -186,24 +182,23 @@
     transition: background-color 0.3s ease;
 }
 
-.buttonGestão {
-    background-color: var(--primary-color);
+.botao-gestao {
+    background-color: var(--cor-primaria);
     color: white;
 }
 
-.buttonCancelar {
+.botao-cancelar {
     background-color: #f44336;
     color: white;
 }
 
-.buttonGestão:hover {
+.botao-gestao:hover {
     background-color: #024b80;
 }
 
-.buttonCancelar:hover {
+.botao-cancelar:hover {
     background-color: #d32f2f;
 }
-
 
 @media (max-width: 768px) {
     .gestao-cursos {
@@ -215,13 +210,13 @@
         padding: 15px;
     }
 
-    .form-1 input,
-    .form-1 textarea,
-    .form-1 select {
+    .grupo-formulario input,
+    .grupo-formulario textarea,
+    .grupo-formulario select {
         font-size: 0.9em;
     }
 
-    .buttonGestão {
+    .botao-gestao {
         width: 100%;
         padding: 12px;
     }

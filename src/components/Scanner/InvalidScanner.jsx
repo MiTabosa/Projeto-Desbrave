@@ -14,7 +14,7 @@ function InvalidScanner() {
         <div className="initial-erro">
         <div className="titulo-container">
                 <MdErrorOutline className="vector-img-error" />
-            <div className="texto-container">
+            <div className="texto-container-pontos">
                 <h2 >QR Code inválido ou Expirado</h2>
             <p>Quer tentar novamente?</p>
             </div>

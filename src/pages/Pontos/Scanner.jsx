@@ -184,7 +184,7 @@ function Scanner() {
           <div className="inicial-vetor">
             <div className="titulo-container">
               <BsCheck2Circle className="vetor-img" />
-              <div className="texto-container">
+              <div className="texto-container-pontos">
                 <h2>QR CODE ESCANEADO COM SUCESSO!</h2>
                 <p>
                   {pontos !== null && (

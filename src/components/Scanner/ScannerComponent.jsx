@@ -6,7 +6,7 @@ function ScannerComponent() {
             const button = document.getElementById("html5-qrcode-button-camera-permission");
             if (button && button.innerText.trim() === "Request Camera Permissions") {
                 button.innerText = "Permitir Acesso à Câmera";
-                button.classList.add("scanner-button")
+                button.classList.add("scanner-botao")
             }
             const scanLink = document.getElementById("html5-qrcode-anchor-scan-type-change");
             if(scanLink) {

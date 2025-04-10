@@ -22,6 +22,7 @@ const Dashboard = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [infoGeral, setInfoGeral] = useState({ cursos: 0, pontos: 0 });
   const [name, setName] = useState("");
+  const [pontos, setPontos] = useState(0)
   const [cursos, setCursos] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -43,6 +44,8 @@ const Dashboard = () => {
       // nomeUsuario
       const userResponse = await api.get(`/api/usuarios/${usuarioId}`);
       setName(userResponse.data.nome);
+      setPontos(userResponse.data.pontuacaoTotal)
+      
 
       // pontos
       const pontosResponse = await api.get(`/historicoResgate/usuario/${usuarioId}`);
@@ -117,9 +120,7 @@ const Dashboard = () => {
                       </div>
                       <div className="texto-numero">
                         <p className="numero-geral">
-                          {infoGeral.pontos < 10
-                            ? `0${infoGeral.pontos}`
-                            : infoGeral.pontos}
+                          {pontos}
                         </p>
                         <p className="paragrafo-geral">Pontos</p>
                       </div>

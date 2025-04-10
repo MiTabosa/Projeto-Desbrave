@@ -8,7 +8,7 @@ import Button from "../../components/Button/Button";
 import { BsCheck2Circle } from "react-icons/bs";
 import { api } from "../../service/api";
 import { jwtDecode } from "jwt-decode";
-
+import { toast } from "react-toastify";
 
 function Scanner() {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ function Scanner() {
           "Permissão da câmera negada ou erro ao acessar a câmera:",
           error
         );
-        alert("Permissão da câmera é necessária para escanear QR codes.");
+        toast.error("Permissão da câmera é necessária para escanear QR codes.");
         navigate("/PaginaInicial"); // Redireciona para outra página se a permissão for negada
       });
   };
@@ -39,55 +39,40 @@ function Scanner() {
       const token = localStorage.getItem("token");
       const decodedToken = jwtDecode(token);
       const usuarioId = decodedToken?.sub;
-      console.log("Decoded token:", decodedToken);
-
+      console.log("Token decodificado:", decodedToken);
+  
       const codigoSemAspas = codigo.replace(/^"|"$/g, "");
-
+  
       const response = await api.get(`/qrcodes?codigo=${codigoSemAspas}`);
-      const corretoQrcode = response.data.find(qr => qr.codigo === codigoSemAspas);
-
+      const corretoQrcode = response.data.find((qr) => qr.codigo === codigoSemAspas);
+  
       if (!corretoQrcode) {
         throw new Error("Qr code não encontrado");
-    }
-
-      setScanResult(corretoQrcode);
-
-
-      const id = corretoQrcode.id;
-
-      const associacoes = await api.get(`/usuario-qrcode/usuario/${usuarioId}`);
-      const qrcodesEscaneados = associacoes.data.map(assoc => assoc.qrCode.id);
-
-
-      if (qrcodesEscaneados.includes(parseInt(id))) {
-        alert("Você já escaneou esse QR Code! A pontuação não foi efetuada");
-        navigate("/InvalidScanner");
-        return;
       }
-
+  
+      const id = corretoQrcode.id;
+  
+      const associacoes = await api.get(`/usuario-qrcode/usuario/${usuarioId}`);
+      const qrcodesEscaneados = associacoes.data.map((assoc) => assoc.qrCode.id);
+  
+      if (qrcodesEscaneados.includes(parseInt(id))) {
+        throw new Error("QR Code já escaneado");
+      }
+  
       const res = await api.post("/usuario-qrcode", {
         usuarioId: usuarioId,
         qrCodeId: id,
-        dataEscaneamento: new Date().toISOString()
-    });
-
-     const pontosGanhos = parseInt(res.data.pontosGanhos || res.data.pontosGanhos || 50);
-
-     setPontos(pontosGanhos);
-     localStorage.setItem("pontuacaoTotal", pontosGanhos.toString())
-
-     if (pontosGanhos > 0) {
-      <p>
-      <span>
-        <br />
-        Agora você tem <strong>{pontos}</strong> pontos!
-      </span>
-    </p>
-     }
-
+        dataEscaneamento: new Date().toISOString(),
+      });
+  
+      const pontosGanhos = parseInt(res.data.pontosGanhos || 50);
+      setPontos(pontosGanhos);
+  
+      setScanResult(corretoQrcode);
+  
     } catch (error) {
-      console.error("Erro inesperado:", error.message);
-      alert("Você já escaneou esse QR Code, Nenhuma pontuação foi atribuida!");
+      console.error("Erro inesperado:", error);
+        toast.error("Você já escaneou esse QR Code!");
       navigate("/InvalidScanner");
     }
   };
@@ -137,7 +122,7 @@ function Scanner() {
       scanner.render(
         (result) => {
           console.log("Código escaneado:", result);
-          fetchQRCodeData(result); // passa o texto escaneado (ex: "Marco Zero")
+          fetchQRCodeData(result);
 
           scanner
             .clear()
@@ -191,16 +176,15 @@ function Scanner() {
       window.removeEventListener("resize", handleResize);
     };
   }, [scanResult, cameraPermissionGranted]);
-
   return (
     <div>
       <ScannerComponent />
       {scanResult ? (
-        <section className="vector-section">
-          <div className="initial-vector">
-            <div className="title-container">
-              <BsCheck2Circle className="vector-img" />
-              <div className="text-container">
+        <section className="vetor-section">
+          <div className="inicial-vetor">
+            <div className="titulo-container">
+              <BsCheck2Circle className="vetor-img" />
+              <div className="texto-container">
                 <h2>QR CODE ESCANEADO COM SUCESSO!</h2>
                 <p>
                   {pontos !== null && (
@@ -213,7 +197,7 @@ function Scanner() {
               </div>
             </div>
           </div>
-          <div className="button-container">
+          <div className="botao-container">
             <Button
               text="Continuar Explorando"
               color="#0367A5"

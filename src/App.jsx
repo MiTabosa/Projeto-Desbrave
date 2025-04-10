@@ -155,6 +155,8 @@ import {
   Navigate,
   useLocation,
 } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar/Navbar';
 import NavbarLogado from './components/Navbar/NavbarLogado';
 import Home from './pages/Home';
@@ -250,6 +252,7 @@ const App = () => {
   };
 
   return (
+    <>
     <Routes>
       {/* Rotas Públicas */}
       <Route path="/" element={<Layout isLogged={isLogged}><Home /></Layout>} />
@@ -311,6 +314,21 @@ const App = () => {
       {/* Rota Curinga */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
+
+    <ToastContainer 
+      position="top-center" 
+      autoClose={5000} 
+      hideProgressBar={false} 
+      newestOnTop={false} 
+      closeOnClick 
+      rtl={false} 
+      pauseOnFocusLoss 
+      draggable 
+      pauseOnHover 
+      theme="colored" 
+    />
+    </>
+
   );
 };
 

@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { api } from "../../service/api";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Cadastro() {
   const [dadosFormulario, setDadosFormulario] = useState({
@@ -32,7 +35,7 @@ export default function Cadastro() {
     if (dadosFormulario.senha !== dadosFormulario.confirmarSenha) {
       const mensagemErro = "As senhas não coincidem!";
       setErro(mensagemErro);
-      alert(mensagemErro);
+      toast.error(mensagemErro);
       return;
     }
 
@@ -42,7 +45,7 @@ export default function Cadastro() {
       const { confirmarSenha, ...dadosParaAPI } = dadosFormulario;
 
       const resposta = await api.post("/api/usuarios/cadastrar", dadosParaAPI).then((Response) => {
-        alert("Cadastro realizado com sucesso!");
+        toast.success("Cadastro realizado com sucesso!");
       }).catch((error) => {
         console.log(error);
       })
@@ -52,7 +55,7 @@ export default function Cadastro() {
       const mensagemErro = "Erro ao conectar com o servidor.";
       console.error("Erro ao cadastrar usuário:", error.response || error.message || error);
       setErro(mensagemErro);
-      alert(mensagemErro);
+      toast.error(mensagemErro);
     }
   };
 
@@ -128,7 +131,7 @@ export default function Cadastro() {
         <div className="termos">
           <input type="checkbox" id="termos" required />
           <label htmlFor="termos">
-            Eu li e concordo com os <a href="/diretrizes" className="link-termos">termos e políticas</a> de uso e privacidade.
+            Eu li e concordo com os <a href="/diretrizes" className="linkTermos">termos e políticas</a> de uso e privacidade.
           </label>
         </div>
         

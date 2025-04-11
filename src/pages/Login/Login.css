@@ -52,12 +52,12 @@
     max-width: 350px;
   }
   
-  .inputCampo {
+  .inputCampoLogin {
     position: relative;
     margin-bottom: 15px;
   }
   
-  .inputCampo input {
+  .inputCampoLogin input {
     width: 100%; 
     max-width: 350px; 
     padding: 12px 40px;

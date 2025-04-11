@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "./RecuperarSenha.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const RecuperarSenha = () => {
   const [codigo, setCodigo] = useState(["", "", "", "", "", ""]);
@@ -31,7 +34,7 @@ const RecuperarSenha = () => {
       }
     } catch (erro) {
       console.error("Erro ao validar código:", erro);
-      setMensagemErro("Ocorreu um erro ao validar o código.");
+      toast.error("Ocorreu um erro ao validar o código.");
     }
   };
 
@@ -53,7 +56,6 @@ const RecuperarSenha = () => {
             />
           ))}
         </div>
-        {mensagemErro && <p className="mensagem-erro">{mensagemErro}</p>}
         <button className="RecBotao" onClick={handleSubmit}>
           Confirmar
         </button>

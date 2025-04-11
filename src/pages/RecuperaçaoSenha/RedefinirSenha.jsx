@@ -3,6 +3,8 @@ import "./RedefinirSenha.css";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RedefinirSenha = () => {
   const [novaSenha, setNovaSenha] = useState("");
@@ -14,7 +16,7 @@ const RedefinirSenha = () => {
 
   const lidarComEnvio = async () => {
     if (novaSenha !== confirmarSenha) {
-      setMensagemErro("As senhas não coincidem. Tente novamente.");
+      toast.error("As senhas não coincidem. Tente novamente.");
       return;
     }
 
@@ -22,7 +24,7 @@ const RedefinirSenha = () => {
       const email = localStorage.getItem("emailRecuperacao");
 
       if (!email) {
-        setMensagemErro("E-mail de recuperação não encontrado.");
+        toast.error("E-mail de recuperação não encontrado.");
         return;
       }
 
@@ -32,7 +34,7 @@ const RedefinirSenha = () => {
       });
 
       if (resposta.status === 200) {
-        alert("Senha redefinida com sucesso!");
+        toast.success("Senha redefinida com sucesso!");
         navegar("/login");
       } else {
         setMensagemErro("Erro ao redefinir a senha. Tente novamente.");
@@ -82,8 +84,6 @@ const RedefinirSenha = () => {
             {mostrarConfirmarSenha ? <FaEyeSlash /> : <FaEye />}
           </span>
         </div>
-
-        {mensagemErro && <p className="mensagem-erro">{mensagemErro}</p>}
 
         <button className="continuar" onClick={lidarComEnvio}>
           Continuar

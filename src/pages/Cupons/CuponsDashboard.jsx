@@ -12,20 +12,71 @@ export default function CuponsDashboard() {
   const [cupons, setCupons] = useState([]);
   const [pontos, setPontos] = useState(0);
 
+  const cuponsMock = [
+    {
+      id: 1,
+      desconto: 5,
+      estrelas: 1,
+      codigo: "DESBRAVE10",
+      ativo: true,
+      descricao:
+        "Com apenas 1 estrela você desbloqueia um cupom de 5% para cursos ou restaurantes parceiros. Copie e aplique na aba Cursos.",
+    },
+    {
+      id: 2,
+      desconto: 10,
+      estrelas: 15,
+      codigo: "",
+      ativo: false,
+      descricao:
+        "Com 15 estrelas, você libera 10% de desconto. Visite pontos turísticos e escaneie QR Codes para acumular estrelas!",
+    },
+    {
+      id: 3,
+      desconto: 20,
+      estrelas: 20,
+      codigo: "CULTURAL220",
+      ativo: true,
+      descricao:
+        "Desbloqueie 20% de desconto com 20 estrelas. Copie o código e utilize na aba Cursos.",
+    },
+    {
+      id: 4,
+      desconto: 50,
+      estrelas: 50,
+      codigo: "",
+      ativo: false,
+      descricao:
+        "O cupom de 50% requer 50 estrelas. Explore mais lugares para ganhar estrelas e desbloquear esse super desconto!",
+    },
+  ];
+
   useEffect(() => {
     const buscarDados = async () => {
       try {
         const { data: dadosCupons } = await axios.get("http://localhost:8081/cupom");
-        setCupons(dadosCupons);
-        const { data: dadosPontos } = await axios.get("http://localhost:8081/cupom");
-        setPontos(dadosPontos);
+        setCupons(dadosCupons.length > 0 ? dadosCupons : cuponsMock);
       } catch (error) {
-        console.error("Erro ao buscar dados:", error);
+        console.warn("Erro ao buscar cupons. Usando mock.");
+        setCupons(cuponsMock);
       }
-      
+
+      try {
+        const { data: dadosPontos } = await axios.get("http://localhost:8081/usuario/pontos");
+        setPontos(dadosPontos.pontos ?? 0);
+      } catch (error) {
+        console.warn("Erro ao buscar pontos. Usando fallback.");
+        setPontos(20);
+      }
     };
+
     buscarDados();
   }, []);
+
+  const abrirModal = (descricao) => {
+    setConteudoModal(descricao);
+    setModalAberto(true);
+  };
 
   return (
     <Sidebar>
@@ -43,6 +94,7 @@ export default function CuponsDashboard() {
               <a href="/CuponsUsados"><button className="botaoUsados">Cupons Usados</button></a>
             </div>
           </div>
+
           <div className="CuponsConteudo">
             <div className="AreaCupons">
               <div className="cuponsGrade">
@@ -72,6 +124,7 @@ export default function CuponsDashboard() {
             </div>
           </div>
         </div>
+
         {modalAberto && (
           <div className="modalSaibaMais" onClick={() => setModalAberto(false)}>
             <div className="modalConteudo" onClick={(e) => e.stopPropagation()}>

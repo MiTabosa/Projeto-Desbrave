@@ -38,15 +38,6 @@ export default function Sidebar({ children }) {
             <MdOutlineDashboard className="icon" /> {!isMobile && <span>Dashboard</span>}
           </li>
 
-          <li
-            className={`sidebar-item ${
-              location.pathname === "/meusCursos" ? "sidebar-item-active" : ""
-            }`}
-            onClick={() => navigate("/meusCursos")}
-          >
-            <PiBookOpenTextThin className="icon" /> 
-            {!isMobile && <span>Meus cursos</span>}
-          </li>
 
           <li
             className={`sidebar-item ${

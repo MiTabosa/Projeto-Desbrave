@@ -2,20 +2,20 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./DashboardAdmin.css";
 import { PiBookOpenTextThin } from "react-icons/pi";
-import { FaComments } from "react-icons/fa";
+import { FaComments, FaQrcode } from "react-icons/fa";
 import BottomDashboard from "../../components/BottomDashboard/BottomDashboard";
 import SidebarAdmin from "../../components/SidebarAdmin/SidebarAdmin";
 import elementoDashboard from "../../assets/elemento-dashboard.png";
 import Button from "../../components/Button/Button";
 import CardPerfilAdmin from "../../components/CardPerfilAdmin/CardPerfilAdmin";
 
+
 const DashboardAdmin = () => {
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [numCursos, setNumCursos] = useState(12);
   const [numForuns, setNumForuns] = useState(5);
-  const [name, setName] = useState(""); 
-
+  const [name, setName] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,7 +30,7 @@ const DashboardAdmin = () => {
       try {
         const usuarioId = localStorage.getItem("usuarioId");
         const response = await api.get(`/usuario/${usuarioId}`);
-        setName(response.data.nome); 
+        setName(response.data.nome);
       } catch (error) {
         console.error("Erro ao buscar nome do usuário:", error);
       }
@@ -43,7 +43,6 @@ const DashboardAdmin = () => {
     <SidebarAdmin>
       <BottomDashboard>
         <div className="secao-superior">
-          {/* Parte esquerda */}
           <div className="esquerda-secao">
             <div className="cabecalho-painel-adm">
               <h2 className="titulo-dashboard">Olá, {name}!</h2>
@@ -57,9 +56,9 @@ const DashboardAdmin = () => {
               <img src={elementoDashboard} alt="elemento dashboard colorido" />
             </div>
 
-            {/* Cartões de cursos e fóruns */}
             {!isMobile && (
               <div className="admin-info-cards">
+                {/* Card de Cursos */}
                 <div className="admin-card admin-card-cursos">
                   <div className="admin-card-content">
                     <div className="admin-card-icon">
@@ -72,13 +71,34 @@ const DashboardAdmin = () => {
                   <div className="admin-buttons">
                     <Button
                       text="Cadastrar Curso"
-                      color=" #35A150"
+                      color="#35A150"
                       size="medium"
                       onClick={() => navigate("/gestaoCursos")}
                     />
                   </div>
                 </div>
-               
+
+                {/* Card de QRCode */}
+                <div className="admin-card admin-card-qrcode">
+                  <div className="admin-card-content">
+                    <div className="admin-card-icon">
+                      <FaQrcode size={30} color="#c69715" />
+                    </div>
+                    <div className="admin-card-text">
+                      <p className="texto-card-adm">QR Codes cadastrados</p>
+                    </div>
+                  </div>
+                  <div className="admin-buttons">
+                    <Button
+                      text="Cadastrar QR Code"
+                      color="#35A150"
+                      size="medium"
+                      onClick={() => navigate("/gestaoQrcodes")}
+                    />
+                  </div>
+                </div>
+
+                {/* Card de Fóruns */}
                 <div className="admin-card admin-card-foruns">
                   <div className="admin-card-content">
                     <div className="admin-card-icon">
@@ -91,20 +111,16 @@ const DashboardAdmin = () => {
                   <div className="admin-buttons">
                     <Button
                       text="Cadastrar Fórum"
-                      color=" #35A150"
+                      color="#35A150"
                       size="medium"
                       onClick={() => navigate("/gestaoForum")}
                     />
                   </div>
                 </div>
               </div>
-         
             )}
           </div>
-          <CardPerfilAdmin
-            name={name}
-            setName={setName}
-          />
+          <CardPerfilAdmin name={name} setName={setName} />
         </div>
       </BottomDashboard>
     </SidebarAdmin>

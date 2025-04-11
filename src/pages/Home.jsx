@@ -122,7 +122,7 @@ const Home = () => {
       </section>
 
       <section className="explore">
-        <div className="map-text">
+        <div className="map-texto">
           <h2>Explore Recife</h2>
           <p>
             Navegue pelos pontos turísticos que tornam Recife único.

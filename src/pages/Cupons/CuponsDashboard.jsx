@@ -22,6 +22,7 @@ export default function CuponsDashboard() {
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
       }
+      
     };
     buscarDados();
   }, []);

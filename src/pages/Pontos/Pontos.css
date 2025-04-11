@@ -35,7 +35,7 @@
   right: 0;
 }
 
-.scanner-button {
+.scanner-botao {
   border-radius: 6px;
   color: white;
   border: none;
@@ -44,7 +44,7 @@
   background-color: #0367a5;
 }
 
-.scanner-button:hover {
+.scanner-botao:hover {
   transform: scale(1.1);
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
 }
@@ -90,45 +90,45 @@
 
 /* valido */
 
-.vector-section {
+.vetor-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-.title-container {
+.titulo-container {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-.text-container {
+.texto-container-pontos {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
 
-.initial-vector h2 {
+.inicial-vetor h2 {
   color: #52bf04;
   font-size: 40px;
   margin: 0;
 }
 
-.initial-vector span {
+.inicial-vetor span {
   font-size: 20px;
   margin-top: 5px;
 }
 
-.vector-section {
+.vetor-section {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5rem 1rem;
 }
 
-.vector-img {
+.vetor-img {
   color: #52bf04;
   width: 100px;
   height: 100px;
@@ -140,14 +140,14 @@
   height: 100px;
 }
 
-.button-container {
+.botao-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
 }
 
-.button-container-erro {
+.botao-container-erro {
   display: flex;
   gap: 50px;
   align-items: center;
@@ -157,14 +157,9 @@
 
 .initial-erro h2 {
   color: #d93728;
-  font-size: 40px;
-  box-shadow: 10px;
-}
+} 
 
-.initial-erro p {
-  font-size: 20px;
-  margin-top: 5px;
-}
+
 
 @media (max-width: 768px) {
 
@@ -211,28 +206,28 @@
 }
   /* validar  */
 
-  .vector-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
+  .vetor-section {
+     display: flex; 
+     flex-wrap: wrap; 
+     justify-content: center;
+    text-align: center; 
   }
 
-  .title-container {
+  .titulo-container {
     display: flex;
     flex-direction: column;
   }
 
-  .vector-img {
+  .vetor-img {
     width: 110px;
     height: auto;
   }
 
-  .button-container {
+  .botao-container {
     margin-top: 40px;
   }
 
-  .text-container {
+  .texto-container-pontos {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -240,19 +235,19 @@
     margin-top: 20px;
   }
 
-  .text-container h2 {
+  .texto-container-pontos h2 {
     font-size: 25px;
     max-width: 70%;
   }
 
-  .text-container p {
+  .texto-container-pontos p {
     font-size: 15px;
     margin-top: 40px;
   } 
 
   /* invalido */
 
-  .button-container-erro {
+  .botao-container-erro {
     flex-direction: column;
     margin-top: 25px;
     gap: 30px;

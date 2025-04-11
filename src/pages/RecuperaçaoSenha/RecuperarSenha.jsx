@@ -20,7 +20,7 @@ const RecuperarSenha = () => {
     const codigoCompleto = codigo.join("");
 
     try {
-      const resposta = await axios.post("http://localhost:3000/validar-codigo", {
+      const resposta = await axios.post("http://localhost:8081/api/usuarios/recuperar-senha", {
         codigo: codigoCompleto,
       });
 

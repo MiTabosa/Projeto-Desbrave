@@ -26,7 +26,7 @@ const RedefinirSenha = () => {
         return;
       }
 
-      const resposta = await axios.post("http://localhost:3000/redefinir-senha", {
+      const resposta = await axios.post("http://localhost:8081/api/usuarios/redefinir-senha", {
         email,
         novaSenha,
       });

@@ -21,10 +21,11 @@ const MapSection = ({ tipo, usuarioId }) => {
   const [pontosLidos, setPontosLidos] = useState([]);
 
   useEffect(() => {
-    if (tipo === "mapa-detalhado" && usuarioId) {
+    if (tipo === "map-detalhado" && usuarioId) {
       axios.get(`http://localhost:8081/usuario-qrcode/usuario/${usuarioId}`)
         .then(response => {
-          const ids = response.data.map(item => item.qrCodeId);
+          console.log("Dados recebidos do usuário:", response.data); 
+          const ids = response.data.map(item => item.qrCode.id);
           setPontosLidos(ids);
         })
         .catch((error) => console.error("Erro ao buscar QR Codes:", error));
@@ -49,21 +50,22 @@ const MapSection = ({ tipo, usuarioId }) => {
   ];
 
   return (
-    <section className={`mapa-seção ${tipo}`}>
-      <MapContainer center={[-8.0608, -34.876]} zoom={15} className="mapa-container">
+    <section className={`map-section ${tipo}`}>
+      <MapContainer center={[-8.0608, -34.876]} zoom={15} className="map-container">
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; OpenStreetMap contributors'
         />
         {pontos.map((ponto) => {
-          const foiEscaneado = tipo === "mapa-detalhado" && pontosLidos.includes(ponto.id);
+          const foiEscaneado = tipo === "map-detalhado" && pontosLidos.includes(ponto.id);
+          const icone = blueIcon;
 
           return (
             <Marker key={ponto.id} position={ponto.coords} icon={icone}>
               <Popup>
                 <div className="popup-content">
                   <b className="popup-title">{ponto.nome}</b>
-                  {tipo === "mapa-detalhado" && (
+                  {tipo === "map-detalhado" && (
                     <>
                       {ponto.imagem && <img className="popup-img" src={ponto.imagem} alt={ponto.nome} width="150px" />}
                       {ponto.descricao && <p className="popup-desc">{ponto.descricao}</p>}

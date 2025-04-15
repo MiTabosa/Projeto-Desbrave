@@ -1,5 +1,4 @@
-🌟 Projeto Desbrave
-Bem-vindo ao repositório oficial da plataforma Desbrave! 🚀
+🌟 Projeto Desbrave🚀
 
 📝 Descrição do Projeto
 O Desbrave é uma plataforma digital interativa que combina:

@@ -37,7 +37,7 @@ cd desbrave-frontend
 Inicie os contêineres com Docker Compose:
 docker-compose up --build
 Acesse a aplicação:
-🌐 Front-end: http://localhost:8080
+🌐 Front-end: http://localhost:3000
 🚀 Back-end (API): http://localhost:8081
 🧩 Funcionalidades
 🔐 Cadastro e Login: Autenticação segura e personalizada para cada usuário.
